@@ -20,7 +20,7 @@ venue:
   type: Working Group
   mail: WG@example.com
   arch: https://example.com/WG
-  github: tadahik/RFC5019bis
+  github: USER/REPO
   latest: https://example.com/LATEST
 
 author:
