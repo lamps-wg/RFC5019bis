@@ -4,24 +4,15 @@ abbrev: "RFC5019bis"
 category: std
 
 docname: draft-bonnell-RFC5019-latest
-submissiontype: IETF  
+submissiontype: IETF
 number:
 date:
 consensus: true
 v: 3
 area: SEC
-workgroup: individual # WG Working Group
-keyword:
- - OCSP
- - SHA-1
+workgroup:
+keyword: Internet-Draft
 
-venue:
-  group: WG
-  type: Working Group
-  mail: WG@example.com
-  arch: https://example.com/WG
-  github: USER/REPO
-  latest: https://example.com/LATEST
 
 author:
  -
