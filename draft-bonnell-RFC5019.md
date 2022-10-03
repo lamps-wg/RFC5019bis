@@ -9,8 +9,8 @@ number:
 date:
 consensus: true
 v: 3
-area: SEC
-workgroup:
+# area: SEC
+# workgroup:
 keyword: Internet-Draft
 
 author:
