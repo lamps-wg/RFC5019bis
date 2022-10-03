@@ -13,21 +13,20 @@ area: SEC
 workgroup:
 keyword: Internet-Draft
 
-
 author:
  -
     fullname: Corey Bonnell
     organization: Digicert, Inc.
     email: corey.bonnell@digicert.com
--
+ -
     fullname: Clint Wilson
     organization: Apple, Inc.
     email: clintw@apple.com
--
+ -
     fullname: Tadahiko Ito
     organization: SECOM CO., LTD.
     email: tadahiko.ito.public@gmail.com
--
+ -
     fullname: Sean Turner
     organization: sn3rd
     email: sean@sn3rd.com
@@ -42,8 +41,7 @@ normative:
 
 informative:
   RFC3143:
-  OCSPPMP: "OCSP Mobile Profile V1.0", Open Mobile Alliance,
-    www.openmobilealliance.org.
+  OCSPPMP:
 
 
 --- abstract
@@ -54,7 +52,7 @@ This document updates RFC5019, and allow OCSP client to use SHA-256 in addition 
 
 # Introduction
 
-The Online Certificate Status Protocol [OCSP] specifies a mechanism
+The Online Certificate Status Protocol [RFC2560] specifies a mechanism
 used to determine the status of digital certificates, in lieu of
 using Certificate Revocation Lists (CRLs).  Since its definition in
 1999, it has been deployed in a variety of environments and has
@@ -126,7 +124,7 @@ mode as described in this specification.
 # OCSP Message Profile
 
 This section defines a subset of OCSPRequest and OCSPResponse
-functionality as defined in [OCSP].
+functionality as defined in [RFC2560].
 
 ## OCSP Request Profile
 
@@ -171,7 +169,7 @@ necessary to improve response pre-generation performance or cache
 efficiency.
 
 The responder SHOULD NOT include responseExtensions.  As specified in
-[OCSP], clients MUST ignore unrecognized non-critical
+[RFC2560], clients MUST ignore unrecognized non-critical
 responseExtensions in the response.
 
 In the case where a responder does not have the ability to respond to
@@ -202,7 +200,7 @@ authority (CA), a valid responder certificate MUST be referenced in
 the BasicOCSPResponse.certs structure.
 
 It is RECOMMENDED that the OCSP responder's certificate contain the
-id-pkix-ocsp-nocheck extension, as defined in [OCSP], to indicate to
+id-pkix-ocsp-nocheck extension, as defined in [RFC2560], to indicate to
 the client that it need not check the certificate's status.  In
 addition, it is RECOMMENDED that neither an OCSP authorityInfoAccess
 (AIA) extension nor cRLDistributionPoints (CRLDP) extension be
@@ -222,11 +220,11 @@ particular certificate, an OCSPResponseStatus of "successful" will be
 returned.  When access to authoritative records for a particular
 certificate is not available, the responder MUST return an
 OCSPResponseStatus of "unauthorized".  As such, this profile extends
-the RFC 2560 [OCSP] definition of "unauthorized" as follows:
+the RFC 2560 [RFC2560] definition of "unauthorized" as follows:
 
-  The response "unauthorized" is returned in cases where the client
-  is not authorized to make this query to this server or the server
-  is not capable of responding authoritatively.
+The response "unauthorized" is returned in cases where the client
+is not authorized to make this query to this server or the server
+is not capable of responding authoritatively.
 
 For example, OCSP responders that do not have access to authoritative
 records for a requested certificate, such as those that generate and
@@ -240,21 +238,20 @@ records of expired certificates.  Requests from clients for
   OCSPResponseStatus of "unauthorized".
 
 Security considerations regarding the use of unsigned responses are
-discussed in [OCSP].
+discussed in [RFC2560].
 
 ### thisUpdate, nextUpdate, and producedAt
 
 When pre-producing OCSPResponse messages, the responder MUST set the
 thisUpdate, nextUpdate, and producedAt times as follows:
 
-thisUpdate    The time at which the status being indicated is known
-              to be correct.
+thisUpdate    The time at which the status being indicated is known to be correct.
 
 nextUpdate    The time at or before which newer information will be
-              available about the status of the certificate.
-              Responders MUST always include this value to aid in
-              response caching.  See Section 6 for additional
-              information on caching.
+available about the status of the certificate.
+Responders MUST always include this value to aid in
+response caching.  See Section 6 for additional
+information on caching.
 
 producedAt    The time at which the OCSP response was signed.
 
@@ -272,7 +269,7 @@ GeneralizedTime values MUST NOT include fractional seconds.
 ## OCSP Responder Discovery
 
 Clients MUST support the authorityInfoAccess extension as defined in
-[PKIX] and MUST recognize the id-ad-ocsp access method.  This enables
+[RFC3280] and MUST recognize the id-ad-ocsp access method.  This enables
 CAs to inform clients how they can contact the OCSP service.
 
 In the case where a client is checking the status of a certificate
@@ -351,31 +348,30 @@ total (after encoding) including the scheme and delimiters (http://),
 server name and base64-encoded OCSPRequest structure, clients MUST
 use the GET method (to enable OCSP response caching).  OCSP requests
 larger than 255 bytes SHOULD be submitted using the POST method.  In
-all cases, clients MUST follow the descriptions in A.1.1 of [OCSP]
+all cases, clients MUST follow the descriptions in A.1.1 of [RFC2560]
 when constructing these messages.
 
 When constructing a GET message, OCSP clients MUST base64 encode the
 OCSPRequest structure and append it to the URI specified in the AIA
-extension [PKIX].  Clients MUST NOT include CR or LF characters in
+extension [RFC3280].  Clients MUST NOT include CR or LF characters in
 the base64-encoded string.  Clients MUST properly URL-encode the
 base64 encoded OCSPRequest.  For example:
 
-http://ocsp.example.com/MEowSDBGMEQwQjAKBggqhkiG9w0CBQQQ7sp6GTKpL
-2dAdeGaW267owQQqInESWQD0mGeBArSgv%2FBWQIQLJx%2Fg9xF8oySYzol80Mbpg
-%3D%3D
+<http://ocsp.example.com/MEowSDBGMEQwQjAKBggqhkiG9w0CBQQQ7sp6GTKpL2dAdeGaW267owQQqInESWQD0mGeBArSgv%2FBWQIQLJx%2Fg9xF8oySYzol80Mbpg%3D%3D>
+
 
 In response to properly formatted OCSPRequests that are cachable
 (i.e., responses that contain a nextUpdate value), the responder will
 include the binary value of the DER encoding of the OCSPResponse
-preceded by the following HTTP [HTTP] headers.
+preceded by the following HTTP [RFC2616] headers.
 
-  content-type: application/ocsp-response
-  content-length: <OCSP response length>
-  last-modified: <producedAt [HTTP] date>
-  ETag: "<strong validator>"
-  expires: <nextUpdate [HTTP] date>
-  cache-control: max-age=<n>, public, no-transform, must-revalidate
-  date: <current [HTTP] date>
+content-type: application/ocsp-response
+content-length: < OCSP response length >
+last-modified: < producedAt [RFC2616] date >
+ETag: "< strong validator >"
+expires: < nextUpdate [RFC2616] date>
+cache-control: max-age=< n >, public, no-transform, must-revalidate
+date: < current [RFC2616] date >
 
 See Section 6.2 for details on the use of these headers.
 
@@ -411,37 +407,37 @@ OCSP response before the max-age time.
 HTTP Header     Description
 ===========    ====================================================
 date            The date and time at which the OCSP server generated
-                the HTTP response.
+the HTTP response.
 
 last-modified   This value specifies the date and time at which the
-                OCSP responder last modified the response.  This date
-                and time will be the same as the thisUpdate timestamp
-                in the request itself.
+OCSP responder last modified the response.  This date
+and time will be the same as the thisUpdate timestamp
+in the request itself.
 
 expires         Specifies how long the response is considered fresh.
-                This date and time will be the same as the nextUpdate
-                timestamp in the OCSP response itself.
+This date and time will be the same as the nextUpdate
+timestamp in the OCSP response itself.
 
 ETag            A string that identifies a particular version of the
-                associated data.  This profile RECOMMENDS that the
-                ETag value be the ASCII HEX representation of the
-                SHA1 hash of the OCSPResponse structure.
+associated data.  This profile RECOMMENDS that the
+ETag value be the ASCII HEX representation of the
+SHA1 hash of the OCSPResponse structure.
 
 cache-control   Contains a number of caching directives.
 
-            * max-age=<n>     -where n is a time value later than
-                                thisUpdate but earlier than
-                                nextUpdate.
-            * public          -makes normally uncachable response
-                                cachable by both shared and nonshared
-                                caches.
+* max-age = < n >     -where n is a time value later than
+thisUpdate but earlier than
+nextUpdate.
+* public          -makes normally uncachable response
+cachable by both shared and nonshared
+caches.
 
-            * no-transform    -specifies that a proxy cache cannot
-                                change the type, length, or encoding
-                                of the object content.
+* no-transform    -specifies that a proxy cache cannot
+change the type, length, or encoding
+of the object content.
 
-            * must-revalidate -prevents caches from intentionally
-                                returning stale responses.
+* must-revalidate -prevents caches from intentionally
+returning stale responses.
 
 OCSP responders MUST NOT include a "Pragma: no-cache", "Cache-
 Control: no-cache", or "Cache-Control: no-store" header in
@@ -453,21 +449,30 @@ authoritative OCSP responses.
 For example, assume that an OCSP response has the following timestamp
 values:
 
-  thisUpdate = May 1, 2005  01:00:00 GMT
-  nextUpdate = May 3, 2005 01:00:00 GMT
-  productedAt = May 1, 2005 01:00:00 GMT
+thisUpdate = May 1, 2005  01:00:00 GMT
+
+nextUpdate = May 3, 2005 01:00:00 GMT
+
+productedAt = May 1, 2005 01:00:00 GMT
 
 and that an OCSP client requests the response on May 2, 2005 01:00:00
 GMT.  In this scenario, the HTTP response may look like this:
 
-  content-type: application/ocsp-response
-  content-length: 1000
-  date: Fri, 02 May 2005 01:00:00 GMT
-  last-modified: Thu, 01 May 2005 01:00:00 GMT
-  ETag: "c66c0341abd7b9346321d5470fd0ec7cc4dae713"
-  expires: Sat, 03 May 2005 01:00:00 GMT
-  cache-control: max-age=86000,public,no-transform,must-revalidate
-  <...>
+content-type: application/ocsp-response
+
+content-length: 1000
+
+date: Fri, 02 May 2005 01:00:00 GMT
+
+last-modified: Thu, 01 May 2005 01:00:00 GMT
+
+ETag: "c66c0341abd7b9346321d5470fd0ec7cc4dae713"
+
+expires: Sat, 03 May 2005 01:00:00 GMT
+
+cache-control: max-age=86000,public,no-transform,must-revalidate
+
+<...>
 
 OCSP clients MUST NOT include a no-cache header in OCSP request
 messages, unless the client encounters an expired response which may
@@ -498,7 +503,7 @@ a situation where the client need only the ability to parse and
 recognize OCSP responses.
 
 This functionality has been specified as an extension to the TLS
-[TLS] protocol in Section 3.6 [TLSEXT], but can be applied to any
+[RFC4346] protocol in Section 3.6 [RFC4366], but can be applied to any
 client-server protocol.
 
 This profile RECOMMENDS that both TLS clients and servers implement
@@ -510,7 +515,7 @@ Further information regarding caching issues can be obtained from RFC
 # Security Considerations
 
 The following considerations apply in addition to the security
-considerations addressed in Section 5 of [OCSP].
+considerations addressed in Section 5 of [RFC2560].
 
 ## Replay Attacks
 
@@ -547,14 +552,14 @@ identity of the OCSP responder and to verify that it is authorized to
 sign responses on the CA's behalf.
 
 Clients MUST ensure that they are communicating with an authorized
-responder by the rules described in [OCSP], Section 4.2.2.2.
+responder by the rules described in [RFC2560], Section 4.2.2.2.
 
 ## Impersonation Attacks
 
 The use of signed responses in OCSP serves to authenticate the
 identity of OCSP responder.
 
-As detailed in [OCSP], clients must properly validate the signature
+As detailed in [RFC2560], clients must properly validate the signature
 of the OCSP response and the signature on the OCSP response signer
 certificate to ensure an authorized responder created it.
 
