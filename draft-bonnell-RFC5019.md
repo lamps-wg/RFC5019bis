@@ -497,7 +497,7 @@ a situation where the client need only the ability to parse and
 recognize OCSP responses.
 
 This functionality has been specified as an extension to the TLS
-{!I-D.ietf-tls-rfc8446bis}} protocol in Section 4.4.2.1 {!I-D.ietf-tls-rfc8446bis}}, but can be applied to any
+{{!I-D.ietf-tls-rfc8446bis}} protocol in Section 4.4.2.1 {{!I-D.ietf-tls-rfc8446bis}}, but can be applied to any
 client-server protocol.
 
 This profile RECOMMENDS that both TLS clients and servers implement
