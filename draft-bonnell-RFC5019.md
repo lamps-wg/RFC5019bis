@@ -173,7 +173,7 @@ The responder SHOULD NOT include responseExtensions.  As specified in
 responseExtensions in the response.
 
 In the case where a responder does not have the ability to respond to
-an OCSP request containing a option not supported by the server, it
+an OCSP request containing an option not supported by the server, it
 SHOULD return the most complete response it can.  For example, in the
 case where a responder only supports pre-produced responses and does
 not have the ability to respond to an OCSP request containing a
