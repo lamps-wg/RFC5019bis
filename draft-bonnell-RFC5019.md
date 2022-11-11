@@ -405,6 +405,11 @@ OCSP response before the max-age time.
 
 ## HTTP Proxies
 
+The responder SHOULD set the HTTP headers of the OCSP response in
+such a way as to allow for the intelligent use of intermediate HTTP
+proxy servers.  See [HTTP] for the full definition of these headers
+and the proper format of any date and time values.
+
 HTTP Header     Description
 ===========    ====================================================
 date            The date and time at which the OCSP server generated
