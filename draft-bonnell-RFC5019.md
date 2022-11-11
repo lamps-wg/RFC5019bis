@@ -603,6 +603,10 @@ This document has no IANA actions.
 # Acknowledgments
 {:numbered="false"}
 
+The authors of this version of the document wish to thank Alex Deacon
+and Ryan Hurst for all of their work to produce the original version
+of the OCSP protocol.
+
 The authors wish to thank Magnus Nystrom of RSA Security, Inc.,
 Jagjeet Sondh of Vodafone Group R&D, and David Engberg of CoreStreet,
 Ltd. for their contributions to this specification.
