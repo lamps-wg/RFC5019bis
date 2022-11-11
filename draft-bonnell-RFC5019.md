@@ -12,6 +12,7 @@ v: 3
 # area: SEC
 # workgroup:
 keyword: Internet-Draft
+obsoletes: 5019
 
 author:
  -
@@ -46,7 +47,7 @@ informative:
 
 --- abstract
 
-This document updates RFC5019, and allow OCSP client to use SHA-256 in addition to SHA-1.
+This document obsoletes RFC5019, and allows OCSP client to use SHA-256 in addition to SHA-1.
 
 --- middle
 
