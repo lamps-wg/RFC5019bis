@@ -33,12 +33,6 @@ author:
     email: sean@sn3rd.com
 
 normative:
-  RFC2616:
-  RFC2119:
-  RFC2560:
-  RFC3280:
-  RFC4346:
-  RFC4366:
 
 informative:
   RFC3143:
@@ -53,7 +47,7 @@ This document obsoletes RFC5019, and allows OCSP client to use SHA-256 in additi
 
 # Introduction
 
-The Online Certificate Status Protocol [RFC2560] specifies a mechanism
+The Online Certificate Status Protocol {{!RFC6960}} specifies a mechanism
 used to determine the status of digital certificates, in lieu of
 using Certificate Revocation Lists (CRLs).  Since its definition in
 1999, it has been deployed in a variety of environments and has
@@ -125,7 +119,7 @@ mode as described in this specification.
 # OCSP Message Profile
 
 This section defines a subset of OCSPRequest and OCSPResponse
-functionality as defined in [RFC2560].
+functionality as defined in {{RFC6960}}.
 
 ## OCSP Request Profile
 
@@ -170,7 +164,7 @@ necessary to improve response pre-generation performance or cache
 efficiency.
 
 The responder SHOULD NOT include responseExtensions.  As specified in
-[RFC2560], clients MUST ignore unrecognized non-critical
+{{RFC6960}}, clients MUST ignore unrecognized non-critical
 responseExtensions in the response.
 
 In the case where a responder does not have the ability to respond to
@@ -201,7 +195,7 @@ authority (CA), a valid responder certificate MUST be referenced in
 the BasicOCSPResponse.certs structure.
 
 It is RECOMMENDED that the OCSP responder's certificate contain the
-id-pkix-ocsp-nocheck extension, as defined in [RFC2560], to indicate to
+id-pkix-ocsp-nocheck extension, as defined in {{RFC6960}}, to indicate to
 the client that it need not check the certificate's status.  In
 addition, it is RECOMMENDED that neither an OCSP authorityInfoAccess
 (AIA) extension nor cRLDistributionPoints (CRLDP) extension be
@@ -221,7 +215,7 @@ particular certificate, an OCSPResponseStatus of "successful" will be
 returned.  When access to authoritative records for a particular
 certificate is not available, the responder MUST return an
 OCSPResponseStatus of "unauthorized".  As such, this profile extends
-the RFC 2560 [RFC2560] definition of "unauthorized" as follows:
+the RFC 6960 {{RFC6960}} definition of "unauthorized" as follows:
 
 The response "unauthorized" is returned in cases where the client
 is not authorized to make this query to this server or the server
@@ -239,7 +233,7 @@ records of expired certificates.  Requests from clients for
   OCSPResponseStatus of "unauthorized".
 
 Security considerations regarding the use of unsigned responses are
-discussed in [RFC2560].
+discussed in {{RFC6960}}.
 
 ### thisUpdate, nextUpdate, and producedAt
 
@@ -270,7 +264,7 @@ GeneralizedTime values MUST NOT include fractional seconds.
 ## OCSP Responder Discovery
 
 Clients MUST support the authorityInfoAccess extension as defined in
-[RFC3280] and MUST recognize the id-ad-ocsp access method.  This enables
+{{!RFC5280}} and MUST recognize the id-ad-ocsp access method.  This enables
 CAs to inform clients how they can contact the OCSP service.
 
 In the case where a client is checking the status of a certificate
@@ -349,12 +343,12 @@ total (after encoding) including the scheme and delimiters (http://),
 server name and base64-encoded OCSPRequest structure, clients MUST
 use the GET method (to enable OCSP response caching).  OCSP requests
 larger than 255 bytes SHOULD be submitted using the POST method.  In
-all cases, clients MUST follow the descriptions in A.1.1 of [RFC2560]
+all cases, clients MUST follow the descriptions in A.1.1 of {{RFC6960}}
 when constructing these messages.
 
 When constructing a GET message, OCSP clients MUST base64 encode the
 OCSPRequest structure and append it to the URI specified in the AIA
-extension [RFC3280].  Clients MUST NOT include CR or LF characters in
+extension {{RFC5280}}.  Clients MUST NOT include CR or LF characters in
 the base64-encoded string.  Clients MUST properly URL-encode the
 base64 encoded OCSPRequest.  For example:
 
@@ -364,15 +358,15 @@ base64 encoded OCSPRequest.  For example:
 In response to properly formatted OCSPRequests that are cachable
 (i.e., responses that contain a nextUpdate value), the responder will
 include the binary value of the DER encoding of the OCSPResponse
-preceded by the following HTTP [RFC2616] headers.
+preceded by the following HTTP {{!RFC7230}} headers.
 
 content-type: application/ocsp-response
 content-length: < OCSP response length >
-last-modified: < producedAt [RFC2616] date >
+last-modified: < producedAt {{RFC7230}} date >
 ETag: "< strong validator >"
-expires: < nextUpdate [RFC2616] date>
+expires: < nextUpdate {{RFC7230}} date>
 cache-control: max-age=< n >, public, no-transform, must-revalidate
-date: < current [RFC2616] date >
+date: < current {{RFC7230}} date >
 
 See Section 6.2 for details on the use of these headers.
 
@@ -509,7 +503,7 @@ a situation where the client need only the ability to parse and
 recognize OCSP responses.
 
 This functionality has been specified as an extension to the TLS
-[RFC4346] protocol in Section 3.6 [RFC4366], but can be applied to any
+{{!I-D.ietf-tls-rfc8446bis}} protocol in Section 4.4.2.1 {{!I-D.ietf-tls-rfc8446bis}}, but can be applied to any
 client-server protocol.
 
 This profile RECOMMENDS that both TLS clients and servers implement
@@ -521,7 +515,7 @@ Further information regarding caching issues can be obtained from RFC
 # Security Considerations
 
 The following considerations apply in addition to the security
-considerations addressed in Section 5 of [RFC2560].
+considerations addressed in Section 5 of {{RFC6960}}.
 
 ## Replay Attacks
 
@@ -558,14 +552,14 @@ identity of the OCSP responder and to verify that it is authorized to
 sign responses on the CA's behalf.
 
 Clients MUST ensure that they are communicating with an authorized
-responder by the rules described in [RFC2560], Section 4.2.2.2.
+responder by the rules described in {{RFC6960}}, Section 4.2.2.2.
 
 ## Impersonation Attacks
 
 The use of signed responses in OCSP serves to authenticate the
 identity of OCSP responder.
 
-As detailed in [RFC2560], clients must properly validate the signature
+As detailed in {{RFC6960}}, clients must properly validate the signature
 of the OCSP response and the signature on the OCSP response signer
 certificate to ensure an authorized responder created it.
 
