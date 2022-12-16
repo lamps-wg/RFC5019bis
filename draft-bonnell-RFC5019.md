@@ -12,7 +12,7 @@ v: 3
 # area: SEC
 # workgroup:
 keyword: Internet-Draft
-obsoletes: 5019
+update: 5019
 
 author:
  -
@@ -41,7 +41,8 @@ informative:
 
 --- abstract
 
-This document obsoletes RFC5019, and allows OCSP client to use SHA-256 in addition to SHA-1.
+This document update RFC5019, and allows OCSP client to use SHA-256.
+RFC5019 compliant OCSP client still able to use SHA-1, but it might be obsolate in the future.
 
 --- middle
 
@@ -128,7 +129,12 @@ functionality as defined in {{RFC6960}}.
 OCSPRequests conformant to this profile MUST include only one Request
 in the OCSPRequest.RequestList structure.
 
-Clients MUST use SHA1 as the hashing algorithm for the
+Older OCSP Clients which provide vackward compatibility with {{!RFC5019}}
+MUST use SHA-1 as the hashing algorithm for the
+CertID.issuerNameHash and the CertID.issuerKeyHash values.
+
+Newer OCSP Clients that support this document MUST
+use SHA-256 as the hashing algorithm for the
 CertID.issuerNameHash and the CertID.issuerKeyHash values.
 
 Clients MUST NOT include the singleRequestExtensions structure.
@@ -592,6 +598,7 @@ given to everyone who can send a request to a responder.
 Environments where explicit authorization to access the OCSP
 responder is necessary can utilize other mechanisms to authenticate
 requestors or restrict or meter service.
+
 
 # IANA Considerations
 
