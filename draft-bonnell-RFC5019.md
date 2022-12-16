@@ -41,8 +41,8 @@ informative:
 
 --- abstract
 
-This document update RFC5019, and allows OCSP client to use SHA-256.
-RFC5019 compliant OCSP client still able to use SHA-1, but it might be obsolate in the future.
+This document updates RFC5019, and allows OCSP client to use SHA-256.
+An RFC5019 compliant OCSP client is still able to use SHA-1, but it might be obsolete in the future.
 
 --- middle
 
@@ -129,7 +129,7 @@ functionality as defined in {{RFC6960}}.
 OCSPRequests conformant to this profile MUST include only one Request
 in the OCSPRequest.RequestList structure.
 
-Older OCSP Clients which provide vackward compatibility with {{!RFC5019}}
+Older OCSP Clients which provide backward compatibility with {{!RFC5019}}
 MUST use SHA-1 as the hashing algorithm for the
 CertID.issuerNameHash and the CertID.issuerKeyHash values.
 
