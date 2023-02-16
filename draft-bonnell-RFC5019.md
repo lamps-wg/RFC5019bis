@@ -108,7 +108,7 @@ to determine when a responder operates according to this profile and,
 as such, when the requirements of this profile apply.  In the case
 where out-of-band mechanisms may not be available, this profile
 ensures that interoperability will still occur between a fully
-conformant OCSP 2560 client and a responder that is operating in a
+conformant OCSP 6960 client and a responder that is operating in a
 mode as described in this specification.
 
 
