@@ -421,7 +421,7 @@ timestamp in the OCSP response itself.
 ETag            A string that identifies a particular version of the
 associated data.  This profile RECOMMENDS that the
 ETag value be the ASCII HEX representation of the
-SHA1 hash of the OCSPResponse structure.
+SHA-256 hash of the OCSPResponse structure.
 
 cache-control   Contains a number of caching directives.
 
