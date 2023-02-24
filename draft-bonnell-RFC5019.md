@@ -35,7 +35,6 @@ author:
 normative:
 
 informative:
-  RFC3143:
   OCSPPMP:
 
 
@@ -407,7 +406,7 @@ OCSP response before the max-age time.
 
 The responder SHOULD set the HTTP headers of the OCSP response in
 such a way as to allow for the intelligent use of intermediate HTTP
-proxy servers.  See [HTTP] for the full definition of these headers
+proxy servers.  See {{RFC7230}}for the full definition of these headers
 and the proper format of any date and time values.
 
 HTTP Header     Description
@@ -515,8 +514,7 @@ client-server protocol.
 This profile RECOMMENDS that both TLS clients and servers implement
 the certificate status request extension mechanism for TLS.
 
-Further information regarding caching issues can be obtained from RFC
-3143 [RFC3143].
+Further information regarding caching issues can be obtained from {{?RFC3143}}.
 
 # Security Considerations
 
