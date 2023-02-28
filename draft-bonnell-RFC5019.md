@@ -12,7 +12,7 @@ v: 3
 # area: SEC
 # workgroup:
 keyword: Internet-Draft
-obsoletes: 5019
+update: 5019
 
 author:
  -
@@ -35,13 +35,13 @@ author:
 normative:
 
 informative:
-  RFC3143:
   OCSPPMP:
 
 
 --- abstract
 
-This document obsoletes RFC5019, and allows OCSP client to use SHA-256 in addition to SHA-1.
+This document updates RFC5019, and allows OCSP client to use SHA-256.
+An RFC5019 compliant OCSP client is still able to use SHA-1, but it might be obsolete in the future.
 
 --- middle
 
@@ -128,7 +128,12 @@ functionality as defined in {{RFC6960}}.
 OCSPRequests conformant to this profile MUST include only one Request
 in the OCSPRequest.RequestList structure.
 
-Clients MUST use SHA1 as the hashing algorithm for the
+Older OCSP Clients which provide backward compatibility with {{!RFC5019}}
+MUST use SHA-1 as the hashing algorithm for the
+CertID.issuerNameHash and the CertID.issuerKeyHash values.
+
+Newer OCSP Clients that support this document MUST
+use SHA-256 as the hashing algorithm for the
 CertID.issuerNameHash and the CertID.issuerKeyHash values.
 
 Clients MUST NOT include the singleRequestExtensions structure.
@@ -401,7 +406,7 @@ OCSP response before the max-age time.
 
 The responder SHOULD set the HTTP headers of the OCSP response in
 such a way as to allow for the intelligent use of intermediate HTTP
-proxy servers.  See [HTTP] for the full definition of these headers
+proxy servers.  See {{RFC7230}}for the full definition of these headers
 and the proper format of any date and time values.
 
 HTTP Header     Description
@@ -509,8 +514,7 @@ client-server protocol.
 This profile RECOMMENDS that both TLS clients and servers implement
 the certificate status request extension mechanism for TLS.
 
-Further information regarding caching issues can be obtained from RFC
-3143 [RFC3143].
+Further information regarding caching issues can be obtained from {{?RFC3143}}.
 
 # Security Considerations
 
@@ -592,6 +596,7 @@ given to everyone who can send a request to a responder.
 Environments where explicit authorization to access the OCSP
 responder is necessary can utilize other mechanisms to authenticate
 requestors or restrict or meter service.
+
 
 # IANA Considerations
 
