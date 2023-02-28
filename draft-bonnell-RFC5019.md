@@ -614,6 +614,6 @@ of the OCSP protocol.
 
 The authors wish to thank Magnus Nystrom of RSA Security, Inc.,
 Jagjeet Sondh of Vodafone Group R&D, and David Engberg of CoreStreet,
-Ltd. for their contributions to this specification.
+Ltd. for their contributions to the original {{RFC5019}} specification.
 
-TODO acknowledge.
+
