@@ -3,7 +3,7 @@ title: "Updates Lightweight OCSP Profile for High Volume Environments"
 abbrev: "RFC5019bis"
 category: std
 
-docname: draft-bonnell-RFC5019-latest
+docname: draft-bonnell-rfc5019-latest
 submissiontype: IETF
 number:
 date:
