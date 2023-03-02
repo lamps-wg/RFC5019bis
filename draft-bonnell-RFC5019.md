@@ -12,7 +12,7 @@ v: 3
 # area: SEC
 # workgroup:
 keyword: Internet-Draft
-update: 5019
+updates: 5019
 
 author:
  -
@@ -363,15 +363,15 @@ base64 encoded OCSPRequest.  For example:
 In response to properly formatted OCSPRequests that are cachable
 (i.e., responses that contain a nextUpdate value), the responder will
 include the binary value of the DER encoding of the OCSPResponse
-preceded by the following HTTP {{!RFC7230}} headers.
+preceded by the following HTTP {{!RFC9110}} headers.
 
 content-type: application/ocsp-response
 content-length: < OCSP response length >
-last-modified: < producedAt {{RFC7230}} date >
+last-modified: < producedAt {{RFC9110}} date >
 ETag: "< strong validator >"
-expires: < nextUpdate {{RFC7230}} date>
+expires: < nextUpdate {{RFC9110}} date>
 cache-control: max-age=< n >, public, no-transform, must-revalidate
-date: < current {{RFC7230}} date >
+date: < current {{RFC9110}} date >
 
 See Section 6.2 for details on the use of these headers.
 
@@ -406,7 +406,7 @@ OCSP response before the max-age time.
 
 The responder SHOULD set the HTTP headers of the OCSP response in
 such a way as to allow for the intelligent use of intermediate HTTP
-proxy servers.  See {{RFC7230}}for the full definition of these headers
+proxy servers.  See {{RFC9110}}for the full definition of these headers
 and the proper format of any date and time values.
 
 HTTP Header     Description
@@ -614,6 +614,6 @@ of the OCSP protocol.
 
 The authors wish to thank Magnus Nystrom of RSA Security, Inc.,
 Jagjeet Sondh of Vodafone Group R&D, and David Engberg of CoreStreet,
-Ltd. for their contributions to this specification.
+Ltd. for their contributions to the original {{RFC5019}} specification.
 
-TODO acknowledge.
+
