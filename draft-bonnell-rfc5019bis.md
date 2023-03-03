@@ -225,7 +225,7 @@ particular certificate, an OCSPResponseStatus of "successful" will be
 returned. When access to authoritative records for a particular
 certificate is not available, the responder MUST return an
 OCSPResponseStatus of "unauthorized". As such, this profile extends
-the RFC 6960 {{RFC6960}} definition of "unauthorized" as follows:
+the {{RFC6960}} definition of "unauthorized" as follows:
 
 The response "unauthorized" is returned in cases where the client
 is not authorized to make this query to this server or the server
@@ -372,11 +372,11 @@ preceded by the following HTTP {{!RFC9110}} headers.
 
 content-type: application/ocsp-response
 content-length: < OCSP response length >
-last-modified: < producedAt {{RFC9110}} date >
+last-modified: < producedAt HTTP date >
 ETag: "< strong validator >"
-expires: < nextUpdate {{RFC9110}} date>
+expires: < nextUpdate HTTP date>
 cache-control: max-age=< n >, public, no-transform, must-revalidate
-date: < current {{RFC9110}} date >
+date: < current HTTP date >
 
 See Section 7.2 for details on the use of these headers.
 
@@ -440,6 +440,7 @@ cache-control   Contains a number of caching directives.
 * max-age = < n >     -where n is a time value later than
 thisUpdate but earlier than
 nextUpdate.
+
 * public          -makes normally uncachable response
 cachable by both shared and nonshared
 caches.
@@ -461,30 +462,25 @@ authoritative OCSP responses.
 For example, assume that an OCSP response has the following timestamp
 values:
 
+~~~~~~
 thisUpdate = May 1, 2005 01:00:00 GMT
-
 nextUpdate = May 3, 2005 01:00:00 GMT
-
 productedAt = May 1, 2005 01:00:00 GMT
+~~~~~~
 
 and that an OCSP client requests the response on May 2, 2005 01:00:00
 GMT. In this scenario, the HTTP response may look like this:
 
+~~~~~~
 content-type: application/ocsp-response
-
 content-length: 1000
-
 date: Fri, 02 May 2005 01:00:00 GMT
-
 last-modified: Thu, 01 May 2005 01:00:00 GMT
-
 ETag: "c66c0341abd7b9346321d5470fd0ec7cc4dae713"
-
 expires: Sat, 03 May 2005 01:00:00 GMT
-
 cache-control: max-age=86000,public,no-transform,must-revalidate
-
 <...>
+~~~~~~
 
 OCSP clients MUST NOT include a no-cache header in OCSP request
 messages, unless the client encounters an expired response which may
