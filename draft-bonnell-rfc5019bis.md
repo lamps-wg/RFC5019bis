@@ -1,5 +1,5 @@
 ---
-title: "Updates Lightweight OCSP Profile for High Volume Environments"
+title: "Updates to Lightweight OCSP Profile for High Volume Environments"
 abbrev: "RFC5019bis"
 category: std
 
@@ -222,9 +222,9 @@ certificate is not available, the responder MUST return an
 OCSPResponseStatus of "unauthorized".  As such, this profile extends
 the RFC 6960 {{RFC6960}} definition of "unauthorized" as follows:
 
-The response "unauthorized" is returned in cases where the client
+    The response "unauthorized" is returned in cases where the client
 is not authorized to make this query to this server or the server
-is not capable of responding authoritatively.
+is not capable of responding authoritatively(cf. [RFC5019], Section 2.2.3).
 
 For example, OCSP responders that do not have access to authoritative
 records for a requested certificate, such as those that generate and
@@ -245,15 +245,18 @@ discussed in {{RFC6960}}.
 When pre-producing OCSPResponse messages, the responder MUST set the
 thisUpdate, nextUpdate, and producedAt times as follows:
 
-thisUpdate    The time at which the status being indicated is known to be correct.
+thisUpdate
+: The time at which the status being indicated is known to be correct.
 
-nextUpdate    The time at or before which newer information will be
+nextUpdate
+: The time at or before which newer information will be
 available about the status of the certificate.
 Responders MUST always include this value to aid in
 response caching.  See Section 6 for additional
 information on caching.
 
-producedAt    The time at which the OCSP response was signed.
+producedAt
+: The time at which the OCSP response was signed.
 
 Note: In many cases the value of thisUpdate and producedAt will be
 the same.
@@ -357,7 +360,7 @@ extension {{RFC5280}}.  Clients MUST NOT include CR or LF characters in
 the base64-encoded string.  Clients MUST properly URL-encode the
 base64 encoded OCSPRequest.  For example:
 
-<http://ocsp.example.com/MEowSDBGMEQwQjAKBggqhkiG9w0CBQQQ7sp6GTKpL2dAdeGaW267owQQqInESWQD0mGeBArSgv%2FBWQIQLJx%2Fg9xF8oySYzol80Mbpg%3D%3D>
+    http://ocsp.example.com/MEowSDBGMEQwQjAKBggqhkiG9w0CBQQQ7sp6GTKpL2dAdeGaW267owQQqInESWQD0mGeBArSgv%2FBWQIQLJx%2Fg9xF8oySYzol80Mbpg%3D%3D
 
 
 In response to properly formatted OCSPRequests that are cachable
@@ -365,13 +368,13 @@ In response to properly formatted OCSPRequests that are cachable
 include the binary value of the DER encoding of the OCSPResponse
 preceded by the following HTTP {{!RFC9110}} headers.
 
-content-type: application/ocsp-response
-content-length: < OCSP response length >
-last-modified: < producedAt {{RFC9110}} date >
-ETag: "< strong validator >"
-expires: < nextUpdate {{RFC9110}} date>
-cache-control: max-age=< n >, public, no-transform, must-revalidate
-date: < current {{RFC9110}} date >
+    content-type: application/ocsp-response
+    content-length: < OCSP response length >
+    last-modified: < producedAt {{RFC9110}} date >
+    ETag: "< strong validator >"
+    expires: < nextUpdate {{RFC9110}} date>
+    cache-control: max-age=< n >, public, no-transform, must-revalidate
+    date: < current {{RFC9110}} date >
 
 See Section 6.2 for details on the use of these headers.
 
@@ -409,38 +412,43 @@ such a way as to allow for the intelligent use of intermediate HTTP
 proxy servers.  See {{RFC9110}}for the full definition of these headers
 and the proper format of any date and time values.
 
-HTTP Header     Description
+HTTP Header
+: Description
+
 ===========    ====================================================
-date            The date and time at which the OCSP server generated
+
+date
+: The date and time at which the OCSP server generated
 the HTTP response.
 
-last-modified   This value specifies the date and time at which the
+last-modified
+: This value specifies the date and time at which the
 OCSP responder last modified the response.  This date
 and time will be the same as the thisUpdate timestamp
 in the request itself.
 
-expires         Specifies how long the response is considered fresh.
+expires
+: Specifies how long the response is considered fresh.
 This date and time will be the same as the nextUpdate
 timestamp in the OCSP response itself.
 
-ETag            A string that identifies a particular version of the
+ETag
+: A string that identifies a particular version of the
 associated data.  This profile RECOMMENDS that the
 ETag value be the ASCII HEX representation of the
 SHA-256 hash of the OCSPResponse structure.
 
-cache-control   Contains a number of caching directives.
-
-* max-age = < n >     -where n is a time value later than
+cache-control
+: Contains a number of caching directives.
+:   * max-age = < n >     -where n is a time value later than
 thisUpdate but earlier than
 nextUpdate.
 * public          -makes normally uncachable response
 cachable by both shared and nonshared
 caches.
-
 * no-transform    -specifies that a proxy cache cannot
 change the type, length, or encoding
 of the object content.
-
 * must-revalidate -prevents caches from intentionally
 returning stale responses.
 
@@ -454,30 +462,21 @@ authoritative OCSP responses.
 For example, assume that an OCSP response has the following timestamp
 values:
 
-thisUpdate = May 1, 2005  01:00:00 GMT
-
-nextUpdate = May 3, 2005 01:00:00 GMT
-
-productedAt = May 1, 2005 01:00:00 GMT
+    thisUpdate = May 1, 2005  01:00:00 GMT
+    nextUpdate = May 3, 2005 01:00:00 GMT
+    productedAt = May 1, 2005 01:00:00 GMT
 
 and that an OCSP client requests the response on May 2, 2005 01:00:00
 GMT.  In this scenario, the HTTP response may look like this:
 
-content-type: application/ocsp-response
-
-content-length: 1000
-
-date: Fri, 02 May 2005 01:00:00 GMT
-
-last-modified: Thu, 01 May 2005 01:00:00 GMT
-
-ETag: "c66c0341abd7b9346321d5470fd0ec7cc4dae713"
-
-expires: Sat, 03 May 2005 01:00:00 GMT
-
-cache-control: max-age=86000,public,no-transform,must-revalidate
-
-<...>
+    content-type: application/ocsp-response
+    content-length: 1000
+    date: Fri, 02 May 2005 01:00:00 GMT
+    last-modified: Thu, 01 May 2005 01:00:00 GMT
+    ETag: "c66c0341abd7b9346321d5470fd0ec7cc4dae713"
+    expires: Sat, 03 May 2005 01:00:00 GMT
+    cache-control: max-age=86000,public,no-transform,must-revalidate
+    <...>
 
 OCSP clients MUST NOT include a no-cache header in OCSP request
 messages, unless the client encounters an expired response which may
@@ -615,5 +614,3 @@ of the OCSP protocol.
 The authors wish to thank Magnus Nystrom of RSA Security, Inc.,
 Jagjeet Sondh of Vodafone Group R&D, and David Engberg of CoreStreet,
 Ltd. for their contributions to the original {{RFC5019}} specification.
-
-
