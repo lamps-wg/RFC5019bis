@@ -146,7 +146,7 @@ Clients MUST NOT include the singleRequestExtensions structure.
 Clients SHOULD NOT include the requestExtensions structure. If a
 requestExtensions structure is included, this profile RECOMMENDS that
 it contain only the nonce extension (id-pkix-ocsp-nonce). See
-Section 4 for issues concerning the use of a nonce in high-volume
+Section 5 for issues concerning the use of a nonce in high-volume
 OCSP environments.
 
 ### Signed OCSPRequests
@@ -185,8 +185,8 @@ not have the ability to respond to an OCSP request containing a
 nonce, it SHOULD return a response that does not include a nonce.
 
 Clients SHOULD attempt to process a response even if the response
-does not include a nonce. See Section 4 for details on validating
-responses that do not contain a nonce. See also Section 7 for
+does not include a nonce. See Section 5 for details on validating
+responses that do not contain a nonce. See also Section 8 for
 relevant security considerations.
 
 Responders that do not have the ability to respond to OCSP requests
@@ -255,7 +255,7 @@ thisUpdate    The time at which the status being indicated is known to be correc
 nextUpdate    The time at or before which newer information will be
 available about the status of the certificate.
 Responders MUST always include this value to aid in
-response caching. See Section 6 for additional
+response caching. See Section 7 for additional
 information on caching.
 
 producedAt    The time at which the OCSP response was signed.
@@ -313,7 +313,7 @@ time. In order for time-based mechanisms to work, both clients and
 responders MUST have access to an accurate source of time.
 
 Because this profile specifies that clients SHOULD NOT include a
-requestExtensions structure in OCSPRequests (see Section 2.1),
+requestExtensions structure in OCSPRequests (see Section 3.1),
 clients MUST be able to determine OCSPResponse freshness based on an
 accurate source of time. Clients that opt to include a nonce in the
 request SHOULD NOT reject a corresponding OCSPResponse solely on the
@@ -325,7 +325,7 @@ nonce that may be present in the response.
 
 Clients MUST check for the existence of the nextUpdate field and MUST
 ensure the current time, expressed in GMT time as described in
-Section 2.2.4, falls between the thisUpdate and nextUpdate times. If
+Section 3.2.4, falls between the thisUpdate and nextUpdate times. If
 the nextUpdate field is absent, the client MUST reject the response.
 
 If the nextUpdate field is present, the client MUST ensure that it is
@@ -342,7 +342,7 @@ synchronization to keep them accurate within parts of a second;
 higher latency environments or where an NTP analogue is not available
 may have to be more liberal in their tolerance.
 
-See the security considerations in Section 7 for additional details on
+See the security considerations in Section 8 for additional details on
 replay and man-in-the-middle attacks.
 
 # Transport Profile
@@ -353,7 +353,7 @@ total (after encoding) including the scheme and delimiters (http://),
 server name and base64-encoded OCSPRequest structure, clients MUST
 use the GET method (to enable OCSP response caching). OCSP requests
 larger than 255 bytes SHOULD be submitted using the POST method. In
-all cases, clients MUST follow the descriptions in A.1.1 of {{RFC6960}}
+all cases, clients MUST follow the descriptions in A.1 of {{RFC6960}}
 when constructing these messages.
 
 When constructing a GET message, OCSP clients MUST base64 encode the
@@ -378,7 +378,7 @@ expires: < nextUpdate {{RFC9110}} date>
 cache-control: max-age=< n >, public, no-transform, must-revalidate
 date: < current {{RFC9110}} date >
 
-See Section 6.2 for details on the use of these headers.
+See Section 7.2 for details on the use of these headers.
 
 # Caching Recommendations
 
@@ -515,7 +515,8 @@ a situation where the client need only the ability to parse and
 recognize OCSP responses.
 
 This functionality has been specified as an extension to the TLS
-{{!I-D.ietf-tls-rfc8446bis}} protocol in Section 4.4.2.1 {{!I-D.ietf-tls-rfc8446bis}}, but can be applied to any
+{{!I-D.ietf-tls-rfc8446bis}} protocol in Section 4.4.2 {{!I-D.ietf-tls-rfc8446bis}},
+but can be applied to any
 client-server protocol.
 
 This profile RECOMMENDS that both TLS clients and servers implement
@@ -587,7 +588,7 @@ detected.
 
 ## Modification of HTTP Headers
 
-Values included in HTTP headers, as described in Sections 5 and 6,
+Values included in HTTP headers, as described in Sections 6 and 7,
 are not cryptographically protected; they may be manipulated by an
 attacker. Clients SHOULD use these values for caching guidance only
 and ultimately SHOULD rely only on the values present in the signed
