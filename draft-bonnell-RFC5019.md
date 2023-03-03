@@ -35,7 +35,7 @@ author:
 normative:
 
 informative:
-  OCSPPMP:
+  OCSPMP:
 
 
 --- abstract
