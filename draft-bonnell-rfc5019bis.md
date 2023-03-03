@@ -1,5 +1,5 @@
 ---
-title: "Updates Lightweight OCSP Profile for High Volume Environments"
+title: "Updates to Lightweight OCSP Profile for High Volume Environments"
 abbrev: "RFC5019bis"
 category: std
 
@@ -35,7 +35,12 @@ author:
 normative:
 
 informative:
-  OCSPPMP:
+  OCSPMP:
+    title: "OCSP Mobile Profile V1.0"
+    author:
+      org: Open Mobile Alliance
+    date: false
+    seriesinfo: www.openmobilealliance.org
 
 
 --- abstract
@@ -49,9 +54,9 @@ An RFC5019 compliant OCSP client is still able to use SHA-1, but it might be obs
 
 The Online Certificate Status Protocol {{!RFC6960}} specifies a mechanism
 used to determine the status of digital certificates, in lieu of
-using Certificate Revocation Lists (CRLs).  Since its definition in
+using Certificate Revocation Lists (CRLs). Since its definition in
 1999, it has been deployed in a variety of environments and has
-proven to be a useful certificate status checking mechanism.  (For
+proven to be a useful certificate status checking mechanism. (For
 brevity we refer to OCSP as being used to verify certificate status,
 but only the revocation status of a certificate is checked via this
 protocol.)
@@ -59,16 +64,16 @@ protocol.)
 To date, many OCSP deployments have been used to ensure timely and
 secure certificate status information for high-value electronic
 transactions or highly sensitive information, such as in the banking
-and financial environments.  As such, the requirement for an OCSP
+and financial environments. As such, the requirement for an OCSP
 responder to respond in "real time" (i.e., generating a new OCSP
-response for each OCSP request) has been important.  In addition,
+response for each OCSP request) has been important. In addition,
 these deployments have operated in environments where bandwidth usage
 is not an issue, and have run on client and server systems where
 processing power is not constrained.
 
 As the use of PKI continues to grow and move into diverse
 environments, so does the need for a scalable and cost-effective
-certificate status mechanism.  Although OCSP as currently defined and
+certificate status mechanism. Although OCSP as currently defined and
 deployed meets the need of small to medium-sized PKIs that operate on
 powerful systems on wired networks, there is a limit as to how these
 OCSP deployments scale from both an efficiency and cost perspective.
@@ -78,10 +83,10 @@ require the careful use of OCSP to minimize bandwidth usage and
 client-side processing complexity. [OCSPMP]
 
 PKI continues to be deployed into environments where millions if not
-hundreds of millions of certificates have been issued.  In many of
+hundreds of millions of certificates have been issued. In many of
 these environments, an even larger number of users (also known as
 relying parties) have the need to ensure that the certificate they
-are relying upon has not been revoked.  As such, it is important that
+are relying upon has not been revoked. As such, it is important that
 OCSP is used in such a way that ensures the load on OCSP responders
 and the network infrastructure required to host those responders are
 kept to a minimum.
@@ -100,12 +105,12 @@ profile will be adopted by OCSP clients and OCSP responders operating
 in very large-scale (high-volume) PKI environments or PKI
 environments that require a lightweight solution to minimize
 bandwidth and client-side processing power (or both), as described
-above.  As OCSP does not have the means to signal responder
+above. As OCSP does not have the means to signal responder
 capabilities within the protocol, clients needing to differentiate
 between OCSP responses produced by responders conformant with this
 profile and those that are not need to rely on out-of-band mechanisms
 to determine when a responder operates according to this profile and,
-as such, when the requirements of this profile apply.  In the case
+as such, when the requirements of this profile apply. In the case
 where out-of-band mechanisms may not be available, this profile
 ensures that interoperability will still occur between a fully
 conformant OCSP 6960 client and a responder that is operating in a
@@ -138,20 +143,20 @@ CertID.issuerNameHash and the CertID.issuerKeyHash values.
 
 Clients MUST NOT include the singleRequestExtensions structure.
 
-Clients SHOULD NOT include the requestExtensions structure.  If a
+Clients SHOULD NOT include the requestExtensions structure. If a
 requestExtensions structure is included, this profile RECOMMENDS that
-it contain only the nonce extension (id-pkix-ocsp-nonce).  See
+it contain only the nonce extension (id-pkix-ocsp-nonce). See
 Section 4 for issues concerning the use of a nonce in high-volume
 OCSP environments.
 
 ### Signed OCSPRequests
 
-Clients SHOULD NOT send signed OCSPRequests.  Responders MAY ignore
+Clients SHOULD NOT send signed OCSPRequests. Responders MAY ignore
 the signature on OCSPRequests.
 
 If the OCSPRequest is signed, the client SHALL specify its name in
 the OCSPRequest.requestorName field; otherwise, clients SHOULD NOT
-include the requestorName field in the OCSPRequest.  OCSP servers
+include the requestorName field in the OCSPRequest. OCSP servers
 MUST be prepared to receive unsigned OCSP requests that contain the
 requestorName field, but must realize that the provided value is not
 authenticated.
@@ -161,27 +166,27 @@ authenticated.
 ### OCSPResponse Structure
 
 Responders MUST generate a BasicOCSPResponse as identified by the
-id-pkix-ocsp-basic OID.  Clients MUST be able to parse and accept a
-BasicOCSPResponse.  OCSPResponses conformant to this profile SHOULD
+id-pkix-ocsp-basic OID. Clients MUST be able to parse and accept a
+BasicOCSPResponse. OCSPResponses conformant to this profile SHOULD
 include only one SingleResponse in the ResponseData.responses
 structure, but MAY include additional SingleResponse elements if
 necessary to improve response pre-generation performance or cache
 efficiency.
 
-The responder SHOULD NOT include responseExtensions.  As specified in
+The responder SHOULD NOT include responseExtensions. As specified in
 {{RFC6960}}, clients MUST ignore unrecognized non-critical
 responseExtensions in the response.
 
 In the case where a responder does not have the ability to respond to
 an OCSP request containing an option not supported by the server, it
-SHOULD return the most complete response it can.  For example, in the
+SHOULD return the most complete response it can. For example, in the
 case where a responder only supports pre-produced responses and does
 not have the ability to respond to an OCSP request containing a
 nonce, it SHOULD return a response that does not include a nonce.
 
 Clients SHOULD attempt to process a response even if the response
-does not include a nonce.  See Section 4 for details on validating
-responses that do not contain a nonce.  See also Section 7 for
+does not include a nonce. See Section 4 for details on validating
+responses that do not contain a nonce. See also Section 7 for
 relevant security considerations.
 
 Responders that do not have the ability to respond to OCSP requests
@@ -201,10 +206,10 @@ the BasicOCSPResponse.certs structure.
 
 It is RECOMMENDED that the OCSP responder's certificate contain the
 id-pkix-ocsp-nocheck extension, as defined in {{RFC6960}}, to indicate to
-the client that it need not check the certificate's status.  In
+the client that it need not check the certificate's status. In
 addition, it is RECOMMENDED that neither an OCSP authorityInfoAccess
 (AIA) extension nor cRLDistributionPoints (CRLDP) extension be
-included in the OCSP responder's certificate.  Accordingly, the
+included in the OCSP responder's certificate. Accordingly, the
 responder's signing certificate SHOULD be relatively short-lived and
 renewed regularly.
 
@@ -217,9 +222,9 @@ response in scenarios where reducing bandwidth is an issue.
 
 As long as the OCSP infrastructure has authoritative records for a
 particular certificate, an OCSPResponseStatus of "successful" will be
-returned.  When access to authoritative records for a particular
+returned. When access to authoritative records for a particular
 certificate is not available, the responder MUST return an
-OCSPResponseStatus of "unauthorized".  As such, this profile extends
+OCSPResponseStatus of "unauthorized". As such, this profile extends
 the RFC 6960 {{RFC6960}} definition of "unauthorized" as follows:
 
 The response "unauthorized" is returned in cases where the client
@@ -233,9 +238,9 @@ to properly respond with a signed "successful" yet "unknown"
 response, will respond with an OCSPResponseStatus of "unauthorized".
 Also, in order to ensure the database of revocation information does
 not grow unbounded over time, the responder MAY remove the status
-records of expired certificates.  Requests from clients for
-  certificates whose record has been removed will result in an
-  OCSPResponseStatus of "unauthorized".
+records of expired certificates. Requests from clients for
+certificates whose record has been removed will result in an
+OCSPResponseStatus of "unauthorized".
 
 Security considerations regarding the use of unsigned responses are
 discussed in {{RFC6960}}.
@@ -250,7 +255,7 @@ thisUpdate    The time at which the status being indicated is known to be correc
 nextUpdate    The time at or before which newer information will be
 available about the status of the certificate.
 Responders MUST always include this value to aid in
-response caching.  See Section 6 for additional
+response caching. See Section 6 for additional
 information on caching.
 
 producedAt    The time at which the OCSP response was signed.
@@ -269,14 +274,14 @@ GeneralizedTime values MUST NOT include fractional seconds.
 ## OCSP Responder Discovery
 
 Clients MUST support the authorityInfoAccess extension as defined in
-{{!RFC5280}} and MUST recognize the id-ad-ocsp access method.  This enables
+{{!RFC5280}} and MUST recognize the id-ad-ocsp access method. This enables
 CAs to inform clients how they can contact the OCSP service.
 
 In the case where a client is checking the status of a certificate
 that contains both an authorityInformationAccess (AIA) extension
 pointing to an OCSP responder and a cRLDistributionPoints extension
 pointing to a CRL, the client SHOULD attempt to contact the OCSP
-responder first.  Clients MAY attempt to retrieve the CRL if no
+responder first. Clients MAY attempt to retrieve the CRL if no
 OCSPResponse is received from the responder after a locally
 configured timeout and number of retries.
 
@@ -284,15 +289,15 @@ configured timeout and number of retries.
 
 To avoid needless network traffic, applications MUST verify the
 signature of signed data before asking an OCSP client to check the
-status of certificates used to verify the data.  If the signature is
+status of certificates used to verify the data. If the signature is
 invalid or the application is not able to verify it, an OCSP check
 MUST NOT be requested.
 
 Similarly, an application MUST validate the signature on certificates
 in a chain, before asking an OCSP client to check the status of the
-certificate.  If the certificate signature is invalid or the
+certificate. If the certificate signature is invalid or the
 application is not able to verify it, an OCSP check MUST NOT be
-requested.  Clients SHOULD NOT make a request to check the status of
+requested. Clients SHOULD NOT make a request to check the status of
 expired certificates.
 
 # Ensuring an OCSPResponse Is Fresh
@@ -303,14 +308,14 @@ up-to-date response that specifies the status of 'revoked', a client
 must ensure the responses they receive are fresh.
 
 In general, two mechanisms are available to clients to ensure a
-response is fresh.  The first uses nonces, and the second is based on
-time.  In order for time-based mechanisms to work, both clients and
+response is fresh. The first uses nonces, and the second is based on
+time. In order for time-based mechanisms to work, both clients and
 responders MUST have access to an accurate source of time.
 
 Because this profile specifies that clients SHOULD NOT include a
 requestExtensions structure in OCSPRequests (see Section 2.1),
 clients MUST be able to determine OCSPResponse freshness based on an
-accurate source of time.  Clients that opt to include a nonce in the
+accurate source of time. Clients that opt to include a nonce in the
 request SHOULD NOT reject a corresponding OCSPResponse solely on the
 basis of the nonexistent expected nonce, but MUST fall back to
 validating the OCSPResponse based on time.
@@ -320,18 +325,18 @@ nonce that may be present in the response.
 
 Clients MUST check for the existence of the nextUpdate field and MUST
 ensure the current time, expressed in GMT time as described in
-Section 2.2.4, falls between the thisUpdate and nextUpdate times.  If
+Section 2.2.4, falls between the thisUpdate and nextUpdate times. If
 the nextUpdate field is absent, the client MUST reject the response.
 
 If the nextUpdate field is present, the client MUST ensure that it is
-not earlier than the current time.  If the current time on the client
+not earlier than the current time. If the current time on the client
 is later than the time specified in the nextUpdate field, the client
-MUST reject the response as stale.  Clients MAY allow configuration
+MUST reject the response as stale. Clients MAY allow configuration
 of a small tolerance period for acceptance of responses after
 nextUpdate to handle minor clock differences relative to responders
-and caches.  This tolerance period should be chosen based on the
+and caches. This tolerance period should be chosen based on the
 accuracy and precision of time synchronization technology available
-to the calling application environment.  For example, Internet peers
+to the calling application environment. For example, Internet peers
 with low latency connections typically expect NTP time
 synchronization to keep them accurate within parts of a second;
 higher latency environments or where an NTP analogue is not available
@@ -346,16 +351,16 @@ The OCSP responder MUST support requests and responses over HTTP.
 When sending requests that are less than or equal to 255 bytes in
 total (after encoding) including the scheme and delimiters (http://),
 server name and base64-encoded OCSPRequest structure, clients MUST
-use the GET method (to enable OCSP response caching).  OCSP requests
-larger than 255 bytes SHOULD be submitted using the POST method.  In
+use the GET method (to enable OCSP response caching). OCSP requests
+larger than 255 bytes SHOULD be submitted using the POST method. In
 all cases, clients MUST follow the descriptions in A.1.1 of {{RFC6960}}
 when constructing these messages.
 
 When constructing a GET message, OCSP clients MUST base64 encode the
 OCSPRequest structure and append it to the URI specified in the AIA
-extension {{RFC5280}}.  Clients MUST NOT include CR or LF characters in
-the base64-encoded string.  Clients MUST properly URL-encode the
-base64 encoded OCSPRequest.  For example:
+extension {{RFC5280}}. Clients MUST NOT include CR or LF characters in
+the base64-encoded string. Clients MUST properly URL-encode the
+base64 encoded OCSPRequest. For example:
 
 <http://ocsp.example.com/MEowSDBGMEQwQjAKBggqhkiG9w0CBQQQ7sp6GTKpL2dAdeGaW267owQQqInESWQD0mGeBArSgv%2FBWQIQLJx%2Fg9xF8oySYzol80Mbpg%3D%3D>
 
@@ -378,10 +383,10 @@ See Section 6.2 for details on the use of these headers.
 # Caching Recommendations
 
 The ability to cache OCSP responses throughout the network is an
-important factor in high volume OCSP deployments.  This section
+important factor in high volume OCSP deployments. This section
 discusses the recommended caching behavior of OCSP clients and HTTP
 proxies and the steps that should be taken to minimize the number of
-times that OCSP clients "hit the wire".  In addition, the concept of
+times that OCSP clients "hit the wire". In addition, the concept of
 including OCSP responses in protocol exchanges (aka stapling or
 piggybacking), such as has been defined in TLS, is also discussed.
 
@@ -393,12 +398,12 @@ successfully validated and that indicate an OCSPResponseStatus of
 'successful').
 
 Most OCSP clients will send OCSPRequests at or near the nextUpdate
-time (when a cached response expires).  To avoid large spikes in
+time (when a cached response expires). To avoid large spikes in
 responder load that might occur when many clients refresh cached
 responses for a popular certificate, responders MAY indicate when the
 client should fetch an updated OCSP response by using the cache-
-control:max-age directive.  Clients SHOULD fetch the updated OCSP
-Response on or after the max-age time.  To ensure that clients
+control:max-age directive. Clients SHOULD fetch the updated OCSP
+Response on or after the max-age time. To ensure that clients
 receive an updated OCSP response, OCSP responders MUST refresh the
 OCSP response before the max-age time.
 
@@ -406,16 +411,18 @@ OCSP response before the max-age time.
 
 The responder SHOULD set the HTTP headers of the OCSP response in
 such a way as to allow for the intelligent use of intermediate HTTP
-proxy servers.  See {{RFC9110}}for the full definition of these headers
+proxy servers. See {{RFC9110}}for the full definition of these headers
 and the proper format of any date and time values.
 
 HTTP Header     Description
+
 ===========    ====================================================
+
 date            The date and time at which the OCSP server generated
 the HTTP response.
 
 last-modified   This value specifies the date and time at which the
-OCSP responder last modified the response.  This date
+OCSP responder last modified the response. This date
 and time will be the same as the thisUpdate timestamp
 in the request itself.
 
@@ -424,7 +431,7 @@ This date and time will be the same as the nextUpdate
 timestamp in the OCSP response itself.
 
 ETag            A string that identifies a particular version of the
-associated data.  This profile RECOMMENDS that the
+associated data. This profile RECOMMENDS that the
 ETag value be the ASCII HEX representation of the
 SHA-256 hash of the OCSPResponse structure.
 
@@ -454,14 +461,14 @@ authoritative OCSP responses.
 For example, assume that an OCSP response has the following timestamp
 values:
 
-thisUpdate = May 1, 2005  01:00:00 GMT
+thisUpdate = May 1, 2005 01:00:00 GMT
 
 nextUpdate = May 3, 2005 01:00:00 GMT
 
 productedAt = May 1, 2005 01:00:00 GMT
 
 and that an OCSP client requests the response on May 2, 2005 01:00:00
-GMT.  In this scenario, the HTTP response may look like this:
+GMT. In this scenario, the HTTP response may look like this:
 
 content-type: application/ocsp-response
 
@@ -481,7 +488,7 @@ cache-control: max-age=86000,public,no-transform,must-revalidate
 
 OCSP clients MUST NOT include a no-cache header in OCSP request
 messages, unless the client encounters an expired response which may
-be a result of an intermediate proxy caching stale data.  In this
+be a result of an intermediate proxy caching stale data. In this
 situation, clients SHOULD resend the request specifying that proxies
 should be bypassed by including an appropriate HTTP header in the
 request (i.e., Pragma: no-cache or Cache-Control: no-cache).
@@ -490,7 +497,7 @@ request (i.e., Pragma: no-cache or Cache-Control: no-cache).
 
 In some scenarios, it is advantageous to include OCSP response
 information within the protocol being utilized between the client and
-server.  Including OCSP responses in this manner has a few attractive
+server. Including OCSP responses in this manner has a few attractive
 effects.
 
 First, it allows for the caching of OCSP responses on the server,
@@ -526,20 +533,20 @@ considerations addressed in Section 5 of {{RFC6960}}.
 Because the use of nonces in this profile is optional, there is a
 possibility that an out of date OCSP response could be replayed, thus
 causing a client to accept a good response when in fact there is a
-more up-to-date response that specifies the status of revoked.  In
+more up-to-date response that specifies the status of revoked. In
 order to mitigate this attack, clients MUST have access to an
 accurate source of time and ensure that the OCSP responses they
 receive are sufficiently fresh.
 
 Clients that do not have an accurate source of date and time are
-vulnerable to service disruption.  For example, a client with a
-sufficiently fast clock may reject a fresh OCSP response.  Similarly
+vulnerable to service disruption. For example, a client with a
+sufficiently fast clock may reject a fresh OCSP response. Similarly
 a client with a sufficiently slow clock may incorrectly accept
 expired valid responses for certificates that may in fact be revoked.
 
 Future versions of the OCSP protocol may provide a way for the client
 to know whether the server supports nonces or does not support
-nonces.  If a client can determine that the server supports nonces,
+nonces. If a client can determine that the server supports nonces,
 it MUST reject a reply that does not contain an expected nonce.
 Otherwise, clients that opt to include a nonce in the request SHOULD
 NOT reject a corresponding OCSPResponse solely on the basis of the
@@ -570,11 +577,11 @@ certificate to ensure an authorized responder created it.
 ## Denial-of-Service Attacks
 
 OCSP responders should take measures to prevent or mitigate denial-
-of-service attacks.  As this profile specifies the use of unsigned
+of-service attacks. As this profile specifies the use of unsigned
 OCSPRequests, access to the responder may be implicitly given to
 everyone who can send a request to a responder, and thus the ability
 to mount a denial-of-service attack via a flood of requests may be
-greater.  For example, a responder could limit the rate of incoming
+greater. For example, a responder could limit the rate of incoming
 requests from a particular IP address if questionable behavior is
 detected.
 
@@ -582,16 +589,16 @@ detected.
 
 Values included in HTTP headers, as described in Sections 5 and 6,
 are not cryptographically protected; they may be manipulated by an
-attacker.  Clients SHOULD use these values for caching guidance only
+attacker. Clients SHOULD use these values for caching guidance only
 and ultimately SHOULD rely only on the values present in the signed
-OCSPResponse.  Clients SHOULD NOT rely on cached responses beyond the
+OCSPResponse. Clients SHOULD NOT rely on cached responses beyond the
 nextUpdate time.
 
 ## Request Authentication and Authorization
 
 The suggested use of unsigned requests in this environment removes an
 option that allows the responder to determine the authenticity of
-incoming request.  Thus, access to the responder may be implicitly
+incoming request. Thus, access to the responder may be implicitly
 given to everyone who can send a request to a responder.
 Environments where explicit authorization to access the OCSP
 responder is necessary can utilize other mechanisms to authenticate
