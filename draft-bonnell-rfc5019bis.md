@@ -226,7 +226,7 @@ particular certificate, an OCSPResponseStatus of "successful" will be
 returned.  When access to authoritative records for a particular
 certificate is not available, the responder MUST return an
 OCSPResponseStatus of "unauthorized".  As such, this profile extends
-the RFC 6960 {{RFC6960}} definition of "unauthorized" as follows:
+the {{RFC6960}} definition of "unauthorized" as follows:
 
     The response "unauthorized" is returned in cases where the client
 is not authorized to make this query to this server or the server
@@ -357,7 +357,7 @@ total (after encoding) including the scheme and delimiters (http://),
 server name and base64-encoded OCSPRequest structure, clients MUST
 use the GET method (to enable OCSP response caching).  OCSP requests
 larger than 255 bytes SHOULD be submitted using the POST method.  In
-all cases, clients MUST follow the descriptions in A.1.1 of {{RFC6960}}
+all cases, clients MUST follow the descriptions in A.1 of {{RFC6960}}
 when constructing these messages.
 
 When constructing a GET message, OCSP clients MUST base64 encode the
@@ -372,15 +372,15 @@ base64 encoded OCSPRequest.  For example:
 In response to properly formatted OCSPRequests that are cachable
 (i.e., responses that contain a nextUpdate value), the responder will
 include the binary value of the DER encoding of the OCSPResponse
-preceded by the following HTTP {{!RFC9110}} headers.
+preceded by the following HTTP headers {{!RFC9110}}.
 
     content-type: application/ocsp-response
     content-length: < OCSP response length >
-    last-modified: < producedAt {{RFC9110}} date >
+    last-modified: < producedAt HTTP-date >
     ETag: "< strong validator >"
-    expires: < nextUpdate {{RFC9110}} date>
+    expires: < nextUpdate HTTP-date>
     cache-control: max-age=< n >, public, no-transform, must-revalidate
-    date: < current {{RFC9110}} date >
+    date: < current HTTP-date >
 
 See Section 6.2 for details on the use of these headers.
 
