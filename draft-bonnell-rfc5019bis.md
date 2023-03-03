@@ -35,7 +35,13 @@ author:
 normative:
 
 informative:
-  OCSPPMP:
+  OCSPPMP: 
+    title: "OCSP Mobile Profile V1.0"
+    author: 
+      org: Open Mobile Alliance
+    date: false
+    seriesinfo:
+      web: www.openmobilealliance.org
 
 
 --- abstract
