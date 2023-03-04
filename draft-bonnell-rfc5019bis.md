@@ -375,11 +375,11 @@ preceded by the following HTTP {{!RFC9110}} headers.
 ~~~~~~
 content-type: application/ocsp-response
 content-length: < OCSP response length >
-last-modified: < producedAt HTTP date >
+last-modified: < producedAt HTTP-date >
 ETag: "< strong validator >"
-expires: < nextUpdate HTTP date>
+expires: < nextUpdate HTTP-date>
 cache-control: max-age=< n >, public, no-transform, must-revalidate
-date: < current HTTP date >
+date: < current HTTP-date >
 ~~~~~~
 
 See Section 7.2 for details on the use of these headers.
