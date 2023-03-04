@@ -362,14 +362,17 @@ extension {{RFC5280}}. Clients MUST NOT include CR or LF characters in
 the base64-encoded string. Clients MUST properly URL-encode the
 base64 encoded OCSPRequest. For example:
 
-<http://ocsp.example.com/MEowSDBGMEQwQjAKBggqhkiG9w0CBQQQ7sp6GTKpL2dAdeGaW267owQQqInESWQD0mGeBArSgv%2FBWQIQLJx%2Fg9xF8oySYzol80Mbpg%3D%3D>
-
+~~~~~~
+http://ocsp.example.com/MEowSDBGMEQwQjAKBggqhkiG9w0CBQQQ7sp6GTKpL2dA
+deGaW267owQQqInESWQD0mGeBArSgv%2FBWQIQLJx%2Fg9xF8oySYzol80Mbpg%3D%3D
+~~~~~~
 
 In response to properly formatted OCSPRequests that are cachable
 (i.e., responses that contain a nextUpdate value), the responder will
 include the binary value of the DER encoding of the OCSPResponse
 preceded by the following HTTP {{!RFC9110}} headers.
 
+~~~~~~
 content-type: application/ocsp-response
 content-length: < OCSP response length >
 last-modified: < producedAt HTTP date >
@@ -377,6 +380,7 @@ ETag: "< strong validator >"
 expires: < nextUpdate HTTP date>
 cache-control: max-age=< n >, public, no-transform, must-revalidate
 date: < current HTTP date >
+~~~~~~
 
 See Section 7.2 for details on the use of these headers.
 
