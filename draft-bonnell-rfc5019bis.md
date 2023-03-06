@@ -418,43 +418,13 @@ such a way as to allow for the intelligent use of intermediate HTTP
 proxy servers. See {{RFC9110}}for the full definition of these headers
 and the proper format of any date and time values.
 
-HTTP Header     Description
-
-===========    ====================================================
-
-date            The date and time at which the OCSP server generated
-the HTTP response.
-
-last-modified   This value specifies the date and time at which the
-OCSP responder last modified the response. This date
-and time will be the same as the thisUpdate timestamp
-in the request itself.
-
-expires         Specifies how long the response is considered fresh.
-This date and time will be the same as the nextUpdate
-timestamp in the OCSP response itself.
-
-ETag            A string that identifies a particular version of the
-associated data. This profile RECOMMENDS that the
-ETag value be the ASCII HEX representation of the
-SHA-256 hash of the OCSPResponse structure.
-
-cache-control   Contains a number of caching directives.
-
-* max-age = < n >     -where n is a time value later than
-thisUpdate but earlier than
-nextUpdate.
-
-* public          -makes normally uncachable response
-cachable by both shared and nonshared
-caches.
-
-* no-transform    -specifies that a proxy cache cannot
-change the type, length, or encoding
-of the object content.
-
-* must-revalidate -prevents caches from intentionally
-returning stale responses.
+| HTTP Header | Description |
+|:---|:---|
+| date | The date and time at which the OCSP server generated the HTTP response. |
+| last-modified | This value specifies the date and time at which the OCSP responder last modified the response. This date and time will be the same as the thisUpdate timestamp in the request itself. |
+| expires | Specifies how long the response is considered fresh. This date and time will be the same as the nextUpdate timestamp in the OCSP response itself. |
+| ETag | A string that identifies a particular version of the associated data. This profile RECOMMENDS that the ETag value be the ASCII HEX representation of the SHA-256 hash of the OCSPResponse structure. |
+| cache-control | Contains a number of caching directives. <br> * max-age = < n > -where n is a time value later than thisUpdate but earlier than nextUpdate. <br> * public -makes normally uncachable response cachable by both shared and nonshared caches. <br> * no-transform -specifies that a proxy cache cannot change the type, length, or encoding of the object content. <br> * must-revalidate -prevents caches from intentionally returning stale responses. |
 
 OCSP responders MUST NOT include a "Pragma: no-cache", "Cache-
 Control: no-cache", or "Cache-Control: no-store" header in
