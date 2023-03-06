@@ -17,7 +17,7 @@ updates: 5019
 author:
  -
     fullname: Corey Bonnell
-    organization: Digicert, Inc.
+    organization: DigiCert, Inc.
     email: corey.bonnell@digicert.com
  -
     fullname: Clint Wilson
@@ -45,8 +45,8 @@ informative:
 
 --- abstract
 
-This document updates RFC5019, and allows OCSP client to use SHA-256.
-An RFC5019 compliant OCSP client is still able to use SHA-1, but it might be obsolete in the future.
+This document updates RFC5019 to allow OCSP clients to use SHA-256.
+An RFC5019 compliant OCSP client is still able to use SHA-1, but the use of SHA-1 may become obsolete in the future.
 
 --- middle
 
