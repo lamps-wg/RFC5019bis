@@ -415,7 +415,7 @@ OCSP response before the max-age time.
 
 The responder SHOULD set the HTTP headers of the OCSP response in
 such a way as to allow for the intelligent use of intermediate HTTP
-proxy servers. See {{RFC9110}} and {{RFC9111} for the full definition of these headers
+proxy servers. See {{RFC9110}} and {{RFC9111}} for the full definition of these headers
 and the proper format of any date and time values.
 
 | HTTP Header | Description |
