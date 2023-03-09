@@ -370,7 +370,7 @@ deGaW267owQQqInESWQD0mGeBArSgv%2FBWQIQLJx%2Fg9xF8oySYzol80Mbpg%3D%3D
 In response to properly formatted OCSPRequests that are cachable
 (i.e., responses that contain a nextUpdate value), the responder will
 include the binary value of the DER encoding of the OCSPResponse
-preceded by the following HTTP {{!RFC9110}} and {{!RFC9111} headers.
+preceded by the following HTTP {{!RFC9110}} and {{!RFC9111}} headers.
 
 ~~~~~~
 content-type: application/ocsp-response
