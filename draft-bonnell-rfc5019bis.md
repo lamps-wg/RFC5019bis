@@ -317,7 +317,7 @@ time. In order for time-based mechanisms to work, both clients and
 responders MUST have access to an accurate source of time.
 
 Because this profile specifies that clients SHOULD NOT include a
-requestExtensions structure in OCSPRequests (see {{req-profille}}),
+requestExtensions structure in OCSPRequests (see {{req-profile}}),
 clients MUST be able to determine OCSPResponse freshness based on an
 accurate source of time. Clients that opt to include a nonce in the
 request SHOULD NOT reject a corresponding OCSPResponse solely on the
