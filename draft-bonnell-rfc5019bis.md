@@ -370,7 +370,7 @@ deGaW267owQQqInESWQD0mGeBArSgv%2FBWQIQLJx%2Fg9xF8oySYzol80Mbpg%3D%3D
 In response to properly formatted OCSPRequests that are cachable
 (i.e., responses that contain a nextUpdate value), the responder will
 include the binary value of the DER encoding of the OCSPResponse
-preceded by the following HTTP {{!RFC9110}} headers.
+preceded by the following HTTP {{!RFC9110}} and {{!RFC9111} headers.
 
 ~~~~~~
 content-type: application/ocsp-response
@@ -415,16 +415,16 @@ OCSP response before the max-age time.
 
 The responder SHOULD set the HTTP headers of the OCSP response in
 such a way as to allow for the intelligent use of intermediate HTTP
-proxy servers. See {{RFC9110}}for the full definition of these headers
+proxy servers. See {{RFC9110}} and {{RFC9111} for the full definition of these headers
 and the proper format of any date and time values.
 
 | HTTP Header | Description |
 |:---|:---|
-| date | The date and time at which the OCSP server generated the HTTP response. |
-| last-modified | This value specifies the date and time at which the OCSP responder last modified the response. This date and time will be the same as the thisUpdate timestamp in the request itself. |
-| expires | Specifies how long the response is considered fresh. This date and time will be the same as the nextUpdate timestamp in the OCSP response itself. |
+| Date | The date and time at which the OCSP server generated the HTTP response. |
+| Last-Modified | This value specifies the date and time at which the OCSP responder last modified the response. This date and time will be the same as the thisUpdate timestamp in the request itself. |
+| Expires | Specifies how long the response is considered fresh. This date and time will be the same as the nextUpdate timestamp in the OCSP response itself. |
 | ETag | A string that identifies a particular version of the associated data. This profile RECOMMENDS that the ETag value be the ASCII HEX representation of the SHA-256 hash of the OCSPResponse structure. |
-| cache-control | Contains a number of caching directives. <br> * max-age = < n > -where n is a time value later than thisUpdate but earlier than nextUpdate. <br> * public -makes normally uncachable response cachable by both shared and nonshared caches. <br> * no-transform -specifies that a proxy cache cannot change the type, length, or encoding of the object content. <br> * must-revalidate -prevents caches from intentionally returning stale responses. |
+| Cache-Control | Contains a number of caching directives. <br> * max-age = < n > -where n is a time value later than thisUpdate but earlier than nextUpdate. <br> * public -makes normally uncachable response cachable by both shared and nonshared caches. <br> * no-transform -specifies that a proxy cache cannot change the type, length, or encoding of the object content. <br> * must-revalidate -prevents caches from intentionally returning stale responses. |
 
 OCSP responders MUST NOT include a "Pragma: no-cache", "Cache-
 Control: no-cache", or "Cache-Control: no-store" header in
@@ -437,23 +437,23 @@ For example, assume that an OCSP response has the following timestamp
 values:
 
 ~~~~~~
-thisUpdate = May 1, 2005 01:00:00 GMT
-nextUpdate = May 3, 2005 01:00:00 GMT
-productedAt = May 1, 2005 01:00:00 GMT
+    thisUpdate = May 1, 2005 01:00:00 GMT
+    nextUpdate = May 3, 2005 01:00:00 GMT
+    productedAt = May 1, 2005 01:00:00 GMT
 ~~~~~~
 
 and that an OCSP client requests the response on May 2, 2005 01:00:00
 GMT. In this scenario, the HTTP response may look like this:
 
 ~~~~~~
-content-type: application/ocsp-response
-content-length: 1000
-date: Fri, 02 May 2005 01:00:00 GMT
-last-modified: Thu, 01 May 2005 01:00:00 GMT
-ETag: "c66c0341abd7b9346321d5470fd0ec7cc4dae713"
-expires: Sat, 03 May 2005 01:00:00 GMT
-cache-control: max-age=86000,public,no-transform,must-revalidate
-<...>
+    Content-Type: application/ocsp-response
+    Content-Length: 1000
+    Date: Fri, 02 May 2005 01:00:00 GMT
+    Last-Modified: Thu, 01 May 2005 01:00:00 GMT
+    ETag: "c66c0341abd7b9346321d5470fd0ec7cc4dae713"
+    Expires: Sat, 03 May 2005 01:00:00 GMT
+    Cache-Control: max-age=86000,public,no-transform,must-revalidate
+    <...>
 ~~~~~~
 
 OCSP clients MUST NOT include a no-cache header in OCSP request
