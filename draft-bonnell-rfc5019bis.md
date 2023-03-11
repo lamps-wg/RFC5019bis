@@ -126,7 +126,7 @@ mode as described in this specification.
 This section defines a subset of OCSPRequest and OCSPResponse
 functionality as defined in {{RFC6960}}.
 
-## OCSP Request Profile
+## OCSP Request Profile {#req-profile}
 
 ### OCSPRequest Structure
 
@@ -146,7 +146,7 @@ Clients MUST NOT include the singleRequestExtensions structure.
 Clients SHOULD NOT include the requestExtensions structure. If a
 requestExtensions structure is included, this profile RECOMMENDS that
 it contain only the nonce extension (id-pkix-ocsp-nonce). See
-Section 5 for issues concerning the use of a nonce in high-volume
+{{fresh}} for issues concerning the use of a nonce in high-volume
 OCSP environments.
 
 ### Signed OCSPRequests
@@ -185,8 +185,8 @@ not have the ability to respond to an OCSP request containing a
 nonce, it SHOULD return a response that does not include a nonce.
 
 Clients SHOULD attempt to process a response even if the response
-does not include a nonce. See Section 5 for details on validating
-responses that do not contain a nonce. See also Section 8 for
+does not include a nonce. See {{fresh}} for details on validating
+responses that do not contain a nonce. See also {{sec-cons}} for
 relevant security considerations.
 
 Responders that do not have the ability to respond to OCSP requests
@@ -245,23 +245,27 @@ OCSPResponseStatus of "unauthorized".
 Security considerations regarding the use of unsigned responses are
 discussed in {{RFC6960}}.
 
-### thisUpdate, nextUpdate, and producedAt
+### thisUpdate, nextUpdate, and producedAt {#times}
 
 When pre-producing OCSPResponse messages, the responder MUST set the
 thisUpdate, nextUpdate, and producedAt times as follows:
 
-thisUpdate    The time at which the status being indicated is known to be correct.
+thisUpdate:
+: The time at which the status being indicated is known to be correct.
 
-nextUpdate    The time at or before which newer information will be
-available about the status of the certificate.
-Responders MUST always include this value to aid in
-response caching. See Section 7 for additional
+nextUpdate:
+: The time at or before which newer information will be available
+about the status of the certificate. Responders MUST always include
+this value to aid in response caching. See {{cache-recs}} for additional
 information on caching.
 
-producedAt    The time at which the OCSP response was signed.
+producedAt:
+: The time at which the OCSP response was signed.
 
+<aside markdown="block">
 Note: In many cases the value of thisUpdate and producedAt will be
-the same.
+  the same.
+</aside>
 
 For the purposes of this profile, ASN.1-encoded GeneralizedTime
 values such as thisUpdate, nextUpdate, and producedAt MUST be
@@ -300,7 +304,7 @@ application is not able to verify it, an OCSP check MUST NOT be
 requested. Clients SHOULD NOT make a request to check the status of
 expired certificates.
 
-# Ensuring an OCSPResponse Is Fresh
+# Ensuring an OCSPResponse Is Fresh {#fresh}
 
 In order to ensure that a client does not accept an out-of-date
 response that indicates a 'good' status when in fact there is a more
@@ -313,7 +317,7 @@ time. In order for time-based mechanisms to work, both clients and
 responders MUST have access to an accurate source of time.
 
 Because this profile specifies that clients SHOULD NOT include a
-requestExtensions structure in OCSPRequests (see Section 3.1),
+requestExtensions structure in OCSPRequests (see {{req-profile}}),
 clients MUST be able to determine OCSPResponse freshness based on an
 accurate source of time. Clients that opt to include a nonce in the
 request SHOULD NOT reject a corresponding OCSPResponse solely on the
@@ -325,7 +329,7 @@ nonce that may be present in the response.
 
 Clients MUST check for the existence of the nextUpdate field and MUST
 ensure the current time, expressed in GMT time as described in
-Section 3.2.4, falls between the thisUpdate and nextUpdate times. If
+{{times}}, falls between the thisUpdate and nextUpdate times. If
 the nextUpdate field is absent, the client MUST reject the response.
 
 If the nextUpdate field is present, the client MUST ensure that it is
@@ -342,10 +346,10 @@ synchronization to keep them accurate within parts of a second;
 higher latency environments or where an NTP analogue is not available
 may have to be more liberal in their tolerance.
 
-See the security considerations in Section 8 for additional details on
+See the security considerations in {{sec-cons}} for additional details on
 replay and man-in-the-middle attacks.
 
-# Transport Profile
+# Transport Profile {#transport}
 
 The OCSP responder MUST support requests and responses over HTTP.
 When sending requests that are less than or equal to 255 bytes in
@@ -363,8 +367,8 @@ the base64-encoded string. Clients MUST properly URL-encode the
 base64 encoded OCSPRequest. For example:
 
 ~~~~~~
-http://ocsp.example.com/MEowSDBGMEQwQjAKBggqhkiG9w0CBQQQ7sp6GTKpL2dA
-deGaW267owQQqInESWQD0mGeBArSgv%2FBWQIQLJx%2Fg9xF8oySYzol80Mbpg%3D%3D
+    http://ocsp.example.com/MEowSDBGMEQwQjAKBggqhkiG9w0CBQQQ7sp6GTKpL2dA
+    deGaW267owQQqInESWQD0mGeBArSgv%2FBWQIQLJx%2Fg9xF8oySYzol80Mbpg%3D%3D
 ~~~~~~
 
 In response to properly formatted OCSPRequests that are cachable
@@ -373,18 +377,18 @@ include the binary value of the DER encoding of the OCSPResponse
 preceded by the following HTTP {{!RFC9110}} headers.
 
 ~~~~~~
-content-type: application/ocsp-response
-content-length: < OCSP response length >
-last-modified: < producedAt HTTP-date >
-ETag: "< strong validator >"
-expires: < nextUpdate HTTP-date >
-cache-control: max-age=< n >, public, no-transform, must-revalidate
-date: < current HTTP-date >
+    content-type: application/ocsp-response
+    content-length: < OCSP response length >
+    last-modified: < producedAt HTTP-date >
+    ETag: "< strong validator >"
+    expires: < nextUpdate HTTP-date >
+    cache-control: max-age=< n >, public, no-transform, must-revalidate
+    date: < current HTTP-date >
 ~~~~~~
 
-See Section 7.2 for details on the use of these headers.
+See {{http-proxies}} for details on the use of these headers.
 
-# Caching Recommendations
+# Caching Recommendations {#cache-recs}
 
 The ability to cache OCSP responses throughout the network is an
 important factor in high volume OCSP deployments. This section
@@ -411,11 +415,11 @@ Response on or after the max-age time. To ensure that clients
 receive an updated OCSP response, OCSP responders MUST refresh the
 OCSP response before the max-age time.
 
-## HTTP Proxies
+## HTTP Proxies {#http-proxies}
 
 The responder SHOULD set the HTTP headers of the OCSP response in
 such a way as to allow for the intelligent use of intermediate HTTP
-proxy servers. See {{RFC9110}}for the full definition of these headers
+proxy servers. See {{RFC9110}} for the full definition of these headers
 and the proper format of any date and time values.
 
 | HTTP Header | Description |
@@ -425,6 +429,7 @@ and the proper format of any date and time values.
 | expires | Specifies how long the response is considered fresh. This date and time will be the same as the nextUpdate timestamp in the OCSP response itself. |
 | ETag | A string that identifies a particular version of the associated data. This profile RECOMMENDS that the ETag value be the ASCII HEX representation of the SHA-256 hash of the OCSPResponse structure. |
 | cache-control | Contains a number of caching directives. <br> * max-age = < n > -where n is a time value later than thisUpdate but earlier than nextUpdate. <br> * public -makes normally uncachable response cachable by both shared and nonshared caches. <br> * no-transform -specifies that a proxy cache cannot change the type, length, or encoding of the object content. <br> * must-revalidate -prevents caches from intentionally returning stale responses. |
+{: #http-headers title="HTTP Headers"}
 
 OCSP responders MUST NOT include a "Pragma: no-cache", "Cache-
 Control: no-cache", or "Cache-Control: no-store" header in
@@ -437,23 +442,23 @@ For example, assume that an OCSP response has the following timestamp
 values:
 
 ~~~~~~
-thisUpdate = May 1, 2005 01:00:00 GMT
-nextUpdate = May 3, 2005 01:00:00 GMT
-productedAt = May 1, 2005 01:00:00 GMT
+    thisUpdate = May 1, 2005 01:00:00 GMT
+    nextUpdate = May 3, 2005 01:00:00 GMT
+    productedAt = May 1, 2005 01:00:00 GMT
 ~~~~~~
 
 and that an OCSP client requests the response on May 2, 2005 01:00:00
 GMT. In this scenario, the HTTP response may look like this:
 
 ~~~~~~
-content-type: application/ocsp-response
-content-length: 1000
-date: Fri, 02 May 2005 01:00:00 GMT
-last-modified: Thu, 01 May 2005 01:00:00 GMT
-ETag: "c66c0341abd7b9346321d5470fd0ec7cc4dae713"
-expires: Sat, 03 May 2005 01:00:00 GMT
-cache-control: max-age=86000,public,no-transform,must-revalidate
-<...>
+    content-type: application/ocsp-response
+    content-length: 1000
+    date: Fri, 02 May 2005 01:00:00 GMT
+    last-modified: Thu, 01 May 2005 01:00:00 GMT
+    ETag: "c66c0341abd7b9346321d5470fd0ec7cc4dae713"
+    expires: Sat, 03 May 2005 01:00:00 GMT
+    cache-control: max-age=86000,public,no-transform,must-revalidate
+    <...>
 ~~~~~~
 
 OCSP clients MUST NOT include a no-cache header in OCSP request
@@ -485,19 +490,18 @@ a situation where the client need only the ability to parse and
 recognize OCSP responses.
 
 This functionality has been specified as an extension to the TLS
-{{!I-D.ietf-tls-rfc8446bis}} protocol in Section 4.4.2 {{!I-D.ietf-tls-rfc8446bis}},
-but can be applied to any
-client-server protocol.
+{{!I-D.ietf-tls-rfc8446bis}} protocol in {{Section 4.4.2 of !I-D.ietf-tls-rfc8446bis}},
+but can be applied to any client-server protocol.
 
 This profile RECOMMENDS that both TLS clients and servers implement
 the certificate status request extension mechanism for TLS.
 
 Further information regarding caching issues can be obtained from {{?RFC3143}}.
 
-# Security Considerations
+# Security Considerations {#sec-cons}
 
 The following considerations apply in addition to the security
-considerations addressed in Section 5 of {{RFC6960}}.
+considerations addressed in {{Section 5 of RFC6960}}.
 
 ## Replay Attacks
 
@@ -534,7 +538,7 @@ identity of the OCSP responder and to verify that it is authorized to
 sign responses on the CA's behalf.
 
 Clients MUST ensure that they are communicating with an authorized
-responder by the rules described in {{RFC6960}}, Section 4.2.2.2.
+responder by the rules described in {{Section 4.2.2.2 of RFC6960}}.
 
 ## Impersonation Attacks
 
@@ -558,7 +562,7 @@ detected.
 
 ## Modification of HTTP Headers
 
-Values included in HTTP headers, as described in Sections 6 and 7,
+Values included in HTTP headers, as described in {{transport}} and {{cache-recs}},
 are not cryptographically protected; they may be manipulated by an
 attacker. Clients SHOULD use these values for caching guidance only
 and ultimately SHOULD rely only on the values present in the signed
@@ -593,5 +597,3 @@ of the OCSP protocol.
 The authors wish to thank Magnus Nystrom of RSA Security, Inc.,
 Jagjeet Sondh of Vodafone Group R&D, and David Engberg of CoreStreet,
 Ltd. for their contributions to the original {{RFC5019}} specification.
-
-
