@@ -442,21 +442,21 @@ For example, assume that an OCSP response has the following timestamp
 values:
 
 ~~~~~~
-    thisUpdate = May 1, 2005 01:00:00 GMT
-    nextUpdate = May 3, 2005 01:00:00 GMT
-    productedAt = May 1, 2005 01:00:00 GMT
+    thisUpdate = March 19, 2023 01:00:00 GMT
+    nextUpdate = March 21, 2023 01:00:00 GMT
+    productedAt = March 19, 2023 01:00:00 GMT
 ~~~~~~
 
-and that an OCSP client requests the response on May 2, 2005 01:00:00
+and that an OCSP client requests the response on March 20, 2023 01:00:00
 GMT. In this scenario, the HTTP response may look like this:
 
 ~~~~~~
     Content-Type: application/ocsp-response
     Content-Length: 1000
-    Date: Fri, 02 May 2005 01:00:00 GMT
-    Last-Modified: Thu, 01 May 2005 01:00:00 GMT
-    ETag: "c66c0341abd7b9346321d5470fd0ec7cc4dae713"
-    Expires: Sat, 03 May 2005 01:00:00 GMT
+    Date: Mon, 20 Mar 2023 01:00:00 GMT
+    Last-Modified: Sun, 19 Mar 2023 01:00:00 GMT
+    ETag: "97df3588b5a3f24babc3851b372f0ba71a9dcdded43b14b9d06961bfc1707d9d"
+    Expires: Tue, 21 Mar 2023 01:00:00 GMT
     Cache-Control: max-age=86000,public,no-transform,must-revalidate
     <...>
 ~~~~~~
