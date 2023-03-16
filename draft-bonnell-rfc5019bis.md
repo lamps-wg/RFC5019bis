@@ -140,7 +140,7 @@ CertID.issuerNameHash and the CertID.issuerKeyHash values. However,
 these OCSP clients should transition from SHA-1 to SHA-256 as soon as
 practical.
 
-Newer OCSP clients that support this document MUST
+Newer OCSP clients that conform with this profile MUST
 use SHA-256 as the hashing algorithm for the
 CertID.issuerNameHash and the CertID.issuerKeyHash values.
 
@@ -225,7 +225,7 @@ Older responders which provide backward compatibility with {{RFC5019}}
 MAY use the byName field to represent the ResponderID, but should
 transition to using the byKey field as soon as practical.
 
-Newer responders that conform to this document MUST use the byKey
+Newer responders that conform to this profile MUST use the byKey
 field to represent the ResponderID to reduce the size of the response.
 
 ### OCSPResponseStatus Values
