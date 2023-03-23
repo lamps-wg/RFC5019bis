@@ -107,14 +107,14 @@ environments that require a lightweight solution to minimize
 bandwidth and client-side processing power (or both), as described
 above. As OCSP does not have the means to signal responder
 capabilities within the protocol, clients needing to differentiate
-between OCSP responses produced by responders conformant with this
+between OCSP responses produced by responders that conform with this
 profile and those that are not need to rely on out-of-band mechanisms
 to determine when a responder operates according to this profile and,
 as such, when the requirements of this profile apply. In the case
 where out-of-band mechanisms may not be available, this profile
-ensures that interoperability will still occur between a fully
-conformant OCSP 6960 client and a responder that is operating in a
-mode as described in this specification.
+ensures that interoperability will still occur between an OCSP client
+that fully conforms with {{RFC6960}} and a responder that is operating
+in a mode as described in this specification.
 
 
 # Conventions and Definitions
@@ -130,14 +130,17 @@ functionality as defined in {{RFC6960}}.
 
 ### OCSPRequest Structure
 
-OCSPRequests conformant to this profile MUST include only one Request
+OCSPRequests that conform to this profile MUST include only one Request
 in the OCSPRequest.RequestList structure.
 
-Older OCSP Clients which provide backward compatibility with {{!RFC5019}}
-MUST use SHA-1 as the hashing algorithm for the
-CertID.issuerNameHash and the CertID.issuerKeyHash values.
 
-Newer OCSP Clients that support this document MUST
+Older OCSP clients which provide backward compatibility with
+{{RFC5019}} use SHA-1 as the hashing algorithm for the
+CertID.issuerNameHash and the CertID.issuerKeyHash values. However,
+these OCSP clients should transition from SHA-1 to SHA-256 as soon as
+practical.
+
+Newer OCSP clients that conform with this profile MUST
 use SHA-256 as the hashing algorithm for the
 CertID.issuerNameHash and the CertID.issuerKeyHash values.
 
@@ -158,8 +161,8 @@ If the OCSPRequest is signed, the client SHALL specify its name in
 the OCSPRequest.requestorName field; otherwise, clients SHOULD NOT
 include the requestorName field in the OCSPRequest. OCSP servers
 MUST be prepared to receive unsigned OCSP requests that contain the
-requestorName field, but must realize that the provided value is not
-authenticated.
+requestorName field, but MUST handle such requests as if the
+requestorName field were absent.
 
 ## OCSP Response Profile
 
@@ -167,7 +170,7 @@ authenticated.
 
 Responders MUST generate a BasicOCSPResponse as identified by the
 id-pkix-ocsp-basic OID. Clients MUST be able to parse and accept a
-BasicOCSPResponse. OCSPResponses conformant to this profile SHOULD
+BasicOCSPResponse. OCSPResponses that conform to this profile SHOULD
 include only one SingleResponse in the ResponseData.responses
 structure, but MAY include additional SingleResponse elements if
 necessary to improve response pre-generation performance or cache
@@ -214,9 +217,16 @@ responder's signing certificate SHOULD be relatively short-lived and
 renewed regularly.
 
 Clients MUST be able to identify OCSP responder certificates using
-both the byName and byKey ResponseData.ResponderID choices.
-Responders SHOULD use byKey to further reduce the size of the
-response in scenarios where reducing bandwidth is an issue.
+the byKey field and SHOULD be able to identify OCSP responder
+certificates using the byName field of the ResponseData.ResponderID
+choices.
+
+Older responders which provide backward compatibility with {{RFC5019}}
+MAY use the byName field to represent the ResponderID, but should
+transition to using the byKey field as soon as practical.
+
+Newer responders that conform to this profile MUST use the byKey
+field to represent the ResponderID to reduce the size of the response.
 
 ### OCSPResponseStatus Values
 
@@ -360,11 +370,13 @@ larger than 255 bytes SHOULD be submitted using the POST method. In
 all cases, clients MUST follow the descriptions in A.1 of {{RFC6960}}
 when constructing these messages.
 
-When constructing a GET message, OCSP clients MUST base64 encode the
-OCSPRequest structure and append it to the URI specified in the AIA
-extension {{RFC5280}}. Clients MUST NOT include CR or LF characters in
-the base64-encoded string. Clients MUST properly URL-encode the
-base64 encoded OCSPRequest. For example:
+When constructing a GET message, OCSP clients MUST base64-encode the
+OCSPRequest structure according to {{!RFC3548}}, section 3. Clients
+MUST NOT include whitespace or any other characters that are not part of
+the base64 character repertoire in the base64-encoded string. Clients
+MUST properly URL-encode the base64-encoded OCSPRequest according to
+{{!RFC3986}}. OCSP clients MUST append the base64-encoded OCSPRequest
+to the URI specified in the AIA extension {{RFC5280}}. For example:
 
 ~~~~~~
     http://ocsp.example.com/MEowSDBGMEQwQjAKBggqhkiG9w0CBQQQ7sp6GTKpL2dA
