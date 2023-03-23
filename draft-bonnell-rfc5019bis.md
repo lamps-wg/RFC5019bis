@@ -606,7 +606,7 @@ The authors of this version of the document wish to thank Alex Deacon
 and Ryan Hurst for all of their work to produce the original version
 of the OCSP protocol.
 
-The authors of this version of the document wish to thank for feedback from Russ Husley.
+The authors of this version of the document wish to thank Russ Housley for the feedback and suggestions.
 
 The authors wish to thank Magnus Nystrom of RSA Security, Inc.,
 Jagjeet Sondh of Vodafone Group R&D, and David Engberg of CoreStreet,
