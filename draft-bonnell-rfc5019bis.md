@@ -45,8 +45,8 @@ informative:
 
 --- abstract
 
-This document updates RFC5019 to allow OCSP clients to use SHA-256.
-An RFC5019 compliant OCSP client is still able to use SHA-1, but the use of SHA-1 may become obsolete in the future.
+This document updates RFC 5019 to allow OCSP clients to use SHA-256.
+An RFC 5019 compliant OCSP client is still able to use SHA-1, but the use of SHA-1 may become obsolete in the future.
 
 --- middle
 
@@ -135,7 +135,7 @@ in the OCSPRequest.RequestList structure.
 
 
 Older OCSP clients which provide backward compatibility with
-{{RFC5019}} use SHA-1 as the hashing algorithm for the
+{{!RFC5019}} use SHA-1 as the hashing algorithm for the
 CertID.issuerNameHash and the CertID.issuerKeyHash values. However,
 these OCSP clients should transition from SHA-1 to SHA-256 as soon as
 practical.
@@ -389,13 +389,13 @@ include the binary value of the DER encoding of the OCSPResponse
 preceded by the following HTTP {{!RFC9110}} and {{!RFC9111}} headers.
 
 ~~~~~~
-    content-type: application/ocsp-response
-    content-length: < OCSP response length >
-    last-modified: < producedAt HTTP-date >
+    Content-type: application/ocsp-response
+    Content-length: < OCSP response length >
+    Last-modified: < producedAt HTTP-date >
     ETag: "< strong validator >"
-    expires: < nextUpdate HTTP-date >
-    cache-control: max-age=< n >, public, no-transform, must-revalidate
-    date: < current HTTP-date >
+    Expires: < nextUpdate HTTP-date >
+    Cache-control: max-age=< n >, public, no-transform, must-revalidate
+    Date: < current HTTP-date >
 ~~~~~~
 
 See {{http-proxies}} for details on the use of these headers.
@@ -605,6 +605,8 @@ This document has no IANA actions.
 The authors of this version of the document wish to thank Alex Deacon
 and Ryan Hurst for all of their work to produce the original version
 of the OCSP protocol.
+
+The authors of this version of the document wish to thank Russ Housley for the feedback and suggestions.
 
 The authors wish to thank Magnus Nystrom of RSA Security, Inc.,
 Jagjeet Sondh of Vodafone Group R&D, and David Engberg of CoreStreet,
