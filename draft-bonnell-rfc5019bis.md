@@ -116,6 +116,18 @@ ensures that interoperability will still occur between an OCSP client
 that fully conforms with {{RFC6960}} and a responder that is operating
 in a mode as described in this specification.
 
+Nomative changes to RFC 5019 are following.
+
+- {{certid}} requires new OCSP clients to use SHA-256 to
+support migration for OCSP clients.
+
+- {{byKey}} requres new responders to use the byKey field,
+and support migration from byName fields.
+
+- {{transport}} prohibits inclusion of whitespace character in the
+base64-encoded string, in addition to CR and LF characters.
+
+
 
 # Conventions and Definitions
 
@@ -128,7 +140,7 @@ functionality as defined in {{RFC6960}}.
 
 ## OCSP Request Profile {#req-profile}
 
-### OCSPRequest Structure
+### OCSPRequest Structure {#certid}
 
 OCSPRequests that conform to this profile MUST include only one Request
 in the OCSPRequest.RequestList structure.
@@ -199,7 +211,7 @@ request to an OCSP responder capable of doing so.
 The responder MAY include the singleResponse.singleResponse
 extensions structure.
 
-### Signed OCSPResponses
+### Signed OCSPResponses {#byKey}
 
 Clients MUST validate the signature on the returned OCSPResponse.
 
