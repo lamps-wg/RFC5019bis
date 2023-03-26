@@ -116,17 +116,17 @@ ensures that interoperability will still occur between an OCSP client
 that fully conforms with {{RFC6960}} and a responder that is operating
 in a mode as described in this specification.
 
-Nomative changes to RFC 5019 are following.
+Nomative changes to RFC 5019:
 
 - {{certid}} requires new OCSP clients to use SHA-256 to
 support migration for OCSP clients.
 
-- {{byKey}} requres new responders to use the byKey field,
+- {{byKey}} requres new OCSP responders to use the byKey field,
 and support migration from byName fields.
 
-- {{transport}} prohibits inclusion of whitespace character in the
-base64-encoded string, in addition to CR and LF characters.
-
+- {{transport}} prohibits OCSP clients to include
+whitespace or any other characters that are not part of
+the base64 character repertoire in the base64-encoded string.
 
 
 # Conventions and Definitions
