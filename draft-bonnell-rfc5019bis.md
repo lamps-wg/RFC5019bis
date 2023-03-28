@@ -124,7 +124,7 @@ support migration for OCSP clients.
 - {{byKey}} requires new OCSP responders to use the byKey field,
 and support migration from byName fields.
 
-- {{transport}} clarifies OCSP clients not to include
+- {{transport}} clarifies OCSP clients not include
 whitespace or any other characters that are not part of
 the base64 character repertoire in the base64-encoded string.
 
