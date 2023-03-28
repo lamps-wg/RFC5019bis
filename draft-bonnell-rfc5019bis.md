@@ -121,7 +121,7 @@ Substantive changes to RFC 5019:
 - {{certid}} requires new OCSP clients to use SHA-256 to
 support migration for OCSP clients.
 
-- {{byKey}} requres new OCSP responders to use the byKey field,
+- {{byKey}} requires new OCSP responders to use the byKey field,
 and support migration from byName fields.
 
 - {{transport}} clarifies OCSP clients not to include
