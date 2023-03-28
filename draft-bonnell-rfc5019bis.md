@@ -46,7 +46,8 @@ informative:
 --- abstract
 
 This document updates RFC 5019 to allow OCSP clients to use SHA-256.
-An RFC 5019 compliant OCSP client is still able to use SHA-1, but the use of SHA-1 may become obsolete in the future.
+An RFC 5019 compliant OCSP client is still able to use SHA-1,
+but the use of SHA-1 may become obsolete in the future.
 
 --- middle
 
@@ -220,8 +221,8 @@ authority (CA), a valid responder certificate MUST be referenced in
 the BasicOCSPResponse.certs structure.
 
 It is RECOMMENDED that the OCSP responder's certificate contain the
-id-pkix-ocsp-nocheck extension, as defined in {{RFC6960}}, to indicate to
-the client that it need not check the certificate's status. In
+id-pkix-ocsp-nocheck extension, as defined in {{RFC6960}}, to indicate
+to the client that it need not check the certificate's status. In
 addition, it is RECOMMENDED that neither an OCSP authorityInfoAccess
 (AIA) extension nor cRLDistributionPoints (CRLDP) extension be
 included in the OCSP responder's certificate. Accordingly, the
@@ -300,8 +301,8 @@ GeneralizedTime values MUST NOT include fractional seconds.
 ## OCSP Responder Discovery
 
 Clients MUST support the authorityInfoAccess extension as defined in
-{{!RFC5280}} and MUST recognize the id-ad-ocsp access method. This enables
-CAs to inform clients how they can contact the OCSP service.
+{{!RFC5280}} and MUST recognize the id-ad-ocsp access method. This
+enables CAs to inform clients how they can contact the OCSP service.
 
 In the case where a client is checking the status of a certificate
 that contains both an authorityInformationAccess (AIA) extension
@@ -368,8 +369,8 @@ synchronization to keep them accurate within parts of a second;
 higher latency environments or where an NTP analogue is not available
 may have to be more liberal in their tolerance.
 
-See the security considerations in {{sec-cons}} for additional details on
-replay and man-in-the-middle attacks.
+See the security considerations in {{sec-cons}} for additional details
+on replay and man-in-the-middle attacks.
 
 # Transport Profile {#transport}
 
@@ -383,7 +384,7 @@ all cases, clients MUST follow the descriptions in A.1 of {{RFC6960}}
 when constructing these messages.
 
 When constructing a GET message, OCSP clients MUST base64-encode the
-OCSPRequest structure according to {{!RFC3548}}, section 3. Clients
+OCSPRequest structure according to {{!RFC4648}}, section 3. Clients
 MUST NOT include whitespace or any other characters that are not part of
 the base64 character repertoire in the base64-encoded string. Clients
 MUST properly URL-encode the base64-encoded OCSPRequest according to
@@ -443,8 +444,8 @@ OCSP response before the max-age time.
 
 The responder SHOULD set the HTTP headers of the OCSP response in
 such a way as to allow for the intelligent use of intermediate HTTP
-proxy servers. See {{RFC9110}} and {{RFC9111}} for the full definition of these headers
-and the proper format of any date and time values.
+proxy servers. See {{RFC9110}} and {{RFC9111}} for the full definition
+of these headers and the proper format of any date and time values.
 
 | HTTP Header | Description |
 |:---|:---|
@@ -514,13 +515,15 @@ a situation where the client need only the ability to parse and
 recognize OCSP responses.
 
 This functionality has been specified as an extension to the TLS
-{{!I-D.ietf-tls-rfc8446bis}} protocol in {{Section 4.4.2 of !I-D.ietf-tls-rfc8446bis}},
+{{!I-D.ietf-tls-rfc8446bis}} protocol in
+{{Section 4.4.2 of !I-D.ietf-tls-rfc8446bis}},
 but can be applied to any client-server protocol.
 
 This profile RECOMMENDS that both TLS clients and servers implement
 the certificate status request extension mechanism for TLS.
 
-Further information regarding caching issues can be obtained from {{?RFC3143}}.
+Further information regarding caching issues can be obtained
+from {{?RFC3143}}.
 
 # Security Considerations {#sec-cons}
 
@@ -586,7 +589,8 @@ detected.
 
 ## Modification of HTTP Headers
 
-Values included in HTTP headers, as described in {{transport}} and {{cache-recs}},
+Values included in HTTP headers, as described in {{transport}}
+and {{cache-recs}},
 are not cryptographically protected; they may be manipulated by an
 attacker. Clients SHOULD use these values for caching guidance only
 and ultimately SHOULD rely only on the values present in the signed
@@ -618,7 +622,8 @@ The authors of this version of the document wish to thank Alex Deacon
 and Ryan Hurst for all of their work to produce the original version
 of the OCSP protocol.
 
-The authors of this version of the document wish to thank Russ Housley for the feedback and suggestions.
+The authors of this version of the document wish to thank
+Russ Housley for the feedback and suggestions.
 
 The authors wish to thank Magnus Nystrom of RSA Security, Inc.,
 Jagjeet Sondh of Vodafone Group R&D, and David Engberg of CoreStreet,
