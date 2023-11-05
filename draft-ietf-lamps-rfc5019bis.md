@@ -3,7 +3,7 @@ title: "Updates to Lightweight OCSP Profile for High Volume Environments"
 abbrev: "RFC5019bis"
 category: std
 
-docname: draft-ietf-lamps-rfc5019bis-00
+docname: draft-ietf-lamps-rfc5019bis-latest
 submissiontype: IETF
 number:
 date:
