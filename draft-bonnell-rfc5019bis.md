@@ -26,7 +26,7 @@ author:
  -
     fullname:
       :: INSERT CORRECT KANJI
-      asciI:Tadahiko Ito
+      ascii: Tadahiko Ito
     organization: SECOM CO., LTD.
     email: tadahiko.ito.public@gmail.com
  -
