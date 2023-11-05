@@ -143,7 +143,7 @@ functionality as defined in {{RFC6960}}.
 
 ### OCSPRequest Structure {#certid}
 
-OCSPRequests that conform to this profile SHALL include only one Request
+OCSPRequests that conform to this profile MUST include only one Request
 in the OCSPRequest.RequestList structure.
 
 Older OCSP clients which provide backward compatibility with
