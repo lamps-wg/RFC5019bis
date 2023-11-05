@@ -631,4 +631,3 @@ Jagjeet Sondh of Vodafone Group R&D, and David Engberg of CoreStreet,
 Ltd. for their contributions to the original {{RFC5019}} specification.
 Listed organizational affiliations reflect the author’s affiliation
 at the time of RFC5019 was published.
-
