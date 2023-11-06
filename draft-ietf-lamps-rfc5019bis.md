@@ -3,16 +3,16 @@ title: "Updates to Lightweight OCSP Profile for High Volume Environments"
 abbrev: "RFC5019bis"
 category: std
 
-docname: draft-bonnell-rfc5019bis-latest
+docname: draft-ietf-lamps-rfc5019bis-latest
 submissiontype: IETF
 number:
 date:
 consensus: true
 v: 3
 # area: SEC
-# workgroup:
+# workgroup: LAMPS Working Group
 keyword: Internet-Draft
-updates: 5019
+obsolete: 5019
 
 author:
  -
@@ -25,7 +25,7 @@ author:
     email: clintw@apple.com
  -
     fullname:
-      :: INSERT CORRECT KANJI
+      :: 伊藤忠彦
       ascii: Tadahiko Ito
     organization: SECOM CO., LTD.
     email: tadahiko.ito.public@gmail.com
@@ -148,7 +148,6 @@ functionality as defined in {{RFC6960}}.
 OCSPRequests that conform to this profile MUST include only one Request
 in the OCSPRequest.RequestList structure.
 
-
 Older OCSP clients which provide backward compatibility with
 {{!RFC5019}} use SHA-1 as the hashing algorithm for the
 CertID.issuerNameHash and the CertID.issuerKeyHash values. However,
@@ -189,7 +188,9 @@ BasicOCSPResponse. OCSPResponses that conform to this profile SHOULD
 include only one SingleResponse in the ResponseData.responses
 structure, but MAY include additional SingleResponse elements if
 necessary to improve response pre-generation performance or cache
-efficiency.
+efficiency. For instance, ResponseData.responses of OCSPResponses
+that conform to this profile MAY include two SingleResponse
+with SHA-1 and SHA-256 certID of the same certificate.
 
 The responder SHOULD NOT include responseExtensions. As specified in
 {{RFC6960}}, clients MUST ignore unrecognized non-critical
@@ -630,3 +631,5 @@ Russ Housley for the feedback and suggestions.
 The authors wish to thank Magnus Nystrom of RSA Security, Inc.,
 Jagjeet Sondh of Vodafone Group R&D, and David Engberg of CoreStreet,
 Ltd. for their contributions to the original {{RFC5019}} specification.
+Listed organizational affiliations reflect the author’s affiliation
+at the time of RFC5019 was published.
