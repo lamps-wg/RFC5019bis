@@ -25,8 +25,8 @@ author:
     email: clintw@apple.com
  -
     fullname:
-     　:: 伊藤忠彦
-    　　ascii: Tadahiko Ito
+      :: 伊藤忠彦
+      ascii: Tadahiko Ito
     organization: SECOM CO., LTD.
     email: tadahiko.ito.public@gmail.com
  -
