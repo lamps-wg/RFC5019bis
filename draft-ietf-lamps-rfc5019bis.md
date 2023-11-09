@@ -22,13 +22,13 @@ author:
     organization: SECOM CO., LTD.
     email: tadahiko.ito.public@gmail.com
  -
-    fullname: Corey Bonnell
-    organization: DigiCert, Inc.
-    email: corey.bonnell@digicert.com
- -
     fullname: Clint Wilson
     organization: Apple, Inc.
     email: clintw@apple.com
+ -
+    fullname: Corey Bonnell
+    organization: DigiCert, Inc.
+    email: corey.bonnell@digicert.com
  -
     fullname: Sean Turner
     organization: sn3rd
