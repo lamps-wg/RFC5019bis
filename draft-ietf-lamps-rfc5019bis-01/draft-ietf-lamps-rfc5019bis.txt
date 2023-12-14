@@ -2,19 +2,19 @@
 
 
 
-Network Working Group                                         C. Bonnell
-Internet-Draft                                            DigiCert, Inc.
-Updates: 5019 (if approved)                                    C. Wilson
-Intended status: Standards Track                             Apple, Inc.
-Expires: 8 May 2024                                          I. C. KANJI
-                                                         SECOM CO., LTD.
+Network Working Group                                 伊藤 忠彦 (T. Ito)
+Internet-Draft                                           SECOM CO., LTD.
+Intended status: Standards Track                               C. Wilson
+Expires: 16 June 2024                                        Apple, Inc.
+                                                              C. Bonnell
+                                                          DigiCert, Inc.
                                                                S. Turner
                                                                    sn3rd
-                                                         5 November 2023
+                                                        14 December 2023
 
 
     Updates to Lightweight OCSP Profile for High Volume Environments
-                    draft-bonnell-rfc5019bis-latest
+                   draft-ietf-lamps-rfc5019bis-latest
 
 Abstract
 
@@ -44,7 +44,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 8 May 2024.
+   This Internet-Draft will expire on 16 June 2024.
 
 Copyright Notice
 
@@ -236,7 +236,9 @@ Table of Contents
    include only one SingleResponse in the ResponseData.responses
    structure, but MAY include additional SingleResponse elements if
    necessary to improve response pre-generation performance or cache
-   efficiency.
+   efficiency.  For instance, ResponseData.responses of OCSPResponses
+   that conform to this profile MAY include two SingleResponse with
+   SHA-1 and SHA-256 certID of the same certificate.
 
    The responder SHOULD NOT include responseExtensions.  As specified in
    [RFC6960], clients MUST ignore unrecognized non-critical
@@ -749,17 +751,24 @@ Acknowledgments
    of the OCSP protocol.
 
    The authors of this version of the document wish to thank Russ
-   Housley for the feedback and suggestions.
+   Housley and Rob Stradling for the feedback and suggestions.
 
    The authors wish to thank Magnus Nystrom of RSA Security, Inc.,
    Jagjeet Sondh of Vodafone Group R&D, and David Engberg of CoreStreet,
    Ltd. for their contributions to the original [RFC5019] specification.
+   Listed organizational affiliations reflect the author’s affiliation
+   at the time of RFC5019 was published.
 
 Authors' Addresses
 
-   Corey Bonnell
-   DigiCert, Inc.
-   Email: corey.bonnell@digicert.com
+   Tadahiko Ito
+   SECOM CO., LTD.
+   Email: tadahiko.ito.public@gmail.com
+
+   Additional contact information:
+
+      伊藤 忠彦
+      SECOM CO., LTD.
 
 
    Clint Wilson
@@ -767,9 +776,9 @@ Authors' Addresses
    Email: clintw@apple.com
 
 
-   INSERT CORRECT KANJI
-   SECOM CO., LTD.
-   Email: tadahiko.ito.public@gmail.com
+   Corey Bonnell
+   DigiCert, Inc.
+   Email: corey.bonnell@digicert.com
 
 
    Sean Turner
