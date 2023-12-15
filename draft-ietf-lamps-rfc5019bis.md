@@ -12,7 +12,7 @@ v: 3
 # area: SEC
 # workgroup: LAMPS Working Group
 keyword: Internet-Draft
-obsolete: 5019
+obsoletes: 5019
 
 author:
  -
