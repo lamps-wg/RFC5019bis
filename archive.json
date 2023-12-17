@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-12-14T00:27:46.610137+00:00",
+  "timestamp": "2023-12-17T00:30:54.370865+00:00",
   "repo": "lamps-wg/RFC5019bis",
   "labels": [
     {
@@ -2066,6 +2066,76 @@
       "mergedBy": "tadahik",
       "mergeCommit": {
         "oid": "181122a2970017cd584622c5dd23ecea7eb045ba"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 46,
+      "id": "PR_kwDOHwB1bc5iEB7a",
+      "title": "Update draft-ietf-lamps-rfc5019bis.md",
+      "url": "https://github.com/lamps-wg/RFC5019bis/pull/46",
+      "state": "MERGED",
+      "author": "tadahik",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "obsolete => obsoletes",
+      "createdAt": "2023-12-15T03:39:47Z",
+      "updatedAt": "2023-12-15T13:10:07Z",
+      "baseRepository": "lamps-wg/RFC5019bis",
+      "baseRefName": "main",
+      "baseRefOid": "181122a2970017cd584622c5dd23ecea7eb045ba",
+      "headRepository": "lamps-wg/RFC5019bis",
+      "headRefName": "nitfix-WGLC202312",
+      "headRefOid": "f880167f8a6adb1cd1811059664a938154969090",
+      "closedAt": "2023-12-15T13:10:07Z",
+      "mergedAt": "2023-12-15T13:10:07Z",
+      "mergedBy": "CBonnell",
+      "mergeCommit": {
+        "oid": "bb18dd21149d5c00b111ca6fe13fad2466c7342c"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOHwB1bc5qVRmV",
+          "commit": {
+            "abbreviatedOid": "f880167"
+          },
+          "author": "CBonnell",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-12-15T13:10:00Z",
+          "updatedAt": "2023-12-15T13:10:00Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 47,
+      "id": "PR_kwDOHwB1bc5iHAw2",
+      "title": "Update abbreviated title",
+      "url": "https://github.com/lamps-wg/RFC5019bis/pull/47",
+      "state": "MERGED",
+      "author": "CBonnell",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-12-15T13:09:29Z",
+      "updatedAt": "2023-12-16T05:29:40Z",
+      "baseRepository": "lamps-wg/RFC5019bis",
+      "baseRefName": "main",
+      "baseRefOid": "181122a2970017cd584622c5dd23ecea7eb045ba",
+      "headRepository": "lamps-wg/RFC5019bis",
+      "headRefName": "Update-abbreviated-title",
+      "headRefOid": "305be0206018c30444d1f15f4a9e2ab3ea87bf43",
+      "closedAt": "2023-12-16T05:29:40Z",
+      "mergedAt": "2023-12-16T05:29:40Z",
+      "mergedBy": "tadahik",
+      "mergeCommit": {
+        "oid": "0bbc3451088817599af18a01eedb5ad19f5aa900"
       },
       "comments": [],
       "reviews": []
