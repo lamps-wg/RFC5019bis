@@ -621,8 +621,8 @@ This document has no IANA actions.
 {:numbered="false"}
 
 The authors of this version of the document wish to thank Alex Deacon
-and Ryan Hurst for all of their work to produce the original version
-of the OCSP protocol.
+and Ryan Hurst for their work to produce the original version
+of the lightweight profile for the OCSP protocol.
 
 The authors of this version of the document wish to thank
 Russ Housley and Rob Stradling for the feedback and suggestions.
