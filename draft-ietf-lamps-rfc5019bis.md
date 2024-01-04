@@ -386,7 +386,7 @@ all cases, clients MUST follow the descriptions in A.1 of {{RFC6960}}
 when constructing these messages.
 
 When constructing a GET message, OCSP clients MUST base64-encode the
-OCSPRequest structure according to {{!RFC4648}}, section 3. Clients
+OCSPRequest structure according to {{!RFC4648}}, section 4. Clients
 MUST NOT include whitespace or any other characters that are not part of
 the base64 character repertoire in the base64-encoded string. Clients
 MUST properly URL-encode the base64-encoded OCSPRequest according to
