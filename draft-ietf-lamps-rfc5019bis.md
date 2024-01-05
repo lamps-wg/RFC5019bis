@@ -108,16 +108,15 @@ profile will be adopted by OCSP clients and OCSP responders operating
 in very large-scale (high-volume) PKI environments or PKI
 environments that require a lightweight solution to minimize
 bandwidth and client-side processing power (or both), as described
-above. As OCSP does not have the means to signal responder
-capabilities within the protocol, clients needing to differentiate
-between OCSP responses produced by responders that conform with this
-profile and those that are not need to rely on out-of-band mechanisms
-to determine when a responder operates according to this profile and,
-as such, when the requirements of this profile apply. In the case
-where out-of-band mechanisms may not be available, this profile
-ensures that interoperability will still occur between an OCSP client
-that fully conforms with {{RFC6960}} and a responder that is operating
-in a mode as described in this specification.
+above.
+
+OCSP does not have the means to signal responder capabilities within the
+protocol. Thus, clients will need to use out-of-band mechanisms to
+determine whether a responder conforms to the profile defined in this
+document. Regardless of the availability of such out-of-band mechanisms,
+this profile ensures that interoperability will still occur between an
+OCSP client that fully conforms with {{RFC6960}} and a responder that is
+operating in a mode as described in this specification.
 
 Substantive changes to RFC 5019:
 
@@ -387,7 +386,7 @@ all cases, clients MUST follow the descriptions in A.1 of {{RFC6960}}
 when constructing these messages.
 
 When constructing a GET message, OCSP clients MUST base64-encode the
-OCSPRequest structure according to {{!RFC4648}}, section 3. Clients
+OCSPRequest structure according to {{!RFC4648}}, section 4. Clients
 MUST NOT include whitespace or any other characters that are not part of
 the base64 character repertoire in the base64-encoded string. Clients
 MUST properly URL-encode the base64-encoded OCSPRequest according to
@@ -622,8 +621,8 @@ This document has no IANA actions.
 {:numbered="false"}
 
 The authors of this version of the document wish to thank Alex Deacon
-and Ryan Hurst for all of their work to produce the original version
-of the OCSP protocol.
+and Ryan Hurst for their work to produce the original version
+of the lightweight profile for the OCSP protocol.
 
 The authors of this version of the document wish to thank
 Russ Housley and Rob Stradling for the feedback and suggestions.
