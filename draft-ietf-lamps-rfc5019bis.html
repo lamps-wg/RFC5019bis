@@ -14,11 +14,11 @@
 An RFC 5019 compliant OCSP client is still able to use SHA-1,
 but the use of SHA-1 may become obsolete in the future. 
     " name="description">
-<meta content="xml2rfc 3.18.2" name="generator">
+<meta content="xml2rfc 3.19.0" name="generator">
 <meta content="Internet-Draft" name="keyword">
 <meta content="draft-ietf-lamps-rfc5019bis-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.18.2
+  xml2rfc 3.19.0
     Python 3.11.6
     ConfigArgParse 1.7
     google-i18n-address 3.1.0
@@ -1030,11 +1030,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">Lightweight OCSP Profile Update</td>
-<td class="right">December 2023</td>
+<td class="right">January 2024</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Ito, et al.</td>
-<td class="center">Expires 18 June 2024</td>
+<td class="center">Expires 8 July 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1050,12 +1050,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <a href="https://www.rfc-editor.org/rfc/rfc5019" class="eref">5019</a> (if approved)</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2023-12-16" class="published">16 December 2023</time>
+<time datetime="2024-01-05" class="published">5 January 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-06-18">18 June 2024</time></dd>
+<dd class="expires"><time datetime="2024-07-08">8 July 2024</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1112,7 +1112,7 @@ but the use of SHA-1 may become obsolete in the future.<a href="#section-abstrac
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 18 June 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 8 July 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1121,7 +1121,7 @@ but the use of SHA-1 may become obsolete in the future.<a href="#section-abstrac
 <a href="#name-copyright-notice" class="section-name selfRef">Copyright Notice</a>
         </h2>
 <p id="section-boilerplate.2-1">
-            Copyright (c) 2023 IETF Trust and the persons identified as the
+            Copyright (c) 2024 IETF Trust and the persons identified as the
             document authors. All rights reserved.<a href="#section-boilerplate.2-1" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.2-2">
             This document is subject to BCP 78 and the IETF Trust's Legal
@@ -1318,30 +1318,28 @@ profile will be adopted by OCSP clients and OCSP responders operating
 in very large-scale (high-volume) PKI environments or PKI
 environments that require a lightweight solution to minimize
 bandwidth and client-side processing power (or both), as described
-above. As OCSP does not have the means to signal responder
-capabilities within the protocol, clients needing to differentiate
-between OCSP responses produced by responders that conform with this
-profile and those that are not need to rely on out-of-band mechanisms
-to determine when a responder operates according to this profile and,
-as such, when the requirements of this profile apply. In the case
-where out-of-band mechanisms may not be available, this profile
-ensures that interoperability will still occur between an OCSP client
-that fully conforms with <span>[<a href="#RFC6960" class="cite xref">RFC6960</a>]</span> and a responder that is operating
-in a mode as described in this specification.<a href="#section-1-7" class="pilcrow">¶</a></p>
-<p id="section-1-8">Substantive changes to RFC 5019:<a href="#section-1-8" class="pilcrow">¶</a></p>
+above.<a href="#section-1-7" class="pilcrow">¶</a></p>
+<p id="section-1-8">OCSP does not have the means to signal responder capabilities within the
+protocol. Thus, clients will need to use out-of-band mechanisms to
+determine whether a responder conforms to the profile defined in this
+document. Regardless of the availability of such out-of-band mechanisms,
+this profile ensures that interoperability will still occur between an
+OCSP client that fully conforms with <span>[<a href="#RFC6960" class="cite xref">RFC6960</a>]</span> and a responder that is
+operating in a mode as described in this specification.<a href="#section-1-8" class="pilcrow">¶</a></p>
+<p id="section-1-9">Substantive changes to RFC 5019:<a href="#section-1-9" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-1-9.1">
-          <p id="section-1-9.1.1"><a href="#certid" class="auto internal xref">Section 3.1.1</a> requires new OCSP clients to use SHA-256 to
-support migration for OCSP clients.<a href="#section-1-9.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-1-10.1">
+          <p id="section-1-10.1.1"><a href="#certid" class="auto internal xref">Section 3.1.1</a> requires new OCSP clients to use SHA-256 to
+support migration for OCSP clients.<a href="#section-1-10.1.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="section-1-9.2">
-          <p id="section-1-9.2.1"><a href="#byKey" class="auto internal xref">Section 3.2.2</a> requires new OCSP responders to use the byKey field,
-and support migration from byName fields.<a href="#section-1-9.2.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="section-1-10.2">
+          <p id="section-1-10.2.1"><a href="#byKey" class="auto internal xref">Section 3.2.2</a> requires new OCSP responders to use the byKey field,
+and support migration from byName fields.<a href="#section-1-10.2.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="section-1-9.3">
-          <p id="section-1-9.3.1"><a href="#transport" class="auto internal xref">Section 6</a> clarifies OCSP clients not include
+        <li class="normal" id="section-1-10.3">
+          <p id="section-1-10.3.1"><a href="#transport" class="auto internal xref">Section 6</a> clarifies OCSP clients not include
 whitespace or any other characters that are not part of
-the base64 character repertoire in the base64-encoded string.<a href="#section-1-9.3.1" class="pilcrow">¶</a></p>
+the base64 character repertoire in the base64-encoded string.<a href="#section-1-10.3.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 </section>
@@ -1645,7 +1643,7 @@ larger than 255 bytes <span class="bcp14">SHOULD</span> be submitted using the P
 all cases, clients <span class="bcp14">MUST</span> follow the descriptions in A.1 of <span>[<a href="#RFC6960" class="cite xref">RFC6960</a>]</span>
 when constructing these messages.<a href="#section-6-1" class="pilcrow">¶</a></p>
 <p id="section-6-2">When constructing a GET message, OCSP clients <span class="bcp14">MUST</span> base64-encode the
-OCSPRequest structure according to <span>[<a href="#RFC4648" class="cite xref">RFC4648</a>]</span>, section 3. Clients
+OCSPRequest structure according to <span>[<a href="#RFC4648" class="cite xref">RFC4648</a>]</span>, section 4. Clients
 <span class="bcp14">MUST NOT</span> include whitespace or any other characters that are not part of
 the base64 character repertoire in the base64-encoded string. Clients
 <span class="bcp14">MUST</span> properly URL-encode the base64-encoded OCSPRequest according to
@@ -2008,8 +2006,8 @@ requestors or restrict or meter service.<a href="#section-8.6-1" class="pilcrow"
 <a href="#name-acknowledgments" class="section-name selfRef">Acknowledgments</a>
       </h2>
 <p id="appendix-A-1">The authors of this version of the document wish to thank Alex Deacon
-and Ryan Hurst for all of their work to produce the original version
-of the OCSP protocol.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+and Ryan Hurst for their work to produce the original version
+of the lightweight profile for the OCSP protocol.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
 <p id="appendix-A-2">The authors of this version of the document wish to thank
 Russ Housley and Rob Stradling for the feedback and suggestions.<a href="#appendix-A-2" class="pilcrow">¶</a></p>
 <p id="appendix-A-3">The authors wish to thank Magnus Nystrom of RSA Security, Inc.,
