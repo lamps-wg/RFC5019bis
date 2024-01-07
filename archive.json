@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-01-04T00:28:28.867825+00:00",
+  "timestamp": "2024-01-07T00:31:42.382224+00:00",
   "repo": "lamps-wg/RFC5019bis",
   "labels": [
     {
@@ -2139,6 +2139,61 @@
       },
       "comments": [],
       "reviews": []
+    },
+    {
+      "number": 48,
+      "id": "PR_kwDOHwB1bc5jQkpJ",
+      "title": "Fixes suggested by Rob",
+      "url": "https://github.com/lamps-wg/RFC5019bis/pull/48",
+      "state": "MERGED",
+      "author": "CBonnell",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Also fixes section reference to RFC 4648.",
+      "createdAt": "2024-01-04T20:57:20Z",
+      "updatedAt": "2024-01-05T14:29:49Z",
+      "baseRepository": "lamps-wg/RFC5019bis",
+      "baseRefName": "main",
+      "baseRefOid": "0bbc3451088817599af18a01eedb5ad19f5aa900",
+      "headRepository": "lamps-wg/RFC5019bis",
+      "headRefName": "rob-fixes",
+      "headRefOid": "b46f2a519cdbaa524c14e4a8233f2cd625585916",
+      "closedAt": "2024-01-05T14:29:45Z",
+      "mergedAt": "2024-01-05T14:29:45Z",
+      "mergedBy": "CBonnell",
+      "mergeCommit": {
+        "oid": "63ad7ab5f48841dbed49fc33297363691644ad95"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOHwB1bc5rnjbU",
+          "commit": {
+            "abbreviatedOid": "b46f2a5"
+          },
+          "author": "tadahik",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "looks good to me\r\n\r\nI also confirmed every section number in this document, including section 4 of RFC4648\r\nhttps://datatracker.ietf.org/doc/html/rfc4648#section-4",
+          "createdAt": "2024-01-05T08:29:55Z",
+          "updatedAt": "2024-01-05T08:29:55Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOHwB1bc5rnjuF",
+          "commit": {
+            "abbreviatedOid": "b46f2a5"
+          },
+          "author": "robstradling",
+          "authorAssociation": "NONE",
+          "state": "APPROVED",
+          "body": "Thanks @CBonnell.  LGTM.",
+          "createdAt": "2024-01-05T08:30:50Z",
+          "updatedAt": "2024-01-05T08:30:50Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
