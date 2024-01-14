@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-01-11T00:28:38.919854+00:00",
+  "timestamp": "2024-01-14T00:31:32.145213+00:00",
   "repo": "lamps-wg/RFC5019bis",
   "labels": [
     {
@@ -2194,6 +2194,32 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 49,
+      "id": "PR_kwDOHwB1bc5j9Bhw",
+      "title": "OCSP staping legacy support",
+      "url": "https://github.com/lamps-wg/RFC5019bis/pull/49",
+      "state": "OPEN",
+      "author": "CBonnell",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-01-12T17:42:13Z",
+      "updatedAt": "2024-01-12T19:44:00Z",
+      "baseRepository": "lamps-wg/RFC5019bis",
+      "baseRefName": "main",
+      "baseRefOid": "63ad7ab5f48841dbed49fc33297363691644ad95",
+      "headRepository": "lamps-wg/RFC5019bis",
+      "headRefName": "stapling",
+      "headRefOid": "cf55084bfcee58126e28ef84ab651cda1e453c3b",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
