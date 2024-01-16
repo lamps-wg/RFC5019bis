@@ -529,8 +529,9 @@ from {{?RFC3143}}.
 
 To provide support to OCSP clients which do not yet
 support the use of SHA-256 for CertID hash calculation, the OCSP
-responder MAY include two SingleResponses in the OCSP basic response.
-The CertID of one of the SingleResponses uses SHA-1 for the hash
+responder MAY include two SingleResponses in a BasicOCSPResponse.
+In that BasicOCSPResponse,
+the CertID of one of the SingleResponses uses SHA-1 for the hash
 calculation, and the CertID in the other SingleResponse uses SHA-256.
 Once clients reliant on or relevant to a given OCSP responder have
 migrated to the profile as defined in this specification, OCSP
