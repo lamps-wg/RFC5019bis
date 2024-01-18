@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-01-16T00:28:38.494969+00:00",
+  "timestamp": "2024-01-18T00:28:30.716512+00:00",
   "repo": "lamps-wg/RFC5019bis",
   "labels": [
     {
@@ -2200,20 +2200,102 @@
       "id": "PR_kwDOHwB1bc5j9Bhw",
       "title": "OCSP staping legacy support",
       "url": "https://github.com/lamps-wg/RFC5019bis/pull/49",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "CBonnell",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2024-01-12T17:42:13Z",
-      "updatedAt": "2024-01-12T19:44:00Z",
+      "updatedAt": "2024-01-16T17:24:13Z",
       "baseRepository": "lamps-wg/RFC5019bis",
       "baseRefName": "main",
       "baseRefOid": "63ad7ab5f48841dbed49fc33297363691644ad95",
       "headRepository": "lamps-wg/RFC5019bis",
       "headRefName": "stapling",
       "headRefOid": "cf55084bfcee58126e28ef84ab651cda1e453c3b",
+      "closedAt": "2024-01-16T17:24:13Z",
+      "mergedAt": "2024-01-16T17:24:13Z",
+      "mergedBy": "tadahik",
+      "mergeCommit": {
+        "oid": "5d7c36475b7e6272b18d0b8fdbc5dec3c0996c59"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOHwB1bc5ssS65",
+          "commit": {
+            "abbreviatedOid": "cf55084"
+          },
+          "author": "seanturner",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-01-16T14:22:14Z",
+          "updatedAt": "2024-01-16T14:22:14Z",
+          "comments": [
+            {
+              "originalPosition": 6,
+              "body": "```suggestion\r\nresponder MAY include two SingleResponses in a BasicOCSPResponse.\r\n```",
+              "createdAt": "2024-01-16T14:22:14Z",
+              "updatedAt": "2024-01-16T14:22:15Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOHwB1bc5ssVYv",
+          "commit": {
+            "abbreviatedOid": "cf55084"
+          },
+          "author": "seanturner",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-01-16T14:24:40Z",
+          "updatedAt": "2024-01-16T14:24:40Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "```suggestion\r\nIn that BasicOCSPResponse, the CertID of one of the SingleResponses uses SHA-1 for the hash\r\n```",
+              "createdAt": "2024-01-16T14:24:40Z",
+              "updatedAt": "2024-01-16T14:24:40Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOHwB1bc5svIo7",
+          "commit": {
+            "abbreviatedOid": "cf55084"
+          },
+          "author": "tadahik",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "It look good to me",
+          "createdAt": "2024-01-16T17:20:05Z",
+          "updatedAt": "2024-01-16T17:20:05Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 50,
+      "id": "PR_kwDOHwB1bc5kOiqo",
+      "title": "Update draft-ietf-lamps-rfc5019bis.md",
+      "url": "https://github.com/lamps-wg/RFC5019bis/pull/50",
+      "state": "OPEN",
+      "author": "tadahik",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "fix a nit for BasicOCSPResponse",
+      "createdAt": "2024-01-16T18:29:04Z",
+      "updatedAt": "2024-01-16T18:29:04Z",
+      "baseRepository": "lamps-wg/RFC5019bis",
+      "baseRefName": "main",
+      "baseRefOid": "5d7c36475b7e6272b18d0b8fdbc5dec3c0996c59",
+      "headRepository": "lamps-wg/RFC5019bis",
+      "headRefName": "BasicOCSPResponse",
+      "headRefOid": "9d0aac41ecae1d07b41f67754520d1ff7a94c535",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
