@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-01-25T00:29:05.574752+00:00",
+  "timestamp": "2024-01-28T00:29:13.660776+00:00",
   "repo": "lamps-wg/RFC5019bis",
   "labels": [
     {
@@ -2282,26 +2282,42 @@
       "id": "PR_kwDOHwB1bc5kOiqo",
       "title": "Update draft-ietf-lamps-rfc5019bis.md",
       "url": "https://github.com/lamps-wg/RFC5019bis/pull/50",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "tadahik",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "fix a nit for BasicOCSPResponse",
       "createdAt": "2024-01-16T18:29:04Z",
-      "updatedAt": "2024-01-16T18:29:04Z",
+      "updatedAt": "2024-01-26T23:29:25Z",
       "baseRepository": "lamps-wg/RFC5019bis",
       "baseRefName": "main",
       "baseRefOid": "5d7c36475b7e6272b18d0b8fdbc5dec3c0996c59",
       "headRepository": "lamps-wg/RFC5019bis",
       "headRefName": "BasicOCSPResponse",
       "headRefOid": "9d0aac41ecae1d07b41f67754520d1ff7a94c535",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2024-01-26T23:29:24Z",
+      "mergedAt": "2024-01-26T23:29:24Z",
+      "mergedBy": "tadahik",
+      "mergeCommit": {
+        "oid": "d22b6eb15aa5d3dad2985e40efe1fb2f68e514f4"
+      },
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOHwB1bc5t9SGo",
+          "commit": {
+            "abbreviatedOid": "9d0aac4"
+          },
+          "author": "CBonnell",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-01-25T22:22:05Z",
+          "updatedAt": "2024-01-25T22:22:05Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
