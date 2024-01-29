@@ -14,11 +14,11 @@
 An RFC 5019 compliant OCSP client is still able to use SHA-1,
 but the use of SHA-1 may become obsolete in the future. 
     " name="description">
-<meta content="xml2rfc 3.19.0" name="generator">
+<meta content="xml2rfc 3.19.1" name="generator">
 <meta content="Internet-Draft" name="keyword">
 <meta content="draft-ietf-lamps-rfc5019bis-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.19.0
+  xml2rfc 3.19.1
     Python 3.11.6
     ConfigArgParse 1.7
     google-i18n-address 3.1.0
@@ -31,7 +31,7 @@ but the use of SHA-1 may become obsolete in the future.
     requests 2.31.0
     setuptools 68.2.2
     six 1.16.0
-    wcwidth 0.2.12
+    wcwidth 0.2.13
 -->
 <link href="draft-ietf-lamps-rfc5019bis.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
@@ -1034,7 +1034,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Ito, et al.</td>
-<td class="center">Expires 14 July 2024</td>
+<td class="center">Expires 1 August 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1050,12 +1050,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <a href="https://www.rfc-editor.org/rfc/rfc5019" class="eref">5019</a> (if approved)</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-01-11" class="published">11 January 2024</time>
+<time datetime="2024-01-29" class="published">29 January 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-07-14">14 July 2024</time></dd>
+<dd class="expires"><time datetime="2024-08-01">1 August 2024</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1112,7 +1112,7 @@ but the use of SHA-1 may become obsolete in the future.<a href="#section-abstrac
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 14 July 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 1 August 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1813,6 +1813,16 @@ but can be applied to any client-server protocol.<a href="#section-7.3-6" class=
 the certificate status request extension mechanism for TLS.<a href="#section-7.3-7" class="pilcrow">¶</a></p>
 <p id="section-7.3-8">Further information regarding caching issues can be obtained
 from <span>[<a href="#RFC3143" class="cite xref">RFC3143</a>]</span>.<a href="#section-7.3-8" class="pilcrow">¶</a></p>
+<p id="section-7.3-9">To provide support to OCSP clients which do not yet
+support the use of SHA-256 for CertID hash calculation, the OCSP
+responder <span class="bcp14">MAY</span> include two SingleResponses in a BasicOCSPResponse.
+In that BasicOCSPResponse,
+the CertID of one of the SingleResponses uses SHA-1 for the hash
+calculation, and the CertID in the other SingleResponse uses SHA-256.
+Once clients reliant on or relevant to a given OCSP responder have
+migrated to the profile as defined in this specification, OCSP
+responders <span class="bcp14">SHALL NOT</span> distribute OCSP responses that contain CertIDs that
+use SHA-1.<a href="#section-7.3-9" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
