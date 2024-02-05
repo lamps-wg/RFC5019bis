@@ -6,11 +6,11 @@ Network Working Group                                 伊藤 忠彦 (T. Ito)
 Internet-Draft                                           SECOM CO., LTD.
 Obsoletes: 5019 (if approved)                                  C. Wilson
 Intended status: Standards Track                             Apple, Inc.
-Expires: 7 July 2024                                          C. Bonnell
+Expires: 8 August 2024                                        C. Bonnell
                                                           DigiCert, Inc.
                                                                S. Turner
                                                                    sn3rd
-                                                          4 January 2024
+                                                         5 February 2024
 
 
     Updates to Lightweight OCSP Profile for High Volume Environments
@@ -44,7 +44,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 7 July 2024.
+   This Internet-Draft will expire on 8 August 2024.
 
 Copyright Notice
 
@@ -593,6 +593,15 @@ Table of Contents
 
    Further information regarding caching issues can be obtained from
    [RFC3143].
+
+   To provide support to OCSP clients which do not yet support the use
+   of SHA-256 for CertID hash calculation, the OCSP responder MAY
+   include two SingleResponses in a BasicOCSPResponse.  In that
+   BasicOCSPResponse, the CertID of one of the SingleResponses uses
+   SHA-1 for the hash calculation, and the CertID in the other
+   SingleResponse uses SHA-256.  OCSP responders SHOULD NOT distribute
+   OCSP responses that contain CertIDs that use SHA-1 if the OCSP
+   responder has no clients that require the use of SHA-1.
 
 8.  Security Considerations
 
