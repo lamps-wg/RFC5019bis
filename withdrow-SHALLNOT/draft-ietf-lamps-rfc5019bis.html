@@ -1639,7 +1639,7 @@ When sending requests that are less than or equal to 255 bytes in
 total (after encoding) including the scheme and delimiters (http://),
 server name and base64-encoded OCSPRequest structure, clients <span class="bcp14">MUST</span>
 use the GET method (to enable OCSP response caching). OCSP requests
-larger than 255 bytes <span class="bcp14">SHOULD</span> be submitted using the POST method. In
+larger than 255 bytes <span class="bcp14">SHOULD</span> be submitted using the QUERY method. In
 all cases, clients <span class="bcp14">MUST</span> follow the descriptions in A.1 of <span>[<a href="#RFC6960" class="cite xref">RFC6960</a>]</span>
 when constructing these messages.<a href="#section-6-1" class="pilcrow">¶</a></p>
 <p id="section-6-2">When constructing a GET message, OCSP clients <span class="bcp14">MUST</span> base64-encode the

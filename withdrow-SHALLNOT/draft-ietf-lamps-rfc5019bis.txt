@@ -427,7 +427,7 @@ Table of Contents
    total (after encoding) including the scheme and delimiters (http://),
    server name and base64-encoded OCSPRequest structure, clients MUST
    use the GET method (to enable OCSP response caching).  OCSP requests
-   larger than 255 bytes SHOULD be submitted using the POST method.  In
+   larger than 255 bytes SHOULD be submitted using the QUERY method.  In
    all cases, clients MUST follow the descriptions in A.1 of [RFC6960]
    when constructing these messages.
 
