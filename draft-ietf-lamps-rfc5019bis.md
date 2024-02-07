@@ -144,6 +144,31 @@ functionality as defined in {{RFC6960}}.
 
 ### OCSPRequest Structure {#certid}
 
+The ASN.1 structure corresponding to the OCSPRequest
+and relevant with CertID is:
+
+~~~~~~
+OCSPRequest     ::=     SEQUENCE {
+       tbsRequest                  TBSRequest,
+       optionalSignature   [0]     EXPLICIT Signature OPTIONAL }
+
+TBSRequest      ::=     SEQUENCE {
+       version             [0]     EXPLICIT Version DEFAULT v1,
+       requestorName       [1]     EXPLICIT GeneralName OPTIONAL,
+       requestList                 SEQUENCE OF Request,
+       requestExtensions   [2]     EXPLICIT Extensions OPTIONAL }
+
+Request         ::=     SEQUENCE {
+       reqCert                     CertID,
+       singleRequestExtensions     [0] EXPLICIT Extensions OPTIONAL }
+
+CertID          ::=     SEQUENCE {
+       hashAlgorithm       AlgorithmIdentifier,
+       issuerNameHash      OCTET STRING, -- Hash of issuer's DN
+       issuerKeyHash       OCTET STRING, -- Hash of issuer's public key
+       serialNumber        CertificateSerialNumber }
+~~~~~~
+
 OCSPRequests that conform to this profile MUST include only one Request
 in the OCSPRequest.RequestList structure.
 
@@ -180,6 +205,40 @@ requestorName field were absent.
 ## OCSP Response Profile
 
 ### OCSPResponse Structure
+The ASN.1 structure corresponding to the OCSPResponse
+and relevant with CertID is:
+
+~~~~~~
+OCSPResponse ::= SEQUENCE {
+      responseStatus         OCSPResponseStatus,
+      responseBytes          [0] EXPLICIT ResponseBytes OPTIONAL }
+
+ResponseBytes ::=       SEQUENCE {
+        responseType   OBJECT IDENTIFIER,
+        response       OCTET STRING }
+
+The value for response SHALL be the DER encoding of BasicOCSPResponse.
+
+BasicOCSPResponse       ::= SEQUENCE {
+      tbsResponseData      ResponseData,
+      signatureAlgorithm   AlgorithmIdentifier,
+      signature            BIT STRING,
+      certs            [0] EXPLICIT SEQUENCE OF Certificate OPTIONAL }
+
+ResponseData ::= SEQUENCE {
+      version              [0] EXPLICIT Version DEFAULT v1,
+      responderID              ResponderID,
+      producedAt               GeneralizedTime,
+      responses                SEQUENCE OF SingleResponse,
+      responseExtensions   [1] EXPLICIT Extensions OPTIONAL }
+
+SingleResponse ::= SEQUENCE {
+      certID                       CertID,
+      certStatus                   CertStatus,
+      thisUpdate                   GeneralizedTime,
+      nextUpdate         [0]       EXPLICIT GeneralizedTime OPTIONAL,
+      singleExtensions   [1]       EXPLICIT Extensions OPTIONAL }
+~~~~~~
 
 Responders MUST generate a BasicOCSPResponse as identified by the
 id-pkix-ocsp-basic OID. Clients MUST be able to parse and accept a
