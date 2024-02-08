@@ -246,7 +246,7 @@ BasicOCSPResponse. OCSPResponses that conform to this profile SHOULD
 include only one SingleResponse in the
 ResponseData.responses structure, but MAY include
 additional SingleResponse elements if necessary to improve response
-pre-generation performance　or cache efficiency
+pre-generation performance or cache efficiency
 with ensuring backwardcompatibility. For instance,
 to provide support to OCSP clients which do not yet support the
 use of SHA-256 for CertID hash calculation, the OCSP responder
