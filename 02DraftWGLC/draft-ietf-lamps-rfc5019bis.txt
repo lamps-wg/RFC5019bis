@@ -6,11 +6,11 @@ Network Working Group                                 伊藤 忠彦 (T. Ito)
 Internet-Draft                                           SECOM CO., LTD.
 Obsoletes: 5019 (if approved)                                  C. Wilson
 Intended status: Standards Track                             Apple, Inc.
-Expires: 10 August 2024                                       C. Bonnell
+Expires: 11 August 2024                                       C. Bonnell
                                                           DigiCert, Inc.
                                                                S. Turner
                                                                    sn3rd
-                                                         7 February 2024
+                                                         8 February 2024
 
 
     Updates to Lightweight OCSP Profile for High Volume Environments
@@ -44,7 +44,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 10 August 2024.
+   This Internet-Draft will expire on 11 August 2024.
 
 Copyright Notice
 
@@ -289,12 +289,19 @@ Table of Contents
    Responders MUST generate a BasicOCSPResponse as identified by the id-
    pkix-ocsp-basic OID.  Clients MUST be able to parse and accept a
    BasicOCSPResponse.  OCSPResponses that conform to this profile SHOULD
-   include only one SingleResponse in the ResponseData.responses
-   structure, but MAY include additional SingleResponse elements if
-   necessary to improve response pre-generation performance or cache
-   efficiency.  For instance, ResponseData.responses of OCSPResponses
-   that conform to this profile MAY include two SingleResponse with
-   SHA-1 and SHA-256 certID of the same certificate.
+   include only one SingleResponse in the
+   BasicOCSPResponse.ResponseData.responses structure, but MAY include
+   additional SingleResponse elements if necessary to improve response
+   pre-generation performance　or cache efficiency with ensuring
+   backwardcompatibility.  For instance, to provide support to OCSP
+   clients which do not yet support the use of SHA-256 for CertID hash
+   calculation, the OCSP responder MAY include two SingleResponses in a
+   BasicOCSPResponse.ResponseData.responses structure.  In that
+   BasicOCSPResponse, the CertID of one of the SingleResponses uses
+   SHA-1 for the hash calculation, and the CertID in the other
+   SingleResponse uses SHA-256.  OCSP responders SHOULD NOT distribute
+   OCSP responses that contain CertIDs that use SHA-1 if the OCSP
+   responder has no clients that require the use of SHA-1.
 
    The responder SHOULD NOT include responseExtensions.  As specified in
    [RFC6960], clients MUST ignore unrecognized non-critical
@@ -649,15 +656,6 @@ Table of Contents
 
    Further information regarding caching issues can be obtained from
    [RFC3143].
-
-   To provide support to OCSP clients which do not yet support the use
-   of SHA-256 for CertID hash calculation, the OCSP responder MAY
-   include two SingleResponses in a BasicOCSPResponse.  In that
-   BasicOCSPResponse, the CertID of one of the SingleResponses uses
-   SHA-1 for the hash calculation, and the CertID in the other
-   SingleResponse uses SHA-256.  OCSP responders SHOULD NOT distribute
-   OCSP responses that contain CertIDs that use SHA-1 if the OCSP
-   responder has no clients that require the use of SHA-1.
 
 8.  Security Considerations
 
