@@ -243,12 +243,20 @@ SingleResponse ::= SEQUENCE {
 Responders MUST generate a BasicOCSPResponse as identified by the
 id-pkix-ocsp-basic OID. Clients MUST be able to parse and accept a
 BasicOCSPResponse. OCSPResponses that conform to this profile SHOULD
-include only one SingleResponse in the ResponseData.responses
-structure, but MAY include additional SingleResponse elements if
-necessary to improve response pre-generation performance or cache
-efficiency. For instance, ResponseData.responses of OCSPResponses
-that conform to this profile MAY include two SingleResponse
-with SHA-1 and SHA-256 certID of the same certificate.
+include only one SingleResponse in the
+BasicOCSPResponse.ResponseData.responses structure, but MAY include
+additional SingleResponse elements if necessary to improve response
+pre-generation performance　or cache efficiency
+with ensuring backwardcompatibility. For instance,
+to provide support to OCSP clients which do not yet support the
+use of SHA-256 for CertID hash calculation, the OCSP responder
+MAY include two SingleResponses in a
+BasicOCSPResponse.ResponseData.responses structure.
+In that BasicOCSPResponse, the CertID of one of the SingleResponses
+uses SHA-1 for the hash calculation, and the CertID in the other
+SingleResponse uses SHA-256. OCSP responders SHOULD NOT distribute
+OCSP responses that contain CertIDs that use SHA-1 if the OCSP
+responder has no clients that require the use of SHA-1.
 
 The responder SHOULD NOT include responseExtensions. As specified in
 {{RFC6960}}, clients MUST ignore unrecognized non-critical
@@ -585,16 +593,6 @@ the certificate status request extension mechanism for TLS.
 
 Further information regarding caching issues can be obtained
 from {{?RFC3143}}.
-
-To provide support to OCSP clients which do not yet
-support the use of SHA-256 for CertID hash calculation, the OCSP
-responder MAY include two SingleResponses in a BasicOCSPResponse.
-In that BasicOCSPResponse,
-the CertID of one of the SingleResponses uses SHA-1 for the hash
-calculation, and the CertID in the other SingleResponse uses SHA-256.
-OCSP responders SHOULD NOT distribute OCSP responses that contain
-CertIDs that use SHA-1 if the OCSP responder has no clients
-that require the use of SHA-1.
 
 # Security Considerations {#sec-cons}
 
