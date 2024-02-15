@@ -144,6 +144,31 @@ functionality as defined in {{RFC6960}}.
 
 ### OCSPRequest Structure {#certid}
 
+The ASN.1 structure corresponding to the OCSPRequest
+with the relevant CertID is:
+
+~~~~~~
+OCSPRequest     ::=     SEQUENCE {
+       tbsRequest                  TBSRequest,
+       optionalSignature   [0]     EXPLICIT Signature OPTIONAL }
+
+TBSRequest      ::=     SEQUENCE {
+       version             [0]     EXPLICIT Version DEFAULT v1,
+       requestorName       [1]     EXPLICIT GeneralName OPTIONAL,
+       requestList                 SEQUENCE OF Request,
+       requestExtensions   [2]     EXPLICIT Extensions OPTIONAL }
+
+Request         ::=     SEQUENCE {
+       reqCert                     CertID,
+       singleRequestExtensions     [0] EXPLICIT Extensions OPTIONAL }
+
+CertID          ::=     SEQUENCE {
+       hashAlgorithm       AlgorithmIdentifier,
+       issuerNameHash      OCTET STRING, -- Hash of issuer's DN
+       issuerKeyHash       OCTET STRING, -- Hash of issuer's public key
+       serialNumber        CertificateSerialNumber }
+~~~~~~
+
 OCSPRequests that conform to this profile MUST include only one Request
 in the OCSPRequest.RequestList structure.
 
@@ -180,16 +205,61 @@ requestorName field were absent.
 ## OCSP Response Profile
 
 ### OCSPResponse Structure
+The ASN.1 structure corresponding to the OCSPResponse
+with the relevant CertID is:
+
+~~~~~~
+OCSPResponse ::= SEQUENCE {
+      responseStatus         OCSPResponseStatus,
+      responseBytes          [0] EXPLICIT ResponseBytes OPTIONAL }
+
+ResponseBytes ::=       SEQUENCE {
+        responseType   OBJECT IDENTIFIER,
+        response       OCTET STRING }
+
+The value for response SHALL be the DER encoding of BasicOCSPResponse.
+
+BasicOCSPResponse       ::= SEQUENCE {
+      tbsResponseData      ResponseData,
+      signatureAlgorithm   AlgorithmIdentifier,
+      signature            BIT STRING,
+      certs            [0] EXPLICIT SEQUENCE OF Certificate OPTIONAL }
+
+ResponseData ::= SEQUENCE {
+      version              [0] EXPLICIT Version DEFAULT v1,
+      responderID              ResponderID,
+      producedAt               GeneralizedTime,
+      responses                SEQUENCE OF SingleResponse,
+      responseExtensions   [1] EXPLICIT Extensions OPTIONAL }
+
+SingleResponse ::= SEQUENCE {
+      certID                       CertID,
+      certStatus                   CertStatus,
+      thisUpdate                   GeneralizedTime,
+      nextUpdate         [0]       EXPLICIT GeneralizedTime OPTIONAL,
+      singleExtensions   [1]       EXPLICIT Extensions OPTIONAL }
+~~~~~~
 
 Responders MUST generate a BasicOCSPResponse as identified by the
 id-pkix-ocsp-basic OID. Clients MUST be able to parse and accept a
 BasicOCSPResponse. OCSPResponses that conform to this profile SHOULD
-include only one SingleResponse in the ResponseData.responses
-structure, but MAY include additional SingleResponse elements if
-necessary to improve response pre-generation performance or cache
-efficiency. For instance, ResponseData.responses of OCSPResponses
-that conform to this profile MAY include two SingleResponse
-with SHA-1 and SHA-256 certID of the same certificate.
+include only one SingleResponse in the
+ResponseData.responses structure, but MAY include
+additional SingleResponse elements if necessary to improve response
+pre-generation performance or cache efficiency, and
+to ensure backward compatibility. For instance,
+to provide support to OCSP clients which do not yet support the
+use of SHA-256 for CertID hash calculation, the OCSP responder
+MAY include two SingleResponses in a BasicOCSPResponse.
+In that BasicOCSPResponse, the CertID of one of the SingleResponses
+uses SHA-1 for the hash calculation, and the CertID in the other
+SingleResponse uses SHA-256. OCSP responders SHOULD NOT distribute
+OCSP responses that contain CertIDs that use SHA-1 if the OCSP
+responder has no clients that require the use of SHA-1.
+Operators of OCSP responders may consider logging the hash
+algorithm used by OCSP clients to inform their determination of
+when it is appropriate to obsolete the distribution of OCSP responses
+that employ SHA-1 for CertID field hashes.
 
 The responder SHOULD NOT include responseExtensions. As specified in
 {{RFC6960}}, clients MUST ignore unrecognized non-critical
@@ -369,13 +439,16 @@ to the calling application environment. For example, Internet peers
 with low latency connections typically expect NTP time
 synchronization to keep them accurate within parts of a second;
 higher latency environments or where an NTP analogue is not available
-may have to be more liberal in their tolerance.
+may have to be more liberal in their tolerance
+(e.g. allow one day difference).
 
 See the security considerations in {{sec-cons}} for additional details
 on replay and man-in-the-middle attacks.
 
 # Transport Profile {#transport}
 
+HTTP-based OCSP requests can use either the GET or the POST method
+to submit their requests.
 The OCSP responder MUST support requests and responses over HTTP.
 When sending requests that are less than or equal to 255 bytes in
 total (after encoding) including the scheme and delimiters (http://),
@@ -526,17 +599,6 @@ the certificate status request extension mechanism for TLS.
 
 Further information regarding caching issues can be obtained
 from {{?RFC3143}}.
-
-To provide support to OCSP clients which do not yet
-support the use of SHA-256 for CertID hash calculation, the OCSP
-responder MAY include two SingleResponses in a BasicOCSPResponse.
-In that BasicOCSPResponse,
-the CertID of one of the SingleResponses uses SHA-1 for the hash
-calculation, and the CertID in the other SingleResponse uses SHA-256.
-Once clients reliant on or relevant to a given OCSP responder have
-migrated to the profile as defined in this specification, OCSP
-responders SHALL NOT distribute OCSP responses that contain CertIDs that
-use SHA-1.
 
 # Security Considerations {#sec-cons}
 
