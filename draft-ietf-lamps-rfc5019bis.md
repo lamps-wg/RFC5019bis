@@ -145,7 +145,7 @@ functionality as defined in {{RFC6960}}.
 ### OCSPRequest Structure {#certid}
 
 The ASN.1 structure corresponding to the OCSPRequest
-and relevant with CertID is:
+with the relevant CertID is:
 
 ~~~~~~
 OCSPRequest     ::=     SEQUENCE {
@@ -206,7 +206,7 @@ requestorName field were absent.
 
 ### OCSPResponse Structure
 The ASN.1 structure corresponding to the OCSPResponse
-and relevant with CertID is:
+with the relevant CertID is:
 
 ~~~~~~
 OCSPResponse ::= SEQUENCE {
@@ -246,8 +246,8 @@ BasicOCSPResponse. OCSPResponses that conform to this profile SHOULD
 include only one SingleResponse in the
 ResponseData.responses structure, but MAY include
 additional SingleResponse elements if necessary to improve response
-pre-generation performance or cache efficiency
-with ensuring backward compatibility. For instance,
+pre-generation performance or cache efficiency, and
+to ensure backward compatibility. For instance,
 to provide support to OCSP clients which do not yet support the
 use of SHA-256 for CertID hash calculation, the OCSP responder
 MAY include two SingleResponses in a BasicOCSPResponse.
@@ -256,6 +256,10 @@ uses SHA-1 for the hash calculation, and the CertID in the other
 SingleResponse uses SHA-256. OCSP responders SHOULD NOT distribute
 OCSP responses that contain CertIDs that use SHA-1 if the OCSP
 responder has no clients that require the use of SHA-1.
+Operators of OCSP responders may consider logging the hash
+algorithm used by OCSP clients to inform their determination of
+when it is appropriate to obsolete the distribution of OCSP responses
+that employ SHA-1 for CertID field hashes.
 
 The responder SHOULD NOT include responseExtensions. As specified in
 {{RFC6960}}, clients MUST ignore unrecognized non-critical
@@ -435,13 +439,16 @@ to the calling application environment. For example, Internet peers
 with low latency connections typically expect NTP time
 synchronization to keep them accurate within parts of a second;
 higher latency environments or where an NTP analogue is not available
-may have to be more liberal in their tolerance.
+may have to be more liberal in their tolerance
+(e.g. allow one day difference).
 
 See the security considerations in {{sec-cons}} for additional details
 on replay and man-in-the-middle attacks.
 
 # Transport Profile {#transport}
 
+HTTP-based OCSP requests can use either the GET or the POST method
+to submit their requests.
 The OCSP responder MUST support requests and responses over HTTP.
 When sending requests that are less than or equal to 255 bytes in
 total (after encoding) including the scheme and delimiters (http://),
