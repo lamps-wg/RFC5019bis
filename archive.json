@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-02-15T00:26:41.456892+00:00",
+  "timestamp": "2024-02-18T00:29:10.239253+00:00",
   "repo": "lamps-wg/RFC5019bis",
   "labels": [
     {
@@ -2315,6 +2315,48 @@
           "body": "",
           "createdAt": "2024-01-25T22:22:05Z",
           "updatedAt": "2024-01-25T22:22:05Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 51,
+      "id": "PR_kwDOHwB1bc5m7KQ3",
+      "title": "address comments on WGLC(02Draft)",
+      "url": "https://github.com/lamps-wg/RFC5019bis/pull/51",
+      "state": "MERGED",
+      "author": "tadahik",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Addressed Rob\u2019s comment with Tim, Russ comment\r\nhttps://mailarchive.ietf.org/arch/msg/spasm/Bk-0_zas5PTqL-us0JDv8fyQQWQ/\r\n- remove SHALL NOT\r\n- move two SingleResponse sentence to profile section with explicitly mention about backward compatibility\r\n\r\nAddressed Rich\u2019s comment\r\nhttps://mailarchive.ietf.org/arch/msg/spasm/cu1gJwy2kxHqxrjGwarA5kPs3lo/\r\n- List the terms that come from ASN.1 of 5019/6960 \r\n- with the fact of some environment allow a day of leeway, so add \u201c(e.g. allow one day difference)\u201d\r\n- add \"HTTP-based OCSP requests can use either the GET or the POST method to submit their requests.\"\r\n\r\nAdd possibility of logging requests to check how much SHA-1 is used for Client\u2019s CertID, and use that information to determine when to stop SHA-1 support. ",
+      "createdAt": "2024-02-15T03:11:04Z",
+      "updatedAt": "2024-02-15T16:06:28Z",
+      "baseRepository": "lamps-wg/RFC5019bis",
+      "baseRefName": "main",
+      "baseRefOid": "d22b6eb15aa5d3dad2985e40efe1fb2f68e514f4",
+      "headRepository": "lamps-wg/RFC5019bis",
+      "headRefName": "02DraftWGLC",
+      "headRefOid": "f41a7d61e171af32c7816acf54161229cf5385fb",
+      "closedAt": "2024-02-15T16:06:28Z",
+      "mergedAt": "2024-02-15T16:06:28Z",
+      "mergedBy": "tadahik",
+      "mergeCommit": {
+        "oid": "b8e768c8e23186b4357a2004d9bfefc56890769f"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOHwB1bc5wOHN5",
+          "commit": {
+            "abbreviatedOid": "f41a7d6"
+          },
+          "author": "CBonnell",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-02-15T13:20:13Z",
+          "updatedAt": "2024-02-15T13:20:13Z",
           "comments": []
         }
       ]
