@@ -149,24 +149,24 @@ with the relevant CertID is:
 
 ~~~~~~
 OCSPRequest     ::=     SEQUENCE {
-       tbsRequest                  TBSRequest,
-       optionalSignature   [0]     EXPLICIT Signature OPTIONAL }
+   tbsRequest                  TBSRequest,
+   optionalSignature   [0]     EXPLICIT Signature OPTIONAL }
 
 TBSRequest      ::=     SEQUENCE {
-       version             [0]     EXPLICIT Version DEFAULT v1,
-       requestorName       [1]     EXPLICIT GeneralName OPTIONAL,
-       requestList                 SEQUENCE OF Request,
-       requestExtensions   [2]     EXPLICIT Extensions OPTIONAL }
+   version             [0]     EXPLICIT Version DEFAULT v1,
+   requestorName       [1]     EXPLICIT GeneralName OPTIONAL,
+   requestList                 SEQUENCE OF Request,
+   requestExtensions   [2]     EXPLICIT Extensions OPTIONAL }
 
 Request         ::=     SEQUENCE {
-       reqCert                     CertID,
-       singleRequestExtensions     [0] EXPLICIT Extensions OPTIONAL }
+   reqCert                     CertID,
+   singleRequestExtensions     [0] EXPLICIT Extensions OPTIONAL }
 
 CertID          ::=     SEQUENCE {
-       hashAlgorithm       AlgorithmIdentifier,
-       issuerNameHash      OCTET STRING, -- Hash of issuer's DN
-       issuerKeyHash       OCTET STRING, -- Hash of issuer's public key
-       serialNumber        CertificateSerialNumber }
+   hashAlgorithm       AlgorithmIdentifier,
+   issuerNameHash      OCTET STRING, -- Hash of issuer's DN
+   issuerKeyHash       OCTET STRING, -- Hash of issuer's public key
+   serialNumber        CertificateSerialNumber }
 ~~~~~~
 
 OCSPRequests that conform to this profile MUST include only one Request
@@ -210,34 +210,34 @@ with the relevant CertID is:
 
 ~~~~~~
 OCSPResponse ::= SEQUENCE {
-      responseStatus         OCSPResponseStatus,
-      responseBytes          [0] EXPLICIT ResponseBytes OPTIONAL }
+   responseStatus         OCSPResponseStatus,
+   responseBytes          [0] EXPLICIT ResponseBytes OPTIONAL }
 
 ResponseBytes ::=       SEQUENCE {
-        responseType   OBJECT IDENTIFIER,
-        response       OCTET STRING }
+   responseType   OBJECT IDENTIFIER,
+   response       OCTET STRING }
 
 The value for response SHALL be the DER encoding of BasicOCSPResponse.
 
 BasicOCSPResponse       ::= SEQUENCE {
-      tbsResponseData      ResponseData,
-      signatureAlgorithm   AlgorithmIdentifier,
-      signature            BIT STRING,
-      certs            [0] EXPLICIT SEQUENCE OF Certificate OPTIONAL }
+   tbsResponseData      ResponseData,
+   signatureAlgorithm   AlgorithmIdentifier,
+   signature            BIT STRING,
+   certs            [0] EXPLICIT SEQUENCE OF Certificate OPTIONAL }
 
 ResponseData ::= SEQUENCE {
-      version              [0] EXPLICIT Version DEFAULT v1,
-      responderID              ResponderID,
-      producedAt               GeneralizedTime,
-      responses                SEQUENCE OF SingleResponse,
-      responseExtensions   [1] EXPLICIT Extensions OPTIONAL }
+   version              [0] EXPLICIT Version DEFAULT v1,
+   responderID              ResponderID,
+   producedAt               GeneralizedTime,
+   responses                SEQUENCE OF SingleResponse,
+   responseExtensions   [1] EXPLICIT Extensions OPTIONAL }
 
 SingleResponse ::= SEQUENCE {
-      certID                       CertID,
-      certStatus                   CertStatus,
-      thisUpdate                   GeneralizedTime,
-      nextUpdate         [0]       EXPLICIT GeneralizedTime OPTIONAL,
-      singleExtensions   [1]       EXPLICIT Extensions OPTIONAL }
+   certID                       CertID,
+   certStatus                   CertStatus,
+   thisUpdate                   GeneralizedTime,
+   nextUpdate         [0]       EXPLICIT GeneralizedTime OPTIONAL,
+   singleExtensions   [1]       EXPLICIT Extensions OPTIONAL }
 ~~~~~~
 
 Responders MUST generate a BasicOCSPResponse as identified by the
@@ -467,8 +467,8 @@ MUST properly URL-encode the base64-encoded OCSPRequest according to
 to the URI specified in the AIA extension {{RFC5280}}. For example:
 
 ~~~~~~
-    http://ocsp.example.com/MEowSDBGMEQwQjAKBggqhkiG9w0CBQQQ7sp6GTKpL2dA
-    deGaW267owQQqInESWQD0mGeBArSgv%2FBWQIQLJx%2Fg9xF8oySYzol80Mbpg%3D%3D
+   http://ocsp.example.com/MEowSDBGMEQwQjAKBggqhkiG9w0CBQQQ7sp6GTKpL2dA
+   deGaW267owQQqInESWQD0mGeBArSgv%2FBWQIQLJx%2Fg9xF8oySYzol80Mbpg%3D%3D
 ~~~~~~
 
 In response to properly formatted OCSPRequests that are cachable
@@ -477,13 +477,13 @@ include the binary value of the DER encoding of the OCSPResponse
 preceded by the following HTTP {{!RFC9110}} and {{!RFC9111}} headers.
 
 ~~~~~~
-    Content-type: application/ocsp-response
-    Content-length: < OCSP response length >
-    Last-modified: < producedAt HTTP-date >
-    ETag: "< strong validator >"
-    Expires: < nextUpdate HTTP-date >
-    Cache-control: max-age=< n >, public, no-transform, must-revalidate
-    Date: < current HTTP-date >
+   Content-type: application/ocsp-response
+   Content-length: < OCSP response length >
+   Last-modified: < producedAt HTTP-date >
+   ETag: "< strong validator >"
+   Expires: < nextUpdate HTTP-date >
+   Cache-control: max-age=< n >, public, no-transform, must-revalidate
+   Date: < current HTTP-date >
 ~~~~~~
 
 See {{http-proxies}} for details on the use of these headers.
@@ -542,23 +542,24 @@ For example, assume that an OCSP response has the following timestamp
 values:
 
 ~~~~~~
-    thisUpdate = March 19, 2023 01:00:00 GMT
-    nextUpdate = March 21, 2023 01:00:00 GMT
-    productedAt = March 19, 2023 01:00:00 GMT
+   thisUpdate = March 19, 2023 01:00:00 GMT
+   nextUpdate = March 21, 2023 01:00:00 GMT
+   productedAt = March 19, 2023 01:00:00 GMT
 ~~~~~~
 
 and that an OCSP client requests the response on March 20, 2023 01:00:00
 GMT. In this scenario, the HTTP response may look like this:
 
 ~~~~~~
-    Content-Type: application/ocsp-response
-    Content-Length: 1000
-    Date: Mon, 20 Mar 2023 01:00:00 GMT
-    Last-Modified: Sun, 19 Mar 2023 01:00:00 GMT
-    ETag: "97df3588b5a3f24babc3851b372f0ba71a9dcdded43b14b9d06961bfc1707d9d"
-    Expires: Tue, 21 Mar 2023 01:00:00 GMT
-    Cache-Control: max-age=86000,public,no-transform,must-revalidate
-    <...>
+   Content-Type: application/ocsp-response
+   Content-Length: 1000
+   Date: Mon, 20 Mar 2023 01:00:00 GMT
+   Last-Modified: Sun, 19 Mar 2023 01:00:00 GMT
+   ETag: "97df3588b5a3f24babc3851b372f0ba7
+         1a9dcdded43b14b9d06961bfc1707d9d"
+   Expires: Tue, 21 Mar 2023 01:00:00 GMT
+   Cache-Control: max-age=86000,public,no-transform,must-revalidate
+   <...>
 ~~~~~~
 
 OCSP clients MUST NOT include a no-cache header in OCSP request
