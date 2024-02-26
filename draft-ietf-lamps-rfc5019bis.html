@@ -14,11 +14,11 @@
 An RFC 5019 compliant OCSP client is still able to use SHA-1,
 but the use of SHA-1 may become obsolete in the future. 
     " name="description">
-<meta content="xml2rfc 3.19.2" name="generator">
+<meta content="xml2rfc 3.19.4" name="generator">
 <meta content="Internet-Draft" name="keyword">
 <meta content="draft-ietf-lamps-rfc5019bis-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.19.2
+  xml2rfc 3.19.4
     Python 3.11.6
     ConfigArgParse 1.7
     google-i18n-address 3.1.0
@@ -1034,7 +1034,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Ito, et al.</td>
-<td class="center">Expires 18 August 2024</td>
+<td class="center">Expires 29 August 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1050,12 +1050,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <a href="https://www.rfc-editor.org/rfc/rfc5019" class="eref">5019</a> (if approved)</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-02-15" class="published">15 February 2024</time>
+<time datetime="2024-02-26" class="published">26 February 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-08-18">18 August 2024</time></dd>
+<dd class="expires"><time datetime="2024-08-29">29 August 2024</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1112,7 +1112,7 @@ but the use of SHA-1 may become obsolete in the future.<a href="#section-abstrac
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 18 August 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 29 August 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1377,24 +1377,24 @@ with the relevant CertID is:<a href="#section-3.1.1-1" class="pilcrow">¶</a></p
 <div class="alignLeft art-text artwork" id="section-3.1.1-2">
 <pre>
 OCSPRequest     ::=     SEQUENCE {
-       tbsRequest                  TBSRequest,
-       optionalSignature   [0]     EXPLICIT Signature OPTIONAL }
+   tbsRequest                  TBSRequest,
+   optionalSignature   [0]     EXPLICIT Signature OPTIONAL }
 
 TBSRequest      ::=     SEQUENCE {
-       version             [0]     EXPLICIT Version DEFAULT v1,
-       requestorName       [1]     EXPLICIT GeneralName OPTIONAL,
-       requestList                 SEQUENCE OF Request,
-       requestExtensions   [2]     EXPLICIT Extensions OPTIONAL }
+   version             [0]     EXPLICIT Version DEFAULT v1,
+   requestorName       [1]     EXPLICIT GeneralName OPTIONAL,
+   requestList                 SEQUENCE OF Request,
+   requestExtensions   [2]     EXPLICIT Extensions OPTIONAL }
 
 Request         ::=     SEQUENCE {
-       reqCert                     CertID,
-       singleRequestExtensions     [0] EXPLICIT Extensions OPTIONAL }
+   reqCert                     CertID,
+   singleRequestExtensions     [0] EXPLICIT Extensions OPTIONAL }
 
 CertID          ::=     SEQUENCE {
-       hashAlgorithm       AlgorithmIdentifier,
-       issuerNameHash      OCTET STRING, -- Hash of issuer's DN
-       issuerKeyHash       OCTET STRING, -- Hash of issuer's public key
-       serialNumber        CertificateSerialNumber }
+   hashAlgorithm       AlgorithmIdentifier,
+   issuerNameHash      OCTET STRING, -- Hash of issuer's DN
+   issuerKeyHash       OCTET STRING, -- Hash of issuer's public key
+   serialNumber        CertificateSerialNumber }
 </pre><a href="#section-3.1.1-2" class="pilcrow">¶</a>
 </div>
 <p id="section-3.1.1-3">OCSPRequests that conform to this profile <span class="bcp14">MUST</span> include only one Request
@@ -1447,34 +1447,34 @@ with the relevant CertID is:<a href="#section-3.2.1-1" class="pilcrow">¶</a></p
 <div class="alignLeft art-text artwork" id="section-3.2.1-2">
 <pre>
 OCSPResponse ::= SEQUENCE {
-      responseStatus         OCSPResponseStatus,
-      responseBytes          [0] EXPLICIT ResponseBytes OPTIONAL }
+   responseStatus         OCSPResponseStatus,
+   responseBytes          [0] EXPLICIT ResponseBytes OPTIONAL }
 
 ResponseBytes ::=       SEQUENCE {
-        responseType   OBJECT IDENTIFIER,
-        response       OCTET STRING }
+   responseType   OBJECT IDENTIFIER,
+   response       OCTET STRING }
 
 The value for response SHALL be the DER encoding of BasicOCSPResponse.
 
 BasicOCSPResponse       ::= SEQUENCE {
-      tbsResponseData      ResponseData,
-      signatureAlgorithm   AlgorithmIdentifier,
-      signature            BIT STRING,
-      certs            [0] EXPLICIT SEQUENCE OF Certificate OPTIONAL }
+   tbsResponseData      ResponseData,
+   signatureAlgorithm   AlgorithmIdentifier,
+   signature            BIT STRING,
+   certs            [0] EXPLICIT SEQUENCE OF Certificate OPTIONAL }
 
 ResponseData ::= SEQUENCE {
-      version              [0] EXPLICIT Version DEFAULT v1,
-      responderID              ResponderID,
-      producedAt               GeneralizedTime,
-      responses                SEQUENCE OF SingleResponse,
-      responseExtensions   [1] EXPLICIT Extensions OPTIONAL }
+   version              [0] EXPLICIT Version DEFAULT v1,
+   responderID              ResponderID,
+   producedAt               GeneralizedTime,
+   responses                SEQUENCE OF SingleResponse,
+   responseExtensions   [1] EXPLICIT Extensions OPTIONAL }
 
 SingleResponse ::= SEQUENCE {
-      certID                       CertID,
-      certStatus                   CertStatus,
-      thisUpdate                   GeneralizedTime,
-      nextUpdate         [0]       EXPLICIT GeneralizedTime OPTIONAL,
-      singleExtensions   [1]       EXPLICIT Extensions OPTIONAL }
+   certID                       CertID,
+   certStatus                   CertStatus,
+   thisUpdate                   GeneralizedTime,
+   nextUpdate         [0]       EXPLICIT GeneralizedTime OPTIONAL,
+   singleExtensions   [1]       EXPLICIT Extensions OPTIONAL }
 </pre><a href="#section-3.2.1-2" class="pilcrow">¶</a>
 </div>
 <p id="section-3.2.1-3">Responders <span class="bcp14">MUST</span> generate a BasicOCSPResponse as identified by the
@@ -1725,8 +1725,8 @@ the base64 character repertoire in the base64-encoded string. Clients
 to the URI specified in the AIA extension <span>[<a href="#RFC5280" class="cite xref">RFC5280</a>]</span>. For example:<a href="#section-6-2" class="pilcrow">¶</a></p>
 <div class="alignLeft art-text artwork" id="section-6-3">
 <pre>
-    http://ocsp.example.com/MEowSDBGMEQwQjAKBggqhkiG9w0CBQQQ7sp6GTKpL2dA
-    deGaW267owQQqInESWQD0mGeBArSgv%2FBWQIQLJx%2Fg9xF8oySYzol80Mbpg%3D%3D
+   http://ocsp.example.com/MEowSDBGMEQwQjAKBggqhkiG9w0CBQQQ7sp6GTKpL2dA
+   deGaW267owQQqInESWQD0mGeBArSgv%2FBWQIQLJx%2Fg9xF8oySYzol80Mbpg%3D%3D
 </pre><a href="#section-6-3" class="pilcrow">¶</a>
 </div>
 <p id="section-6-4">In response to properly formatted OCSPRequests that are cachable
@@ -1735,13 +1735,13 @@ include the binary value of the DER encoding of the OCSPResponse
 preceded by the following HTTP <span>[<a href="#RFC9110" class="cite xref">RFC9110</a>]</span> and <span>[<a href="#RFC9111" class="cite xref">RFC9111</a>]</span> headers.<a href="#section-6-4" class="pilcrow">¶</a></p>
 <div class="alignLeft art-text artwork" id="section-6-5">
 <pre>
-    Content-type: application/ocsp-response
-    Content-length: &lt; OCSP response length &gt;
-    Last-modified: &lt; producedAt HTTP-date &gt;
-    ETag: "&lt; strong validator &gt;"
-    Expires: &lt; nextUpdate HTTP-date &gt;
-    Cache-control: max-age=&lt; n &gt;, public, no-transform, must-revalidate
-    Date: &lt; current HTTP-date &gt;
+   Content-type: application/ocsp-response
+   Content-length: &lt; OCSP response length &gt;
+   Last-modified: &lt; producedAt HTTP-date &gt;
+   ETag: "&lt; strong validator &gt;"
+   Expires: &lt; nextUpdate HTTP-date &gt;
+   Cache-control: max-age=&lt; n &gt;, public, no-transform, must-revalidate
+   Date: &lt; current HTTP-date &gt;
 </pre><a href="#section-6-5" class="pilcrow">¶</a>
 </div>
 <p id="section-6-6">See <a href="#http-proxies" class="auto internal xref">Section 7.2</a> for details on the use of these headers.<a href="#section-6-6" class="pilcrow">¶</a></p>
@@ -1833,23 +1833,24 @@ authoritative OCSP responses.<a href="#section-7.2-4" class="pilcrow">¶</a></p>
 values:<a href="#section-7.2-5" class="pilcrow">¶</a></p>
 <div class="alignLeft art-text artwork" id="section-7.2-6">
 <pre>
-    thisUpdate = March 19, 2023 01:00:00 GMT
-    nextUpdate = March 21, 2023 01:00:00 GMT
-    productedAt = March 19, 2023 01:00:00 GMT
+   thisUpdate = March 19, 2023 01:00:00 GMT
+   nextUpdate = March 21, 2023 01:00:00 GMT
+   productedAt = March 19, 2023 01:00:00 GMT
 </pre><a href="#section-7.2-6" class="pilcrow">¶</a>
 </div>
 <p id="section-7.2-7">and that an OCSP client requests the response on March 20, 2023 01:00:00
 GMT. In this scenario, the HTTP response may look like this:<a href="#section-7.2-7" class="pilcrow">¶</a></p>
 <div class="alignLeft art-text artwork" id="section-7.2-8">
 <pre>
-    Content-Type: application/ocsp-response
-    Content-Length: 1000
-    Date: Mon, 20 Mar 2023 01:00:00 GMT
-    Last-Modified: Sun, 19 Mar 2023 01:00:00 GMT
-    ETag: "97df3588b5a3f24babc3851b372f0ba71a9dcdded43b14b9d06961bfc1707d9d"
-    Expires: Tue, 21 Mar 2023 01:00:00 GMT
-    Cache-Control: max-age=86000,public,no-transform,must-revalidate
-    &lt;...&gt;
+   Content-Type: application/ocsp-response
+   Content-Length: 1000
+   Date: Mon, 20 Mar 2023 01:00:00 GMT
+   Last-Modified: Sun, 19 Mar 2023 01:00:00 GMT
+   ETag: "97df3588b5a3f24babc3851b372f0ba7
+         1a9dcdded43b14b9d06961bfc1707d9d"
+   Expires: Tue, 21 Mar 2023 01:00:00 GMT
+   Cache-Control: max-age=86000,public,no-transform,must-revalidate
+   &lt;...&gt;
 </pre><a href="#section-7.2-8" class="pilcrow">¶</a>
 </div>
 <p id="section-7.2-9">OCSP clients <span class="bcp14">MUST NOT</span> include a no-cache header in OCSP request
