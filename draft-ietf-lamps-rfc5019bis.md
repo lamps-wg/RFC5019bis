@@ -447,8 +447,8 @@ on replay and man-in-the-middle attacks.
 
 # Transport Profile {#transport}
 
-HTTP-based OCSP requests can use either the GET or the POST method
-to submit their requests.
+OCSP clients can send HTTP-based OCSP requests using either the GET
+or POST method.
 The OCSP responder MUST support requests and responses over HTTP.
 When sending requests that are less than or equal to 255 bytes in
 total (after encoding) including the scheme and delimiters (http://),
