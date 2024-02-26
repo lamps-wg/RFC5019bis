@@ -555,7 +555,8 @@ GMT. In this scenario, the HTTP response may look like this:
    Content-Length: 1000
    Date: Mon, 20 Mar 2023 01:00:00 GMT
    Last-Modified: Sun, 19 Mar 2023 01:00:00 GMT
-   ETag: "97df3588b5a3f24babc3851b372f0ba71a9dcdded43b14b9d06961bfc1707d9d"
+   ETag: "97df3588b5a3f24babc3851b372f0ba7
+         1a9dcdded43b14b9d06961bfc1707d9d"
    Expires: Tue, 21 Mar 2023 01:00:00 GMT
    Cache-Control: max-age=86000,public,no-transform,must-revalidate
    <...>
