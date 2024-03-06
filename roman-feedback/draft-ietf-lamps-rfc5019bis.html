@@ -10,22 +10,29 @@
 <meta content="Corey Bonnell" name="author">
 <meta content="Sean Turner" name="author">
 <meta content="
-       This document updates RFC 5019 to allow OCSP clients to use SHA-256.
-An RFC 5019 compliant OCSP client is still able to use SHA-1,
-but the use of SHA-1 may become obsolete in the future. 
+       RFC 5019 defines a lightweight profile for OCSP that makes the protocol
+more suitable for use in high-volume environments. The lightweight
+profile specifies the mandatory use of SHA-1 when calculating the values
+of several fields in OCSP requests and responses. In recent years,
+weaknesses have been demonstrated with the SHA-1 algorithm. As a result,
+SHA-1 is increasingly falling out of use even for non-security relevant
+use cases. This document obsoletes the lightweight profile as specified
+in RFC 5019 to instead recommend the use of SHA-256 where SHA-1 was
+previously required. An RFC 5019-compliant OCSP client is still able to
+use SHA-1, but the use of SHA-1 may become obsolete in the future. 
     " name="description">
-<meta content="xml2rfc 3.19.1" name="generator">
+<meta content="xml2rfc 3.20.0" name="generator">
 <meta content="Internet-Draft" name="keyword">
 <meta content="draft-ietf-lamps-rfc5019bis-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.19.1
-    Python 3.11.6
+  xml2rfc 3.20.0
+    Python 3.11.8
     ConfigArgParse 1.7
     google-i18n-address 3.1.0
     intervaltree 3.1.0
     Jinja2 3.1.2
     lxml 4.9.3
-    platformdirs 4.1.0
+    platformdirs 4.2.0
     pycountry 22.3.5
     PyYAML 6.0.1
     requests 2.31.0
@@ -1030,11 +1037,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">Lightweight OCSP Profile Update</td>
-<td class="right">January 2024</td>
+<td class="right">March 2024</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Ito, et al.</td>
-<td class="center">Expires 1 August 2024</td>
+<td class="center">Expires 7 September 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1050,12 +1057,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <a href="https://www.rfc-editor.org/rfc/rfc5019" class="eref">5019</a> (if approved)</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-01-29" class="published">29 January 2024</time>
+<time datetime="2024-03-06" class="published">6 March 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-08-01">1 August 2024</time></dd>
+<dd class="expires"><time datetime="2024-09-07">7 September 2024</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1081,9 +1088,16 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <h1 id="title">Updates to Lightweight OCSP Profile for High Volume Environments</h1>
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
-<p id="section-abstract-1">This document updates RFC 5019 to allow OCSP clients to use SHA-256.
-An RFC 5019 compliant OCSP client is still able to use SHA-1,
-but the use of SHA-1 may become obsolete in the future.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+<p id="section-abstract-1">RFC 5019 defines a lightweight profile for OCSP that makes the protocol
+more suitable for use in high-volume environments. The lightweight
+profile specifies the mandatory use of SHA-1 when calculating the values
+of several fields in OCSP requests and responses. In recent years,
+weaknesses have been demonstrated with the SHA-1 algorithm. As a result,
+SHA-1 is increasingly falling out of use even for non-security relevant
+use cases. This document obsoletes the lightweight profile as specified
+in RFC 5019 to instead recommend the use of SHA-256 where SHA-1 was
+previously required. An RFC 5019-compliant OCSP client is still able to
+use SHA-1, but the use of SHA-1 may become obsolete in the future.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 </section>
 <section class="note rfcEditorRemove" id="section-note.1">
       <h2 id="name-discussion-venues">
@@ -1112,7 +1126,7 @@ but the use of SHA-1 may become obsolete in the future.<a href="#section-abstrac
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 1 August 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 7 September 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1372,22 +1386,49 @@ functionality as defined in <span>[<a href="#RFC6960" class="cite xref">RFC6960<
           <h4 id="name-ocsprequest-structure">
 <a href="#section-3.1.1" class="section-number selfRef">3.1.1. </a><a href="#name-ocsprequest-structure" class="section-name selfRef">OCSPRequest Structure</a>
           </h4>
-<p id="section-3.1.1-1">OCSPRequests that conform to this profile <span class="bcp14">MUST</span> include only one Request
-in the OCSPRequest.RequestList structure.<a href="#section-3.1.1-1" class="pilcrow">¶</a></p>
-<p id="section-3.1.1-2">Older OCSP clients which provide backward compatibility with
-<span>[<a href="#RFC5019" class="cite xref">RFC5019</a>]</span> use SHA-1 as the hashing algorithm for the
-CertID.issuerNameHash and the CertID.issuerKeyHash values. However,
-these OCSP clients should transition from SHA-1 to SHA-256 as soon as
-practical.<a href="#section-3.1.1-2" class="pilcrow">¶</a></p>
-<p id="section-3.1.1-3">Newer OCSP clients that conform with this profile <span class="bcp14">MUST</span>
-use SHA-256 as the hashing algorithm for the
-CertID.issuerNameHash and the CertID.issuerKeyHash values.<a href="#section-3.1.1-3" class="pilcrow">¶</a></p>
-<p id="section-3.1.1-4">Clients <span class="bcp14">MUST NOT</span> include the singleRequestExtensions structure.<a href="#section-3.1.1-4" class="pilcrow">¶</a></p>
-<p id="section-3.1.1-5">Clients <span class="bcp14">SHOULD NOT</span> include the requestExtensions structure. If a
+<p id="section-3.1.1-1">The ASN.1 structure corresponding to the OCSPRequest
+with the relevant CertID is:<a href="#section-3.1.1-1" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-3.1.1-2">
+<pre>
+OCSPRequest     ::=     SEQUENCE {
+   tbsRequest                  TBSRequest,
+   optionalSignature   [0]     EXPLICIT Signature OPTIONAL }
+
+TBSRequest      ::=     SEQUENCE {
+   version             [0]     EXPLICIT Version DEFAULT v1,
+   requestorName       [1]     EXPLICIT GeneralName OPTIONAL,
+   requestList                 SEQUENCE OF Request,
+   requestExtensions   [2]     EXPLICIT Extensions OPTIONAL }
+
+Request         ::=     SEQUENCE {
+   reqCert                     CertID,
+   singleRequestExtensions     [0] EXPLICIT Extensions OPTIONAL }
+
+CertID          ::=     SEQUENCE {
+   hashAlgorithm       AlgorithmIdentifier,
+   issuerNameHash      OCTET STRING, -- Hash of issuer's DN
+   issuerKeyHash       OCTET STRING, -- Hash of issuer's public key
+   serialNumber        CertificateSerialNumber }
+</pre><a href="#section-3.1.1-2" class="pilcrow">¶</a>
+</div>
+<p id="section-3.1.1-3">OCSPRequests that conform to this profile <span class="bcp14">MUST</span> include only one Request
+in the OCSPRequest.RequestList structure.<a href="#section-3.1.1-3" class="pilcrow">¶</a></p>
+<p id="section-3.1.1-4">The CertID.issuerNameHash and CertID.issuerKeyHash fields contain hashes
+of the issuer's DN and public key, respectively. OCSP clients that
+conform with this profile <span class="bcp14">MUST</span> use SHA-256 as defined in <span>[<a href="#RFC6234" class="cite xref">RFC6234</a>]</span> as
+the hashing algorithm for the CertID.issuerNameHash and the
+CertID.issuerKeyHash values.<a href="#section-3.1.1-4" class="pilcrow">¶</a></p>
+<p id="section-3.1.1-5">Older OCSP clients which provide backward compatibility with
+<span>[<a href="#RFC5019" class="cite xref">RFC5019</a>]</span> use SHA-1 as defined in <span>[<a href="#RFC3174" class="cite xref">RFC3174</a>]</span> as the hashing
+algorithm for the CertID.issuerNameHash and the
+CertID.issuerKeyHash values. However, these OCSP clients should
+transition from SHA-1 to SHA-256 as soon as practical.<a href="#section-3.1.1-5" class="pilcrow">¶</a></p>
+<p id="section-3.1.1-6">Clients <span class="bcp14">MUST NOT</span> include the singleRequestExtensions structure.<a href="#section-3.1.1-6" class="pilcrow">¶</a></p>
+<p id="section-3.1.1-7">Clients <span class="bcp14">SHOULD NOT</span> include the requestExtensions structure. If a
 requestExtensions structure is included, this profile RECOMMENDS that
 it contain only the nonce extension (id-pkix-ocsp-nonce). See
 <a href="#fresh" class="auto internal xref">Section 5</a> for issues concerning the use of a nonce in high-volume
-OCSP environments.<a href="#section-3.1.1-5" class="pilcrow">¶</a></p>
+OCSP environments.<a href="#section-3.1.1-7" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="signed-ocsprequests">
@@ -1417,33 +1458,79 @@ requestorName field were absent.<a href="#section-3.1.2-2" class="pilcrow">¶</a
           <h4 id="name-ocspresponse-structure">
 <a href="#section-3.2.1" class="section-number selfRef">3.2.1. </a><a href="#name-ocspresponse-structure" class="section-name selfRef">OCSPResponse Structure</a>
           </h4>
-<p id="section-3.2.1-1">Responders <span class="bcp14">MUST</span> generate a BasicOCSPResponse as identified by the
+<p id="section-3.2.1-1">The ASN.1 structure corresponding to the OCSPResponse
+with the relevant CertID is:<a href="#section-3.2.1-1" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-3.2.1-2">
+<pre>
+OCSPResponse ::= SEQUENCE {
+   responseStatus         OCSPResponseStatus,
+   responseBytes          [0] EXPLICIT ResponseBytes OPTIONAL }
+
+ResponseBytes ::=       SEQUENCE {
+   responseType   OBJECT IDENTIFIER,
+   response       OCTET STRING }
+
+The value for response SHALL be the DER encoding of BasicOCSPResponse.
+
+BasicOCSPResponse       ::= SEQUENCE {
+   tbsResponseData      ResponseData,
+   signatureAlgorithm   AlgorithmIdentifier,
+   signature            BIT STRING,
+   certs            [0] EXPLICIT SEQUENCE OF Certificate OPTIONAL }
+
+ResponseData ::= SEQUENCE {
+   version              [0] EXPLICIT Version DEFAULT v1,
+   responderID              ResponderID,
+   producedAt               GeneralizedTime,
+   responses                SEQUENCE OF SingleResponse,
+   responseExtensions   [1] EXPLICIT Extensions OPTIONAL }
+
+SingleResponse ::= SEQUENCE {
+   certID                       CertID,
+   certStatus                   CertStatus,
+   thisUpdate                   GeneralizedTime,
+   nextUpdate         [0]       EXPLICIT GeneralizedTime OPTIONAL,
+   singleExtensions   [1]       EXPLICIT Extensions OPTIONAL }
+</pre><a href="#section-3.2.1-2" class="pilcrow">¶</a>
+</div>
+<p id="section-3.2.1-3">Responders <span class="bcp14">MUST</span> generate a BasicOCSPResponse as identified by the
 id-pkix-ocsp-basic OID. Clients <span class="bcp14">MUST</span> be able to parse and accept a
 BasicOCSPResponse. OCSPResponses that conform to this profile <span class="bcp14">SHOULD</span>
-include only one SingleResponse in the ResponseData.responses
-structure, but <span class="bcp14">MAY</span> include additional SingleResponse elements if
-necessary to improve response pre-generation performance or cache
-efficiency. For instance, ResponseData.responses of OCSPResponses
-that conform to this profile <span class="bcp14">MAY</span> include two SingleResponse
-with SHA-1 and SHA-256 certID of the same certificate.<a href="#section-3.2.1-1" class="pilcrow">¶</a></p>
-<p id="section-3.2.1-2">The responder <span class="bcp14">SHOULD NOT</span> include responseExtensions. As specified in
+include only one SingleResponse in the
+ResponseData.responses structure, but <span class="bcp14">MAY</span> include
+additional SingleResponse elements if necessary to improve response
+pre-generation performance or cache efficiency, and
+to ensure backward compatibility. For instance,
+to provide support to OCSP clients which do not yet support the
+use of SHA-256 for CertID hash calculation, the OCSP responder
+<span class="bcp14">MAY</span> include two SingleResponses in a BasicOCSPResponse.
+In that BasicOCSPResponse, the CertID of one of the SingleResponses
+uses SHA-1 for the hash calculation, and the CertID in the other
+SingleResponse uses SHA-256. OCSP responders <span class="bcp14">SHOULD NOT</span> distribute
+OCSP responses that contain CertIDs that use SHA-1 if the OCSP
+responder has no clients that require the use of SHA-1.
+Operators of OCSP responders may consider logging the hash
+algorithm used by OCSP clients to inform their determination of
+when it is appropriate to obsolete the distribution of OCSP responses
+that employ SHA-1 for CertID field hashes.<a href="#section-3.2.1-3" class="pilcrow">¶</a></p>
+<p id="section-3.2.1-4">The responder <span class="bcp14">SHOULD NOT</span> include responseExtensions. As specified in
 <span>[<a href="#RFC6960" class="cite xref">RFC6960</a>]</span>, clients <span class="bcp14">MUST</span> ignore unrecognized non-critical
-responseExtensions in the response.<a href="#section-3.2.1-2" class="pilcrow">¶</a></p>
-<p id="section-3.2.1-3">In the case where a responder does not have the ability to respond to
+responseExtensions in the response.<a href="#section-3.2.1-4" class="pilcrow">¶</a></p>
+<p id="section-3.2.1-5">In the case where a responder does not have the ability to respond to
 an OCSP request containing an option not supported by the server, it
 <span class="bcp14">SHOULD</span> return the most complete response it can. For example, in the
 case where a responder only supports pre-produced responses and does
 not have the ability to respond to an OCSP request containing a
-nonce, it <span class="bcp14">SHOULD</span> return a response that does not include a nonce.<a href="#section-3.2.1-3" class="pilcrow">¶</a></p>
-<p id="section-3.2.1-4">Clients <span class="bcp14">SHOULD</span> attempt to process a response even if the response
+nonce, it <span class="bcp14">SHOULD</span> return a response that does not include a nonce.<a href="#section-3.2.1-5" class="pilcrow">¶</a></p>
+<p id="section-3.2.1-6">Clients <span class="bcp14">SHOULD</span> attempt to process a response even if the response
 does not include a nonce. See <a href="#fresh" class="auto internal xref">Section 5</a> for details on validating
 responses that do not contain a nonce. See also <a href="#sec-cons" class="auto internal xref">Section 8</a> for
-relevant security considerations.<a href="#section-3.2.1-4" class="pilcrow">¶</a></p>
-<p id="section-3.2.1-5">Responders that do not have the ability to respond to OCSP requests
+relevant security considerations.<a href="#section-3.2.1-6" class="pilcrow">¶</a></p>
+<p id="section-3.2.1-7">Responders that do not have the ability to respond to OCSP requests
 that contain an unsupported option such as a nonce <span class="bcp14">MAY</span> forward the
-request to an OCSP responder capable of doing so.<a href="#section-3.2.1-5" class="pilcrow">¶</a></p>
-<p id="section-3.2.1-6">The responder <span class="bcp14">MAY</span> include the singleResponse.singleResponse
-extensions structure.<a href="#section-3.2.1-6" class="pilcrow">¶</a></p>
+request to an OCSP responder capable of doing so.<a href="#section-3.2.1-7" class="pilcrow">¶</a></p>
+<p id="section-3.2.1-8">The responder <span class="bcp14">MAY</span> include the singleResponse.singleResponse
+extensions structure.<a href="#section-3.2.1-8" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="byKey">
@@ -1624,7 +1711,8 @@ to the calling application environment. For example, Internet peers
 with low latency connections typically expect NTP time
 synchronization to keep them accurate within parts of a second;
 higher latency environments or where an NTP analogue is not available
-may have to be more liberal in their tolerance.<a href="#section-5-6" class="pilcrow">¶</a></p>
+may have to be more liberal in their tolerance
+(e.g. allow one day difference).<a href="#section-5-6" class="pilcrow">¶</a></p>
 <p id="section-5-7">See the security considerations in <a href="#sec-cons" class="auto internal xref">Section 8</a> for additional details
 on replay and man-in-the-middle attacks.<a href="#section-5-7" class="pilcrow">¶</a></p>
 </section>
@@ -1634,7 +1722,9 @@ on replay and man-in-the-middle attacks.<a href="#section-5-7" class="pilcrow">�
       <h2 id="name-transport-profile">
 <a href="#section-6" class="section-number selfRef">6. </a><a href="#name-transport-profile" class="section-name selfRef">Transport Profile</a>
       </h2>
-<p id="section-6-1">The OCSP responder <span class="bcp14">MUST</span> support requests and responses over HTTP.
+<p id="section-6-1">OCSP clients can send HTTP-based OCSP requests using either the GET
+or POST method.
+The OCSP responder <span class="bcp14">MUST</span> support requests and responses over HTTP.
 When sending requests that are less than or equal to 255 bytes in
 total (after encoding) including the scheme and delimiters (http://),
 server name and base64-encoded OCSPRequest structure, clients <span class="bcp14">MUST</span>
@@ -1651,8 +1741,8 @@ the base64 character repertoire in the base64-encoded string. Clients
 to the URI specified in the AIA extension <span>[<a href="#RFC5280" class="cite xref">RFC5280</a>]</span>. For example:<a href="#section-6-2" class="pilcrow">¶</a></p>
 <div class="alignLeft art-text artwork" id="section-6-3">
 <pre>
-    http://ocsp.example.com/MEowSDBGMEQwQjAKBggqhkiG9w0CBQQQ7sp6GTKpL2dA
-    deGaW267owQQqInESWQD0mGeBArSgv%2FBWQIQLJx%2Fg9xF8oySYzol80Mbpg%3D%3D
+   http://ocsp.example.com/MEowSDBGMEQwQjAKBggqhkiG9w0CBQQQ7sp6GTKpL2dA
+   deGaW267owQQqInESWQD0mGeBArSgv%2FBWQIQLJx%2Fg9xF8oySYzol80Mbpg%3D%3D
 </pre><a href="#section-6-3" class="pilcrow">¶</a>
 </div>
 <p id="section-6-4">In response to properly formatted OCSPRequests that are cachable
@@ -1661,13 +1751,13 @@ include the binary value of the DER encoding of the OCSPResponse
 preceded by the following HTTP <span>[<a href="#RFC9110" class="cite xref">RFC9110</a>]</span> and <span>[<a href="#RFC9111" class="cite xref">RFC9111</a>]</span> headers.<a href="#section-6-4" class="pilcrow">¶</a></p>
 <div class="alignLeft art-text artwork" id="section-6-5">
 <pre>
-    Content-type: application/ocsp-response
-    Content-length: &lt; OCSP response length &gt;
-    Last-modified: &lt; producedAt HTTP-date &gt;
-    ETag: "&lt; strong validator &gt;"
-    Expires: &lt; nextUpdate HTTP-date &gt;
-    Cache-control: max-age=&lt; n &gt;, public, no-transform, must-revalidate
-    Date: &lt; current HTTP-date &gt;
+   Content-type: application/ocsp-response
+   Content-length: &lt; OCSP response length &gt;
+   Last-modified: &lt; producedAt HTTP-date &gt;
+   ETag: "&lt; strong validator &gt;"
+   Expires: &lt; nextUpdate HTTP-date &gt;
+   Cache-control: max-age=&lt; n &gt;, public, no-transform, must-revalidate
+   Date: &lt; current HTTP-date &gt;
 </pre><a href="#section-6-5" class="pilcrow">¶</a>
 </div>
 <p id="section-6-6">See <a href="#http-proxies" class="auto internal xref">Section 7.2</a> for details on the use of these headers.<a href="#section-6-6" class="pilcrow">¶</a></p>
@@ -1759,23 +1849,24 @@ authoritative OCSP responses.<a href="#section-7.2-4" class="pilcrow">¶</a></p>
 values:<a href="#section-7.2-5" class="pilcrow">¶</a></p>
 <div class="alignLeft art-text artwork" id="section-7.2-6">
 <pre>
-    thisUpdate = March 19, 2023 01:00:00 GMT
-    nextUpdate = March 21, 2023 01:00:00 GMT
-    productedAt = March 19, 2023 01:00:00 GMT
+   thisUpdate = March 19, 2023 01:00:00 GMT
+   nextUpdate = March 21, 2023 01:00:00 GMT
+   productedAt = March 19, 2023 01:00:00 GMT
 </pre><a href="#section-7.2-6" class="pilcrow">¶</a>
 </div>
 <p id="section-7.2-7">and that an OCSP client requests the response on March 20, 2023 01:00:00
 GMT. In this scenario, the HTTP response may look like this:<a href="#section-7.2-7" class="pilcrow">¶</a></p>
 <div class="alignLeft art-text artwork" id="section-7.2-8">
 <pre>
-    Content-Type: application/ocsp-response
-    Content-Length: 1000
-    Date: Mon, 20 Mar 2023 01:00:00 GMT
-    Last-Modified: Sun, 19 Mar 2023 01:00:00 GMT
-    ETag: "97df3588b5a3f24babc3851b372f0ba71a9dcdded43b14b9d06961bfc1707d9d"
-    Expires: Tue, 21 Mar 2023 01:00:00 GMT
-    Cache-Control: max-age=86000,public,no-transform,must-revalidate
-    &lt;...&gt;
+   Content-Type: application/ocsp-response
+   Content-Length: 1000
+   Date: Mon, 20 Mar 2023 01:00:00 GMT
+   Last-Modified: Sun, 19 Mar 2023 01:00:00 GMT
+   ETag: "97df3588b5a3f24babc3851b372f0ba7
+         1a9dcdded43b14b9d06961bfc1707d9d"
+   Expires: Tue, 21 Mar 2023 01:00:00 GMT
+   Cache-Control: max-age=86000,public,no-transform,must-revalidate
+   &lt;...&gt;
 </pre><a href="#section-7.2-8" class="pilcrow">¶</a>
 </div>
 <p id="section-7.2-9">OCSP clients <span class="bcp14">MUST NOT</span> include a no-cache header in OCSP request
@@ -1807,22 +1898,12 @@ a situation where the client need only the ability to parse and
 recognize OCSP responses.<a href="#section-7.3-5" class="pilcrow">¶</a></p>
 <p id="section-7.3-6">This functionality has been specified as an extension to the TLS
 <span>[<a href="#I-D.ietf-tls-rfc8446bis" class="cite xref">I-D.ietf-tls-rfc8446bis</a>]</span> protocol in
-<span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-tls-rfc8446bis-09#section-4.4.2" class="relref">Section 4.4.2</a> of [<a href="#I-D.ietf-tls-rfc8446bis" class="cite xref">I-D.ietf-tls-rfc8446bis</a>]</span>,
+<span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-tls-rfc8446bis-10#section-4.4.2" class="relref">Section 4.4.2</a> of [<a href="#I-D.ietf-tls-rfc8446bis" class="cite xref">I-D.ietf-tls-rfc8446bis</a>]</span>,
 but can be applied to any client-server protocol.<a href="#section-7.3-6" class="pilcrow">¶</a></p>
 <p id="section-7.3-7">This profile RECOMMENDS that both TLS clients and servers implement
 the certificate status request extension mechanism for TLS.<a href="#section-7.3-7" class="pilcrow">¶</a></p>
 <p id="section-7.3-8">Further information regarding caching issues can be obtained
 from <span>[<a href="#RFC3143" class="cite xref">RFC3143</a>]</span>.<a href="#section-7.3-8" class="pilcrow">¶</a></p>
-<p id="section-7.3-9">To provide support to OCSP clients which do not yet
-support the use of SHA-256 for CertID hash calculation, the OCSP
-responder <span class="bcp14">MAY</span> include two SingleResponses in a BasicOCSPResponse.
-In that BasicOCSPResponse,
-the CertID of one of the SingleResponses uses SHA-1 for the hash
-calculation, and the CertID in the other SingleResponse uses SHA-256.
-Once clients reliant on or relevant to a given OCSP responder have
-migrated to the profile as defined in this specification, OCSP
-responders <span class="bcp14">SHALL NOT</span> distribute OCSP responses that contain CertIDs that
-use SHA-1.<a href="#section-7.3-9" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1951,11 +2032,15 @@ requestors or restrict or meter service.<a href="#section-8.6-1" class="pilcrow"
 <dl class="references">
 <dt id="I-D.ietf-tls-rfc8446bis">[I-D.ietf-tls-rfc8446bis]</dt>
         <dd>
-<span class="refAuthor">Rescorla, E.</span>, <span class="refTitle">"The Transport Layer Security (TLS) Protocol Version 1.3"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-tls-rfc8446bis-09</span>, <time datetime="2023-07-07" class="refDate">7 July 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-tls-rfc8446bis-09">https://datatracker.ietf.org/doc/html/draft-ietf-tls-rfc8446bis-09</a>&gt;</span>. </dd>
+<span class="refAuthor">Rescorla, E.</span>, <span class="refTitle">"The Transport Layer Security (TLS) Protocol Version 1.3"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-tls-rfc8446bis-10</span>, <time datetime="2024-03-03" class="refDate">3 March 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-tls-rfc8446bis-10">https://datatracker.ietf.org/doc/html/draft-ietf-tls-rfc8446bis-10</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC2119">[RFC2119]</dt>
         <dd>
 <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc2119">https://www.rfc-editor.org/rfc/rfc2119</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC3174">[RFC3174]</dt>
+        <dd>
+<span class="refAuthor">Eastlake 3rd, D.</span> and <span class="refAuthor">P. Jones</span>, <span class="refTitle">"US Secure Hash Algorithm 1 (SHA1)"</span>, <span class="seriesInfo">RFC 3174</span>, <span class="seriesInfo">DOI 10.17487/RFC3174</span>, <time datetime="2001-09" class="refDate">September 2001</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc3174">https://www.rfc-editor.org/rfc/rfc3174</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC3986">[RFC3986]</dt>
         <dd>
@@ -1972,6 +2057,10 @@ requestors or restrict or meter service.<a href="#section-8.6-1" class="pilcrow"
 <dt id="RFC5280">[RFC5280]</dt>
         <dd>
 <span class="refAuthor">Cooper, D.</span>, <span class="refAuthor">Santesson, S.</span>, <span class="refAuthor">Farrell, S.</span>, <span class="refAuthor">Boeyen, S.</span>, <span class="refAuthor">Housley, R.</span>, and <span class="refAuthor">W. Polk</span>, <span class="refTitle">"Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile"</span>, <span class="seriesInfo">RFC 5280</span>, <span class="seriesInfo">DOI 10.17487/RFC5280</span>, <time datetime="2008-05" class="refDate">May 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc5280">https://www.rfc-editor.org/rfc/rfc5280</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC6234">[RFC6234]</dt>
+        <dd>
+<span class="refAuthor">Eastlake 3rd, D.</span> and <span class="refAuthor">T. Hansen</span>, <span class="refTitle">"US Secure Hash Algorithms (SHA and SHA-based HMAC and HKDF)"</span>, <span class="seriesInfo">RFC 6234</span>, <span class="seriesInfo">DOI 10.17487/RFC6234</span>, <time datetime="2011-05" class="refDate">May 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6234">https://www.rfc-editor.org/rfc/rfc6234</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC6960">[RFC6960]</dt>
         <dd>
@@ -2019,7 +2108,8 @@ requestors or restrict or meter service.<a href="#section-8.6-1" class="pilcrow"
 and Ryan Hurst for their work to produce the original version
 of the lightweight profile for the OCSP protocol.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
 <p id="appendix-A-2">The authors of this version of the document wish to thank
-Russ Housley and Rob Stradling for the feedback and suggestions.<a href="#appendix-A-2" class="pilcrow">¶</a></p>
+Russ Housley, Rob Stradling, and Roman Danyliw for the feedback and
+suggestions.<a href="#appendix-A-2" class="pilcrow">¶</a></p>
 <p id="appendix-A-3">The authors wish to thank Magnus Nystrom of RSA Security, Inc.,
 Jagjeet Sondh of Vodafone Group R&amp;D, and David Engberg of CoreStreet,
 Ltd. for their contributions to the original <span>[<a href="#RFC5019" class="cite xref">RFC5019</a>]</span> specification.
