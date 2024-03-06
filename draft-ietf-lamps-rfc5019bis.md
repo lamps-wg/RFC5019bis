@@ -186,7 +186,7 @@ the hashing algorithm for the CertID.issuerNameHash and the
 CertID.issuerKeyHash values.
 
 Older OCSP clients which provide backward compatibility with
-{{!RFC5019}} use SHA-1 as defined in {{RFC3174}} as the hashing
+{{!RFC5019}} use SHA-1 as defined in {{!RFC3174}} as the hashing
 algorithm for the CertID.issuerNameHash and the
 CertID.issuerKeyHash values. However, these OCSP clients should
 transition from SHA-1 to SHA-256 as soon as practical.
