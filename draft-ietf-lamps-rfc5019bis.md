@@ -47,9 +47,16 @@ informative:
 
 --- abstract
 
-This document updates RFC 5019 to allow OCSP clients to use SHA-256.
-An RFC 5019 compliant OCSP client is still able to use SHA-1,
-but the use of SHA-1 may become obsolete in the future.
+RFC 5019 defines a lightweight profile for OCSP that makes the protocol
+more suitable for use in high-volume environments. The lightweight
+profile specifies the mandatory use of SHA-1 when calculating the values
+of several fields in OCSP requests and responses. In recent years,
+weaknesses have been demonstrated with the SHA-1 algorithm. As a result,
+SHA-1 is increasingly falling out of use even for non-security relevant
+use cases. This document obsoletes the lightweight profile as specified
+in RFC 5019 to instead recommend the use of SHA-256 where SHA-1 was
+previously required. An RFC 5019-compliant OCSP client is still able to
+use SHA-1, but the use of SHA-1 may become obsolete in the future.
 
 --- middle
 
@@ -172,15 +179,17 @@ CertID          ::=     SEQUENCE {
 OCSPRequests that conform to this profile MUST include only one Request
 in the OCSPRequest.RequestList structure.
 
-Older OCSP clients which provide backward compatibility with
-{{!RFC5019}} use SHA-1 as the hashing algorithm for the
-CertID.issuerNameHash and the CertID.issuerKeyHash values. However,
-these OCSP clients should transition from SHA-1 to SHA-256 as soon as
-practical.
+The CertID.issuerNameHash and CertID.issuerKeyHash fields contain hashes
+of the issuer's DN and public key, respectively. OCSP clients that
+conform with this profile MUST use SHA-256 as defined in {{!RFC6234}} as
+the hashing algorithm for the CertID.issuerNameHash and the
+CertID.issuerKeyHash values.
 
-Newer OCSP clients that conform with this profile MUST
-use SHA-256 as the hashing algorithm for the
-CertID.issuerNameHash and the CertID.issuerKeyHash values.
+Older OCSP clients which provide backward compatibility with
+{{!RFC5019}} use SHA-1 as defined in {{!RFC3174}} as the hashing
+algorithm for the CertID.issuerNameHash and the
+CertID.issuerKeyHash values. However, these OCSP clients should
+transition from SHA-1 to SHA-256 as soon as practical.
 
 Clients MUST NOT include the singleRequestExtensions structure.
 
@@ -699,7 +708,8 @@ and Ryan Hurst for their work to produce the original version
 of the lightweight profile for the OCSP protocol.
 
 The authors of this version of the document wish to thank
-Russ Housley and Rob Stradling for the feedback and suggestions.
+Russ Housley, Rob Stradling, Roman Danyliw, and Wendy Brown for the
+feedback and suggestions.
 
 The authors wish to thank Magnus Nystrom of RSA Security, Inc.,
 Jagjeet Sondh of Vodafone Group R&D, and David Engberg of CoreStreet,
