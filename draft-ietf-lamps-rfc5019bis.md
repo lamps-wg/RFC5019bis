@@ -708,8 +708,8 @@ and Ryan Hurst for their work to produce the original version
 of the lightweight profile for the OCSP protocol.
 
 The authors of this version of the document wish to thank
-Russ Housley, Rob Stradling, and Roman Danyliw for the feedback and
-suggestions.
+Russ Housley, Rob Stradling, Roman Danyliw, and Wendy Brown for the
+feedback and suggestions.
 
 The authors wish to thank Magnus Nystrom of RSA Security, Inc.,
 Jagjeet Sondh of Vodafone Group R&D, and David Engberg of CoreStreet,
