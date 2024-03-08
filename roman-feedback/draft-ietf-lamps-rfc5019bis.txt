@@ -6,11 +6,11 @@ Network Working Group                                 伊藤 忠彦 (T. Ito)
 Internet-Draft                                           SECOM CO., LTD.
 Obsoletes: 5019 (if approved)                                  C. Wilson
 Intended status: Standards Track                             Apple, Inc.
-Expires: 7 September 2024                                     C. Bonnell
+Expires: 9 September 2024                                     C. Bonnell
                                                           DigiCert, Inc.
                                                                S. Turner
                                                                    sn3rd
-                                                            6 March 2024
+                                                            8 March 2024
 
 
     Updates to Lightweight OCSP Profile for High Volume Environments
@@ -52,7 +52,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 7 September 2024.
+   This Internet-Draft will expire on 9 September 2024.
 
 Copyright Notice
 
@@ -839,8 +839,8 @@ Acknowledgments
    lightweight profile for the OCSP protocol.
 
    The authors of this version of the document wish to thank Russ
-   Housley, Rob Stradling, and Roman Danyliw for the feedback and
-   suggestions.
+   Housley, Rob Stradling, Roman Danyliw, and Wendy Brown for the
+   feedback and suggestions.
 
    The authors wish to thank Magnus Nystrom of RSA Security, Inc.,
    Jagjeet Sondh of Vodafone Group R&D, and David Engberg of CoreStreet,
