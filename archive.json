@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-03-07T00:21:35.316089+00:00",
+  "timestamp": "2024-03-10T00:29:28.558784+00:00",
   "repo": "lamps-wg/RFC5019bis",
   "labels": [
     {
@@ -2450,24 +2450,26 @@
       "id": "PR_kwDOHwB1bc5o5fJf",
       "title": "Address Roman's feedback",
       "url": "https://github.com/lamps-wg/RFC5019bis/pull/54",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "CBonnell",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2024-03-06T23:05:15Z",
-      "updatedAt": "2024-03-06T23:13:45Z",
+      "updatedAt": "2024-03-08T13:09:03Z",
       "baseRepository": "lamps-wg/RFC5019bis",
       "baseRefName": "main",
       "baseRefOid": "3552694cc25bb541bf3d85a355e885923b7dd811",
       "headRepository": "lamps-wg/RFC5019bis",
       "headRefName": "roman-feedback",
-      "headRefOid": "8a608bd512997664fbe65c176fd6a1a094c68718",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "e65f7934c8155ebc09e928f2cc86b959dfbac614",
+      "closedAt": "2024-03-08T13:09:00Z",
+      "mergedAt": "2024-03-08T13:09:00Z",
+      "mergedBy": "CBonnell",
+      "mergeCommit": {
+        "oid": "768c28e320ecb58a6826128fa76e21afb8f5073f"
+      },
       "comments": [],
       "reviews": [
         {
@@ -2481,6 +2483,19 @@
           "body": "",
           "createdAt": "2024-03-06T23:13:45Z",
           "updatedAt": "2024-03-06T23:13:45Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOHwB1bc5yl48z",
+          "commit": {
+            "abbreviatedOid": "8a608bd"
+          },
+          "author": "seanturner",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-03-07T14:07:52Z",
+          "updatedAt": "2024-03-07T14:07:52Z",
           "comments": []
         }
       ]
