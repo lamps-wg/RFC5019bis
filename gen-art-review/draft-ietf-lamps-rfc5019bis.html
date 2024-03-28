@@ -10,16 +10,21 @@
 <meta content="Corey Bonnell" name="author">
 <meta content="Sean Turner" name="author">
 <meta content="
-       This document updates RFC 5019 to allow OCSP clients to use SHA-256.
-An RFC 5019 compliant OCSP client is still able to use SHA-1,
-but the use of SHA-1 may become obsolete in the future. 
+       This specification defines a profile of the Online Certificate Status
+Protocol (OCSP) that addresses the scalability issues inherent when
+using OCSP in large scale (high volume) Public Key Infrastructure
+(PKI) environments and/or in PKI environments that require a
+lightweight solution to minimize communication bandwidth and client-
+side processing. 
+       Since initial publication, this specification has been updated to allow
+and recommend the use of SHA-256 over SHA-1. 
     " name="description">
-<meta content="xml2rfc 3.19.4" name="generator">
+<meta content="xml2rfc 3.20.1" name="generator">
 <meta content="Internet-Draft" name="keyword">
 <meta content="draft-ietf-lamps-rfc5019bis-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.19.4
-    Python 3.11.6
+  xml2rfc 3.20.1
+    Python 3.11.8
     ConfigArgParse 1.7
     google-i18n-address 3.1.0
     intervaltree 3.1.0
@@ -1030,11 +1035,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">Lightweight OCSP Profile Update</td>
-<td class="right">February 2024</td>
+<td class="right">March 2024</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Ito, et al.</td>
-<td class="center">Expires 29 August 2024</td>
+<td class="center">Expires 29 September 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1050,12 +1055,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <a href="https://www.rfc-editor.org/rfc/rfc5019" class="eref">5019</a> (if approved)</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-02-26" class="published">26 February 2024</time>
+<time datetime="2024-03-28" class="published">28 March 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-08-29">29 August 2024</time></dd>
+<dd class="expires"><time datetime="2024-09-29">29 September 2024</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1081,9 +1086,14 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <h1 id="title">Updates to Lightweight OCSP Profile for High Volume Environments</h1>
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
-<p id="section-abstract-1">This document updates RFC 5019 to allow OCSP clients to use SHA-256.
-An RFC 5019 compliant OCSP client is still able to use SHA-1,
-but the use of SHA-1 may become obsolete in the future.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+<p id="section-abstract-1">This specification defines a profile of the Online Certificate Status
+Protocol (OCSP) that addresses the scalability issues inherent when
+using OCSP in large scale (high volume) Public Key Infrastructure
+(PKI) environments and/or in PKI environments that require a
+lightweight solution to minimize communication bandwidth and client-
+side processing.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+<p id="section-abstract-2">Since initial publication, this specification has been updated to allow
+and recommend the use of SHA-256 over SHA-1.<a href="#section-abstract-2" class="pilcrow">¶</a></p>
 </section>
 <section class="note rfcEditorRemove" id="section-note.1">
       <h2 id="name-discussion-venues">
@@ -1112,7 +1122,7 @@ but the use of SHA-1 may become obsolete in the future.<a href="#section-abstrac
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 29 August 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 29 September 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1232,6 +1242,9 @@ but the use of SHA-1 may become obsolete in the future.<a href="#section-abstrac
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.6">
                 <p id="section-toc.1-1.8.2.6.1"><a href="#section-8.6" class="auto internal xref">8.6</a>.  <a href="#name-request-authentication-and-" class="internal xref">Request Authentication and Authorization</a></p>
 </li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.7">
+                <p id="section-toc.1-1.8.2.7.1"><a href="#section-8.7" class="auto internal xref">8.7</a>.  <a href="#name-use-of-sha-1-for-the-calcul" class="internal xref">Use of SHA-1 for the calculation of CertID field values</a></p>
+</li>
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
@@ -1249,10 +1262,33 @@ but the use of SHA-1 may become obsolete in the future.<a href="#section-abstrac
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
-            <p id="section-toc.1-1.11.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+            <p id="section-toc.1-1.11.1"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <a href="#name-differences-from-rfc-5019" class="internal xref">Differences from RFC 5019</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12">
-            <p id="section-toc.1-1.12.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+            <p id="section-toc.1-1.12.1"><a href="#appendix-B" class="auto internal xref">Appendix B</a>.  <a href="#name-examples" class="internal xref">Examples</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12.2.1">
+                <p id="section-toc.1-1.12.2.1.1"><a href="#appendix-B.1" class="auto internal xref">B.1</a>.  <a href="#name-root-certification-authorit" class="internal xref">Root Certification Authority Certificate</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12.2.2">
+                <p id="section-toc.1-1.12.2.2.1"><a href="#appendix-B.2" class="auto internal xref">B.2</a>.  <a href="#name-end-entity-certificate" class="internal xref">End-entity Certificate</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12.2.3">
+                <p id="section-toc.1-1.12.2.3.1"><a href="#appendix-B.3" class="auto internal xref">B.3</a>.  <a href="#name-ocsp-responder-certificate" class="internal xref">OCSP Responder Certificate</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12.2.4">
+                <p id="section-toc.1-1.12.2.4.1"><a href="#appendix-B.4" class="auto internal xref">B.4</a>.  <a href="#name-ocsp-request" class="internal xref">OCSP Request</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12.2.5">
+                <p id="section-toc.1-1.12.2.5.1"><a href="#appendix-B.5" class="auto internal xref">B.5</a>.  <a href="#name-ocsp-response" class="internal xref">OCSP Response</a></p>
+</li>
+            </ul>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13">
+            <p id="section-toc.1-1.13.1"><a href="#appendix-C" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14">
+            <p id="section-toc.1-1.14.1"><a href="#appendix-D" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
 </li>
         </ul>
 </nav>
@@ -1326,22 +1362,6 @@ document. Regardless of the availability of such out-of-band mechanisms,
 this profile ensures that interoperability will still occur between an
 OCSP client that fully conforms with <span>[<a href="#RFC6960" class="cite xref">RFC6960</a>]</span> and a responder that is
 operating in a mode as described in this specification.<a href="#section-1-8" class="pilcrow">¶</a></p>
-<p id="section-1-9">Substantive changes to RFC 5019:<a href="#section-1-9" class="pilcrow">¶</a></p>
-<ul class="normal">
-<li class="normal" id="section-1-10.1">
-          <p id="section-1-10.1.1"><a href="#certid" class="auto internal xref">Section 3.1.1</a> requires new OCSP clients to use SHA-256 to
-support migration for OCSP clients.<a href="#section-1-10.1.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="section-1-10.2">
-          <p id="section-1-10.2.1"><a href="#byKey" class="auto internal xref">Section 3.2.2</a> requires new OCSP responders to use the byKey field,
-and support migration from byName fields.<a href="#section-1-10.2.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="section-1-10.3">
-          <p id="section-1-10.3.1"><a href="#transport" class="auto internal xref">Section 6</a> clarifies OCSP clients not include
-whitespace or any other characters that are not part of
-the base64 character repertoire in the base64-encoded string.<a href="#section-1-10.3.1" class="pilcrow">¶</a></p>
-</li>
-      </ul>
 </section>
 </div>
 <div id="conventions-and-definitions">
@@ -1372,8 +1392,9 @@ functionality as defined in <span>[<a href="#RFC6960" class="cite xref">RFC6960<
           <h4 id="name-ocsprequest-structure">
 <a href="#section-3.1.1" class="section-number selfRef">3.1.1. </a><a href="#name-ocsprequest-structure" class="section-name selfRef">OCSPRequest Structure</a>
           </h4>
-<p id="section-3.1.1-1">The ASN.1 structure corresponding to the OCSPRequest
-with the relevant CertID is:<a href="#section-3.1.1-1" class="pilcrow">¶</a></p>
+<p id="section-3.1.1-1">Provided for convenience here, but unchanged from <span>[<a href="#RFC6960" class="cite xref">RFC6960</a>]</span>,
+the ASN.1 structure corresponding to the OCSPRequest with the relevant
+CertID is:<a href="#section-3.1.1-1" class="pilcrow">¶</a></p>
 <div class="alignLeft art-text artwork" id="section-3.1.1-2">
 <pre>
 OCSPRequest     ::=     SEQUENCE {
@@ -1399,14 +1420,16 @@ CertID          ::=     SEQUENCE {
 </div>
 <p id="section-3.1.1-3">OCSPRequests that conform to this profile <span class="bcp14">MUST</span> include only one Request
 in the OCSPRequest.RequestList structure.<a href="#section-3.1.1-3" class="pilcrow">¶</a></p>
-<p id="section-3.1.1-4">Older OCSP clients which provide backward compatibility with
-<span>[<a href="#RFC5019" class="cite xref">RFC5019</a>]</span> use SHA-1 as the hashing algorithm for the
-CertID.issuerNameHash and the CertID.issuerKeyHash values. However,
-these OCSP clients should transition from SHA-1 to SHA-256 as soon as
-practical.<a href="#section-3.1.1-4" class="pilcrow">¶</a></p>
-<p id="section-3.1.1-5">Newer OCSP clients that conform with this profile <span class="bcp14">MUST</span>
-use SHA-256 as the hashing algorithm for the
-CertID.issuerNameHash and the CertID.issuerKeyHash values.<a href="#section-3.1.1-5" class="pilcrow">¶</a></p>
+<p id="section-3.1.1-4">The CertID.issuerNameHash and CertID.issuerKeyHash fields contain hashes
+of the issuer's DN and public key, respectively. OCSP clients that
+conform with this profile <span class="bcp14">MUST</span> use SHA-256 as defined in <span>[<a href="#RFC6234" class="cite xref">RFC6234</a>]</span> as
+the hashing algorithm for the CertID.issuerNameHash and the
+CertID.issuerKeyHash values.<a href="#section-3.1.1-4" class="pilcrow">¶</a></p>
+<p id="section-3.1.1-5">Older OCSP clients which provide backward compatibility with
+<span>[<a href="#RFC5019" class="cite xref">RFC5019</a>]</span> use SHA-1 as defined in <span>[<a href="#RFC3174" class="cite xref">RFC3174</a>]</span> as the hashing
+algorithm for the CertID.issuerNameHash and the
+CertID.issuerKeyHash values. However, these OCSP clients should
+transition from SHA-1 to SHA-256 as soon as practical.<a href="#section-3.1.1-5" class="pilcrow">¶</a></p>
 <p id="section-3.1.1-6">Clients <span class="bcp14">MUST NOT</span> include the singleRequestExtensions structure.<a href="#section-3.1.1-6" class="pilcrow">¶</a></p>
 <p id="section-3.1.1-7">Clients <span class="bcp14">SHOULD NOT</span> include the requestExtensions structure. If a
 requestExtensions structure is included, this profile RECOMMENDS that
@@ -1496,7 +1519,9 @@ responder has no clients that require the use of SHA-1.
 Operators of OCSP responders may consider logging the hash
 algorithm used by OCSP clients to inform their determination of
 when it is appropriate to obsolete the distribution of OCSP responses
-that employ SHA-1 for CertID field hashes.<a href="#section-3.2.1-3" class="pilcrow">¶</a></p>
+that employ SHA-1 for CertID field hashes. See {#sha-sec} for more
+information on the security considerations for the continued use of
+SHA-1.<a href="#section-3.2.1-3" class="pilcrow">¶</a></p>
 <p id="section-3.2.1-4">The responder <span class="bcp14">SHOULD NOT</span> include responseExtensions. As specified in
 <span>[<a href="#RFC6960" class="cite xref">RFC6960</a>]</span>, clients <span class="bcp14">MUST</span> ignore unrecognized non-critical
 responseExtensions in the response.<a href="#section-3.2.1-4" class="pilcrow">¶</a></p>
@@ -1706,8 +1731,8 @@ on replay and man-in-the-middle attacks.<a href="#section-5-7" class="pilcrow">�
       <h2 id="name-transport-profile">
 <a href="#section-6" class="section-number selfRef">6. </a><a href="#name-transport-profile" class="section-name selfRef">Transport Profile</a>
       </h2>
-<p id="section-6-1">HTTP-based OCSP requests can use either the GET or the POST method
-to submit their requests.
+<p id="section-6-1">OCSP clients can send HTTP-based OCSP requests using either the GET
+or POST method.
 The OCSP responder <span class="bcp14">MUST</span> support requests and responses over HTTP.
 When sending requests that are less than or equal to 255 bytes in
 total (after encoding) including the scheme and delimiters (http://),
@@ -1882,7 +1907,7 @@ a situation where the client need only the ability to parse and
 recognize OCSP responses.<a href="#section-7.3-5" class="pilcrow">¶</a></p>
 <p id="section-7.3-6">This functionality has been specified as an extension to the TLS
 <span>[<a href="#I-D.ietf-tls-rfc8446bis" class="cite xref">I-D.ietf-tls-rfc8446bis</a>]</span> protocol in
-<span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-tls-rfc8446bis-09#section-4.4.2" class="relref">Section 4.4.2</a> of [<a href="#I-D.ietf-tls-rfc8446bis" class="cite xref">I-D.ietf-tls-rfc8446bis</a>]</span>,
+<span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-tls-rfc8446bis-10#section-4.4.2" class="relref">Section 4.4.2</a> of [<a href="#I-D.ietf-tls-rfc8446bis" class="cite xref">I-D.ietf-tls-rfc8446bis</a>]</span>,
 but can be applied to any client-server protocol.<a href="#section-7.3-6" class="pilcrow">¶</a></p>
 <p id="section-7.3-7">This profile RECOMMENDS that both TLS clients and servers implement
 the certificate status request extension mechanism for TLS.<a href="#section-7.3-7" class="pilcrow">¶</a></p>
@@ -1994,6 +2019,21 @@ responder is necessary can utilize other mechanisms to authenticate
 requestors or restrict or meter service.<a href="#section-8.6-1" class="pilcrow">¶</a></p>
 </section>
 </div>
+<div id="sha1-sec">
+<section id="section-8.7">
+        <h3 id="name-use-of-sha-1-for-the-calcul">
+<a href="#section-8.7" class="section-number selfRef">8.7. </a><a href="#name-use-of-sha-1-for-the-calcul" class="section-name selfRef">Use of SHA-1 for the calculation of CertID field values</a>
+        </h3>
+<p id="section-8.7-1">Although the use of SHA-1 for the calculation of CertID field values is
+not of concern from a cryptographic security standpoint, the continued
+use of SHA-1 in an ecosystem requires that software that interoperates
+with the ecosystem maintain support for SHA-1. This increases
+implementation complexity and potential attack surface for the software
+in question. Thus, the continued use of SHA-1 in an ecosystem to
+maintain interoperability with legacy software must be weighed against
+the increased implementation complexity and potential attack surface.<a href="#section-8.7-1" class="pilcrow">¶</a></p>
+</section>
+</div>
 </section>
 </div>
 <div id="iana-considerations">
@@ -2016,11 +2056,15 @@ requestors or restrict or meter service.<a href="#section-8.6-1" class="pilcrow"
 <dl class="references">
 <dt id="I-D.ietf-tls-rfc8446bis">[I-D.ietf-tls-rfc8446bis]</dt>
         <dd>
-<span class="refAuthor">Rescorla, E.</span>, <span class="refTitle">"The Transport Layer Security (TLS) Protocol Version 1.3"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-tls-rfc8446bis-09</span>, <time datetime="2023-07-07" class="refDate">7 July 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-tls-rfc8446bis-09">https://datatracker.ietf.org/doc/html/draft-ietf-tls-rfc8446bis-09</a>&gt;</span>. </dd>
+<span class="refAuthor">Rescorla, E.</span>, <span class="refTitle">"The Transport Layer Security (TLS) Protocol Version 1.3"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-tls-rfc8446bis-10</span>, <time datetime="2024-03-03" class="refDate">3 March 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-tls-rfc8446bis-10">https://datatracker.ietf.org/doc/html/draft-ietf-tls-rfc8446bis-10</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC2119">[RFC2119]</dt>
         <dd>
 <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc2119">https://www.rfc-editor.org/rfc/rfc2119</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC3174">[RFC3174]</dt>
+        <dd>
+<span class="refAuthor">Eastlake 3rd, D.</span> and <span class="refAuthor">P. Jones</span>, <span class="refTitle">"US Secure Hash Algorithm 1 (SHA1)"</span>, <span class="seriesInfo">RFC 3174</span>, <span class="seriesInfo">DOI 10.17487/RFC3174</span>, <time datetime="2001-09" class="refDate">September 2001</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc3174">https://www.rfc-editor.org/rfc/rfc3174</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC3986">[RFC3986]</dt>
         <dd>
@@ -2037,6 +2081,10 @@ requestors or restrict or meter service.<a href="#section-8.6-1" class="pilcrow"
 <dt id="RFC5280">[RFC5280]</dt>
         <dd>
 <span class="refAuthor">Cooper, D.</span>, <span class="refAuthor">Santesson, S.</span>, <span class="refAuthor">Farrell, S.</span>, <span class="refAuthor">Boeyen, S.</span>, <span class="refAuthor">Housley, R.</span>, and <span class="refAuthor">W. Polk</span>, <span class="refTitle">"Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile"</span>, <span class="seriesInfo">RFC 5280</span>, <span class="seriesInfo">DOI 10.17487/RFC5280</span>, <time datetime="2008-05" class="refDate">May 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc5280">https://www.rfc-editor.org/rfc/rfc5280</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC6234">[RFC6234]</dt>
+        <dd>
+<span class="refAuthor">Eastlake 3rd, D.</span> and <span class="refAuthor">T. Hansen</span>, <span class="refTitle">"US Secure Hash Algorithms (SHA and SHA-based HMAC and HKDF)"</span>, <span class="seriesInfo">RFC 6234</span>, <span class="seriesInfo">DOI 10.17487/RFC6234</span>, <time datetime="2011-05" class="refDate">May 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6234">https://www.rfc-editor.org/rfc/rfc6234</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC6960">[RFC6960]</dt>
         <dd>
@@ -2075,25 +2123,761 @@ requestors or restrict or meter service.<a href="#section-8.6-1" class="pilcrow"
 </section>
 </div>
 </section>
-<div id="acknowledgments">
+<div id="differences-from-rfc-5019">
 <section id="appendix-A">
+      <h2 id="name-differences-from-rfc-5019">
+<a href="#appendix-A" class="section-number selfRef">Appendix A. </a><a href="#name-differences-from-rfc-5019" class="section-name selfRef">Differences from RFC 5019</a>
+      </h2>
+<p id="appendix-A-1">This document obsoletes <span>[<a href="#RFC5019" class="cite xref">RFC5019</a>]</span>. <span>[<a href="#RFC5019" class="cite xref">RFC5019</a>]</span> defines a lightweight
+profile for OCSP that makes the protocol more suitable for use in
+high-volume environments. The lightweight profile specifies the
+mandatory use of SHA-1 when calculating the values of several fields in
+OCSP requests and responses. In recent years, weaknesses have been
+demonstrated with the SHA-1 algorithm. As a result, SHA-1 is
+increasingly falling out of use even for non-security relevant
+use cases. This document obsoletes the lightweight profile as specified
+in RFC 5019 to instead recommend the use of SHA-256 where SHA-1 was
+previously required. An <span>[<a href="#RFC5019" class="cite xref">RFC5019</a>]</span>-compliant OCSP client is still able
+to use SHA-1, but the use of SHA-1 may become obsolete in the future.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+<p id="appendix-A-2">Substantive changes to RFC 5019:<a href="#appendix-A-2" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="appendix-A-3.1">
+          <p id="appendix-A-3.1.1"><a href="#certid" class="auto internal xref">Section 3.1.1</a> requires new OCSP clients to use SHA-256 to
+support migration for OCSP clients.<a href="#appendix-A-3.1.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-A-3.2">
+          <p id="appendix-A-3.2.1"><a href="#byKey" class="auto internal xref">Section 3.2.2</a> requires new OCSP responders to use the byKey field,
+and support migration from byName fields.<a href="#appendix-A-3.2.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-A-3.3">
+          <p id="appendix-A-3.3.1"><a href="#transport" class="auto internal xref">Section 6</a> clarifies that OCSP clients <span class="bcp14">MUST NOT</span> include
+whitespace or any other characters that are not part of
+the base64 character repertoire in the base64-encoded string.<a href="#appendix-A-3.3.1" class="pilcrow">¶</a></p>
+</li>
+      </ul>
+</section>
+</div>
+<div id="examples">
+<section id="appendix-B">
+      <h2 id="name-examples">
+<a href="#appendix-B" class="section-number selfRef">Appendix B. </a><a href="#name-examples" class="section-name selfRef">Examples</a>
+      </h2>
+<div id="root-certification-authority-certificate">
+<section id="appendix-B.1">
+        <h3 id="name-root-certification-authorit">
+<a href="#appendix-B.1" class="section-number selfRef">B.1. </a><a href="#name-root-certification-authorit" class="section-name selfRef">Root Certification Authority Certificate</a>
+        </h3>
+<p id="appendix-B.1-1">This is a self-signed certificate for the certification authority that
+issued the end-entity certificate and OCSP delegated responder
+example certificates below.<a href="#appendix-B.1-1" class="pilcrow">¶</a></p>
+<p id="appendix-B.1-2">-----BEGIN CERTIFICATE-----
+MIICKDCCAYqgAwIBAgIBATAKBggqhkjOPQQDBDA4MQswCQYDVQQGEwJYWDEUMBIG
+A1UECgwLQ2VydHMgJ3IgVXMxEzARBgNVBAMMCklzc3VpbmcgQ0EwHhcNMjQwMzI4
+MDY0MzA0WhcNMjUwMzI4MDY0MzA0WjA4MQswCQYDVQQGEwJYWDEUMBIGA1UECgwL
+Q2VydHMgJ3IgVXMxEzARBgNVBAMMCklzc3VpbmcgQ0EwgZswEAYHKoZIzj0CAQYF
+K4EEACMDgYYABAHQ/XJXqEx0f1YldcBzhdvr8vUr6lgIPbgv3RUx2KrjzIdf8C/3
++i2iYNjrYtbS9dZJJ44yFzagYoy7swMItuYY2wD2KtIExkYDWbyBiriWG/Dw/A7F
+quikKBc85W8A3psVfB5cgsZPVi/K3vxKTCj200LPPvYW/ILTO3KFySHyvzb92KNC
+MEAwHQYDVR0OBBYEFI7CFAlgduqQOOk5rhttUsQXfZ++MA8GA1UdEwEB/wQFMAMB
+Af8wDgYDVR0PAQH/BAQDAgIEMAoGCCqGSM49BAMEA4GLADCBhwJBDqvrJI5evwwa
+atKi6HUwihypigUj/JSDJheAn35VouXNc2nrr1RrRSG/oiPnYaHrVVr9kk4JruM+
+HwjhE6dS3wgCQgDCU2V+muXqCbMUdl3i7lAQn4bQDw94rOpN3cOBgqv2UO6SQ8xR
+23ilHXiOaqT6dU5JIcTBU052MOPehMykBRHe5A==
+-----END CERTIFICATE-----<a href="#appendix-B.1-2" class="pilcrow">¶</a></p>
+<p id="appendix-B.1-3">0 552: SEQUENCE {
+  4 394:   SEQUENCE {
+  8   3:     [0] {
+ 10   1:       INTEGER 2
+       :       }
+ 13   1:     INTEGER 1
+ 16  10:     SEQUENCE {
+ 18   8:       OBJECT IDENTIFIER ecdsaWithSHA512 (1 2 840 10045 4 3 4)
+       :       }
+ 28  56:     SEQUENCE {
+ 30  11:       SET {
+ 32   9:         SEQUENCE {
+ 34   3:           OBJECT IDENTIFIER countryName (2 5 4 6)
+ 39   2:           PrintableString 'XX'
+       :           }
+       :         }
+ 43  20:       SET {
+ 45  18:         SEQUENCE {
+ 47   3:           OBJECT IDENTIFIER organizationName (2 5 4 10)
+ 52  11:           UTF8String 'Certs 'r Us'
+       :           }
+       :         }
+ 65  19:       SET {
+ 67  17:         SEQUENCE {
+ 69   3:           OBJECT IDENTIFIER commonName (2 5 4 3)
+ 74  10:           UTF8String 'Issuing CA'
+       :           }
+       :         }
+       :       }
+ 86  30:     SEQUENCE {
+ 88  13:       UTCTime 28/03/2024 06:43:04 GMT
+103  13:       UTCTime 28/03/2025 06:43:04 GMT
+       :       }
+118  56:     SEQUENCE {
+120  11:       SET {
+122   9:         SEQUENCE {
+124   3:           OBJECT IDENTIFIER countryName (2 5 4 6)
+129   2:           PrintableString 'XX'
+       :           }
+       :         }
+133  20:       SET {
+135  18:         SEQUENCE {
+137   3:           OBJECT IDENTIFIER organizationName (2 5 4 10)
+142  11:           UTF8String 'Certs 'r Us'
+       :           }
+       :         }
+155  19:       SET {
+157  17:         SEQUENCE {
+159   3:           OBJECT IDENTIFIER commonName (2 5 4 3)
+164  10:           UTF8String 'Issuing CA'
+       :           }
+       :         }
+       :       }
+176 155:     SEQUENCE {
+179  16:       SEQUENCE {
+181   7:         OBJECT IDENTIFIER ecPublicKey (1 2 840 10045 2 1)
+190   5:         OBJECT IDENTIFIER secp521r1 (1 3 132 0 35)
+       :         }
+197 134:       BIT STRING
+       :         04 01 D0 FD 72 57 A8 4C 74 7F 56 25 75 C0 73 85
+       :         DB EB F2 F5 2B EA 58 08 3D B8 2F DD 15 31 D8 AA
+       :         E3 CC 87 5F F0 2F F7 FA 2D A2 60 D8 EB 62 D6 D2
+       :         F5 D6 49 27 8E 32 17 36 A0 62 8C BB B3 03 08 B6
+       :         E6 18 DB 00 F6 2A D2 04 C6 46 03 59 BC 81 8A B8
+       :         96 1B F0 F0 FC 0E C5 AA E8 A4 28 17 3C E5 6F 00
+       :         DE 9B 15 7C 1E 5C 82 C6 4F 56 2F CA DE FC 4A 4C
+       :         28 F6 D3 42 CF 3E F6 16 FC 82 D3 3B 72 85 C9 21
+       :         F2 BF 36 FD D8
+       :       }
+334  66:     [3] {
+336  64:       SEQUENCE {
+338  29:         SEQUENCE {
+340   3:           OBJECT IDENTIFIER subjectKeyIdentifier (2 5 29 14)
+345  22:           OCTET STRING, encapsulates {
+347  20:             OCTET STRING
+       :               8E C2 14 09 60 76 EA 90 38 E9 39 AE 1B 6D 52 C4
+       :               17 7D 9F BE
+       :             }
+       :           }
+369  15:         SEQUENCE {
+371   3:           OBJECT IDENTIFIER basicConstraints (2 5 29 19)
+376   1:           BOOLEAN TRUE
+379   5:           OCTET STRING, encapsulates {
+381   3:             SEQUENCE {
+383   1:               BOOLEAN TRUE
+       :               }
+       :             }
+       :           }
+386  14:         SEQUENCE {
+388   3:           OBJECT IDENTIFIER keyUsage (2 5 29 15)
+393   1:           BOOLEAN TRUE
+396   4:           OCTET STRING, encapsulates {
+398   2:             BIT STRING 2 unused bits
+       :               '100000'B (bit 5)
+       :             }
+       :           }
+       :         }
+       :       }
+       :     }
+402  10:   SEQUENCE {
+404   8:     OBJECT IDENTIFIER ecdsaWithSHA512 (1 2 840 10045 4 3 4)
+       :     }
+414 139:   BIT STRING, encapsulates {
+418 135:     SEQUENCE {
+421  65:       INTEGER
+       :         0E AB EB 24 8E 5E BF 0C 1A 6A D2 A2 E8 75 30 8A
+       :         1C A9 8A 05 23 FC 94 83 26 17 80 9F 7E 55 A2 E5
+       :         CD 73 69 EB AF 54 6B 45 21 BF A2 23 E7 61 A1 EB
+       :         55 5A FD 92 4E 09 AE E3 3E 1F 08 E1 13 A7 52 DF
+       :         08
+488  66:       INTEGER
+       :         00 C2 53 65 7E 9A E5 EA 09 B3 14 76 5D E2 EE 50
+       :         10 9F 86 D0 0F 0F 78 AC EA 4D DD C3 81 82 AB F6
+       :         50 EE 92 43 CC 51 DB 78 A5 1D 78 8E 6A A4 FA 75
+       :         4E 49 21 C4 C1 53 4E 76 30 E3 DE 84 CC A4 05 11
+       :         DE E4
+       :       }
+       :     }
+       :   }<a href="#appendix-B.1-3" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="end-entity-certificate">
+<section id="appendix-B.2">
+        <h3 id="name-end-entity-certificate">
+<a href="#appendix-B.2" class="section-number selfRef">B.2. </a><a href="#name-end-entity-certificate" class="section-name selfRef">End-entity Certificate</a>
+        </h3>
+<p id="appendix-B.2-1">This is an end-entity certificate whose status is requested and
+returned in the OCSP request and response examples below.<a href="#appendix-B.2-1" class="pilcrow">¶</a></p>
+<p id="appendix-B.2-2">-----BEGIN CERTIFICATE-----
+MIIB2jCCATygAwIBAgIEAarwDTAKBggqhkjOPQQDAjA4MQswCQYDVQQGEwJYWDEU
+MBIGA1UECgwLQ2VydHMgJ3IgVXMxEzARBgNVBAMMCklzc3VpbmcgQ0EwHhcNMjQw
+MzI4MDY0MzA0WhcNMjUwMzI4MDY0MzA0WjAcMRowGAYDVQQDDBF4bi0tMThqNGQu
+ZXhhbXBsZTBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABEIlSPiPt4L/teyjdERS
+xyoeVY+9b3O+XkjpMjLMRcWxbEzRDEy41bihcTnpSILImSVymTQl9BQZq36QpCpJ
+QnKjUDBOMB0GA1UdDgQWBBRbcKeYF/ef9jfS9+PcRGwhCde71DAfBgNVHSMEGDAW
+gBSOwhQJYHbqkDjpOa4bbVLEF32fvjAMBgNVHRMBAf8EAjAAMAoGCCqGSM49BAMC
+A4GLADCBhwJCAQPL6EdlvutdJNDxEy0WJvvWF3h/8nUYx+N9uchJ/7ExjYTc2gGP
+Y8hATvtxIwP2Dk8BDRD1jpp02mSXUCyvCqzPAkE8KhXOd10S20nFJJwFvmfaZJFD
+KNEQh9qcisEMkZWlo1APugLrY280kvvUIHlccTG9Tx4UI3bNYV+3Jd4L6NEe+g==
+-----END CERTIFICATE-----<a href="#appendix-B.2-2" class="pilcrow">¶</a></p>
+<p id="appendix-B.2-3">0 474: SEQUENCE {
+  4 316:   SEQUENCE {
+  8   3:     [0] {
+ 10   1:       INTEGER 2
+       :       }
+ 13   4:     INTEGER 27979789
+ 19  10:     SEQUENCE {
+ 21   8:       OBJECT IDENTIFIER ecdsaWithSHA256 (1 2 840 10045 4 3 2)
+       :       }
+ 31  56:     SEQUENCE {
+ 33  11:       SET {
+ 35   9:         SEQUENCE {
+ 37   3:           OBJECT IDENTIFIER countryName (2 5 4 6)
+ 42   2:           PrintableString 'XX'
+       :           }
+       :         }
+ 46  20:       SET {
+ 48  18:         SEQUENCE {
+ 50   3:           OBJECT IDENTIFIER organizationName (2 5 4 10)
+ 55  11:           UTF8String 'Certs 'r Us'
+       :           }
+       :         }
+ 68  19:       SET {
+ 70  17:         SEQUENCE {
+ 72   3:           OBJECT IDENTIFIER commonName (2 5 4 3)
+ 77  10:           UTF8String 'Issuing CA'
+       :           }
+       :         }
+       :       }
+ 89  30:     SEQUENCE {
+ 91  13:       UTCTime 28/03/2024 06:43:04 GMT
+106  13:       UTCTime 28/03/2025 06:43:04 GMT
+       :       }
+121  28:     SEQUENCE {
+123  26:       SET {
+125  24:         SEQUENCE {
+127   3:           OBJECT IDENTIFIER commonName (2 5 4 3)
+132  17:           UTF8String 'xn--18j4d.example'
+       :           }
+       :         }
+       :       }
+151  89:     SEQUENCE {
+153  19:       SEQUENCE {
+155   7:         OBJECT IDENTIFIER ecPublicKey (1 2 840 10045 2 1)
+164   8:         OBJECT IDENTIFIER prime256v1 (1 2 840 10045 3 1 7)
+       :         }
+174  66:       BIT STRING
+       :         04 42 25 48 F8 8F B7 82 FF B5 EC A3 74 44 52 C7
+       :         2A 1E 55 8F BD 6F 73 BE 5E 48 E9 32 32 CC 45 C5
+       :         B1 6C 4C D1 0C 4C B8 D5 B8 A1 71 39 E9 48 82 C8
+       :         99 25 72 99 34 25 F4 14 19 AB 7E 90 A4 2A 49 42
+       :         72
+       :       }
+242  80:     [3] {
+244  78:       SEQUENCE {
+246  29:         SEQUENCE {
+248   3:           OBJECT IDENTIFIER subjectKeyIdentifier (2 5 29 14)
+253  22:           OCTET STRING, encapsulates {
+255  20:             OCTET STRING
+       :               5B 70 A7 98 17 F7 9F F6 37 D2 F7 E3 DC 44 6C 21
+       :               09 D7 BB D4
+       :             }
+       :           }
+277  31:         SEQUENCE {
+279   3:           OBJECT IDENTIFIER authorityKeyIdentifier (2 5 29 35)
+284  24:           OCTET STRING, encapsulates {
+286  22:             SEQUENCE {
+288  20:               [0]
+       :               8E C2 14 09 60 76 EA 90 38 E9 39 AE 1B 6D 52 C4
+       :               17 7D 9F BE
+       :               }
+       :             }
+       :           }
+310  12:         SEQUENCE {
+312   3:           OBJECT IDENTIFIER basicConstraints (2 5 29 19)
+317   1:           BOOLEAN TRUE
+320   2:           OCTET STRING, encapsulates {
+322   0:             SEQUENCE {}
+       :             }
+       :           }
+       :         }
+       :       }
+       :     }
+324  10:   SEQUENCE {
+326   8:     OBJECT IDENTIFIER ecdsaWithSHA256 (1 2 840 10045 4 3 2)
+       :     }
+336 139:   BIT STRING, encapsulates {
+340 135:     SEQUENCE {
+343  66:       INTEGER
+       :         01 03 CB E8 47 65 BE EB 5D 24 D0 F1 13 2D 16 26
+       :         FB D6 17 78 7F F2 75 18 C7 E3 7D B9 C8 49 FF B1
+       :         31 8D 84 DC DA 01 8F 63 C8 40 4E FB 71 23 03 F6
+       :         0E 4F 01 0D 10 F5 8E 9A 74 DA 64 97 50 2C AF 0A
+       :         AC CF
+411  65:       INTEGER
+       :         3C 2A 15 CE 77 5D 12 DB 49 C5 24 9C 05 BE 67 DA
+       :         64 91 43 28 D1 10 87 DA 9C 8A C1 0C 91 95 A5 A3
+       :         50 0F BA 02 EB 63 6F 34 92 FB D4 20 79 5C 71 31
+       :         BD 4F 1E 14 23 76 CD 61 5F B7 25 DE 0B E8 D1 1E
+       :         FA
+       :       }
+       :     }
+       :   }<a href="#appendix-B.2-3" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="ocsp-responder-certificate">
+<section id="appendix-B.3">
+        <h3 id="name-ocsp-responder-certificate">
+<a href="#appendix-B.3" class="section-number selfRef">B.3. </a><a href="#name-ocsp-responder-certificate" class="section-name selfRef">OCSP Responder Certificate</a>
+        </h3>
+<p id="appendix-B.3-1">This is a certificate for the OCSP delegated response that signed the
+OCSP response example below.<a href="#appendix-B.3-1" class="pilcrow">¶</a></p>
+<p id="appendix-B.3-2">-----BEGIN CERTIFICATE-----
+MIICOjCCAZugAwIBAgIBATAKBggqhkjOPQQDAjA4MQswCQYDVQQGEwJYWDEUMBIG
+A1UECgwLQ2VydHMgJ3IgVXMxEzARBgNVBAMMCklzc3VpbmcgQ0EwHhcNMjQwMzI4
+MDY0MzA0WhcNMjUwMzI4MDY0MzA0WjA8MQswCQYDVQQGEwJYWDEUMBIGA1UECgwL
+Q2VydHMgJ3IgVXMxFzAVBgNVBAMMDk9DU1AgUmVzcG9uZGVyMHYwEAYHKoZIzj0C
+AQYFK4EEACIDYgAEWwkBuIUjKW65GdUP+hqcs3S8TUCVhigr/soRsdla27VHNK9X
+C/grcijPImvPTCXdvP47GjrTlDDv92Ph1o0uFR2Rcgt3lbWNprNGOWE6j7m1qNpI
+xnRxF/mRnoQk837Io3UwczAdBgNVHQ4EFgQUCuOg/p3UJXaYtety68oM57899fEw
+HwYDVR0jBBgwFoAUjsIUCWB26pA46TmuG21SxBd9n74wDAYDVR0TAQH/BAIwADAO
+BgNVHQ8BAf8EBAMCB4AwEwYDVR0lBAwwCgYIKwYBBQUHAwkwCgYIKoZIzj0EAwID
+gYwAMIGIAkIBKB1K2uyW1D6TGP7zBLDd+8CRFz+jHA8RhyfiwwymmYGKNviu/7F9
+GcaWWWz0Z65Xyyy1gXrO4OWiGN6f34nniD0CQgCb1iaEmCh4AWvRerhuVj/+4Vr1
+nBPPxDq8Q8J0K9ufBG+082P1XZ+lvVSuOP8M+NLEO68GF1KemEpT5bnFMYzs2Q==
+-----END CERTIFICATE-----<a href="#appendix-B.3-2" class="pilcrow">¶</a></p>
+<p id="appendix-B.3-3">0 570: SEQUENCE {
+  4 411:   SEQUENCE {
+  8   3:     [0] {
+ 10   1:       INTEGER 2
+       :       }
+ 13   1:     INTEGER 1
+ 16  10:     SEQUENCE {
+ 18   8:       OBJECT IDENTIFIER ecdsaWithSHA256 (1 2 840 10045 4 3 2)
+       :       }
+ 28  56:     SEQUENCE {
+ 30  11:       SET {
+ 32   9:         SEQUENCE {
+ 34   3:           OBJECT IDENTIFIER countryName (2 5 4 6)
+ 39   2:           PrintableString 'XX'
+       :           }
+       :         }
+ 43  20:       SET {
+ 45  18:         SEQUENCE {
+ 47   3:           OBJECT IDENTIFIER organizationName (2 5 4 10)
+ 52  11:           UTF8String 'Certs 'r Us'
+       :           }
+       :         }
+ 65  19:       SET {
+ 67  17:         SEQUENCE {
+ 69   3:           OBJECT IDENTIFIER commonName (2 5 4 3)
+ 74  10:           UTF8String 'Issuing CA'
+       :           }
+       :         }
+       :       }
+ 86  30:     SEQUENCE {
+ 88  13:       UTCTime 28/03/2024 06:43:04 GMT
+103  13:       UTCTime 28/03/2025 06:43:04 GMT
+       :       }
+118  60:     SEQUENCE {
+120  11:       SET {
+122   9:         SEQUENCE {
+124   3:           OBJECT IDENTIFIER countryName (2 5 4 6)
+129   2:           PrintableString 'XX'
+       :           }
+       :         }
+133  20:       SET {
+135  18:         SEQUENCE {
+137   3:           OBJECT IDENTIFIER organizationName (2 5 4 10)
+142  11:           UTF8String 'Certs 'r Us'
+       :           }
+       :         }
+155  23:       SET {
+157  21:         SEQUENCE {
+159   3:           OBJECT IDENTIFIER commonName (2 5 4 3)
+164  14:           UTF8String 'OCSP Responder'
+       :           }
+       :         }
+       :       }
+180 118:     SEQUENCE {
+182  16:       SEQUENCE {
+184   7:         OBJECT IDENTIFIER ecPublicKey (1 2 840 10045 2 1)
+193   5:         OBJECT IDENTIFIER secp384r1 (1 3 132 0 34)
+       :         }
+200  98:       BIT STRING
+       :         04 5B 09 01 B8 85 23 29 6E B9 19 D5 0F FA 1A 9C
+       :         B3 74 BC 4D 40 95 86 28 2B FE CA 11 B1 D9 5A DB
+       :         B5 47 34 AF 57 0B F8 2B 72 28 CF 22 6B CF 4C 25
+       :         DD BC FE 3B 1A 3A D3 94 30 EF F7 63 E1 D6 8D 2E
+       :         15 1D 91 72 0B 77 95 B5 8D A6 B3 46 39 61 3A 8F
+       :         B9 B5 A8 DA 48 C6 74 71 17 F9 91 9E 84 24 F3 7E
+       :         C8
+       :       }
+300 117:     [3] {
+302 115:       SEQUENCE {
+304  29:         SEQUENCE {
+306   3:           OBJECT IDENTIFIER subjectKeyIdentifier (2 5 29 14)
+311  22:           OCTET STRING, encapsulates {
+313  20:             OCTET STRING
+       :               0A E3 A0 FE 9D D4 25 76 98 B5 EB 72 EB CA 0C E7
+       :               BF 3D F5 F1
+       :             }
+       :           }
+335  31:         SEQUENCE {
+337   3:           OBJECT IDENTIFIER authorityKeyIdentifier (2 5 29 35)
+342  24:           OCTET STRING, encapsulates {
+344  22:             SEQUENCE {
+346  20:               [0]
+       :               8E C2 14 09 60 76 EA 90 38 E9 39 AE 1B 6D 52 C4
+       :               17 7D 9F BE
+       :               }
+       :             }
+       :           }
+368  12:         SEQUENCE {
+370   3:           OBJECT IDENTIFIER basicConstraints (2 5 29 19)
+375   1:           BOOLEAN TRUE
+378   2:           OCTET STRING, encapsulates {
+380   0:             SEQUENCE {}
+       :             }
+       :           }
+382  14:         SEQUENCE {
+384   3:           OBJECT IDENTIFIER keyUsage (2 5 29 15)
+389   1:           BOOLEAN TRUE
+392   4:           OCTET STRING, encapsulates {
+394   2:             BIT STRING 7 unused bits
+       :               '1'B (bit 0)
+       :             }
+       :           }
+398  19:         SEQUENCE {
+400   3:           OBJECT IDENTIFIER extKeyUsage (2 5 29 37)
+405  12:           OCTET STRING, encapsulates {
+407  10:             SEQUENCE {
+409   8:               OBJECT IDENTIFIER ocspSigning (1 3 6 1 5 5 7 3 9)
+       :               }
+       :             }
+       :           }
+       :         }
+       :       }
+       :     }
+419  10:   SEQUENCE {
+421   8:     OBJECT IDENTIFIER ecdsaWithSHA256 (1 2 840 10045 4 3 2)
+       :     }
+431 140:   BIT STRING, encapsulates {
+435 136:     SEQUENCE {
+438  66:       INTEGER
+       :         01 28 1D 4A DA EC 96 D4 3E 93 18 FE F3 04 B0 DD
+       :         FB C0 91 17 3F A3 1C 0F 11 87 27 E2 C3 0C A6 99
+       :         81 8A 36 F8 AE FF B1 7D 19 C6 96 59 6C F4 67 AE
+       :         57 CB 2C B5 81 7A CE E0 E5 A2 18 DE 9F DF 89 E7
+       :         88 3D
+506  66:       INTEGER
+       :         00 9B D6 26 84 98 28 78 01 6B D1 7A B8 6E 56 3F
+       :         FE E1 5A F5 9C 13 CF C4 3A BC 43 C2 74 2B DB 9F
+       :         04 6F B4 F3 63 F5 5D 9F A5 BD 54 AE 38 FF 0C F8
+       :         D2 C4 3B AF 06 17 52 9E 98 4A 53 E5 B9 C5 31 8C
+       :         EC D9
+       :       }
+       :     }
+       :   }<a href="#appendix-B.3-3" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="ocsp-request">
+<section id="appendix-B.4">
+        <h3 id="name-ocsp-request">
+<a href="#appendix-B.4" class="section-number selfRef">B.4. </a><a href="#name-ocsp-request" class="section-name selfRef">OCSP Request</a>
+        </h3>
+<p id="appendix-B.4-1">This is a base64-encoded OCSP request for the end-entity certificate
+above.<a href="#appendix-B.4-1" class="pilcrow">¶</a></p>
+<p id="appendix-B.4-2">MGEwXzBdMFswWTANBglghkgBZQMEAgEFAAQgOplGd1aAc6cHv95QGGNF5M1hNNsI
+Xrqh0QQl8DtvCOoEIEdKbKMB8j3J9/cHhwThx/X8lucWdfbtiC56tlw/WEVDAgQB
+qvAN<a href="#appendix-B.4-2" class="pilcrow">¶</a></p>
+<p id="appendix-B.4-3">0  97: SEQUENCE {
+  2  95:   SEQUENCE {
+  4  93:     SEQUENCE {
+  6  91:       SEQUENCE {
+  8  89:         SEQUENCE {
+ 10  13:           SEQUENCE {
+ 12   9:             OBJECT IDENTIFIER sha-256 (2 16 840 1 101 3 4 2 1)
+ 23   0:             NULL
+       :             }
+ 25  32:           OCTET STRING
+       :             3A 99 46 77 56 80 73 A7 07 BF DE 50 18 63 45 E4
+       :             CD 61 34 DB 08 5E BA A1 D1 04 25 F0 3B 6F 08 EA
+ 59  32:           OCTET STRING
+       :             47 4A 6C A3 01 F2 3D C9 F7 F7 07 87 04 E1 C7 F5
+       :             FC 96 E7 16 75 F6 ED 88 2E 7A B6 5C 3F 58 45 43
+ 93   4:           INTEGER 27979789
+       :           }
+       :         }
+       :       }
+       :     }
+       :   }<a href="#appendix-B.4-3" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="ocsp-response">
+<section id="appendix-B.5">
+        <h3 id="name-ocsp-response">
+<a href="#appendix-B.5" class="section-number selfRef">B.5. </a><a href="#name-ocsp-response" class="section-name selfRef">OCSP Response</a>
+        </h3>
+<p id="appendix-B.5-1">This is a base64-encoded OCSP response for the end-entity certificate
+above.<a href="#appendix-B.5-1" class="pilcrow">¶</a></p>
+<p id="appendix-B.5-2">MIIDjgoBAKCCA4cwggODBgkrBgEFBQcwAQEEggN0MIIDcDCBsKIWBBQK46D+ndQl
+dpi163Lrygznvz318RgPMjAyNDAzMjgwNjQzMDRaMIGEMIGBMFkwDQYJYIZIAWUD
+BAIBBQAEIDqZRndWgHOnB7/eUBhjReTNYTTbCF66odEEJfA7bwjqBCBHSmyjAfI9
+yff3B4cE4cf1/JbnFnX27YguerZcP1hFQwIEAarwDYAAGA8yMDI0MDMyOTA2NDMw
+NFqgERgPMjAyNDA0MDUwNjQzMDRaMAoGCCqGSM49BAMCA2kAMGYCMQD9DqKvz2va
+k3bpO/HWmEA/GYvb5mvBRN6qMHFLYAiLySBJLVGOdIxrxjBAoHOetl0CMQCfQx8k
+95Icwf2xXLb/blb+U+NkhR2R7mMHzHYMq13v5Ur0YQ9T6egpGYcsbpNsc+igggJC
+MIICPjCCAjowggGboAMCAQICAQEwCgYIKoZIzj0EAwIwODELMAkGA1UEBhMCWFgx
+FDASBgNVBAoMC0NlcnRzICdyIFVzMRMwEQYDVQQDDApJc3N1aW5nIENBMB4XDTI0
+MDMyODA2NDMwNFoXDTI1MDMyODA2NDMwNFowPDELMAkGA1UEBhMCWFgxFDASBgNV
+BAoMC0NlcnRzICdyIFVzMRcwFQYDVQQDDA5PQ1NQIFJlc3BvbmRlcjB2MBAGByqG
+SM49AgEGBSuBBAAiA2IABFsJAbiFIyluuRnVD/oanLN0vE1AlYYoK/7KEbHZWtu1
+RzSvVwv4K3IozyJrz0wl3bz+Oxo605Qw7/dj4daNLhUdkXILd5W1jaazRjlhOo+5
+tajaSMZ0cRf5kZ6EJPN+yKN1MHMwHQYDVR0OBBYEFArjoP6d1CV2mLXrcuvKDOe/
+PfXxMB8GA1UdIwQYMBaAFI7CFAlgduqQOOk5rhttUsQXfZ++MAwGA1UdEwEB/wQC
+MAAwDgYDVR0PAQH/BAQDAgeAMBMGA1UdJQQMMAoGCCsGAQUFBwMJMAoGCCqGSM49
+BAMCA4GMADCBiAJCASgdStrsltQ+kxj+8wSw3fvAkRc/oxwPEYcn4sMMppmBijb4
+rv+xfRnGllls9GeuV8sstYF6zuDlohjen9+J54g9AkIAm9YmhJgoeAFr0Xq4blY/
+/uFa9ZwTz8Q6vEPCdCvbnwRvtPNj9V2fpb1Urjj/DPjSxDuvBhdSnphKU+W5xTGM
+7Nk=<a href="#appendix-B.5-2" class="pilcrow">¶</a></p>
+<p id="appendix-B.5-3">0 910: SEQUENCE {
+  4   1:   ENUMERATED 0
+  7 903:   [0] {
+ 11 899:     SEQUENCE {
+ 15   9:       OBJECT IDENTIFIER ocspBasic (1 3 6 1 5 5 7 48 1 1)
+ 26 884:       OCTET STRING, encapsulates {
+ 30 880:         SEQUENCE {
+ 34 176:           SEQUENCE {
+ 37  22:             [2] {
+ 39  20:               OCTET STRING
+       :               0A E3 A0 FE 9D D4 25 76 98 B5 EB 72 EB CA 0C E7
+       :               BF 3D F5 F1
+       :               }
+ 61  15:             GeneralizedTime 28/03/2024 06:43:04 GMT
+ 78 132:             SEQUENCE {
+ 81 129:               SEQUENCE {
+ 84  89:                 SEQUENCE {
+ 86  13:                   SEQUENCE {
+ 88   9:                     OBJECT IDENTIFIER
+       :                       sha-256 (2 16 840 1 101 3 4 2 1)
+ 99   0:                     NULL
+       :                     }
+101  32:                   OCTET STRING
+       :               3A 99 46 77 56 80 73 A7 07 BF DE 50 18 63 45 E4
+       :               CD 61 34 DB 08 5E BA A1 D1 04 25 F0 3B 6F 08 EA
+135  32:                   OCTET STRING
+       :               47 4A 6C A3 01 F2 3D C9 F7 F7 07 87 04 E1 C7 F5
+       :               FC 96 E7 16 75 F6 ED 88 2E 7A B6 5C 3F 58 45 43
+169   4:                   INTEGER 27979789
+       :                   }
+175   0:                 [0]
+177  15:                 GeneralizedTime 29/03/2024 06:43:04 GMT
+194  17:                 [0] {
+196  15:                   GeneralizedTime 05/04/2024 06:43:04 GMT
+       :                   }
+       :                 }
+       :               }
+       :             }
+213  10:           SEQUENCE {
+215   8:             OBJECT IDENTIFIER
+       :               ecdsaWithSHA256 (1 2 840 10045 4 3 2)
+       :             }
+225 105:           BIT STRING, encapsulates {
+228 102:             SEQUENCE {
+230  49:               INTEGER
+       :               00 FD 0E A2 AF CF 6B DA 93 76 E9 3B F1 D6 98 40
+       :               3F 19 8B DB E6 6B C1 44 DE AA 30 71 4B 60 08 8B
+       :               C9 20 49 2D 51 8E 74 8C 6B C6 30 40 A0 73 9E B6
+       :               5D
+281  49:               INTEGER
+       :               00 9F 43 1F 24 F7 92 1C C1 FD B1 5C B6 FF 6E 56
+       :               FE 53 E3 64 85 1D 91 EE 63 07 CC 76 0C AB 5D EF
+       :               E5 4A F4 61 0F 53 E9 E8 29 19 87 2C 6E 93 6C 73
+       :               E8
+       :               }
+       :             }
+332 578:           [0] {
+336 574:             SEQUENCE {
+340 570:               SEQUENCE {
+344 411:                 SEQUENCE {
+348   3:                   [0] {
+350   1:                     INTEGER 2
+       :                     }
+353   1:                   INTEGER 1
+356  10:                   SEQUENCE {
+358   8:                     OBJECT IDENTIFIER
+       :                       ecdsaWithSHA256 (1 2 840 10045 4 3 2)
+       :                     }
+368  56:                   SEQUENCE {
+370  11:                     SET {
+372   9:                       SEQUENCE {
+374   3:                         OBJECT IDENTIFIER countryName (2 5 4 6)
+379   2:                         PrintableString 'XX'
+       :                         }
+       :                       }
+383  20:                     SET {
+385  18:                       SEQUENCE {
+387   3:                         OBJECT IDENTIFIER
+       :                           organizationName (2 5 4 10)
+392  11:                         UTF8String 'Certs 'r Us'
+       :                         }
+       :                       }
+405  19:                     SET {
+407  17:                       SEQUENCE {
+409   3:                         OBJECT IDENTIFIER commonName (2 5 4 3)
+414  10:                         UTF8String 'Issuing CA'
+       :                         }
+       :                       }
+       :                     }
+426  30:                   SEQUENCE {
+428  13:                     UTCTime 28/03/2024 06:43:04 GMT
+443  13:                     UTCTime 28/03/2025 06:43:04 GMT
+       :                     }
+458  60:                   SEQUENCE {
+460  11:                     SET {
+462   9:                       SEQUENCE {
+464   3:                         OBJECT IDENTIFIER countryName (2 5 4 6)
+469   2:                         PrintableString 'XX'
+       :                         }
+       :                       }
+473  20:                     SET {
+475  18:                       SEQUENCE {
+477   3:                         OBJECT IDENTIFIER
+       :                           organizationName (2 5 4 10)
+482  11:                         UTF8String 'Certs 'r Us'
+       :                         }
+       :                       }
+495  23:                     SET {
+497  21:                       SEQUENCE {
+499   3:                         OBJECT IDENTIFIER commonName (2 5 4 3)
+504  14:                         UTF8String 'OCSP Responder'
+       :                         }
+       :                       }
+       :                     }
+520 118:                   SEQUENCE {
+522  16:                     SEQUENCE {
+524   7:                       OBJECT IDENTIFIER
+       :                         ecPublicKey (1 2 840 10045 2 1)
+533   5:                       OBJECT IDENTIFIER
+       :                         secp384r1 (1 3 132 0 34)
+       :                       }
+540  98:                     BIT STRING
+       :               04 5B 09 01 B8 85 23 29 6E B9 19 D5 0F FA 1A 9C
+       :               B3 74 BC 4D 40 95 86 28 2B FE CA 11 B1 D9 5A DB
+       :               B5 47 34 AF 57 0B F8 2B 72 28 CF 22 6B CF 4C 25
+       :               DD BC FE 3B 1A 3A D3 94 30 EF F7 63 E1 D6 8D 2E
+       :               15 1D 91 72 0B 77 95 B5 8D A6 B3 46 39 61 3A 8F
+       :               B9 B5 A8 DA 48 C6 74 71 17 F9 91 9E 84 24 F3 7E
+       :               C8
+       :                     }
+640 117:                   [3] {
+642 115:                     SEQUENCE {
+644  29:                       SEQUENCE {
+646   3:                         OBJECT IDENTIFIER
+       :                           subjectKeyIdentifier (2 5 29 14)
+651  22:                         OCTET STRING, encapsulates {
+653  20:                           OCTET STRING
+       :               0A E3 A0 FE 9D D4 25 76 98 B5 EB 72 EB CA 0C E7
+       :               BF 3D F5 F1
+       :                           }
+       :                         }
+675  31:                       SEQUENCE {
+677   3:                         OBJECT IDENTIFIER
+       :                           authorityKeyIdentifier (2 5 29 35)
+682  24:                         OCTET STRING, encapsulates {
+684  22:                           SEQUENCE {
+686  20:                             [0]
+       :               8E C2 14 09 60 76 EA 90 38 E9 39 AE 1B 6D 52 C4
+       :               17 7D 9F BE
+       :                             }
+       :                           }
+       :                         }
+708  12:                       SEQUENCE {
+710   3:                         OBJECT IDENTIFIER
+       :                           basicConstraints (2 5 29 19)
+715   1:                         BOOLEAN TRUE
+718   2:                         OCTET STRING, encapsulates {
+720   0:                           SEQUENCE {}
+       :                           }
+       :                         }
+722  14:                       SEQUENCE {
+724   3:                         OBJECT IDENTIFIER keyUsage (2 5 29 15)
+729   1:                         BOOLEAN TRUE
+732   4:                         OCTET STRING, encapsulates {
+734   2:                           BIT STRING 7 unused bits
+       :                             '1'B (bit 0)
+       :                           }
+       :                         }
+738  19:                       SEQUENCE {
+740   3:                         OBJECT IDENTIFIER
+       :                           extKeyUsage (2 5 29 37)
+745  12:                         OCTET STRING, encapsulates {
+747  10:                           SEQUENCE {
+749   8:                             OBJECT IDENTIFIER
+       :                               ocspSigning (1 3 6 1 5 5 7 3 9)
+       :                             }
+       :                           }
+       :                         }
+       :                       }
+       :                     }
+       :                   }
+759  10:                 SEQUENCE {
+761   8:                   OBJECT IDENTIFIER
+       :                     ecdsaWithSHA256 (1 2 840 10045 4 3 2)
+       :                   }
+771 140:                 BIT STRING, encapsulates {
+775 136:                   SEQUENCE {
+778  66:                     INTEGER
+       :               01 28 1D 4A DA EC 96 D4 3E 93 18 FE F3 04 B0 DD
+       :               FB C0 91 17 3F A3 1C 0F 11 87 27 E2 C3 0C A6 99
+       :               81 8A 36 F8 AE FF B1 7D 19 C6 96 59 6C F4 67 AE
+       :               57 CB 2C B5 81 7A CE E0 E5 A2 18 DE 9F DF 89 E7
+       :               88 3D
+846  66:                     INTEGER
+       :               00 9B D6 26 84 98 28 78 01 6B D1 7A B8 6E 56 3F
+       :               FE E1 5A F5 9C 13 CF C4 3A BC 43 C2 74 2B DB 9F
+       :               04 6F B4 F3 63 F5 5D 9F A5 BD 54 AE 38 FF 0C F8
+       :               D2 C4 3B AF 06 17 52 9E 98 4A 53 E5 B9 C5 31 8C
+       :               EC D9
+       :                     }
+       :                   }
+       :                 }
+       :               }
+       :             }
+       :           }
+       :         }
+       :       }
+       :     }
+       :   }<a href="#appendix-B.5-3" class="pilcrow">¶</a></p>
+</section>
+</div>
+</section>
+</div>
+<div id="acknowledgments">
+<section id="appendix-C">
       <h2 id="name-acknowledgments">
 <a href="#name-acknowledgments" class="section-name selfRef">Acknowledgments</a>
       </h2>
-<p id="appendix-A-1">The authors of this version of the document wish to thank Alex Deacon
+<p id="appendix-C-1">The authors of this version of the document wish to thank Alex Deacon
 and Ryan Hurst for their work to produce the original version
-of the lightweight profile for the OCSP protocol.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
-<p id="appendix-A-2">The authors of this version of the document wish to thank
-Russ Housley and Rob Stradling for the feedback and suggestions.<a href="#appendix-A-2" class="pilcrow">¶</a></p>
-<p id="appendix-A-3">The authors wish to thank Magnus Nystrom of RSA Security, Inc.,
+of the lightweight profile for the OCSP protocol.<a href="#appendix-C-1" class="pilcrow">¶</a></p>
+<p id="appendix-C-2">The authors of this version of the document wish to thank
+Paul Kyzivat, Russ Housley, Rob Stradling, Roman Danyliw, and
+Wendy Brown for their reviews, feedback, and suggestions.<a href="#appendix-C-2" class="pilcrow">¶</a></p>
+<p id="appendix-C-3">The authors wish to thank Magnus Nystrom of RSA Security, Inc.,
 Jagjeet Sondh of Vodafone Group R&amp;D, and David Engberg of CoreStreet,
 Ltd. for their contributions to the original <span>[<a href="#RFC5019" class="cite xref">RFC5019</a>]</span> specification.
 Listed organizational affiliations reflect the author’s affiliation
-at the time of RFC5019 was published.<a href="#appendix-A-3" class="pilcrow">¶</a></p>
+at the time of RFC5019 was published.<a href="#appendix-C-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="authors-addresses">
-<section id="appendix-B">
+<section id="appendix-D">
       <h2 id="name-authors-addresses">
 <a href="#name-authors-addresses" class="section-name selfRef">Authors' Addresses</a>
       </h2>
