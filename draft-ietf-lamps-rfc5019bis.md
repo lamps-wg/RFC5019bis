@@ -47,16 +47,17 @@ informative:
 
 --- abstract
 
-RFC 5019 defines a lightweight profile for OCSP that makes the protocol
-more suitable for use in high-volume environments. The lightweight
-profile specifies the mandatory use of SHA-1 when calculating the values
-of several fields in OCSP requests and responses. In recent years,
-weaknesses have been demonstrated with the SHA-1 algorithm. As a result,
-SHA-1 is increasingly falling out of use even for non-security relevant
-use cases. This document obsoletes the lightweight profile as specified
-in RFC 5019 to instead recommend the use of SHA-256 where SHA-1 was
-previously required. An RFC 5019-compliant OCSP client is still able to
-use SHA-1, but the use of SHA-1 may become obsolete in the future.
+This specification defines a profile of the Online Certificate Status
+Protocol (OCSP) that addresses the scalability issues inherent when
+using OCSP in large scale (high volume) Public Key Infrastructure
+(PKI) environments and/or in PKI environments that require a
+lightweight solution to minimize communication bandwidth and client-
+side processing.
+
+Since initial publication, this specification has been updated to allow
+and recommend the use of SHA-256 over SHA-1.
+
+
 
 --- middle
 
@@ -125,19 +126,6 @@ this profile ensures that interoperability will still occur between an
 OCSP client that fully conforms with {{RFC6960}} and a responder that is
 operating in a mode as described in this specification.
 
-Substantive changes to RFC 5019:
-
-- {{certid}} requires new OCSP clients to use SHA-256 to
-support migration for OCSP clients.
-
-- {{byKey}} requires new OCSP responders to use the byKey field,
-and support migration from byName fields.
-
-- {{transport}} clarifies OCSP clients not include
-whitespace or any other characters that are not part of
-the base64 character repertoire in the base64-encoded string.
-
-
 # Conventions and Definitions
 
 {::boilerplate bcp14-tagged}
@@ -151,8 +139,9 @@ functionality as defined in {{RFC6960}}.
 
 ### OCSPRequest Structure {#certid}
 
-The ASN.1 structure corresponding to the OCSPRequest
-with the relevant CertID is:
+Provided for convenience here, but unchanged from {{!RFC6960}},
+the ASN.1 structure corresponding to the OCSPRequest with the relevant
+CertID is:
 
 ~~~~~~
 OCSPRequest     ::=     SEQUENCE {
@@ -268,7 +257,9 @@ responder has no clients that require the use of SHA-1.
 Operators of OCSP responders may consider logging the hash
 algorithm used by OCSP clients to inform their determination of
 when it is appropriate to obsolete the distribution of OCSP responses
-that employ SHA-1 for CertID field hashes.
+that employ SHA-1 for CertID field hashes. See {#sha-sec} for more
+information on the security considerations for the continued use of
+SHA-1.
 
 The responder SHOULD NOT include responseExtensions. As specified in
 {{RFC6960}}, clients MUST ignore unrecognized non-critical
@@ -692,13 +683,734 @@ Environments where explicit authorization to access the OCSP
 responder is necessary can utilize other mechanisms to authenticate
 requestors or restrict or meter service.
 
+## Use of SHA-1 for the calculation of CertID field values {#sha1-sec}
+
+Although the use of SHA-1 for the calculation of CertID field values is
+not of concern from a cryptographic security standpoint, the continued
+use of SHA-1 in an ecosystem requires that software that interoperates
+with the ecosystem maintain support for SHA-1. This increases
+implementation complexity and potential attack surface for the software
+in question. Thus, the continued use of SHA-1 in an ecosystem to
+maintain interoperability with legacy software must be weighed against
+the increased implementation complexity and potential attack surface.
 
 # IANA Considerations
 
 This document has no IANA actions.
 
-
 --- back
+
+# Differences from RFC 5019
+
+This document obsoletes {{!RFC5019}}. {{!RFC5019}} defines a lightweight
+profile for OCSP that makes the protocol more suitable for use in
+high-volume environments. The lightweight profile specifies the
+mandatory use of SHA-1 when calculating the values of several fields in
+OCSP requests and responses. In recent years, weaknesses have been
+demonstrated with the SHA-1 algorithm. As a result, SHA-1 is
+increasingly falling out of use even for non-security relevant
+use cases. This document obsoletes the lightweight profile as specified
+in RFC 5019 to instead recommend the use of SHA-256 where SHA-1 was
+previously required. An {{!RFC5019}}-compliant OCSP client is still able
+to use SHA-1, but the use of SHA-1 may become obsolete in the future.
+
+Substantive changes to RFC 5019:
+
+- {{certid}} requires new OCSP clients to use SHA-256 to
+support migration for OCSP clients.
+
+- {{byKey}} requires new OCSP responders to use the byKey field,
+and support migration from byName fields.
+
+- {{transport}} clarifies that OCSP clients MUST NOT include
+whitespace or any other characters that are not part of
+the base64 character repertoire in the base64-encoded string.
+
+# Examples
+
+## Root Certification Authority Certificate
+
+This is a self-signed certificate for the certification authority that
+issued the end-entity certificate and OCSP delegated responder
+example certificates below.
+
+-----BEGIN CERTIFICATE-----
+MIICKDCCAYqgAwIBAgIBATAKBggqhkjOPQQDBDA4MQswCQYDVQQGEwJYWDEUMBIG
+A1UECgwLQ2VydHMgJ3IgVXMxEzARBgNVBAMMCklzc3VpbmcgQ0EwHhcNMjQwMzI4
+MDY0MzA0WhcNMjUwMzI4MDY0MzA0WjA4MQswCQYDVQQGEwJYWDEUMBIGA1UECgwL
+Q2VydHMgJ3IgVXMxEzARBgNVBAMMCklzc3VpbmcgQ0EwgZswEAYHKoZIzj0CAQYF
+K4EEACMDgYYABAHQ/XJXqEx0f1YldcBzhdvr8vUr6lgIPbgv3RUx2KrjzIdf8C/3
++i2iYNjrYtbS9dZJJ44yFzagYoy7swMItuYY2wD2KtIExkYDWbyBiriWG/Dw/A7F
+quikKBc85W8A3psVfB5cgsZPVi/K3vxKTCj200LPPvYW/ILTO3KFySHyvzb92KNC
+MEAwHQYDVR0OBBYEFI7CFAlgduqQOOk5rhttUsQXfZ++MA8GA1UdEwEB/wQFMAMB
+Af8wDgYDVR0PAQH/BAQDAgIEMAoGCCqGSM49BAMEA4GLADCBhwJBDqvrJI5evwwa
+atKi6HUwihypigUj/JSDJheAn35VouXNc2nrr1RrRSG/oiPnYaHrVVr9kk4JruM+
+HwjhE6dS3wgCQgDCU2V+muXqCbMUdl3i7lAQn4bQDw94rOpN3cOBgqv2UO6SQ8xR
+23ilHXiOaqT6dU5JIcTBU052MOPehMykBRHe5A==
+-----END CERTIFICATE-----
+
+  0 552: SEQUENCE {
+  4 394:   SEQUENCE {
+  8   3:     [0] {
+ 10   1:       INTEGER 2
+       :       }
+ 13   1:     INTEGER 1
+ 16  10:     SEQUENCE {
+ 18   8:       OBJECT IDENTIFIER ecdsaWithSHA512 (1 2 840 10045 4 3 4)
+       :       }
+ 28  56:     SEQUENCE {
+ 30  11:       SET {
+ 32   9:         SEQUENCE {
+ 34   3:           OBJECT IDENTIFIER countryName (2 5 4 6)
+ 39   2:           PrintableString 'XX'
+       :           }
+       :         }
+ 43  20:       SET {
+ 45  18:         SEQUENCE {
+ 47   3:           OBJECT IDENTIFIER organizationName (2 5 4 10)
+ 52  11:           UTF8String 'Certs 'r Us'
+       :           }
+       :         }
+ 65  19:       SET {
+ 67  17:         SEQUENCE {
+ 69   3:           OBJECT IDENTIFIER commonName (2 5 4 3)
+ 74  10:           UTF8String 'Issuing CA'
+       :           }
+       :         }
+       :       }
+ 86  30:     SEQUENCE {
+ 88  13:       UTCTime 28/03/2024 06:43:04 GMT
+103  13:       UTCTime 28/03/2025 06:43:04 GMT
+       :       }
+118  56:     SEQUENCE {
+120  11:       SET {
+122   9:         SEQUENCE {
+124   3:           OBJECT IDENTIFIER countryName (2 5 4 6)
+129   2:           PrintableString 'XX'
+       :           }
+       :         }
+133  20:       SET {
+135  18:         SEQUENCE {
+137   3:           OBJECT IDENTIFIER organizationName (2 5 4 10)
+142  11:           UTF8String 'Certs 'r Us'
+       :           }
+       :         }
+155  19:       SET {
+157  17:         SEQUENCE {
+159   3:           OBJECT IDENTIFIER commonName (2 5 4 3)
+164  10:           UTF8String 'Issuing CA'
+       :           }
+       :         }
+       :       }
+176 155:     SEQUENCE {
+179  16:       SEQUENCE {
+181   7:         OBJECT IDENTIFIER ecPublicKey (1 2 840 10045 2 1)
+190   5:         OBJECT IDENTIFIER secp521r1 (1 3 132 0 35)
+       :         }
+197 134:       BIT STRING
+       :         04 01 D0 FD 72 57 A8 4C 74 7F 56 25 75 C0 73 85
+       :         DB EB F2 F5 2B EA 58 08 3D B8 2F DD 15 31 D8 AA
+       :         E3 CC 87 5F F0 2F F7 FA 2D A2 60 D8 EB 62 D6 D2
+       :         F5 D6 49 27 8E 32 17 36 A0 62 8C BB B3 03 08 B6
+       :         E6 18 DB 00 F6 2A D2 04 C6 46 03 59 BC 81 8A B8
+       :         96 1B F0 F0 FC 0E C5 AA E8 A4 28 17 3C E5 6F 00
+       :         DE 9B 15 7C 1E 5C 82 C6 4F 56 2F CA DE FC 4A 4C
+       :         28 F6 D3 42 CF 3E F6 16 FC 82 D3 3B 72 85 C9 21
+       :         F2 BF 36 FD D8
+       :       }
+334  66:     [3] {
+336  64:       SEQUENCE {
+338  29:         SEQUENCE {
+340   3:           OBJECT IDENTIFIER subjectKeyIdentifier (2 5 29 14)
+345  22:           OCTET STRING, encapsulates {
+347  20:             OCTET STRING
+       :               8E C2 14 09 60 76 EA 90 38 E9 39 AE 1B 6D 52 C4
+       :               17 7D 9F BE
+       :             }
+       :           }
+369  15:         SEQUENCE {
+371   3:           OBJECT IDENTIFIER basicConstraints (2 5 29 19)
+376   1:           BOOLEAN TRUE
+379   5:           OCTET STRING, encapsulates {
+381   3:             SEQUENCE {
+383   1:               BOOLEAN TRUE
+       :               }
+       :             }
+       :           }
+386  14:         SEQUENCE {
+388   3:           OBJECT IDENTIFIER keyUsage (2 5 29 15)
+393   1:           BOOLEAN TRUE
+396   4:           OCTET STRING, encapsulates {
+398   2:             BIT STRING 2 unused bits
+       :               '100000'B (bit 5)
+       :             }
+       :           }
+       :         }
+       :       }
+       :     }
+402  10:   SEQUENCE {
+404   8:     OBJECT IDENTIFIER ecdsaWithSHA512 (1 2 840 10045 4 3 4)
+       :     }
+414 139:   BIT STRING, encapsulates {
+418 135:     SEQUENCE {
+421  65:       INTEGER
+       :         0E AB EB 24 8E 5E BF 0C 1A 6A D2 A2 E8 75 30 8A
+       :         1C A9 8A 05 23 FC 94 83 26 17 80 9F 7E 55 A2 E5
+       :         CD 73 69 EB AF 54 6B 45 21 BF A2 23 E7 61 A1 EB
+       :         55 5A FD 92 4E 09 AE E3 3E 1F 08 E1 13 A7 52 DF
+       :         08
+488  66:       INTEGER
+       :         00 C2 53 65 7E 9A E5 EA 09 B3 14 76 5D E2 EE 50
+       :         10 9F 86 D0 0F 0F 78 AC EA 4D DD C3 81 82 AB F6
+       :         50 EE 92 43 CC 51 DB 78 A5 1D 78 8E 6A A4 FA 75
+       :         4E 49 21 C4 C1 53 4E 76 30 E3 DE 84 CC A4 05 11
+       :         DE E4
+       :       }
+       :     }
+       :   }
+
+## End-entity Certificate
+
+This is an end-entity certificate whose status is requested and
+returned in the OCSP request and response examples below.
+
+-----BEGIN CERTIFICATE-----
+MIIB2jCCATygAwIBAgIEAarwDTAKBggqhkjOPQQDAjA4MQswCQYDVQQGEwJYWDEU
+MBIGA1UECgwLQ2VydHMgJ3IgVXMxEzARBgNVBAMMCklzc3VpbmcgQ0EwHhcNMjQw
+MzI4MDY0MzA0WhcNMjUwMzI4MDY0MzA0WjAcMRowGAYDVQQDDBF4bi0tMThqNGQu
+ZXhhbXBsZTBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABEIlSPiPt4L/teyjdERS
+xyoeVY+9b3O+XkjpMjLMRcWxbEzRDEy41bihcTnpSILImSVymTQl9BQZq36QpCpJ
+QnKjUDBOMB0GA1UdDgQWBBRbcKeYF/ef9jfS9+PcRGwhCde71DAfBgNVHSMEGDAW
+gBSOwhQJYHbqkDjpOa4bbVLEF32fvjAMBgNVHRMBAf8EAjAAMAoGCCqGSM49BAMC
+A4GLADCBhwJCAQPL6EdlvutdJNDxEy0WJvvWF3h/8nUYx+N9uchJ/7ExjYTc2gGP
+Y8hATvtxIwP2Dk8BDRD1jpp02mSXUCyvCqzPAkE8KhXOd10S20nFJJwFvmfaZJFD
+KNEQh9qcisEMkZWlo1APugLrY280kvvUIHlccTG9Tx4UI3bNYV+3Jd4L6NEe+g==
+-----END CERTIFICATE-----
+
+  0 474: SEQUENCE {
+  4 316:   SEQUENCE {
+  8   3:     [0] {
+ 10   1:       INTEGER 2
+       :       }
+ 13   4:     INTEGER 27979789
+ 19  10:     SEQUENCE {
+ 21   8:       OBJECT IDENTIFIER ecdsaWithSHA256 (1 2 840 10045 4 3 2)
+       :       }
+ 31  56:     SEQUENCE {
+ 33  11:       SET {
+ 35   9:         SEQUENCE {
+ 37   3:           OBJECT IDENTIFIER countryName (2 5 4 6)
+ 42   2:           PrintableString 'XX'
+       :           }
+       :         }
+ 46  20:       SET {
+ 48  18:         SEQUENCE {
+ 50   3:           OBJECT IDENTIFIER organizationName (2 5 4 10)
+ 55  11:           UTF8String 'Certs 'r Us'
+       :           }
+       :         }
+ 68  19:       SET {
+ 70  17:         SEQUENCE {
+ 72   3:           OBJECT IDENTIFIER commonName (2 5 4 3)
+ 77  10:           UTF8String 'Issuing CA'
+       :           }
+       :         }
+       :       }
+ 89  30:     SEQUENCE {
+ 91  13:       UTCTime 28/03/2024 06:43:04 GMT
+106  13:       UTCTime 28/03/2025 06:43:04 GMT
+       :       }
+121  28:     SEQUENCE {
+123  26:       SET {
+125  24:         SEQUENCE {
+127   3:           OBJECT IDENTIFIER commonName (2 5 4 3)
+132  17:           UTF8String 'xn--18j4d.example'
+       :           }
+       :         }
+       :       }
+151  89:     SEQUENCE {
+153  19:       SEQUENCE {
+155   7:         OBJECT IDENTIFIER ecPublicKey (1 2 840 10045 2 1)
+164   8:         OBJECT IDENTIFIER prime256v1 (1 2 840 10045 3 1 7)
+       :         }
+174  66:       BIT STRING
+       :         04 42 25 48 F8 8F B7 82 FF B5 EC A3 74 44 52 C7
+       :         2A 1E 55 8F BD 6F 73 BE 5E 48 E9 32 32 CC 45 C5
+       :         B1 6C 4C D1 0C 4C B8 D5 B8 A1 71 39 E9 48 82 C8
+       :         99 25 72 99 34 25 F4 14 19 AB 7E 90 A4 2A 49 42
+       :         72
+       :       }
+242  80:     [3] {
+244  78:       SEQUENCE {
+246  29:         SEQUENCE {
+248   3:           OBJECT IDENTIFIER subjectKeyIdentifier (2 5 29 14)
+253  22:           OCTET STRING, encapsulates {
+255  20:             OCTET STRING
+       :               5B 70 A7 98 17 F7 9F F6 37 D2 F7 E3 DC 44 6C 21
+       :               09 D7 BB D4
+       :             }
+       :           }
+277  31:         SEQUENCE {
+279   3:           OBJECT IDENTIFIER authorityKeyIdentifier (2 5 29 35)
+284  24:           OCTET STRING, encapsulates {
+286  22:             SEQUENCE {
+288  20:               [0]
+       :               8E C2 14 09 60 76 EA 90 38 E9 39 AE 1B 6D 52 C4
+       :               17 7D 9F BE
+       :               }
+       :             }
+       :           }
+310  12:         SEQUENCE {
+312   3:           OBJECT IDENTIFIER basicConstraints (2 5 29 19)
+317   1:           BOOLEAN TRUE
+320   2:           OCTET STRING, encapsulates {
+322   0:             SEQUENCE {}
+       :             }
+       :           }
+       :         }
+       :       }
+       :     }
+324  10:   SEQUENCE {
+326   8:     OBJECT IDENTIFIER ecdsaWithSHA256 (1 2 840 10045 4 3 2)
+       :     }
+336 139:   BIT STRING, encapsulates {
+340 135:     SEQUENCE {
+343  66:       INTEGER
+       :         01 03 CB E8 47 65 BE EB 5D 24 D0 F1 13 2D 16 26
+       :         FB D6 17 78 7F F2 75 18 C7 E3 7D B9 C8 49 FF B1
+       :         31 8D 84 DC DA 01 8F 63 C8 40 4E FB 71 23 03 F6
+       :         0E 4F 01 0D 10 F5 8E 9A 74 DA 64 97 50 2C AF 0A
+       :         AC CF
+411  65:       INTEGER
+       :         3C 2A 15 CE 77 5D 12 DB 49 C5 24 9C 05 BE 67 DA
+       :         64 91 43 28 D1 10 87 DA 9C 8A C1 0C 91 95 A5 A3
+       :         50 0F BA 02 EB 63 6F 34 92 FB D4 20 79 5C 71 31
+       :         BD 4F 1E 14 23 76 CD 61 5F B7 25 DE 0B E8 D1 1E
+       :         FA
+       :       }
+       :     }
+       :   }
+
+## OCSP Responder Certificate
+
+This is a certificate for the OCSP delegated response that signed the
+OCSP response example below.
+
+-----BEGIN CERTIFICATE-----
+MIICOjCCAZugAwIBAgIBATAKBggqhkjOPQQDAjA4MQswCQYDVQQGEwJYWDEUMBIG
+A1UECgwLQ2VydHMgJ3IgVXMxEzARBgNVBAMMCklzc3VpbmcgQ0EwHhcNMjQwMzI4
+MDY0MzA0WhcNMjUwMzI4MDY0MzA0WjA8MQswCQYDVQQGEwJYWDEUMBIGA1UECgwL
+Q2VydHMgJ3IgVXMxFzAVBgNVBAMMDk9DU1AgUmVzcG9uZGVyMHYwEAYHKoZIzj0C
+AQYFK4EEACIDYgAEWwkBuIUjKW65GdUP+hqcs3S8TUCVhigr/soRsdla27VHNK9X
+C/grcijPImvPTCXdvP47GjrTlDDv92Ph1o0uFR2Rcgt3lbWNprNGOWE6j7m1qNpI
+xnRxF/mRnoQk837Io3UwczAdBgNVHQ4EFgQUCuOg/p3UJXaYtety68oM57899fEw
+HwYDVR0jBBgwFoAUjsIUCWB26pA46TmuG21SxBd9n74wDAYDVR0TAQH/BAIwADAO
+BgNVHQ8BAf8EBAMCB4AwEwYDVR0lBAwwCgYIKwYBBQUHAwkwCgYIKoZIzj0EAwID
+gYwAMIGIAkIBKB1K2uyW1D6TGP7zBLDd+8CRFz+jHA8RhyfiwwymmYGKNviu/7F9
+GcaWWWz0Z65Xyyy1gXrO4OWiGN6f34nniD0CQgCb1iaEmCh4AWvRerhuVj/+4Vr1
+nBPPxDq8Q8J0K9ufBG+082P1XZ+lvVSuOP8M+NLEO68GF1KemEpT5bnFMYzs2Q==
+-----END CERTIFICATE-----
+
+  0 570: SEQUENCE {
+  4 411:   SEQUENCE {
+  8   3:     [0] {
+ 10   1:       INTEGER 2
+       :       }
+ 13   1:     INTEGER 1
+ 16  10:     SEQUENCE {
+ 18   8:       OBJECT IDENTIFIER ecdsaWithSHA256 (1 2 840 10045 4 3 2)
+       :       }
+ 28  56:     SEQUENCE {
+ 30  11:       SET {
+ 32   9:         SEQUENCE {
+ 34   3:           OBJECT IDENTIFIER countryName (2 5 4 6)
+ 39   2:           PrintableString 'XX'
+       :           }
+       :         }
+ 43  20:       SET {
+ 45  18:         SEQUENCE {
+ 47   3:           OBJECT IDENTIFIER organizationName (2 5 4 10)
+ 52  11:           UTF8String 'Certs 'r Us'
+       :           }
+       :         }
+ 65  19:       SET {
+ 67  17:         SEQUENCE {
+ 69   3:           OBJECT IDENTIFIER commonName (2 5 4 3)
+ 74  10:           UTF8String 'Issuing CA'
+       :           }
+       :         }
+       :       }
+ 86  30:     SEQUENCE {
+ 88  13:       UTCTime 28/03/2024 06:43:04 GMT
+103  13:       UTCTime 28/03/2025 06:43:04 GMT
+       :       }
+118  60:     SEQUENCE {
+120  11:       SET {
+122   9:         SEQUENCE {
+124   3:           OBJECT IDENTIFIER countryName (2 5 4 6)
+129   2:           PrintableString 'XX'
+       :           }
+       :         }
+133  20:       SET {
+135  18:         SEQUENCE {
+137   3:           OBJECT IDENTIFIER organizationName (2 5 4 10)
+142  11:           UTF8String 'Certs 'r Us'
+       :           }
+       :         }
+155  23:       SET {
+157  21:         SEQUENCE {
+159   3:           OBJECT IDENTIFIER commonName (2 5 4 3)
+164  14:           UTF8String 'OCSP Responder'
+       :           }
+       :         }
+       :       }
+180 118:     SEQUENCE {
+182  16:       SEQUENCE {
+184   7:         OBJECT IDENTIFIER ecPublicKey (1 2 840 10045 2 1)
+193   5:         OBJECT IDENTIFIER secp384r1 (1 3 132 0 34)
+       :         }
+200  98:       BIT STRING
+       :         04 5B 09 01 B8 85 23 29 6E B9 19 D5 0F FA 1A 9C
+       :         B3 74 BC 4D 40 95 86 28 2B FE CA 11 B1 D9 5A DB
+       :         B5 47 34 AF 57 0B F8 2B 72 28 CF 22 6B CF 4C 25
+       :         DD BC FE 3B 1A 3A D3 94 30 EF F7 63 E1 D6 8D 2E
+       :         15 1D 91 72 0B 77 95 B5 8D A6 B3 46 39 61 3A 8F
+       :         B9 B5 A8 DA 48 C6 74 71 17 F9 91 9E 84 24 F3 7E
+       :         C8
+       :       }
+300 117:     [3] {
+302 115:       SEQUENCE {
+304  29:         SEQUENCE {
+306   3:           OBJECT IDENTIFIER subjectKeyIdentifier (2 5 29 14)
+311  22:           OCTET STRING, encapsulates {
+313  20:             OCTET STRING
+       :               0A E3 A0 FE 9D D4 25 76 98 B5 EB 72 EB CA 0C E7
+       :               BF 3D F5 F1
+       :             }
+       :           }
+335  31:         SEQUENCE {
+337   3:           OBJECT IDENTIFIER authorityKeyIdentifier (2 5 29 35)
+342  24:           OCTET STRING, encapsulates {
+344  22:             SEQUENCE {
+346  20:               [0]
+       :               8E C2 14 09 60 76 EA 90 38 E9 39 AE 1B 6D 52 C4
+       :               17 7D 9F BE
+       :               }
+       :             }
+       :           }
+368  12:         SEQUENCE {
+370   3:           OBJECT IDENTIFIER basicConstraints (2 5 29 19)
+375   1:           BOOLEAN TRUE
+378   2:           OCTET STRING, encapsulates {
+380   0:             SEQUENCE {}
+       :             }
+       :           }
+382  14:         SEQUENCE {
+384   3:           OBJECT IDENTIFIER keyUsage (2 5 29 15)
+389   1:           BOOLEAN TRUE
+392   4:           OCTET STRING, encapsulates {
+394   2:             BIT STRING 7 unused bits
+       :               '1'B (bit 0)
+       :             }
+       :           }
+398  19:         SEQUENCE {
+400   3:           OBJECT IDENTIFIER extKeyUsage (2 5 29 37)
+405  12:           OCTET STRING, encapsulates {
+407  10:             SEQUENCE {
+409   8:               OBJECT IDENTIFIER ocspSigning (1 3 6 1 5 5 7 3 9)
+       :               }
+       :             }
+       :           }
+       :         }
+       :       }
+       :     }
+419  10:   SEQUENCE {
+421   8:     OBJECT IDENTIFIER ecdsaWithSHA256 (1 2 840 10045 4 3 2)
+       :     }
+431 140:   BIT STRING, encapsulates {
+435 136:     SEQUENCE {
+438  66:       INTEGER
+       :         01 28 1D 4A DA EC 96 D4 3E 93 18 FE F3 04 B0 DD
+       :         FB C0 91 17 3F A3 1C 0F 11 87 27 E2 C3 0C A6 99
+       :         81 8A 36 F8 AE FF B1 7D 19 C6 96 59 6C F4 67 AE
+       :         57 CB 2C B5 81 7A CE E0 E5 A2 18 DE 9F DF 89 E7
+       :         88 3D
+506  66:       INTEGER
+       :         00 9B D6 26 84 98 28 78 01 6B D1 7A B8 6E 56 3F
+       :         FE E1 5A F5 9C 13 CF C4 3A BC 43 C2 74 2B DB 9F
+       :         04 6F B4 F3 63 F5 5D 9F A5 BD 54 AE 38 FF 0C F8
+       :         D2 C4 3B AF 06 17 52 9E 98 4A 53 E5 B9 C5 31 8C
+       :         EC D9
+       :       }
+       :     }
+       :   }
+
+## OCSP Request
+
+This is a base64-encoded OCSP request for the end-entity certificate
+above.
+
+MGEwXzBdMFswWTANBglghkgBZQMEAgEFAAQgOplGd1aAc6cHv95QGGNF5M1hNNsI
+Xrqh0QQl8DtvCOoEIEdKbKMB8j3J9/cHhwThx/X8lucWdfbtiC56tlw/WEVDAgQB
+qvAN
+
+  0  97: SEQUENCE {
+  2  95:   SEQUENCE {
+  4  93:     SEQUENCE {
+  6  91:       SEQUENCE {
+  8  89:         SEQUENCE {
+ 10  13:           SEQUENCE {
+ 12   9:             OBJECT IDENTIFIER sha-256 (2 16 840 1 101 3 4 2 1)
+ 23   0:             NULL
+       :             }
+ 25  32:           OCTET STRING
+       :             3A 99 46 77 56 80 73 A7 07 BF DE 50 18 63 45 E4
+       :             CD 61 34 DB 08 5E BA A1 D1 04 25 F0 3B 6F 08 EA
+ 59  32:           OCTET STRING
+       :             47 4A 6C A3 01 F2 3D C9 F7 F7 07 87 04 E1 C7 F5
+       :             FC 96 E7 16 75 F6 ED 88 2E 7A B6 5C 3F 58 45 43
+ 93   4:           INTEGER 27979789
+       :           }
+       :         }
+       :       }
+       :     }
+       :   }
+
+## OCSP Response
+
+This is a base64-encoded OCSP response for the end-entity certificate
+above.
+
+MIIDjgoBAKCCA4cwggODBgkrBgEFBQcwAQEEggN0MIIDcDCBsKIWBBQK46D+ndQl
+dpi163Lrygznvz318RgPMjAyNDAzMjgwNjQzMDRaMIGEMIGBMFkwDQYJYIZIAWUD
+BAIBBQAEIDqZRndWgHOnB7/eUBhjReTNYTTbCF66odEEJfA7bwjqBCBHSmyjAfI9
+yff3B4cE4cf1/JbnFnX27YguerZcP1hFQwIEAarwDYAAGA8yMDI0MDMyOTA2NDMw
+NFqgERgPMjAyNDA0MDUwNjQzMDRaMAoGCCqGSM49BAMCA2kAMGYCMQD9DqKvz2va
+k3bpO/HWmEA/GYvb5mvBRN6qMHFLYAiLySBJLVGOdIxrxjBAoHOetl0CMQCfQx8k
+95Icwf2xXLb/blb+U+NkhR2R7mMHzHYMq13v5Ur0YQ9T6egpGYcsbpNsc+igggJC
+MIICPjCCAjowggGboAMCAQICAQEwCgYIKoZIzj0EAwIwODELMAkGA1UEBhMCWFgx
+FDASBgNVBAoMC0NlcnRzICdyIFVzMRMwEQYDVQQDDApJc3N1aW5nIENBMB4XDTI0
+MDMyODA2NDMwNFoXDTI1MDMyODA2NDMwNFowPDELMAkGA1UEBhMCWFgxFDASBgNV
+BAoMC0NlcnRzICdyIFVzMRcwFQYDVQQDDA5PQ1NQIFJlc3BvbmRlcjB2MBAGByqG
+SM49AgEGBSuBBAAiA2IABFsJAbiFIyluuRnVD/oanLN0vE1AlYYoK/7KEbHZWtu1
+RzSvVwv4K3IozyJrz0wl3bz+Oxo605Qw7/dj4daNLhUdkXILd5W1jaazRjlhOo+5
+tajaSMZ0cRf5kZ6EJPN+yKN1MHMwHQYDVR0OBBYEFArjoP6d1CV2mLXrcuvKDOe/
+PfXxMB8GA1UdIwQYMBaAFI7CFAlgduqQOOk5rhttUsQXfZ++MAwGA1UdEwEB/wQC
+MAAwDgYDVR0PAQH/BAQDAgeAMBMGA1UdJQQMMAoGCCsGAQUFBwMJMAoGCCqGSM49
+BAMCA4GMADCBiAJCASgdStrsltQ+kxj+8wSw3fvAkRc/oxwPEYcn4sMMppmBijb4
+rv+xfRnGllls9GeuV8sstYF6zuDlohjen9+J54g9AkIAm9YmhJgoeAFr0Xq4blY/
+/uFa9ZwTz8Q6vEPCdCvbnwRvtPNj9V2fpb1Urjj/DPjSxDuvBhdSnphKU+W5xTGM
+7Nk=
+
+  0 910: SEQUENCE {
+  4   1:   ENUMERATED 0
+  7 903:   [0] {
+ 11 899:     SEQUENCE {
+ 15   9:       OBJECT IDENTIFIER ocspBasic (1 3 6 1 5 5 7 48 1 1)
+ 26 884:       OCTET STRING, encapsulates {
+ 30 880:         SEQUENCE {
+ 34 176:           SEQUENCE {
+ 37  22:             [2] {
+ 39  20:               OCTET STRING
+       :               0A E3 A0 FE 9D D4 25 76 98 B5 EB 72 EB CA 0C E7
+       :               BF 3D F5 F1
+       :               }
+ 61  15:             GeneralizedTime 28/03/2024 06:43:04 GMT
+ 78 132:             SEQUENCE {
+ 81 129:               SEQUENCE {
+ 84  89:                 SEQUENCE {
+ 86  13:                   SEQUENCE {
+ 88   9:                     OBJECT IDENTIFIER
+       :                       sha-256 (2 16 840 1 101 3 4 2 1)
+ 99   0:                     NULL
+       :                     }
+101  32:                   OCTET STRING
+       :               3A 99 46 77 56 80 73 A7 07 BF DE 50 18 63 45 E4
+       :               CD 61 34 DB 08 5E BA A1 D1 04 25 F0 3B 6F 08 EA
+135  32:                   OCTET STRING
+       :               47 4A 6C A3 01 F2 3D C9 F7 F7 07 87 04 E1 C7 F5
+       :               FC 96 E7 16 75 F6 ED 88 2E 7A B6 5C 3F 58 45 43
+169   4:                   INTEGER 27979789
+       :                   }
+175   0:                 [0]
+177  15:                 GeneralizedTime 29/03/2024 06:43:04 GMT
+194  17:                 [0] {
+196  15:                   GeneralizedTime 05/04/2024 06:43:04 GMT
+       :                   }
+       :                 }
+       :               }
+       :             }
+213  10:           SEQUENCE {
+215   8:             OBJECT IDENTIFIER
+       :               ecdsaWithSHA256 (1 2 840 10045 4 3 2)
+       :             }
+225 105:           BIT STRING, encapsulates {
+228 102:             SEQUENCE {
+230  49:               INTEGER
+       :               00 FD 0E A2 AF CF 6B DA 93 76 E9 3B F1 D6 98 40
+       :               3F 19 8B DB E6 6B C1 44 DE AA 30 71 4B 60 08 8B
+       :               C9 20 49 2D 51 8E 74 8C 6B C6 30 40 A0 73 9E B6
+       :               5D
+281  49:               INTEGER
+       :               00 9F 43 1F 24 F7 92 1C C1 FD B1 5C B6 FF 6E 56
+       :               FE 53 E3 64 85 1D 91 EE 63 07 CC 76 0C AB 5D EF
+       :               E5 4A F4 61 0F 53 E9 E8 29 19 87 2C 6E 93 6C 73
+       :               E8
+       :               }
+       :             }
+332 578:           [0] {
+336 574:             SEQUENCE {
+340 570:               SEQUENCE {
+344 411:                 SEQUENCE {
+348   3:                   [0] {
+350   1:                     INTEGER 2
+       :                     }
+353   1:                   INTEGER 1
+356  10:                   SEQUENCE {
+358   8:                     OBJECT IDENTIFIER
+       :                       ecdsaWithSHA256 (1 2 840 10045 4 3 2)
+       :                     }
+368  56:                   SEQUENCE {
+370  11:                     SET {
+372   9:                       SEQUENCE {
+374   3:                         OBJECT IDENTIFIER countryName (2 5 4 6)
+379   2:                         PrintableString 'XX'
+       :                         }
+       :                       }
+383  20:                     SET {
+385  18:                       SEQUENCE {
+387   3:                         OBJECT IDENTIFIER
+       :                           organizationName (2 5 4 10)
+392  11:                         UTF8String 'Certs 'r Us'
+       :                         }
+       :                       }
+405  19:                     SET {
+407  17:                       SEQUENCE {
+409   3:                         OBJECT IDENTIFIER commonName (2 5 4 3)
+414  10:                         UTF8String 'Issuing CA'
+       :                         }
+       :                       }
+       :                     }
+426  30:                   SEQUENCE {
+428  13:                     UTCTime 28/03/2024 06:43:04 GMT
+443  13:                     UTCTime 28/03/2025 06:43:04 GMT
+       :                     }
+458  60:                   SEQUENCE {
+460  11:                     SET {
+462   9:                       SEQUENCE {
+464   3:                         OBJECT IDENTIFIER countryName (2 5 4 6)
+469   2:                         PrintableString 'XX'
+       :                         }
+       :                       }
+473  20:                     SET {
+475  18:                       SEQUENCE {
+477   3:                         OBJECT IDENTIFIER
+       :                           organizationName (2 5 4 10)
+482  11:                         UTF8String 'Certs 'r Us'
+       :                         }
+       :                       }
+495  23:                     SET {
+497  21:                       SEQUENCE {
+499   3:                         OBJECT IDENTIFIER commonName (2 5 4 3)
+504  14:                         UTF8String 'OCSP Responder'
+       :                         }
+       :                       }
+       :                     }
+520 118:                   SEQUENCE {
+522  16:                     SEQUENCE {
+524   7:                       OBJECT IDENTIFIER
+       :                         ecPublicKey (1 2 840 10045 2 1)
+533   5:                       OBJECT IDENTIFIER
+       :                         secp384r1 (1 3 132 0 34)
+       :                       }
+540  98:                     BIT STRING
+       :               04 5B 09 01 B8 85 23 29 6E B9 19 D5 0F FA 1A 9C
+       :               B3 74 BC 4D 40 95 86 28 2B FE CA 11 B1 D9 5A DB
+       :               B5 47 34 AF 57 0B F8 2B 72 28 CF 22 6B CF 4C 25
+       :               DD BC FE 3B 1A 3A D3 94 30 EF F7 63 E1 D6 8D 2E
+       :               15 1D 91 72 0B 77 95 B5 8D A6 B3 46 39 61 3A 8F
+       :               B9 B5 A8 DA 48 C6 74 71 17 F9 91 9E 84 24 F3 7E
+       :               C8
+       :                     }
+640 117:                   [3] {
+642 115:                     SEQUENCE {
+644  29:                       SEQUENCE {
+646   3:                         OBJECT IDENTIFIER
+       :                           subjectKeyIdentifier (2 5 29 14)
+651  22:                         OCTET STRING, encapsulates {
+653  20:                           OCTET STRING
+       :               0A E3 A0 FE 9D D4 25 76 98 B5 EB 72 EB CA 0C E7
+       :               BF 3D F5 F1
+       :                           }
+       :                         }
+675  31:                       SEQUENCE {
+677   3:                         OBJECT IDENTIFIER
+       :                           authorityKeyIdentifier (2 5 29 35)
+682  24:                         OCTET STRING, encapsulates {
+684  22:                           SEQUENCE {
+686  20:                             [0]
+       :               8E C2 14 09 60 76 EA 90 38 E9 39 AE 1B 6D 52 C4
+       :               17 7D 9F BE
+       :                             }
+       :                           }
+       :                         }
+708  12:                       SEQUENCE {
+710   3:                         OBJECT IDENTIFIER
+       :                           basicConstraints (2 5 29 19)
+715   1:                         BOOLEAN TRUE
+718   2:                         OCTET STRING, encapsulates {
+720   0:                           SEQUENCE {}
+       :                           }
+       :                         }
+722  14:                       SEQUENCE {
+724   3:                         OBJECT IDENTIFIER keyUsage (2 5 29 15)
+729   1:                         BOOLEAN TRUE
+732   4:                         OCTET STRING, encapsulates {
+734   2:                           BIT STRING 7 unused bits
+       :                             '1'B (bit 0)
+       :                           }
+       :                         }
+738  19:                       SEQUENCE {
+740   3:                         OBJECT IDENTIFIER
+       :                           extKeyUsage (2 5 29 37)
+745  12:                         OCTET STRING, encapsulates {
+747  10:                           SEQUENCE {
+749   8:                             OBJECT IDENTIFIER
+       :                               ocspSigning (1 3 6 1 5 5 7 3 9)
+       :                             }
+       :                           }
+       :                         }
+       :                       }
+       :                     }
+       :                   }
+759  10:                 SEQUENCE {
+761   8:                   OBJECT IDENTIFIER
+       :                     ecdsaWithSHA256 (1 2 840 10045 4 3 2)
+       :                   }
+771 140:                 BIT STRING, encapsulates {
+775 136:                   SEQUENCE {
+778  66:                     INTEGER
+       :               01 28 1D 4A DA EC 96 D4 3E 93 18 FE F3 04 B0 DD
+       :               FB C0 91 17 3F A3 1C 0F 11 87 27 E2 C3 0C A6 99
+       :               81 8A 36 F8 AE FF B1 7D 19 C6 96 59 6C F4 67 AE
+       :               57 CB 2C B5 81 7A CE E0 E5 A2 18 DE 9F DF 89 E7
+       :               88 3D
+846  66:                     INTEGER
+       :               00 9B D6 26 84 98 28 78 01 6B D1 7A B8 6E 56 3F
+       :               FE E1 5A F5 9C 13 CF C4 3A BC 43 C2 74 2B DB 9F
+       :               04 6F B4 F3 63 F5 5D 9F A5 BD 54 AE 38 FF 0C F8
+       :               D2 C4 3B AF 06 17 52 9E 98 4A 53 E5 B9 C5 31 8C
+       :               EC D9
+       :                     }
+       :                   }
+       :                 }
+       :               }
+       :             }
+       :           }
+       :         }
+       :       }
+       :     }
+       :   }
 
 # Acknowledgments
 {:numbered="false"}
@@ -708,8 +1420,8 @@ and Ryan Hurst for their work to produce the original version
 of the lightweight profile for the OCSP protocol.
 
 The authors of this version of the document wish to thank
-Russ Housley, Rob Stradling, Roman Danyliw, and Wendy Brown for the
-feedback and suggestions.
+Paul Kyzivat, Russ Housley, Rob Stradling, Roman Danyliw, and
+Wendy Brown for their reviews, feedback, and suggestions.
 
 The authors wish to thank Magnus Nystrom of RSA Security, Inc.,
 Jagjeet Sondh of Vodafone Group R&D, and David Engberg of CoreStreet,
