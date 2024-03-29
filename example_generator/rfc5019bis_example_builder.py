@@ -85,7 +85,7 @@ ee_cert = (
     .add_extension(x509.SubjectKeyIdentifier.from_public_key(_EE_KEY.public_key()), False)
     .add_extension(x509.AuthorityKeyIdentifier.from_issuer_public_key(_CA_KEY.public_key()), False)
     .add_extension(x509.BasicConstraints(ca=False, path_length=None), True)
-    .sign(_CA_KEY, hashes.SHA256())
+    .sign(_CA_KEY, hashes.SHA512())
 )
 
 ocsp_cert = (
@@ -104,7 +104,7 @@ ocsp_cert = (
         key_agreement=False, key_cert_sign=False, crl_sign=False, encipher_only=False, decipher_only=False
     ), True)
     .add_extension(x509.ExtendedKeyUsage([x509.ExtendedKeyUsageOID.OCSP_SIGNING]), False)
-    .sign(_CA_KEY, hashes.SHA256())
+    .sign(_CA_KEY, hashes.SHA512())
 )
 
 request = (
@@ -121,7 +121,7 @@ response = (
                   now + datetime.timedelta(days=1),
                   now + datetime.timedelta(days=8), None, None)
     .certificates([ocsp_cert])
-    .sign(_RESPONDER_KEY, hashes.SHA256())
+    .sign(_RESPONDER_KEY, hashes.SHA384())
 )
 
 
