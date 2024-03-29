@@ -735,21 +735,21 @@ issued the end-entity certificate and OCSP delegated responder
 example certificates below.
 
 -----BEGIN CERTIFICATE-----
-MIICKDCCAYqgAwIBAgIBATAKBggqhkjOPQQDBDA4MQswCQYDVQQGEwJYWDEUMBIG
-A1UECgwLQ2VydHMgJ3IgVXMxEzARBgNVBAMMCklzc3VpbmcgQ0EwHhcNMjQwMzI4
-MDY0MzA0WhcNMjUwMzI4MDY0MzA0WjA4MQswCQYDVQQGEwJYWDEUMBIGA1UECgwL
+MIICKTCCAYqgAwIBAgIBATAKBggqhkjOPQQDBDA4MQswCQYDVQQGEwJYWDEUMBIG
+A1UECgwLQ2VydHMgJ3IgVXMxEzARBgNVBAMMCklzc3VpbmcgQ0EwHhcNMjQwMzI5
+MTM0ODM4WhcNMjUwMzI5MTM0ODM4WjA4MQswCQYDVQQGEwJYWDEUMBIGA1UECgwL
 Q2VydHMgJ3IgVXMxEzARBgNVBAMMCklzc3VpbmcgQ0EwgZswEAYHKoZIzj0CAQYF
 K4EEACMDgYYABAHQ/XJXqEx0f1YldcBzhdvr8vUr6lgIPbgv3RUx2KrjzIdf8C/3
 +i2iYNjrYtbS9dZJJ44yFzagYoy7swMItuYY2wD2KtIExkYDWbyBiriWG/Dw/A7F
 quikKBc85W8A3psVfB5cgsZPVi/K3vxKTCj200LPPvYW/ILTO3KFySHyvzb92KNC
 MEAwHQYDVR0OBBYEFI7CFAlgduqQOOk5rhttUsQXfZ++MA8GA1UdEwEB/wQFMAMB
-Af8wDgYDVR0PAQH/BAQDAgIEMAoGCCqGSM49BAMEA4GLADCBhwJBDqvrJI5evwwa
-atKi6HUwihypigUj/JSDJheAn35VouXNc2nrr1RrRSG/oiPnYaHrVVr9kk4JruM+
-HwjhE6dS3wgCQgDCU2V+muXqCbMUdl3i7lAQn4bQDw94rOpN3cOBgqv2UO6SQ8xR
-23ilHXiOaqT6dU5JIcTBU052MOPehMykBRHe5A==
+Af8wDgYDVR0PAQH/BAQDAgIEMAoGCCqGSM49BAMEA4GMADCBiAJCANlgNm6mhhsB
+qYs1+QkmwZzqs7/ELOBn27K8vFIJeqzbW4IZIuKNIU4EwbE2NTvGsk1r6oVKhmfa
+K7wogMBCOcNCAkIBZbbaspmRuDsdkqMeV2qX1PEw/rmFbhbUUqpidVlfy1x2TxTy
+Csa6QX2FciQ/1xynp8OLMohxQ2Dd0l58Vkufi2A=
 -----END CERTIFICATE-----
 
-  0 552: SEQUENCE {
+  0 553: SEQUENCE {
   4 394:   SEQUENCE {
   8   3:     [0] {
  10   1:       INTEGER 2
@@ -779,8 +779,8 @@ HwjhE6dS3wgCQgDCU2V+muXqCbMUdl3i7lAQn4bQDw94rOpN3cOBgqv2UO6SQ8xR
        :         }
        :       }
  86  30:     SEQUENCE {
- 88  13:       UTCTime 28/03/2024 06:43:04 GMT
-103  13:       UTCTime 28/03/2025 06:43:04 GMT
+ 88  13:       UTCTime 29/03/2024 13:48:38 GMT
+103  13:       UTCTime 29/03/2025 13:48:38 GMT
        :       }
 118  56:     SEQUENCE {
 120  11:       SET {
@@ -851,20 +851,20 @@ HwjhE6dS3wgCQgDCU2V+muXqCbMUdl3i7lAQn4bQDw94rOpN3cOBgqv2UO6SQ8xR
 402  10:   SEQUENCE {
 404   8:     OBJECT IDENTIFIER ecdsaWithSHA512 (1 2 840 10045 4 3 4)
        :     }
-414 139:   BIT STRING, encapsulates {
-418 135:     SEQUENCE {
-421  65:       INTEGER
-       :         0E AB EB 24 8E 5E BF 0C 1A 6A D2 A2 E8 75 30 8A
-       :         1C A9 8A 05 23 FC 94 83 26 17 80 9F 7E 55 A2 E5
-       :         CD 73 69 EB AF 54 6B 45 21 BF A2 23 E7 61 A1 EB
-       :         55 5A FD 92 4E 09 AE E3 3E 1F 08 E1 13 A7 52 DF
-       :         08
-488  66:       INTEGER
-       :         00 C2 53 65 7E 9A E5 EA 09 B3 14 76 5D E2 EE 50
-       :         10 9F 86 D0 0F 0F 78 AC EA 4D DD C3 81 82 AB F6
-       :         50 EE 92 43 CC 51 DB 78 A5 1D 78 8E 6A A4 FA 75
-       :         4E 49 21 C4 C1 53 4E 76 30 E3 DE 84 CC A4 05 11
-       :         DE E4
+414 140:   BIT STRING, encapsulates {
+418 136:     SEQUENCE {
+421  66:       INTEGER
+       :         00 D9 60 36 6E A6 86 1B 01 A9 8B 35 F9 09 26 C1
+       :         9C EA B3 BF C4 2C E0 67 DB B2 BC BC 52 09 7A AC
+       :         DB 5B 82 19 22 E2 8D 21 4E 04 C1 B1 36 35 3B C6
+       :         B2 4D 6B EA 85 4A 86 67 DA 2B BC 28 80 C0 42 39
+       :         C3 42
+489  66:       INTEGER
+       :         01 65 B6 DA B2 99 91 B8 3B 1D 92 A3 1E 57 6A 97
+       :         D4 F1 30 FE B9 85 6E 16 D4 52 AA 62 75 59 5F CB
+       :         5C 76 4F 14 F2 0A C6 BA 41 7D 85 72 24 3F D7 1C
+       :         A7 A7 C3 8B 32 88 71 43 60 DD D2 5E 7C 56 4B 9F
+       :         8B 60
        :       }
        :     }
        :   }
@@ -875,16 +875,16 @@ This is an end-entity certificate whose status is requested and
 returned in the OCSP request and response examples below.
 
 -----BEGIN CERTIFICATE-----
-MIIB2jCCATygAwIBAgIEAarwDTAKBggqhkjOPQQDAjA4MQswCQYDVQQGEwJYWDEU
+MIIB2jCCATygAwIBAgIEAarwDTAKBggqhkjOPQQDBDA4MQswCQYDVQQGEwJYWDEU
 MBIGA1UECgwLQ2VydHMgJ3IgVXMxEzARBgNVBAMMCklzc3VpbmcgQ0EwHhcNMjQw
-MzI4MDY0MzA0WhcNMjUwMzI4MDY0MzA0WjAcMRowGAYDVQQDDBF4bi0tMThqNGQu
+MzI5MTM0ODM4WhcNMjUwMzI5MTM0ODM4WjAcMRowGAYDVQQDDBF4bi0tMThqNGQu
 ZXhhbXBsZTBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABEIlSPiPt4L/teyjdERS
 xyoeVY+9b3O+XkjpMjLMRcWxbEzRDEy41bihcTnpSILImSVymTQl9BQZq36QpCpJ
 QnKjUDBOMB0GA1UdDgQWBBRbcKeYF/ef9jfS9+PcRGwhCde71DAfBgNVHSMEGDAW
-gBSOwhQJYHbqkDjpOa4bbVLEF32fvjAMBgNVHRMBAf8EAjAAMAoGCCqGSM49BAMC
-A4GLADCBhwJCAQPL6EdlvutdJNDxEy0WJvvWF3h/8nUYx+N9uchJ/7ExjYTc2gGP
-Y8hATvtxIwP2Dk8BDRD1jpp02mSXUCyvCqzPAkE8KhXOd10S20nFJJwFvmfaZJFD
-KNEQh9qcisEMkZWlo1APugLrY280kvvUIHlccTG9Tx4UI3bNYV+3Jd4L6NEe+g==
+gBSOwhQJYHbqkDjpOa4bbVLEF32fvjAMBgNVHRMBAf8EAjAAMAoGCCqGSM49BAME
+A4GLADCBhwJCAIwWNjfqcv9BKpHYAoXAHfOsECaC/RbhOtl6dNINKC6Pnp/0SeBJ
++rldnyWe/60dLmZ98+E/0F6yqXvp/Q7GS0sGAkFWbsahsjQdiMHe/J/JOlpe30N+
+C07Q1LzeiJTgSiyO7O3zpRC3/AjQlRKUXi6fr8fU05wbuZBMz3vJmqqGH4aKvw==
 -----END CERTIFICATE-----
 
   0 474: SEQUENCE {
@@ -894,7 +894,7 @@ KNEQh9qcisEMkZWlo1APugLrY280kvvUIHlccTG9Tx4UI3bNYV+3Jd4L6NEe+g==
        :       }
  13   4:     INTEGER 27979789
  19  10:     SEQUENCE {
- 21   8:       OBJECT IDENTIFIER ecdsaWithSHA256 (1 2 840 10045 4 3 2)
+ 21   8:       OBJECT IDENTIFIER ecdsaWithSHA512 (1 2 840 10045 4 3 4)
        :       }
  31  56:     SEQUENCE {
  33  11:       SET {
@@ -917,8 +917,8 @@ KNEQh9qcisEMkZWlo1APugLrY280kvvUIHlccTG9Tx4UI3bNYV+3Jd4L6NEe+g==
        :         }
        :       }
  89  30:     SEQUENCE {
- 91  13:       UTCTime 28/03/2024 06:43:04 GMT
-106  13:       UTCTime 28/03/2025 06:43:04 GMT
+ 91  13:       UTCTime 29/03/2024 13:48:38 GMT
+106  13:       UTCTime 29/03/2025 13:48:38 GMT
        :       }
 121  28:     SEQUENCE {
 123  26:       SET {
@@ -971,22 +971,22 @@ KNEQh9qcisEMkZWlo1APugLrY280kvvUIHlccTG9Tx4UI3bNYV+3Jd4L6NEe+g==
        :       }
        :     }
 324  10:   SEQUENCE {
-326   8:     OBJECT IDENTIFIER ecdsaWithSHA256 (1 2 840 10045 4 3 2)
+326   8:     OBJECT IDENTIFIER ecdsaWithSHA512 (1 2 840 10045 4 3 4)
        :     }
 336 139:   BIT STRING, encapsulates {
 340 135:     SEQUENCE {
 343  66:       INTEGER
-       :         01 03 CB E8 47 65 BE EB 5D 24 D0 F1 13 2D 16 26
-       :         FB D6 17 78 7F F2 75 18 C7 E3 7D B9 C8 49 FF B1
-       :         31 8D 84 DC DA 01 8F 63 C8 40 4E FB 71 23 03 F6
-       :         0E 4F 01 0D 10 F5 8E 9A 74 DA 64 97 50 2C AF 0A
-       :         AC CF
+       :         00 8C 16 36 37 EA 72 FF 41 2A 91 D8 02 85 C0 1D
+       :         F3 AC 10 26 82 FD 16 E1 3A D9 7A 74 D2 0D 28 2E
+       :         8F 9E 9F F4 49 E0 49 FA B9 5D 9F 25 9E FF AD 1D
+       :         2E 66 7D F3 E1 3F D0 5E B2 A9 7B E9 FD 0E C6 4B
+       :         4B 06
 411  65:       INTEGER
-       :         3C 2A 15 CE 77 5D 12 DB 49 C5 24 9C 05 BE 67 DA
-       :         64 91 43 28 D1 10 87 DA 9C 8A C1 0C 91 95 A5 A3
-       :         50 0F BA 02 EB 63 6F 34 92 FB D4 20 79 5C 71 31
-       :         BD 4F 1E 14 23 76 CD 61 5F B7 25 DE 0B E8 D1 1E
-       :         FA
+       :         56 6E C6 A1 B2 34 1D 88 C1 DE FC 9F C9 3A 5A 5E
+       :         DF 43 7E 0B 4E D0 D4 BC DE 88 94 E0 4A 2C 8E EC
+       :         ED F3 A5 10 B7 FC 08 D0 95 12 94 5E 2E 9F AF C7
+       :         D4 D3 9C 1B B9 90 4C CF 7B C9 9A AA 86 1F 86 8A
+       :         BF
        :       }
        :     }
        :   }
@@ -997,18 +997,18 @@ This is a certificate for the OCSP delegated response that signed the
 OCSP response example below.
 
 -----BEGIN CERTIFICATE-----
-MIICOjCCAZugAwIBAgIBATAKBggqhkjOPQQDAjA4MQswCQYDVQQGEwJYWDEUMBIG
-A1UECgwLQ2VydHMgJ3IgVXMxEzARBgNVBAMMCklzc3VpbmcgQ0EwHhcNMjQwMzI4
-MDY0MzA0WhcNMjUwMzI4MDY0MzA0WjA8MQswCQYDVQQGEwJYWDEUMBIGA1UECgwL
+MIICOjCCAZugAwIBAgIBATAKBggqhkjOPQQDBDA4MQswCQYDVQQGEwJYWDEUMBIG
+A1UECgwLQ2VydHMgJ3IgVXMxEzARBgNVBAMMCklzc3VpbmcgQ0EwHhcNMjQwMzI5
+MTM0ODM4WhcNMjUwMzI5MTM0ODM4WjA8MQswCQYDVQQGEwJYWDEUMBIGA1UECgwL
 Q2VydHMgJ3IgVXMxFzAVBgNVBAMMDk9DU1AgUmVzcG9uZGVyMHYwEAYHKoZIzj0C
 AQYFK4EEACIDYgAEWwkBuIUjKW65GdUP+hqcs3S8TUCVhigr/soRsdla27VHNK9X
 C/grcijPImvPTCXdvP47GjrTlDDv92Ph1o0uFR2Rcgt3lbWNprNGOWE6j7m1qNpI
 xnRxF/mRnoQk837Io3UwczAdBgNVHQ4EFgQUCuOg/p3UJXaYtety68oM57899fEw
 HwYDVR0jBBgwFoAUjsIUCWB26pA46TmuG21SxBd9n74wDAYDVR0TAQH/BAIwADAO
-BgNVHQ8BAf8EBAMCB4AwEwYDVR0lBAwwCgYIKwYBBQUHAwkwCgYIKoZIzj0EAwID
-gYwAMIGIAkIBKB1K2uyW1D6TGP7zBLDd+8CRFz+jHA8RhyfiwwymmYGKNviu/7F9
-GcaWWWz0Z65Xyyy1gXrO4OWiGN6f34nniD0CQgCb1iaEmCh4AWvRerhuVj/+4Vr1
-nBPPxDq8Q8J0K9ufBG+082P1XZ+lvVSuOP8M+NLEO68GF1KemEpT5bnFMYzs2Q==
+BgNVHQ8BAf8EBAMCB4AwEwYDVR0lBAwwCgYIKwYBBQUHAwkwCgYIKoZIzj0EAwQD
+gYwAMIGIAkIBgzvGLy3l1ZyKyaNpkWQOyvtu0ZSoKmjyDC3POJ140PplWTbwoRb0
+PapVKKcwjvcny64wiWNZxbED0e0ndMtps68CQgFxAskzkPmLklGw+bDZCQ9r37cK
+knDPqT9POGQixb49esHjcSKlSekQ9FabbvYah+aNWtFhpY8WxZDKUEsWHXNJ/Q==
 -----END CERTIFICATE-----
 
   0 570: SEQUENCE {
@@ -1018,7 +1018,7 @@ nBPPxDq8Q8J0K9ufBG+082P1XZ+lvVSuOP8M+NLEO68GF1KemEpT5bnFMYzs2Q==
        :       }
  13   1:     INTEGER 1
  16  10:     SEQUENCE {
- 18   8:       OBJECT IDENTIFIER ecdsaWithSHA256 (1 2 840 10045 4 3 2)
+ 18   8:       OBJECT IDENTIFIER ecdsaWithSHA512 (1 2 840 10045 4 3 4)
        :       }
  28  56:     SEQUENCE {
  30  11:       SET {
@@ -1041,8 +1041,8 @@ nBPPxDq8Q8J0K9ufBG+082P1XZ+lvVSuOP8M+NLEO68GF1KemEpT5bnFMYzs2Q==
        :         }
        :       }
  86  30:     SEQUENCE {
- 88  13:       UTCTime 28/03/2024 06:43:04 GMT
-103  13:       UTCTime 28/03/2025 06:43:04 GMT
+ 88  13:       UTCTime 29/03/2024 13:48:38 GMT
+103  13:       UTCTime 29/03/2025 13:48:38 GMT
        :       }
 118  60:     SEQUENCE {
 120  11:       SET {
@@ -1125,22 +1125,22 @@ nBPPxDq8Q8J0K9ufBG+082P1XZ+lvVSuOP8M+NLEO68GF1KemEpT5bnFMYzs2Q==
        :       }
        :     }
 419  10:   SEQUENCE {
-421   8:     OBJECT IDENTIFIER ecdsaWithSHA256 (1 2 840 10045 4 3 2)
+421   8:     OBJECT IDENTIFIER ecdsaWithSHA512 (1 2 840 10045 4 3 4)
        :     }
 431 140:   BIT STRING, encapsulates {
 435 136:     SEQUENCE {
 438  66:       INTEGER
-       :         01 28 1D 4A DA EC 96 D4 3E 93 18 FE F3 04 B0 DD
-       :         FB C0 91 17 3F A3 1C 0F 11 87 27 E2 C3 0C A6 99
-       :         81 8A 36 F8 AE FF B1 7D 19 C6 96 59 6C F4 67 AE
-       :         57 CB 2C B5 81 7A CE E0 E5 A2 18 DE 9F DF 89 E7
-       :         88 3D
+       :         01 83 3B C6 2F 2D E5 D5 9C 8A C9 A3 69 91 64 0E
+       :         CA FB 6E D1 94 A8 2A 68 F2 0C 2D CF 38 9D 78 D0
+       :         FA 65 59 36 F0 A1 16 F4 3D AA 55 28 A7 30 8E F7
+       :         27 CB AE 30 89 63 59 C5 B1 03 D1 ED 27 74 CB 69
+       :         B3 AF
 506  66:       INTEGER
-       :         00 9B D6 26 84 98 28 78 01 6B D1 7A B8 6E 56 3F
-       :         FE E1 5A F5 9C 13 CF C4 3A BC 43 C2 74 2B DB 9F
-       :         04 6F B4 F3 63 F5 5D 9F A5 BD 54 AE 38 FF 0C F8
-       :         D2 C4 3B AF 06 17 52 9E 98 4A 53 E5 B9 C5 31 8C
-       :         EC D9
+       :         01 71 02 C9 33 90 F9 8B 92 51 B0 F9 B0 D9 09 0F
+       :         6B DF B7 0A 92 70 CF A9 3F 4F 38 64 22 C5 BE 3D
+       :         7A C1 E3 71 22 A5 49 E9 10 F4 56 9B 6E F6 1A 87
+       :         E6 8D 5A D1 61 A5 8F 16 C5 90 CA 50 4B 16 1D 73
+       :         49 FD
        :       }
        :     }
        :   }
@@ -1153,7 +1153,6 @@ above.
 MGEwXzBdMFswWTANBglghkgBZQMEAgEFAAQgOplGd1aAc6cHv95QGGNF5M1hNNsI
 Xrqh0QQl8DtvCOoEIEdKbKMB8j3J9/cHhwThx/X8lucWdfbtiC56tlw/WEVDAgQB
 qvAN
-
   0  97: SEQUENCE {
   2  95:   SEQUENCE {
   4  93:     SEQUENCE {
@@ -1182,26 +1181,25 @@ This is a base64-encoded OCSP response for the end-entity certificate
 above.
 
 MIIDjgoBAKCCA4cwggODBgkrBgEFBQcwAQEEggN0MIIDcDCBsKIWBBQK46D+ndQl
-dpi163Lrygznvz318RgPMjAyNDAzMjgwNjQzMDRaMIGEMIGBMFkwDQYJYIZIAWUD
+dpi163Lrygznvz318RgPMjAyNDAzMjkxMzQ4MzhaMIGEMIGBMFkwDQYJYIZIAWUD
 BAIBBQAEIDqZRndWgHOnB7/eUBhjReTNYTTbCF66odEEJfA7bwjqBCBHSmyjAfI9
-yff3B4cE4cf1/JbnFnX27YguerZcP1hFQwIEAarwDYAAGA8yMDI0MDMyOTA2NDMw
-NFqgERgPMjAyNDA0MDUwNjQzMDRaMAoGCCqGSM49BAMCA2kAMGYCMQD9DqKvz2va
-k3bpO/HWmEA/GYvb5mvBRN6qMHFLYAiLySBJLVGOdIxrxjBAoHOetl0CMQCfQx8k
-95Icwf2xXLb/blb+U+NkhR2R7mMHzHYMq13v5Ur0YQ9T6egpGYcsbpNsc+igggJC
-MIICPjCCAjowggGboAMCAQICAQEwCgYIKoZIzj0EAwIwODELMAkGA1UEBhMCWFgx
+yff3B4cE4cf1/JbnFnX27YguerZcP1hFQwIEAarwDYAAGA8yMDI0MDMzMDEzNDgz
+OFqgERgPMjAyNDA0MDYxMzQ4MzhaMAoGCCqGSM49BAMDA2kAMGYCMQCQhPNMOvmZ
+1gZ2dOfmn69HlPHrAezVzXkSBZduV5yvBbdEu+21pWIfpHBX/dz0TssCMQD5VN8n
+/9IDHqIy1BGXfKEskzK4l86ef9mw2atx5jbso2ztXT2Vzjd137jMhJsV2zqgggJC
+MIICPjCCAjowggGboAMCAQICAQEwCgYIKoZIzj0EAwQwODELMAkGA1UEBhMCWFgx
 FDASBgNVBAoMC0NlcnRzICdyIFVzMRMwEQYDVQQDDApJc3N1aW5nIENBMB4XDTI0
-MDMyODA2NDMwNFoXDTI1MDMyODA2NDMwNFowPDELMAkGA1UEBhMCWFgxFDASBgNV
+MDMyOTEzNDgzOFoXDTI1MDMyOTEzNDgzOFowPDELMAkGA1UEBhMCWFgxFDASBgNV
 BAoMC0NlcnRzICdyIFVzMRcwFQYDVQQDDA5PQ1NQIFJlc3BvbmRlcjB2MBAGByqG
 SM49AgEGBSuBBAAiA2IABFsJAbiFIyluuRnVD/oanLN0vE1AlYYoK/7KEbHZWtu1
 RzSvVwv4K3IozyJrz0wl3bz+Oxo605Qw7/dj4daNLhUdkXILd5W1jaazRjlhOo+5
 tajaSMZ0cRf5kZ6EJPN+yKN1MHMwHQYDVR0OBBYEFArjoP6d1CV2mLXrcuvKDOe/
 PfXxMB8GA1UdIwQYMBaAFI7CFAlgduqQOOk5rhttUsQXfZ++MAwGA1UdEwEB/wQC
 MAAwDgYDVR0PAQH/BAQDAgeAMBMGA1UdJQQMMAoGCCsGAQUFBwMJMAoGCCqGSM49
-BAMCA4GMADCBiAJCASgdStrsltQ+kxj+8wSw3fvAkRc/oxwPEYcn4sMMppmBijb4
-rv+xfRnGllls9GeuV8sstYF6zuDlohjen9+J54g9AkIAm9YmhJgoeAFr0Xq4blY/
-/uFa9ZwTz8Q6vEPCdCvbnwRvtPNj9V2fpb1Urjj/DPjSxDuvBhdSnphKU+W5xTGM
-7Nk=
-
+BAMEA4GMADCBiAJCAYM7xi8t5dWcismjaZFkDsr7btGUqCpo8gwtzzideND6ZVk2
+8KEW9D2qVSinMI73J8uuMIljWcWxA9HtJ3TLabOvAkIBcQLJM5D5i5JRsPmw2QkP
+a9+3CpJwz6k/TzhkIsW+PXrB43EipUnpEPRWm272GofmjVrRYaWPFsWQylBLFh1z
+Sf0=
   0 910: SEQUENCE {
   4   1:   ENUMERATED 0
   7 903:   [0] {
@@ -1215,7 +1213,7 @@ rv+xfRnGllls9GeuV8sstYF6zuDlohjen9+J54g9AkIAm9YmhJgoeAFr0Xq4blY/
        :               0A E3 A0 FE 9D D4 25 76 98 B5 EB 72 EB CA 0C E7
        :               BF 3D F5 F1
        :               }
- 61  15:             GeneralizedTime 28/03/2024 06:43:04 GMT
+ 61  15:             GeneralizedTime 29/03/2024 13:48:38 GMT
  78 132:             SEQUENCE {
  81 129:               SEQUENCE {
  84  89:                 SEQUENCE {
@@ -1233,29 +1231,29 @@ rv+xfRnGllls9GeuV8sstYF6zuDlohjen9+J54g9AkIAm9YmhJgoeAFr0Xq4blY/
 169   4:                   INTEGER 27979789
        :                   }
 175   0:                 [0]
-177  15:                 GeneralizedTime 29/03/2024 06:43:04 GMT
+177  15:                 GeneralizedTime 30/03/2024 13:48:38 GMT
 194  17:                 [0] {
-196  15:                   GeneralizedTime 05/04/2024 06:43:04 GMT
+196  15:                   GeneralizedTime 06/04/2024 13:48:38 GMT
        :                   }
        :                 }
        :               }
        :             }
 213  10:           SEQUENCE {
 215   8:             OBJECT IDENTIFIER
-       :               ecdsaWithSHA256 (1 2 840 10045 4 3 2)
+       :               ecdsaWithSHA384 (1 2 840 10045 4 3 3)
        :             }
 225 105:           BIT STRING, encapsulates {
 228 102:             SEQUENCE {
 230  49:               INTEGER
-       :               00 FD 0E A2 AF CF 6B DA 93 76 E9 3B F1 D6 98 40
-       :               3F 19 8B DB E6 6B C1 44 DE AA 30 71 4B 60 08 8B
-       :               C9 20 49 2D 51 8E 74 8C 6B C6 30 40 A0 73 9E B6
-       :               5D
+       :               00 90 84 F3 4C 3A F9 99 D6 06 76 74 E7 E6 9F AF
+       :               47 94 F1 EB 01 EC D5 CD 79 12 05 97 6E 57 9C AF
+       :               05 B7 44 BB ED B5 A5 62 1F A4 70 57 FD DC F4 4E
+       :               CB
 281  49:               INTEGER
-       :               00 9F 43 1F 24 F7 92 1C C1 FD B1 5C B6 FF 6E 56
-       :               FE 53 E3 64 85 1D 91 EE 63 07 CC 76 0C AB 5D EF
-       :               E5 4A F4 61 0F 53 E9 E8 29 19 87 2C 6E 93 6C 73
-       :               E8
+       :               00 F9 54 DF 27 FF D2 03 1E A2 32 D4 11 97 7C A1
+       :               2C 93 32 B8 97 CE 9E 7F D9 B0 D9 AB 71 E6 36 EC
+       :               A3 6C ED 5D 3D 95 CE 37 75 DF B8 CC 84 9B 15 DB
+       :               3A
        :               }
        :             }
 332 578:           [0] {
@@ -1268,7 +1266,7 @@ rv+xfRnGllls9GeuV8sstYF6zuDlohjen9+J54g9AkIAm9YmhJgoeAFr0Xq4blY/
 353   1:                   INTEGER 1
 356  10:                   SEQUENCE {
 358   8:                     OBJECT IDENTIFIER
-       :                       ecdsaWithSHA256 (1 2 840 10045 4 3 2)
+       :                       ecdsaWithSHA512 (1 2 840 10045 4 3 4)
        :                     }
 368  56:                   SEQUENCE {
 370  11:                     SET {
@@ -1292,8 +1290,8 @@ rv+xfRnGllls9GeuV8sstYF6zuDlohjen9+J54g9AkIAm9YmhJgoeAFr0Xq4blY/
        :                       }
        :                     }
 426  30:                   SEQUENCE {
-428  13:                     UTCTime 28/03/2024 06:43:04 GMT
-443  13:                     UTCTime 28/03/2025 06:43:04 GMT
+428  13:                     UTCTime 29/03/2024 13:48:38 GMT
+443  13:                     UTCTime 29/03/2025 13:48:38 GMT
        :                     }
 458  60:                   SEQUENCE {
 460  11:                     SET {
@@ -1385,22 +1383,22 @@ rv+xfRnGllls9GeuV8sstYF6zuDlohjen9+J54g9AkIAm9YmhJgoeAFr0Xq4blY/
        :                   }
 759  10:                 SEQUENCE {
 761   8:                   OBJECT IDENTIFIER
-       :                     ecdsaWithSHA256 (1 2 840 10045 4 3 2)
+       :                     ecdsaWithSHA512 (1 2 840 10045 4 3 4)
        :                   }
 771 140:                 BIT STRING, encapsulates {
 775 136:                   SEQUENCE {
 778  66:                     INTEGER
-       :               01 28 1D 4A DA EC 96 D4 3E 93 18 FE F3 04 B0 DD
-       :               FB C0 91 17 3F A3 1C 0F 11 87 27 E2 C3 0C A6 99
-       :               81 8A 36 F8 AE FF B1 7D 19 C6 96 59 6C F4 67 AE
-       :               57 CB 2C B5 81 7A CE E0 E5 A2 18 DE 9F DF 89 E7
-       :               88 3D
+       :               01 83 3B C6 2F 2D E5 D5 9C 8A C9 A3 69 91 64 0E
+       :               CA FB 6E D1 94 A8 2A 68 F2 0C 2D CF 38 9D 78 D0
+       :               FA 65 59 36 F0 A1 16 F4 3D AA 55 28 A7 30 8E F7
+       :               27 CB AE 30 89 63 59 C5 B1 03 D1 ED 27 74 CB 69
+       :               B3 AF
 846  66:                     INTEGER
-       :               00 9B D6 26 84 98 28 78 01 6B D1 7A B8 6E 56 3F
-       :               FE E1 5A F5 9C 13 CF C4 3A BC 43 C2 74 2B DB 9F
-       :               04 6F B4 F3 63 F5 5D 9F A5 BD 54 AE 38 FF 0C F8
-       :               D2 C4 3B AF 06 17 52 9E 98 4A 53 E5 B9 C5 31 8C
-       :               EC D9
+       :               01 71 02 C9 33 90 F9 8B 92 51 B0 F9 B0 D9 09 0F
+       :               6B DF B7 0A 92 70 CF A9 3F 4F 38 64 22 C5 BE 3D
+       :               7A C1 E3 71 22 A5 49 E9 10 F4 56 9B 6E F6 1A 87
+       :               E6 8D 5A D1 61 A5 8F 16 C5 90 CA 50 4B 16 1D 73
+       :               49 FD
        :                     }
        :                   }
        :                 }
