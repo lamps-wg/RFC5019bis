@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-03-28T00:27:05.496138+00:00",
+  "timestamp": "2024-03-31T00:30:53.446264+00:00",
   "repo": "lamps-wg/RFC5019bis",
   "labels": [
     {
@@ -2496,6 +2496,46 @@
           "body": "",
           "createdAt": "2024-03-07T14:07:52Z",
           "updatedAt": "2024-03-07T14:07:52Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 55,
+      "id": "PR_kwDOHwB1bc5rBSq7",
+      "title": "Address GENART feedback",
+      "url": "https://github.com/lamps-wg/RFC5019bis/pull/55",
+      "state": "OPEN",
+      "author": "CBonnell",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-03-28T08:00:14Z",
+      "updatedAt": "2024-03-29T13:57:53Z",
+      "baseRepository": "lamps-wg/RFC5019bis",
+      "baseRefName": "main",
+      "baseRefOid": "41b81b2e9656d8ba47bc1f580df72a641be12b9d",
+      "headRepository": "lamps-wg/RFC5019bis",
+      "headRefName": "gen-art-review",
+      "headRefOid": "81f8e13b548d47a56a9cabb2d0652b850d1ac7ab",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOHwB1bc51UVEM",
+          "commit": {
+            "abbreviatedOid": "7c3bede"
+          },
+          "author": "seanturner",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "lgtm!",
+          "createdAt": "2024-03-29T10:24:18Z",
+          "updatedAt": "2024-03-29T10:24:18Z",
           "comments": []
         }
       ]
