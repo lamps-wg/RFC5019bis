@@ -104,6 +104,7 @@ ocsp_cert = (
         key_agreement=False, key_cert_sign=False, crl_sign=False, encipher_only=False, decipher_only=False
     ), True)
     .add_extension(x509.ExtendedKeyUsage([x509.ExtendedKeyUsageOID.OCSP_SIGNING]), False)
+    .add_extension(x509.OCSPNoCheck(), False)
     .sign(_CA_KEY, hashes.SHA512())
 )
 
@@ -128,12 +129,18 @@ response = (
 def _dumpasn1(doc):
     octets = doc.public_bytes(serialization.Encoding.DER)
 
+    print('\n~~~')
+
     if isinstance(doc, x509.Certificate):
-        print(doc.public_bytes(serialization.Encoding.PEM).decode())
+        print(doc.public_bytes(serialization.Encoding.PEM).decode().strip())
     else:
-        b64 = base64.b64encode(octets).decode()
+        b64 = base64.b64encode(octets).decode().strip()
 
         print('\n'.join((b64[p:p + 64] for p in range(0, len(b64), 64))))
+
+    print('~~~\n')
+
+    print('~~~')
 
     with tempfile.NamedTemporaryFile() as f:
         f.write(octets)
@@ -141,8 +148,9 @@ def _dumpasn1(doc):
 
         output = subprocess.check_output(['dumpasn1', '-z', '-w72', f.name], stderr=subprocess.DEVNULL).decode()
 
-        print(output)
+        print(output.strip())
 
+    print('~~~\n')
 
 _dumpasn1(ca_cert)
 _dumpasn1(ee_cert)
