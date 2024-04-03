@@ -257,7 +257,7 @@ responder has no clients that require the use of SHA-1.
 Operators of OCSP responders may consider logging the hash
 algorithm used by OCSP clients to inform their determination of
 when it is appropriate to obsolete the distribution of OCSP responses
-that employ SHA-1 for CertID field hashes. See {#sha1-sec} for more
+that employ SHA-1 for CertID field hashes. See {{sha1-sec}} for more
 information on the security considerations for the continued use of
 SHA-1.
 
