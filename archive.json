@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-04-02T00:27:26.945042+00:00",
+  "timestamp": "2024-04-04T00:28:13.762841+00:00",
   "repo": "lamps-wg/RFC5019bis",
   "labels": [
     {
@@ -2505,24 +2505,26 @@
       "id": "PR_kwDOHwB1bc5rBSq7",
       "title": "Address GENART feedback",
       "url": "https://github.com/lamps-wg/RFC5019bis/pull/55",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "CBonnell",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2024-03-28T08:00:14Z",
-      "updatedAt": "2024-03-29T13:57:53Z",
+      "updatedAt": "2024-04-03T11:44:14Z",
       "baseRepository": "lamps-wg/RFC5019bis",
       "baseRefName": "main",
       "baseRefOid": "41b81b2e9656d8ba47bc1f580df72a641be12b9d",
       "headRepository": "lamps-wg/RFC5019bis",
       "headRefName": "gen-art-review",
-      "headRefOid": "81f8e13b548d47a56a9cabb2d0652b850d1ac7ab",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "5d40959776258bab7bcc3426e6444c032872cf8d",
+      "closedAt": "2024-04-03T11:44:11Z",
+      "mergedAt": "2024-04-03T11:44:11Z",
+      "mergedBy": "CBonnell",
+      "mergeCommit": {
+        "oid": "d1b490f1c812423c680405a2bfff53a4999c95fe"
+      },
       "comments": [],
       "reviews": [
         {
@@ -2537,8 +2539,49 @@
           "createdAt": "2024-03-29T10:24:18Z",
           "updatedAt": "2024-03-29T10:24:18Z",
           "comments": []
+        },
+        {
+          "id": "PRR_kwDOHwB1bc51xpvJ",
+          "commit": {
+            "abbreviatedOid": "5d40959"
+          },
+          "author": "tadahik",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "It looks good to me",
+          "createdAt": "2024-04-03T08:12:39Z",
+          "updatedAt": "2024-04-03T08:12:39Z",
+          "comments": []
         }
       ]
+    },
+    {
+      "number": 56,
+      "id": "PR_kwDOHwB1bc5rlLad",
+      "title": "Fix reference to SHA-1 sec con",
+      "url": "https://github.com/lamps-wg/RFC5019bis/pull/56",
+      "state": "MERGED",
+      "author": "CBonnell",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-04-03T15:01:12Z",
+      "updatedAt": "2024-04-03T15:01:23Z",
+      "baseRepository": "lamps-wg/RFC5019bis",
+      "baseRefName": "main",
+      "baseRefOid": "d1b490f1c812423c680405a2bfff53a4999c95fe",
+      "headRepository": "lamps-wg/RFC5019bis",
+      "headRefName": "fix-sha1-reference",
+      "headRefOid": "81f0dbe1bdffa1d9ff436f02573beeeccca06b5b",
+      "closedAt": "2024-04-03T15:01:20Z",
+      "mergedAt": "2024-04-03T15:01:20Z",
+      "mergedBy": "CBonnell",
+      "mergeCommit": {
+        "oid": "9e86b18f3f3b4084d1e43af978a33e86e1f2ac2a"
+      },
+      "comments": [],
+      "reviews": []
     }
   ]
 }
