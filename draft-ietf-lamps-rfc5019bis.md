@@ -54,8 +54,8 @@ using OCSP in large scale (high volume) Public Key Infrastructure
 lightweight solution to minimize communication bandwidth and client-
 side processing.
 
-Since initial publication, this specification has been updated to allow
-and recommend the use of SHA-256 over SHA-1.
+This specification obsoletes RFC 5019. The profile specified in RFC 5019
+has been updated to allow and recommend the use of SHA-256 over SHA-1.
 
 
 
