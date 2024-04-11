@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-04-09T00:27:47.975437+00:00",
+  "timestamp": "2024-04-11T00:28:01.337190+00:00",
   "repo": "lamps-wg/RFC5019bis",
   "labels": [
     {
@@ -2588,24 +2588,26 @@
       "id": "PR_kwDOHwB1bc5rwP7y",
       "title": "Restore obsoleted blurb in abstract",
       "url": "https://github.com/lamps-wg/RFC5019bis/pull/57",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "CBonnell",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2024-04-04T19:29:34Z",
-      "updatedAt": "2024-04-04T19:29:44Z",
+      "updatedAt": "2024-04-10T19:36:20Z",
       "baseRepository": "lamps-wg/RFC5019bis",
       "baseRefName": "main",
       "baseRefOid": "9e86b18f3f3b4084d1e43af978a33e86e1f2ac2a",
       "headRepository": "lamps-wg/RFC5019bis",
       "headRefName": "restore-blurb",
       "headRefOid": "71e2b140cb31ac1a041b998c9358b4fe778dd96e",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2024-04-10T19:36:17Z",
+      "mergedAt": "2024-04-10T19:36:17Z",
+      "mergedBy": "CBonnell",
+      "mergeCommit": {
+        "oid": "789154197f48319f5ebbb6710831724271d8701c"
+      },
       "comments": [],
       "reviews": []
     }
