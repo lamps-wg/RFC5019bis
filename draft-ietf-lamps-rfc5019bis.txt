@@ -6,11 +6,11 @@ Network Working Group                                 伊藤 忠彦 (T. Ito)
 Internet-Draft                                           SECOM CO., LTD.
 Obsoletes: 5019 (if approved)                                  C. Wilson
 Intended status: Standards Track                             Apple, Inc.
-Expires: 12 October 2024                                      C. Bonnell
+Expires: 18 October 2024                                      C. Bonnell
                                                           DigiCert, Inc.
                                                                S. Turner
                                                                    sn3rd
-                                                           10 April 2024
+                                                           16 April 2024
 
 
     Updates to Lightweight OCSP Profile for High Volume Environments
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 12 October 2024.
+   This Internet-Draft will expire on 18 October 2024.
 
 Copyright Notice
 
@@ -881,8 +881,8 @@ B.1.  Root Certification Authority Certificate
    that issued the end-entity certificate and OCSP delegated responder
    example certificates below.
 
-   The the key pair for the certification authority is the "testECCP521"
-   key from [RFC9500], section 2.3.
+   The key pair for the certification authority is the "testECCP521" key
+   from [RFC9500], section 2.3.
 
    -----BEGIN CERTIFICATE-----
    MIICKDCCAYqgAwIBAgIBATAKBggqhkjOPQQDBDA4MQswCQYDVQQGEwJYWDEUMBIG
@@ -1024,8 +1024,8 @@ B.2.  End-entity Certificate
    This is an end-entity certificate whose status is requested and
    returned in the OCSP request and response examples below.
 
-   The the key pair for the end-entity certificate is the "testECCP256"
-   key from [RFC9500], section 2.3.
+   The key pair for the end-entity certificate is the "testECCP256" key
+   from [RFC9500], section 2.3.
 
    -----BEGIN CERTIFICATE-----
    MIIB2zCCATygAwIBAgIEAarwDTAKBggqhkjOPQQDBDA4MQswCQYDVQQGEwJYWDEU
@@ -1149,8 +1149,8 @@ B.3.  OCSP Responder Certificate
    This is a certificate for the OCSP delegated response that signed the
    OCSP response example below.
 
-   The the key pair for the OCSP Responder certificate is the
-   "testECCP384" key from [RFC9500], section 2.3.
+   The key pair for the OCSP Responder certificate is the "testECCP384"
+   key from [RFC9500], section 2.3.
 
    -----BEGIN CERTIFICATE-----
    MIICSzCCAa6gAwIBAgIBATAKBggqhkjOPQQDBDA4MQswCQYDVQQGEwJYWDEUMBIG
