@@ -734,7 +734,7 @@ This is a self-signed certificate for the certification authority that
 issued the end-entity certificate and OCSP delegated responder
 example certificates below.
 
-The the key pair for the certification authority is the "testECCP521"
+The key pair for the certification authority is the "testECCP521"
 key from {{!RFC9500}}, section 2.3.
 
 ~~~
@@ -881,7 +881,7 @@ EJ7R+3er1LdWqrdZHgtCwyT7+wFBIJmVswEiom2LGh/oMuu5mD+u/+o1m07vmmZj
 This is an end-entity certificate whose status is requested and
 returned in the OCSP request and response examples below.
 
-The the key pair for the end-entity certificate is the "testECCP256"
+The key pair for the end-entity certificate is the "testECCP256"
 key from {{!RFC9500}}, section 2.3.
 
 ~~~
@@ -1010,7 +1010,7 @@ obZP+eTLNWkGUFL6uCtLtQmYtrXpLAJfvkE6WYVqCUl495Kx9l6M9TBLK5X6V3w=
 This is a certificate for the OCSP delegated response that signed the
 OCSP response example below.
 
-The the key pair for the OCSP Responder certificate is the "testECCP384"
+The key pair for the OCSP Responder certificate is the "testECCP384"
 key from {{!RFC9500}}, section 2.3.
 
 ~~~
