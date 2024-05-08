@@ -142,7 +142,7 @@ Table of Contents
    Mobile environments, where network bandwidth may be at a premium and
    client-side devices are constrained from a processing point of view,
    require the careful use of OCSP to minimize bandwidth usage and
-   client-side processing complexity.  OCSPMP]
+   client-side processing complexity.  [OCSPMP]
 
    PKI continues to be deployed into environments where millions if not
    hundreds of millions of certificates have been issued.  In many of
