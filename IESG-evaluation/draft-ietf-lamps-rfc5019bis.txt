@@ -788,10 +788,6 @@ Table of Contents
               DOI 10.17487/RFC2119, March 1997,
               <https://www.rfc-editor.org/rfc/rfc2119>.
 
-   [RFC3174]  Eastlake 3rd, D. and P. Jones, "US Secure Hash Algorithm 1
-              (SHA1)", RFC 3174, DOI 10.17487/RFC3174, September 2001,
-              <https://www.rfc-editor.org/rfc/rfc3174>.
-
    [RFC3986]  Berners-Lee, T., Fielding, R., and L. Masinter, "Uniform
               Resource Identifier (URI): Generic Syntax", STD 66,
               RFC 3986, DOI 10.17487/RFC3986, January 2005,
@@ -836,11 +832,6 @@ Table of Contents
               DOI 10.17487/RFC9111, June 2022,
               <https://www.rfc-editor.org/rfc/rfc9111>.
 
-   [RFC9500]  Gutmann, P. and C. Bonnell, "Standard Public Key
-              Cryptography (PKC) Test Keys", RFC 9500,
-              DOI 10.17487/RFC9500, December 2023,
-              <https://www.rfc-editor.org/rfc/rfc9500>.
-
 10.2.  Informative References
 
    [OCSPMP]   Open Mobile Alliance, "OCSP Mobile Profile V1.0",
@@ -849,6 +840,15 @@ Table of Contents
    [RFC3143]  Cooper, I. and J. Dilley, "Known HTTP Proxy/Caching
               Problems", RFC 3143, DOI 10.17487/RFC3143, June 2001,
               <https://www.rfc-editor.org/rfc/rfc3143>.
+
+   [RFC3174]  Eastlake 3rd, D. and P. Jones, "US Secure Hash Algorithm 1
+              (SHA1)", RFC 3174, DOI 10.17487/RFC3174, September 2001,
+              <https://www.rfc-editor.org/rfc/rfc3174>.
+
+   [RFC9500]  Gutmann, P. and C. Bonnell, "Standard Public Key
+              Cryptography (PKC) Test Keys", RFC 9500,
+              DOI 10.17487/RFC9500, December 2023,
+              <https://www.rfc-editor.org/rfc/rfc9500>.
 
 Appendix A.  Differences from RFC 5019
 
