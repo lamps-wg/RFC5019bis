@@ -364,8 +364,10 @@ producedAt:
 : The time at which the OCSP response was signed.
 
 <aside markdown="block">
-Note: In many cases the value of thisUpdate and producedAt will be
-  the same.
+Note: The values of thisUpdate, nextUpdate, and producedAt are
+ set as described in {{Section 2.5 of RFC6960}},
+ and in many cases the value of thisUpdate and producedAt are
+ the same.
 </aside>
 
 For the purposes of this profile, ASN.1-encoded GeneralizedTime
