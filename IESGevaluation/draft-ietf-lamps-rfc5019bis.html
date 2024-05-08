@@ -1327,7 +1327,7 @@ OCSP deployments scale from both an efficiency and cost perspective.
 Mobile environments, where network bandwidth may be at a premium and
 client-side devices are constrained from a processing point of view,
 require the careful use of OCSP to minimize bandwidth usage and
-client-side processing complexity. <span>[<a href="#OCSPMP" class="cite xref">OCSPMP</a>]</span><a href="#section-1-3" class="pilcrow">¶</a></p>
+client-side processing complexity. OCSPMP]<a href="#section-1-3" class="pilcrow">¶</a></p>
 <p id="section-1-4">PKI continues to be deployed into environments where millions if not
 hundreds of millions of certificates have been issued. In many of
 these environments, an even larger number of users (also known as
@@ -1475,7 +1475,7 @@ CertID as defined in <span>[<a href="#RFC6960" class="cite xref">RFC6960</a>]</s
 <pre>
 OCSPResponse ::= SEQUENCE {
    responseStatus         OCSPResponseStatus,
-   responseBytes          [0] EXPLICIT ResponseBytes OPTIONAL }
+   responseBytes          0] EXPLICIT ResponseBytes OPTIONAL }
 
 ResponseBytes ::=       SEQUENCE {
    responseType   OBJECT IDENTIFIER,
@@ -1487,21 +1487,21 @@ BasicOCSPResponse       ::= SEQUENCE {
    tbsResponseData      ResponseData,
    signatureAlgorithm   AlgorithmIdentifier,
    signature            BIT STRING,
-   certs            [0] EXPLICIT SEQUENCE OF Certificate OPTIONAL }
+   certs            0] EXPLICIT SEQUENCE OF Certificate OPTIONAL }
 
 ResponseData ::= SEQUENCE {
-   version              [0] EXPLICIT Version DEFAULT v1,
+   version              0] EXPLICIT Version DEFAULT v1,
    responderID              ResponderID,
    producedAt               GeneralizedTime,
    responses                SEQUENCE OF SingleResponse,
-   responseExtensions   [1] EXPLICIT Extensions OPTIONAL }
+   responseExtensions   1] EXPLICIT Extensions OPTIONAL }
 
 SingleResponse ::= SEQUENCE {
    certID                       CertID,
    certStatus                   CertStatus,
    thisUpdate                   GeneralizedTime,
-   nextUpdate         [0]       EXPLICIT GeneralizedTime OPTIONAL,
-   singleExtensions   [1]       EXPLICIT Extensions OPTIONAL }
+   nextUpdate         0]       EXPLICIT GeneralizedTime OPTIONAL,
+   singleExtensions   1]       EXPLICIT Extensions OPTIONAL }
 </pre><a href="#section-3.2.1-2" class="pilcrow">¶</a>
 </div>
 <p id="section-3.2.1-3">Responders <span class="bcp14">MUST</span> generate a BasicOCSPResponse as identified by the
@@ -2205,7 +2205,7 @@ EJ7R+3er1LdWqrdZHgtCwyT7+wFBIJmVswEiom2LGh/oMuu5mD+u/+o1m07vmmZj
 <pre>
 0 552: SEQUENCE {
   4 394:   SEQUENCE {
-  8   3:     [0] {
+  8   3:     0] {
  10   1:       INTEGER 2
        :       }
  13   1:     INTEGER 1
@@ -2272,7 +2272,7 @@ EJ7R+3er1LdWqrdZHgtCwyT7+wFBIJmVswEiom2LGh/oMuu5mD+u/+o1m07vmmZj
        :         28 F6 D3 42 CF 3E F6 16 FC 82 D3 3B 72 85 C9 21
        :         F2 BF 36 FD D8
        :       }
-334  66:     [3] {
+334  66:     3] {
 336  64:       SEQUENCE {
 338  29:         SEQUENCE {
 340   3:           OBJECT IDENTIFIER subjectKeyIdentifier (2 5 29 14)
@@ -2355,7 +2355,7 @@ obZP+eTLNWkGUFL6uCtLtQmYtrXpLAJfvkE6WYVqCUl495Kx9l6M9TBLK5X6V3w=
 <pre>
 0 475: SEQUENCE {
   4 316:   SEQUENCE {
-  8   3:     [0] {
+  8   3:     0] {
  10   1:       INTEGER 2
        :       }
  13   4:     INTEGER 27979789
@@ -2406,7 +2406,7 @@ obZP+eTLNWkGUFL6uCtLtQmYtrXpLAJfvkE6WYVqCUl495Kx9l6M9TBLK5X6V3w=
        :         99 25 72 99 34 25 F4 14 19 AB 7E 90 A4 2A 49 42
        :         72
        :       }
-242  80:     [3] {
+242  80:     3] {
 244  78:       SEQUENCE {
 246  29:         SEQUENCE {
 248   3:           OBJECT IDENTIFIER subjectKeyIdentifier (2 5 29 14)
@@ -2420,7 +2420,7 @@ obZP+eTLNWkGUFL6uCtLtQmYtrXpLAJfvkE6WYVqCUl495Kx9l6M9TBLK5X6V3w=
 279   3:           OBJECT IDENTIFIER authorityKeyIdentifier (2 5 29 35)
 284  24:           OCTET STRING, encapsulates {
 286  22:             SEQUENCE {
-288  20:               [0]
+288  20:               0]
        :               8E C2 14 09 60 76 EA 90 38 E9 39 AE 1B 6D 52 C4
        :               17 7D 9F BE
        :               }
@@ -2492,7 +2492,7 @@ C0mmLubTRDH2v+6A1aycIVKIpR3G6+PuaD2Um3PSF7FElkoU4NYkbl1SH/8FzbDy
 <pre>
 0 587: SEQUENCE {
   4 430:   SEQUENCE {
-  8   3:     [0] {
+  8   3:     0] {
  10   1:       INTEGER 2
        :       }
  13   1:     INTEGER 1
@@ -2557,7 +2557,7 @@ C0mmLubTRDH2v+6A1aycIVKIpR3G6+PuaD2Um3PSF7FElkoU4NYkbl1SH/8FzbDy
        :         B9 B5 A8 DA 48 C6 74 71 17 F9 91 9E 84 24 F3 7E
        :         C8
        :       }
-300 135:     [3] {
+300 135:     3] {
 303 132:       SEQUENCE {
 306  29:         SEQUENCE {
 308   3:           OBJECT IDENTIFIER subjectKeyIdentifier (2 5 29 14)
@@ -2571,7 +2571,7 @@ C0mmLubTRDH2v+6A1aycIVKIpR3G6+PuaD2Um3PSF7FElkoU4NYkbl1SH/8FzbDy
 339   3:           OBJECT IDENTIFIER authorityKeyIdentifier (2 5 29 35)
 344  24:           OCTET STRING, encapsulates {
 346  22:             SEQUENCE {
-348  20:               [0]
+348  20:               0]
        :               8E C2 14 09 60 76 EA 90 38 E9 39 AE 1B 6D 52 C4
        :               17 7D 9F BE
        :               }
@@ -2709,13 +2709,13 @@ Bc2w8vywgYYoduXu4QLcoP17CA==
 <pre>
 0 927: SEQUENCE {
   4   1:   ENUMERATED 0
-  7 920:   [0] {
+  7 920:   0] {
  11 916:     SEQUENCE {
  15   9:       OBJECT IDENTIFIER ocspBasic (1 3 6 1 5 5 7 48 1 1)
  26 901:       OCTET STRING, encapsulates {
  30 897:         SEQUENCE {
  34 176:           SEQUENCE {
- 37  22:             [2] {
+ 37  22:             2] {
  39  20:               OCTET STRING
        :               0A E3 A0 FE 9D D4 25 76 98 B5 EB 72 EB CA 0C E7
        :               BF 3D F5 F1
@@ -2737,9 +2737,9 @@ Bc2w8vywgYYoduXu4QLcoP17CA==
        :               FC 96 E7 16 75 F6 ED 88 2E 7A B6 5C 3F 58 45 43
 169   4:                   INTEGER 27979789
        :                   }
-175   0:                 [0]
+175   0:                 0]
 177  15:                 GeneralizedTime 03/04/2024 12:37:47 GMT
-194  17:                 [0] {
+194  17:                 0] {
 196  15:                   GeneralizedTime 10/04/2024 12:37:47 GMT
        :                   }
        :                 }
@@ -2763,11 +2763,11 @@ Bc2w8vywgYYoduXu4QLcoP17CA==
        :               B3
        :               }
        :             }
-332 595:           [0] {
+332 595:           0] {
 336 591:             SEQUENCE {
 340 587:               SEQUENCE {
 344 430:                 SEQUENCE {
-348   3:                   [0] {
+348   3:                   0] {
 350   1:                     INTEGER 2
        :                     }
 353   1:                   INTEGER 1
@@ -2837,7 +2837,7 @@ Bc2w8vywgYYoduXu4QLcoP17CA==
        :               B9 B5 A8 DA 48 C6 74 71 17 F9 91 9E 84 24 F3 7E
        :               C8
        :                     }
-640 135:                   [3] {
+640 135:                   3] {
 643 132:                     SEQUENCE {
 646  29:                       SEQUENCE {
 648   3:                         OBJECT IDENTIFIER
@@ -2853,7 +2853,7 @@ Bc2w8vywgYYoduXu4QLcoP17CA==
        :                           authorityKeyIdentifier (2 5 29 35)
 684  24:                         OCTET STRING, encapsulates {
 686  22:                           SEQUENCE {
-688  20:                             [0]
+688  20:                             0]
        :               8E C2 14 09 60 76 EA 90 38 E9 39 AE 1B 6D 52 C4
        :               17 7D 9F BE
        :                             }
