@@ -179,7 +179,7 @@ the hashing algorithm for the CertID.issuerNameHash and the
 CertID.issuerKeyHash values.
 
 Older OCSP clients which provide backward compatibility with
-{{!RFC5019}} use SHA-1 as defined in {{!RFC3174}} as the hashing
+{{!RFC5019}} use SHA-1 as defined in {{?RFC3174}} as the hashing
 algorithm for the CertID.issuerNameHash and the
 CertID.issuerKeyHash values. However, these OCSP clients MUST
 transition from SHA-1 to SHA-256 as soon as practical.
@@ -744,7 +744,7 @@ issued the end-entity certificate and OCSP delegated responder
 example certificates below.
 
 The key pair for the certification authority is the "testECCP521"
-key from {{Section 2.3 of !RFC9500}}.
+key from {{Section 2.3 of ?RFC9500}}.
 
 ~~~
 -----BEGIN CERTIFICATE-----
