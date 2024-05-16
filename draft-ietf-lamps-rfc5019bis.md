@@ -76,8 +76,8 @@ revocation status of a certificate.)
 To date, numerous OCSP deployments have been implemented to provide timely
 and secure certificate status information, crucial for high-value
 electronic transactions and the handling of highly sensitive information,
-particularly within the banking and financial sectors.
-As such, the requirement for an OCSP
+such as within the banking and financial sectors.
+Therefore, the requirement for an OCSP
 responder to respond in "real time" (i.e., generating a new OCSP
 response for each OCSP request) has been important. In addition,
 these deployments have operated in environments where bandwidth usage
@@ -121,7 +121,7 @@ bandwidth and client-side processing power (or both), as described
 above.
 
 OCSP does not have the means to signal responder capabilities within the
-protocol. Thus, clients will need to use out-of-band mechanisms to
+protocol. Thus, clients may need to use out-of-band mechanisms to
 determine whether a responder conforms to the profile defined in this
 document. Regardless of the availability of such out-of-band mechanisms,
 this profile ensures that interoperability will still occur between an
@@ -171,9 +171,8 @@ OCSPRequests that conform to the profile in this document MUST
 include only one Request in the OCSPRequest.RequestList structure.
 
 The CertID.issuerNameHash and CertID.issuerKeyHash fields contain hashes
-of the issuer's DN (Distinguished Name) and public key, respectively.
-OCSP clients that
-conform with this profile MUST use SHA-256 as defined
+of the issuer's distinguished name (DN) and public key, respectively.
+OCSP clients that conform with this profile MUST use SHA-256 as defined
 in {{Section 2.2 of !RFC5754}} as
 the hashing algorithm for the CertID.issuerNameHash and the
 CertID.issuerKeyHash values.
@@ -199,7 +198,7 @@ the signature on OCSPRequests.
 
 If the OCSPRequest is signed, the client SHALL specify its name in
 the OCSPRequest.requestorName field; otherwise, clients SHOULD NOT
-include the requestorName field in the OCSPRequest. OCSP servers
+include the requestorName field in the OCSPRequest. OCSP responders
 MUST handle unsigned OCSP requests that contain the
 requestorName field, as if the requestorName field were absent.
 
@@ -270,7 +269,7 @@ The responder SHOULD NOT include responseExtensions. As specified in
 responseExtensions in the response.
 
 In the case where a responder does not have the ability to respond to
-an OCSP request containing an option not supported by the server, it
+an OCSP request containing an option not supported by the responder, it
 SHOULD return the most complete response it can. For example, in the
 case where a responder only supports pre-produced responses and does
 not have the ability to respond to an OCSP request containing a
@@ -327,7 +326,7 @@ OCSPResponseStatus of "unauthorized". As such, this profile extends
 the {{RFC6960}} definition of "unauthorized" as follows:
 
 The response "unauthorized" is returned in cases where the client
-is not authorized to make this query to this server or the server
+is not authorized to make this query to this responder or the responder
 is not capable of responding authoritatively.
 
 For example, OCSP responders that do not have access to authoritative
@@ -532,7 +531,7 @@ of these headers and the proper format of any date and time values.
 
 | HTTP Header | Description |
 |:---|:---|
-| Date | The date and time at which the OCSP server generated the HTTP response. |
+| Date | The date and time at which the OCSP responder generated the HTTP response. |
 | Last-Modified | This value specifies the date and time at which the OCSP responder last modified the response. This date and time will be the same as the thisUpdate timestamp in the request itself. |
 | Expires | Specifies how long the response is considered fresh. This date and time will be the same as the nextUpdate timestamp in the OCSP response itself. |
 | ETag | A string that identifies a particular version of the associated data. This profile RECOMMENDS that the ETag value be the ASCII HEX representation of the SHA-256 hash of the OCSPResponse structure. |
@@ -631,8 +630,8 @@ a client with a sufficiently slow clock may incorrectly accept
 expired valid responses for certificates that may in fact be revoked.
 
 Future versions of the OCSP protocol may provide a way for the client
-to know whether the server supports nonces or does not support
-nonces. If a client can determine that the server supports nonces,
+to know whether the responder supports nonces or does not support
+nonces. If a client can determine that the responder supports nonces,
 it MUST reject a reply that does not contain an expected nonce.
 Otherwise, clients that opt to include a nonce in the request SHOULD
 NOT reject a corresponding OCSPResponse solely on the basis of the
