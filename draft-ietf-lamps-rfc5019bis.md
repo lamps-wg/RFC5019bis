@@ -121,12 +121,14 @@ bandwidth and client-side processing power (or both), as described
 above.
 
 OCSP does not have the means to signal responder capabilities within the
-protocol. Thus, clients may need to use out-of-band mechanisms to
-determine whether a responder conforms to the profile defined in this
-document. Regardless of the availability of such out-of-band mechanisms,
-this profile ensures that interoperability will still occur between an
-OCSP client that fully conforms with {{RFC6960}} and a responder that is
-operating in a mode as described in this specification.
+protocol. Thus, clients may need to use out-of-band mechanisms (e.g.,
+agreed upon arrangements between operators of OCSP responders and OCSP
+response-consuming applications) to determine whether a responder
+conforms to the profile defined in this document. Regardless of the
+availability of such out-of-band mechanisms, this profile ensures that
+interoperability will still occur between an OCSP client that fully
+conforms with {{RFC6960}} and a responder that is operating in a mode as
+described in this specification.
 
 # Conventions and Definitions
 
