@@ -6,11 +6,11 @@ Network Working Group                                 伊藤 忠彦 (T. Ito)
 Internet-Draft                                           SECOM CO., LTD.
 Obsoletes: 5019 (if approved)                                  C. Wilson
 Intended status: Standards Track                             Apple, Inc.
-Expires: 9 November 2024                                      C. Bonnell
+Expires: 17 November 2024                                     C. Bonnell
                                                           DigiCert, Inc.
                                                                S. Turner
                                                                    sn3rd
-                                                              8 May 2024
+                                                             16 May 2024
 
 
     Updates to Lightweight OCSP Profile for High Volume Environments
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 9 November 2024.
+   This Internet-Draft will expire on 17 November 2024.
 
 Copyright Notice
 
@@ -126,8 +126,8 @@ Table of Contents
    To date, numerous OCSP deployments have been implemented to provide
    timely and secure certificate status information, crucial for high-
    value electronic transactions and the handling of highly sensitive
-   information, particularly within the banking and financial sectors.
-   As such, the requirement for an OCSP responder to respond in "real
+   information, such as within the banking and financial sectors.
+   Therefore, the requirement for an OCSP responder to respond in "real
    time" (i.e., generating a new OCSP response for each OCSP request)
    has been important.  In addition, these deployments have operated in
    environments where bandwidth usage is not an issue, and have run on
@@ -171,7 +171,7 @@ Table of Contents
    above.
 
    OCSP does not have the means to signal responder capabilities within
-   the protocol.  Thus, clients will need to use out-of-band mechanisms
+   the protocol.  Thus, clients may need to use out-of-band mechanisms
    to determine whether a responder conforms to the profile defined in
    this document.  Regardless of the availability of such out-of-band
    mechanisms, this profile ensures that interoperability will still
@@ -224,7 +224,7 @@ Table of Contents
    include only one Request in the OCSPRequest.RequestList structure.
 
    The CertID.issuerNameHash and CertID.issuerKeyHash fields contain
-   hashes of the issuer's DN (Distinguished Name) and public key,
+   hashes of the issuer's distinguished name (DN) and public key,
    respectively.  OCSP clients that conform with this profile MUST use
    SHA-256 as defined in Section 2.2 of [RFC5754] as the hashing
    algorithm for the CertID.issuerNameHash and the CertID.issuerKeyHash
@@ -251,7 +251,7 @@ Table of Contents
 
    If the OCSPRequest is signed, the client SHALL specify its name in
    the OCSPRequest.requestorName field; otherwise, clients SHOULD NOT
-   include the requestorName field in the OCSPRequest.  OCSP servers
+   include the requestorName field in the OCSPRequest.  OCSP responders
    MUST handle unsigned OCSP requests that contain the requestorName
    field, as if the requestorName field were absent.
 
@@ -319,10 +319,10 @@ Table of Contents
    responseExtensions in the response.
 
    In the case where a responder does not have the ability to respond to
-   an OCSP request containing an option not supported by the server, it
-   SHOULD return the most complete response it can.  For example, in the
-   case where a responder only supports pre-produced responses and does
-   not have the ability to respond to an OCSP request containing a
+   an OCSP request containing an option not supported by the responder,
+   it SHOULD return the most complete response it can.  For example, in
+   the case where a responder only supports pre-produced responses and
+   does not have the ability to respond to an OCSP request containing a
    nonce, it SHOULD return a response that does not include a nonce.
 
    Clients SHOULD attempt to process a response even if the response
@@ -377,8 +377,8 @@ Table of Contents
    the [RFC6960] definition of "unauthorized" as follows:
 
    The response "unauthorized" is returned in cases where the client is
-   not authorized to make this query to this server or the server is not
-   capable of responding authoritatively.
+   not authorized to make this query to this responder or the responder
+   is not capable of responding authoritatively.
 
    For example, OCSP responders that do not have access to authoritative
    records for a requested certificate, such as those that generate and
@@ -574,7 +574,7 @@ Table of Contents
    +===============+==================================================+
    | HTTP Header   | Description                                      |
    +===============+==================================================+
-   | Date          | The date and time at which the OCSP server       |
+   | Date          | The date and time at which the OCSP responder    |
    |               | generated the HTTP response.                     |
    +---------------+--------------------------------------------------+
    | Last-Modified | This value specifies the date and time at which  |
@@ -696,12 +696,12 @@ Table of Contents
    expired valid responses for certificates that may in fact be revoked.
 
    Future versions of the OCSP protocol may provide a way for the client
-   to know whether the server supports nonces or does not support
-   nonces.  If a client can determine that the server supports nonces,
-   it MUST reject a reply that does not contain an expected nonce.
-   Otherwise, clients that opt to include a nonce in the request SHOULD
-   NOT reject a corresponding OCSPResponse solely on the basis of the
-   nonexistent expected nonce, but MUST fall back to validating the
+   to know whether the responder supports nonces or does not support
+   nonces.  If a client can determine that the responder supports
+   nonces, it MUST reject a reply that does not contain an expected
+   nonce.  Otherwise, clients that opt to include a nonce in the request
+   SHOULD NOT reject a corresponding OCSPResponse solely on the basis of
+   the nonexistent expected nonce, but MUST fall back to validating the
    OCSPResponse based on time.
 
 8.2.  Man-in-the-Middle Attacks
