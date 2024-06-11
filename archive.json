@@ -1,0 +1,2709 @@
+{
+  "magic": "E!vIA5L86J2I",
+  "timestamp": "2024-06-11T00:29:56.753669+00:00",
+  "repo": "lamps-wg/RFC5019bis",
+  "labels": [
+    {
+      "name": "bug",
+      "description": "Something isn't working",
+      "color": "d73a4a"
+    },
+    {
+      "name": "documentation",
+      "description": "Improvements or additions to documentation",
+      "color": "0075ca"
+    },
+    {
+      "name": "duplicate",
+      "description": "This issue or pull request already exists",
+      "color": "cfd3d7"
+    },
+    {
+      "name": "enhancement",
+      "description": "New feature or request",
+      "color": "a2eeef"
+    },
+    {
+      "name": "good first issue",
+      "description": "Good for newcomers",
+      "color": "7057ff"
+    },
+    {
+      "name": "help wanted",
+      "description": "Extra attention is needed",
+      "color": "008672"
+    },
+    {
+      "name": "invalid",
+      "description": "This doesn't seem right",
+      "color": "e4e669"
+    },
+    {
+      "name": "question",
+      "description": "Further information is requested",
+      "color": "d876e3"
+    },
+    {
+      "name": "wontfix",
+      "description": "This will not be worked on",
+      "color": "ffffff"
+    }
+  ],
+  "issues": [
+    {
+      "number": 2,
+      "id": "I_kwDOHwB1bc5V-gsW",
+      "title": "Update References",
+      "url": "https://github.com/lamps-wg/RFC5019bis/issues/2",
+      "state": "CLOSED",
+      "author": "seanturner",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Check which references have been obsoleted.",
+      "createdAt": "2022-11-09T17:06:59Z",
+      "updatedAt": "2022-11-13T11:47:08Z",
+      "closedAt": "2022-11-13T11:47:08Z",
+      "comments": []
+    },
+    {
+      "number": 3,
+      "id": "I_kwDOHwB1bc5V-hNW",
+      "title": "Address errata",
+      "url": "https://github.com/lamps-wg/RFC5019bis/issues/3",
+      "state": "CLOSED",
+      "author": "seanturner",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Need to address this:\r\nhttps://www.rfc-editor.org/errata_search.php?rfc=5019",
+      "createdAt": "2022-11-09T17:08:24Z",
+      "updatedAt": "2022-11-11T10:41:45Z",
+      "closedAt": "2022-11-11T10:41:45Z",
+      "comments": []
+    },
+    {
+      "number": 6,
+      "id": "I_kwDOHwB1bc5V-p71",
+      "title": "Obsoletes vs Updates?",
+      "url": "https://github.com/lamps-wg/RFC5019bis/issues/6",
+      "state": "CLOSED",
+      "author": "seanturner",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Are we obsoleting or updating the I-D? I assume we're obsoleting it.",
+      "createdAt": "2022-11-09T17:35:21Z",
+      "updatedAt": "2022-11-11T10:44:05Z",
+      "closedAt": "2022-11-11T10:44:05Z",
+      "comments": []
+    },
+    {
+      "number": 8,
+      "id": "I_kwDOHwB1bc5V-0jl",
+      "title": "Acknowledge 5019 authors",
+      "url": "https://github.com/lamps-wg/RFC5019bis/issues/8",
+      "state": "CLOSED",
+      "author": "seanturner",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "This I-D should explicitly ack Alex and Ryan.",
+      "createdAt": "2022-11-09T18:06:58Z",
+      "updatedAt": "2022-11-11T10:43:17Z",
+      "closedAt": "2022-11-11T10:43:17Z",
+      "comments": []
+    },
+    {
+      "number": 11,
+      "id": "I_kwDOHwB1bc5V--dN",
+      "title": "add privacy consideration",
+      "url": "https://github.com/lamps-wg/RFC5019bis/issues/11",
+      "state": "CLOSED",
+      "author": "tadahik",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [
+        "clintwilson"
+      ],
+      "labels": [],
+      "body": "I believe we had better add privacy consideration.",
+      "createdAt": "2022-11-09T18:39:01Z",
+      "updatedAt": "2023-11-06T00:53:21Z",
+      "closedAt": "2023-11-06T00:53:21Z",
+      "comments": [
+        {
+          "author": "tadahik",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@clintwilson \r\nHi Client, I believe you would the best person who write this section. could you draft a section?",
+          "createdAt": "2022-11-13T12:17:41Z",
+          "updatedAt": "2022-11-13T12:17:41Z"
+        },
+        {
+          "author": "tadahik",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I believe, this is outside the scope of this document (since it is about profile, and we are not changing protocol). \r\nIn addition, this document would not create any new privacy concern.",
+          "createdAt": "2023-11-06T00:53:21Z",
+          "updatedAt": "2023-11-06T00:53:21Z"
+        }
+      ]
+    },
+    {
+      "number": 12,
+      "id": "I_kwDOHwB1bc5V-_dD",
+      "title": "SHA-1",
+      "url": "https://github.com/lamps-wg/RFC5019bis/issues/12",
+      "state": "CLOSED",
+      "author": "seanturner",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Is the plan to drop support for SHA-1 or just adding SHA-256?",
+      "createdAt": "2022-11-09T18:42:34Z",
+      "updatedAt": "2023-02-28T18:55:02Z",
+      "closedAt": "2023-02-28T18:55:02Z",
+      "comments": [
+        {
+          "author": "tadahik",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I was thinking about just adding SHA-256, \r\nbut if there were enough endorsement at WG, it might be nice to drop support for SHA-1.",
+          "createdAt": "2022-11-10T19:00:20Z",
+          "updatedAt": "2022-11-10T19:00:20Z"
+        },
+        {
+          "author": "tadahik",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I would love to hear @CBonnell  and @clintwilson 's comments.\r\nI believe, it would make less conflict to just add SHA-256.\r\nIn the other hand, if WG want to drop support for SHA-1, it is good.\r\n\r\nI believe there should be lots of sha-1 certid used in the world, \r\nand not sure if we can have enough support to drop SHA-1. \r\n\r\nI prefer easier way to make document.",
+          "createdAt": "2022-11-13T12:13:35Z",
+          "updatedAt": "2022-11-13T12:13:35Z"
+        },
+        {
+          "author": "CBonnell",
+          "authorAssociation": "COLLABORATOR",
+          "body": "[RFC 8954](https://www.rfc-editor.org/rfc/rfc8954.html#name-nonce-extension) takes an interesting approach in mandating specific behavior for \"newer OCSP clients\":\r\n\r\n>  Newer OCSP clients that support this document MUST use a length of 32 octets for the nonce in the Nonce extension.\r\n\r\nThe challenge with this approach is that \"newer\" is undefined, so it is not a strong requirement. But it does avoid the interoperability issue posed by the hash algorithm switch. Perhaps we could consider a similar approach here.",
+          "createdAt": "2022-11-14T21:38:05Z",
+          "updatedAt": "2022-11-14T21:38:28Z"
+        },
+        {
+          "author": "tadahik",
+          "authorAssociation": "COLLABORATOR",
+          "body": "It seems a good approach. \r\nRFC 8954 update 6960, and that section of 8954 describe  as \"newer OCSP clients\", contracting \"with older clients that follow [RFC6960]\".\r\nIt sounds like when it come to 6960 bis, it is going to be only new OCSP clients.\r\n\r\nlet me clarify if my understanding is correct.\r\n\r\nwith similar approach,  \r\nwe can let older \"5019 supporting\" clients support sha-1 only, and \r\nnewer \"5019-bis\" supporting clients support sha-2 only ?  \r\nIn that approach, people who still want to use sha-1 can use old 5019 supporting client, but it sound OK for me.\r\n(we may not obsolete 5019, but update 5019.)\r\n\r\nIs it correct?",
+          "createdAt": "2022-11-15T22:47:38Z",
+          "updatedAt": "2022-11-17T04:02:13Z"
+        },
+        {
+          "author": "CBonnell",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Yes, that's my understanding of the wording of RFC 8954 and how we can apply that convention to this document.",
+          "createdAt": "2022-11-23T20:33:57Z",
+          "updatedAt": "2022-11-23T20:33:57Z"
+        },
+        {
+          "author": "tadahik",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@CBonnell \r\nwould it work?\r\nhttps://github.com/tadahik/RFC5019bis/blob/treatSHA1with8954approach/draft-bonnell-RFC5019.md\r\n\r\nIt seems like  now is the chance to submit this Draft\r\nhttps://www.nist.gov/news-events/news/2022/12/nist-retires-sha-1-cryptographic-algorithm\r\n\r\n@clintwilson \r\nmy company is OK to publish I-D.\r\nIf Apple is OK for publishing, it might be good to publish this repo (and post I-D).",
+          "createdAt": "2022-12-16T04:55:13Z",
+          "updatedAt": "2022-12-16T04:55:13Z"
+        },
+        {
+          "author": "clintwilson",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@tadahik Apple is ok to publish, but would require some additional internal review once finalized, so it may be more expedient to have you publish when ready.",
+          "createdAt": "2022-12-16T19:36:54Z",
+          "updatedAt": "2022-12-16T19:36:54Z"
+        },
+        {
+          "author": "tadahik",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@clintwilson I had a chat with Corey, and we agreed that it might be nice to publish after the holiday, and see reaction of lamps WG.",
+          "createdAt": "2022-12-22T09:01:04Z",
+          "updatedAt": "2022-12-22T09:01:04Z"
+        },
+        {
+          "author": "seanturner",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@tadahik @clintwilson @CBonnell Let's make this change and merge #14 and get a version out so we can drop it on lamps?",
+          "createdAt": "2023-02-16T13:10:03Z",
+          "updatedAt": "2023-02-16T13:10:03Z"
+        },
+        {
+          "author": "seanturner",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Note we should also address this sentence in the linked version:\r\n\r\n    ETag A string that identifies a particular version of the\r\n    associated data. This profile RECOMMENDS that the ETag\r\n    value be the ASCII HEX representation of the SHA1 hash\r\n    of the OCSPResponse structure.",
+          "createdAt": "2023-02-16T13:14:17Z",
+          "updatedAt": "2023-02-16T13:14:17Z"
+        },
+        {
+          "author": "tadahik",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@seanturner thanks Sean \r\nI merged #14. In our context, I believe ETag had better to be SHA-256, so I change that to SHA-256.\r\nI also made pull request of #15, which I thought I did before but I did not.\r\n\r\n@clintwilson @CBonnell I believe it is fine to get version after #15 , but do you have any comment?\r\n",
+          "createdAt": "2023-02-23T04:31:50Z",
+          "updatedAt": "2023-02-23T04:32:20Z"
+        },
+        {
+          "author": "tadahik",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I just noticed that we need some fix on references.\r\n\r\n> See [HTTP] for the full definition of these headers and the proper format of any date and time values.\r\n\r\nIt should be {{RFC7230}} instead of  [HTTP] .\r\n\r\n> Further information regarding caching issues can be obtained from RFC 3143 [RFC3143].\r\n\r\nIt should be {{?RFC3143}}  .\r\nmote that since 3143 is informative, we use {{? }} instead of {{! }}\r\n\r\n> [OCSPPMP]\r\nmay need to fix when submitting..",
+          "createdAt": "2023-02-23T04:56:51Z",
+          "updatedAt": "2023-02-23T04:56:51Z"
+        }
+      ]
+    },
+    {
+      "number": 13,
+      "id": "I_kwDOHwB1bc5WPdvT",
+      "title": "OCSP2560 client",
+      "url": "https://github.com/lamps-wg/RFC5019bis/issues/13",
+      "state": "CLOSED",
+      "author": "tadahik",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "should it be OCSP 6960 client? if there is better explanation, I like to hear\r\n\r\n\"this profile ensures that interoperability will still occur between a fully conformant OCSP 2560 client and a responder that is operating in a mode as described in this specification.\"\r\n",
+      "createdAt": "2022-11-13T12:04:07Z",
+      "updatedAt": "2023-02-23T04:09:26Z",
+      "closedAt": "2023-02-23T04:09:26Z",
+      "comments": [
+        {
+          "author": "clintwilson",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Agreed, updating to 6960 makes sense to me here.",
+          "createdAt": "2022-11-16T18:19:32Z",
+          "updatedAt": "2022-11-16T18:19:32Z"
+        }
+      ]
+    },
+    {
+      "number": 22,
+      "id": "I_kwDOHwB1bc5gSiVc",
+      "title": "add changes para to s1",
+      "url": "https://github.com/lamps-wg/RFC5019bis/issues/22",
+      "state": "CLOSED",
+      "author": "seanturner",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Need to add new last para in s1 that highlights the changes made in this version of the document, because I know we'll get an IESG discuss on that point ;)",
+      "createdAt": "2023-03-08T15:32:22Z",
+      "updatedAt": "2023-03-29T00:35:02Z",
+      "closedAt": "2023-03-29T00:35:01Z",
+      "comments": [
+        {
+          "author": "tadahik",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I checked diff for 1st and last commit.\r\nI believe followings should be our contributions (I am not sure if we need to include all of minor fixes).\r\nOn the reviewing process, I found some minor fix and I believe we should add Russ for acknowledgment so I will make new PR for that.\r\n\r\n- Support migration for OCSP clients\r\n-- allows new OCSP client to use SHA-256\r\n-- support migration from byName field to byKey field\r\n\r\n- additional fixes\r\n-- MUST NOT include whitespace or any other characters\r\n\r\n- minor fixes of description\r\n-- changes in section numbers.\r\n-- \"must realize that the provided value is not authenticated\" to \"MUST handle such requests as if the requestorName field were absent\"\r\n-- fix http header example. (make initial letter of http headers to be capital, add hyphen for HTTP-data.\r\n-- update dates in the example timestamp value.\r\n\r\n- update references\r\n-- RFC 2560 to RFC 6960\r\n-- RFC 2616 to RFC 9110 and RFC 9111\r\n-- add reference of RFC 3548 for OCSPRequest Structure, RFC 3986 for URL encoding, and RFC5280 for AIA extension. \r\n-- RFC4366 to I-D.ietf-tls-rfc8446bis\r\n-- updates section numbers for reference links\r\n\r\n\r\n",
+          "createdAt": "2023-03-23T06:46:13Z",
+          "updatedAt": "2023-03-23T06:46:13Z"
+        },
+        {
+          "author": "tadahik",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I drafted text, but I feel like it is to detail, and we may  curve out some of them (e.g. just say \"fix syntax of http headers\"), or bring changes to before security consideration.\r\n\r\nhttps://github.com/tadahik/RFC5019bis/compare/changesFrom5019",
+          "createdAt": "2023-03-25T09:00:08Z",
+          "updatedAt": "2023-03-25T09:00:08Z"
+        },
+        {
+          "author": "seanturner",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Oh I definitely think we do not need to be this detailed.",
+          "createdAt": "2023-03-25T23:24:57Z",
+          "updatedAt": "2023-03-25T23:24:57Z"
+        },
+        {
+          "author": "tadahik",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Ok, I would leave that branch and make shorter one.\r\nI believe content of that branch may used for reviewing process later. ",
+          "createdAt": "2023-03-26T04:34:23Z",
+          "updatedAt": "2023-03-26T04:34:23Z"
+        },
+        {
+          "author": "tadahik",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I made shorter one.\r\nhttps://github.com/tadahik/RFC5019bis/compare/briefDesctiptionOfChanges",
+          "createdAt": "2023-03-26T05:46:23Z",
+          "updatedAt": "2023-03-26T05:46:23Z"
+        },
+        {
+          "author": "seanturner",
+          "authorAssociation": "COLLABORATOR",
+          "body": "LGTM!",
+          "createdAt": "2023-03-26T22:33:10Z",
+          "updatedAt": "2023-03-26T22:33:10Z"
+        },
+        {
+          "author": "tadahik",
+          "authorAssociation": "COLLABORATOR",
+          "body": "close with \r\nhttps://github.com/tadahik/RFC5019bis/pull/33",
+          "createdAt": "2023-03-29T00:35:01Z",
+          "updatedAt": "2023-03-29T00:35:01Z"
+        }
+      ]
+    },
+    {
+      "number": 23,
+      "id": "I_kwDOHwB1bc5gSr6p",
+      "title": "Integrate Russ's suggestions",
+      "url": "https://github.com/lamps-wg/RFC5019bis/issues/23",
+      "state": "CLOSED",
+      "author": "CBonnell",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "https://mailarchive.ietf.org/arch/msg/spasm/RjB5qRlIzhFLmF9sndJBLgIkVZU/",
+      "createdAt": "2023-03-08T15:56:35Z",
+      "updatedAt": "2023-03-23T10:17:42Z",
+      "closedAt": "2023-03-23T10:17:42Z",
+      "comments": [
+        {
+          "author": "tadahik",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I did not notice error before merger, I first try to revert, but it seems not good, so I made new PR for fixing.\r\n\r\nhttps://github.com/tadahik/RFC5019bis/pull/32",
+          "createdAt": "2023-03-23T07:25:00Z",
+          "updatedAt": "2023-03-23T07:25:00Z"
+        },
+        {
+          "author": "tadahik",
+          "authorAssociation": "COLLABORATOR",
+          "body": "solved with #30 (and #32)",
+          "createdAt": "2023-03-23T10:17:42Z",
+          "updatedAt": "2023-03-23T10:17:42Z"
+        }
+      ]
+    },
+    {
+      "number": 24,
+      "id": "I_kwDOHwB1bc5gSsBT",
+      "title": "Update ETag example to be SHA-256",
+      "url": "https://github.com/lamps-wg/RFC5019bis/issues/24",
+      "state": "CLOSED",
+      "author": "CBonnell",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-03-08T15:56:51Z",
+      "updatedAt": "2023-03-13T13:39:01Z",
+      "closedAt": "2023-03-13T13:39:00Z",
+      "comments": [
+        {
+          "author": "CBonnell",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Resolved by #29.",
+          "createdAt": "2023-03-13T13:39:00Z",
+          "updatedAt": "2023-03-13T13:39:00Z"
+        }
+      ]
+    },
+    {
+      "number": 26,
+      "id": "I_kwDOHwB1bc5gaoFD",
+      "title": "HTTP References",
+      "url": "https://github.com/lamps-wg/RFC5019bis/issues/26",
+      "state": "CLOSED",
+      "author": "seanturner",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "As it turns out, all of the HTTP fields we use are not defined in RFC 9110. Some were moved to a different caching-specific document, RFC 9111, so we probably need to point there.\r\n\r\nAlso, it looks like the field names start with capitals.",
+      "createdAt": "2023-03-09T16:38:01Z",
+      "updatedAt": "2023-03-11T01:36:41Z",
+      "closedAt": "2023-03-11T01:36:41Z",
+      "comments": []
+    },
+    {
+      "number": 28,
+      "id": "I_kwDOHwB1bc5gazWa",
+      "title": "Update Examples",
+      "url": "https://github.com/lamps-wg/RFC5019bis/issues/28",
+      "state": "CLOSED",
+      "author": "seanturner",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "The examples are circa '05. We should just update the dates to sometime in 2023.",
+      "createdAt": "2023-03-09T17:02:25Z",
+      "updatedAt": "2023-03-13T13:39:17Z",
+      "closedAt": "2023-03-13T13:39:16Z",
+      "comments": [
+        {
+          "author": "CBonnell",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Resolved by #29.",
+          "createdAt": "2023-03-13T13:39:16Z",
+          "updatedAt": "2023-03-13T13:39:16Z"
+        }
+      ]
+    },
+    {
+      "number": 34,
+      "id": "I_kwDOHwB1bc5h_Fkw",
+      "title": "idnit",
+      "url": "https://github.com/lamps-wg/RFC5019bis/issues/34",
+      "state": "CLOSED",
+      "author": "tadahik",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "I was planing to submit, but idnit had following warnings, so I might submit after WG.\r\n\r\n1)I know R. hurst is OK with this draft, so do A. Deacon?\r\n\r\n2)should we update RFC 3548 to RFC 4648?\r\n\r\n---------------------------------------------------------\r\nMiscellaneous warnings:\r\n  ----------------------------------------------------------------------------\r\n\r\n     (Using the creation date from RFC5019, updated by this document, for\r\n     RFC5378 checks: 2004-10-01)\r\n\r\n  -- The document seems to lack a disclaimer for pre-RFC5378 work, but may\r\n     have content which was first submitted before 10 November 2008.  If you\r\n     have contacted all the original authors and they are all willing to grant\r\n     the BCP78 rights to the IETF Trust, then this is fine, and you can ignore\r\n     this comment.  If not, you may need to add the pre-RFC5378 disclaimer. \r\n     (See the Legal Provisions document at\r\n     https://trustee.ietf.org/license-info for more information.)\r\n\r\n\r\n  Checking references for intended status: Proposed Standard\r\n  ----------------------------------------------------------------------------\r\n\r\n     (See RFCs 3967 and 4897 for information about using normative references\r\n     to lower-maturity documents in RFCs)\r\n\r\n  -- Possible downref: Normative reference to a draft: ref.\r\n     'I-D.ietf-tls-rfc8446bis' \r\n\r\n  ** Obsolete normative reference: RFC 3548 (Obsoleted by RFC 4648)",
+      "createdAt": "2023-03-28T13:14:21Z",
+      "updatedAt": "2023-11-06T18:14:56Z",
+      "closedAt": "2023-11-06T18:14:55Z",
+      "comments": [
+        {
+          "author": "tadahik",
+          "authorAssociation": "COLLABORATOR",
+          "body": "addressed in https://github.com/tadahik/RFC5019bis/pull/36",
+          "createdAt": "2023-03-28T14:06:22Z",
+          "updatedAt": "2023-03-28T14:06:22Z"
+        },
+        {
+          "author": "clintwilson",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Can confirm both R. Hurst and A. Deacon are aware of and have given explicit approval for this work.",
+          "createdAt": "2023-03-28T14:27:41Z",
+          "updatedAt": "2023-03-28T14:27:41Z"
+        },
+        {
+          "author": "tadahik",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Clint had already confirmed both of them.",
+          "createdAt": "2023-11-06T18:14:55Z",
+          "updatedAt": "2023-11-06T18:14:55Z"
+        }
+      ]
+    },
+    {
+      "number": 37,
+      "id": "I_kwDOHwB1bc5kowNL",
+      "title": "Figure out what to do about RFC 2560/6960 ResponderID byKey definition",
+      "url": "https://github.com/lamps-wg/RFC5019bis/issues/37",
+      "state": "CLOSED",
+      "author": "CBonnell",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Both RFC 2560 and 6960 have this little gem in the ASN.1:\r\n\r\n~~~\r\nResponderID ::= CHOICE {\r\n   byName   [1] Name,\r\n   byKey    [2] KeyHash }\r\n\r\nKeyHash ::= OCTET STRING --SHA-1 hash of responder's public key\r\n                         --(excluding the tag and length fields)\r\n~~~\r\n\r\nUnfortunately, I don't see another way to \"override\" this use of SHA-1 such that it could be understood by OCSP clients. I'm inclined to think we're stuck with this use of SHA-1, but I hope I'm wrong.\r\n\r\nThoughts?",
+      "createdAt": "2023-04-28T11:39:30Z",
+      "updatedAt": "2023-11-06T00:51:07Z",
+      "closedAt": "2023-11-06T00:51:07Z",
+      "comments": [
+        {
+          "author": "CBonnell",
+          "authorAssociation": "COLLABORATOR",
+          "body": "It just dawned on me that we might be able to define the `byKey` value as the value of the responder certificate's (either direct or delegated signer) SKID extension. This would require that all OCSP delegated responder certs contain the SKID, but the inclusion of this extension is quite common and SKID generation method 1 of 5280 is commonly used, so this redefinition should have little real world impact.",
+          "createdAt": "2023-04-28T11:43:59Z",
+          "updatedAt": "2023-04-28T11:43:59Z"
+        },
+        {
+          "author": "tadahik",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I confirmed use of SHA-1 in byKey. \r\nI am thinking that, our document is updating RFC5019, to fix conflict along with RFC 6960.\r\nIn the other hand, to change use of SHA-1 in byKey, we need to update RFC6960. \r\n\r\nFor me, it seems it is more simple to publish this 5019bis as it is, and make new I-D(6960bis) to update 6960.\r\n(As far as I understand, both 6960 and (overriding)6960bis  would not have conflict with 5019bis. )",
+          "createdAt": "2023-05-02T07:21:12Z",
+          "updatedAt": "2023-05-02T07:21:12Z"
+        },
+        {
+          "author": "CBonnell",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Can we make our draft update both 5019 and 6960? There is precedent for that such as RFC 8996: https://datatracker.ietf.org/doc/html/rfc8996.",
+          "createdAt": "2023-05-02T21:21:41Z",
+          "updatedAt": "2023-05-02T21:21:41Z"
+        },
+        {
+          "author": "tadahik",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I think we can update both 5019 and 6960 in one draft,  but I think it is better to divide.\r\nI am not sure what Sean or Russ would say but in my understanding, \r\n\r\n- In 8996, there was strong consensus. but we do not have that strong consensus yet.\r\n- 8996 updates many RFCs, but that is Best Current Practice paper and show changes in use of RFCs. we want to change standard track document itself. I think it make some difference.\r\n- We still able to updates several standard track document together, but...\r\n-- change of byKey (in 6960) might need some backward compatibility discussion, which tend to be long (unlike current draft) and can be very long.\r\n-- updating 6960 might lead many work, and possibly need to work for additional unexpected indications.\r\n-- some people may say we need to update more RFCs related with sha-1, which would also consume additional work again and again...\r\n\r\nI believe, good way is marge 5019 to 6960 (now), then update 6960 with several RFCs, then marge those RFCs and make 6960bis. (to divide into  small steps, and we can focus into each step's discussion).\r\n",
+          "createdAt": "2023-05-03T05:52:30Z",
+          "updatedAt": "2023-05-03T06:06:04Z"
+        },
+        {
+          "author": "CBonnell",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Thanks for explaining the concern, @tadahik. You've convinced me that we should spin up another draft to address the `byKey` algorithm.\r\n\r\n@clintwilson @seanturner do you agree with this approach?",
+          "createdAt": "2023-05-03T19:46:51Z",
+          "updatedAt": "2023-05-03T19:46:51Z"
+        },
+        {
+          "author": "seanturner",
+          "authorAssociation": "COLLABORATOR",
+          "body": "To confirm you can definitely update more than one RFC with another, but I can already see the epic bikeshed about what to call the I-D ;) Splitting makes sense to me.",
+          "createdAt": "2023-05-04T01:28:02Z",
+          "updatedAt": "2023-05-04T01:28:02Z"
+        },
+        {
+          "author": "tadahik",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I was making presentation slide for IETF117, and thinking about what would be goal for this draft.. \r\nhttps://github.com/tadahik/RFC5019bis/blob/117Presentation/117Presentation/IETF117Presentation.pptx\r\n\r\nI believe, we can chose from 3 goal as following(I wrote in slide also), and I thought 1st option would work good. \r\nHowever, I am not sure if my understanding is correct, and we might be able to ask WG which one is good way to do.\r\n\r\n- Allow use of SHA-256 for \u201cHigh-Volume Environments\u201d\r\n-- Current Approach\r\n-- OCSP responder/client will not use sha-256 after 6960-bis, but need sha-1 by then\r\n\r\n- Do not require sha-1 for OCSP responder/client\r\n-- need to update both 5019 and 6960\r\n-- change definition of byKey of responderID from sha-1 to sha-256\r\n-- may cause interoperability issue for non-5019 client and responder.\r\n\r\n- Do not require sha-1 for OCSP responder/client for \u201cHigh-Volume Environments\u201d\r\n-- How to calculate responderID? is problem\r\n-- calculate byKey of of responderID to sha256?\u00a0 >> conflict with RFC6960\r\n-- Do not calculate with sha-1, but refer SKID\u00a0 >> interoperable with RFC 6960\r\n-- require that all OCSP delegated responder certs contain the SKID\r\n\r\nAny suggestion?\r\n",
+          "createdAt": "2023-07-14T07:08:18Z",
+          "updatedAt": "2023-07-14T07:08:18Z"
+        },
+        {
+          "author": "tadahik",
+          "authorAssociation": "COLLABORATOR",
+          "body": "3rd option may not need to update 6960. it seems similar to 6277 and make it something like \"Online Certificate Status Protocol Algorithm  Agility for High-Volume Environment\"... but still not quite sure about how people would think use of SKID..",
+          "createdAt": "2023-07-14T07:28:48Z",
+          "updatedAt": "2023-07-14T07:28:48Z"
+        },
+        {
+          "author": "tadahik",
+          "authorAssociation": "COLLABORATOR",
+          "body": " 6960 is general profile, and 5019 is high volume env profile, so I believe it is fine that 5019-bis depend on 6960, but changing 6960 for 5019 seems more interoperability problem.",
+          "createdAt": "2023-07-14T09:12:48Z",
+          "updatedAt": "2023-07-14T09:12:48Z"
+        },
+        {
+          "author": "tadahik",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@CBonnell \r\nHi I updated slide, \r\n![overview of 5019bis](https://github.com/tadahik/RFC5019bis/blob/117Presentation/117Presentation/5019-%20bis.png)\r\n\r\nI was thinking that there would be two important potential question. \r\ncould you confirm that we are in same view, or if i am lacking something.\r\n(or I am writing to much, which I had better not to talk at WG )\r\n\r\n[Q]Why you do not marge and make 6960-bis?\r\n[A]We believe it is great to make 6960-bis, however, \r\n- 5019-bis is about profile on high-voulume environments, but 6960-bis is about general  protocol, they are quite different. in addition, 6960-bis would take much longer to process. \r\n- 6960-bis would have many other discussion apart from SHA-1 issue\r\n\r\n[Q]Why you do not marge change on responderID to the draft?\r\n[A]We can, but with following reason, we prefer to separate\r\n- Migrations of a profile and a protocol tend to be different\r\n- Scope of migration / backward compatibility would be much broader for 6960-bis\r\n- Some solution might cause some problem to state ASN.1 module\r\n\r\n@clintwilson \r\nHi client, In current approach of 5019-bis, we would able to migrate SHA-1 certID to SHA-2 CertID relatively faster, \r\nbut would need another internet-draft to move from SHA-1 responderID to SHA-2 responderID. is it OK? \r\n\r\nI believe we (authors) do not have consensus of moving to SHA-2 responderID.\r\nDo you think you would endorsee migration of SHA-1 responderID to SHA-2 ResponderID? \r\nso far i agree that migration also, and it might be good chance to discuss on the WG.\r\n\r\n( I believe Corey's idea of using SKID is good, but not sure about potential issues on implementation and ASN.1 module.)",
+          "createdAt": "2023-07-17T10:34:14Z",
+          "updatedAt": "2023-07-17T10:37:35Z"
+        },
+        {
+          "author": "clintwilson",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Hey @tadahik, I think this approach seems good and indeed my focus has been on the restriction 5019 places on certID, disallowing use of anything but SHA-1. Removing that restriction is (or should be), I think, a relatively straightforward case to make to the WG and one upon which I think broad consensus can be built.\r\n\r\nBeyond that there are a whole slew of other updates (minor and major) these documents can benefit from, however those benefits are also balanced against ecosystem reliance, use, and support of OCSP. Currently OCSP is heavily relied upon, but we're moving fairly quickly towards a time where it's used, but not relied upon. I expect some time will pass in that state, but we may then end up with OCSP being supported and not used. Finally, support could be dropped, at which point many of the updates we're talking about may not ultimately be worthwhile.\r\n\r\nWhich is to say, once we start looking at larger updates to these RFCs, I think we maybe need to look even bigger -- much bigger. How can OCSP be privacy-preserving by default? How can it scale to real-world use-cases evolved over the last decade? What has contributed to OCSP-stapling's adoption remaining insignificant on internet-scale? What has contributed to OCSP becoming optional in the CA/BF? Is it worth the effort to address these issues and \"fix\" OCSP, or would time be better spent standardizing something else (CRL coalescing technologies as one possibility)?",
+          "createdAt": "2023-07-17T16:30:32Z",
+          "updatedAt": "2023-07-17T16:30:32Z"
+        },
+        {
+          "author": "tadahik",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@clintwilson \r\nThanks Clint, You gave us great points, and also...\r\n\r\n> Currently OCSP is heavily relied upon, but we're moving fairly quickly towards a time where it's used, but not relied upon. \r\n> I expect some time will pass in that state, but we may then end up with OCSP being supported and not used\r\n\r\nI just thought, it is very good point for focusing CertID, but not for responderID.\r\nCertID may be able to be useful for other revocation mechanism, because  you can identify the certificate. \r\nIn the other hand, responderID would be much less useful in that perspective.\r\n\r\nNow I thing I would be much more comfortable to defend statement of focus on just SHA-1 on CertID.",
+          "createdAt": "2023-07-18T13:11:46Z",
+          "updatedAt": "2023-07-18T13:11:46Z"
+        },
+        {
+          "author": "CBonnell",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@tadahik sorry for the delayed response. My work laptop died Friday morning and the replacement just arrived this morning.\r\n\r\nI agree with your proposal to defend our decision to not write a 6960-bis at this time, nor attempt to solve the ResponderID problem as part of our draft. Currently, our draft has a small, well defined scope that tackles an important part of migration from SHA-1.\r\n\r\nAs for the presentation, I think it's a great start and we can work on finalizing it this weekend in San Francisco. I would suggest adding the third option to slide 4, which is to sign and distribute one OCSP response per hash algorithm. On the list, we rejected this approach, but it may be good to mention it briefly and explain why we are not pursuing it further.",
+          "createdAt": "2023-07-18T17:07:35Z",
+          "updatedAt": "2023-07-18T17:07:35Z"
+        },
+        {
+          "author": "tadahik",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Thanks @CBonnell \r\n> work on finalizing it this weekend in San Francisco.... third option to slide 4,...\r\n\r\nGood Ideas, I will see you in San Francisco.",
+          "createdAt": "2023-07-19T06:40:08Z",
+          "updatedAt": "2023-07-19T06:40:08Z"
+        },
+        {
+          "author": "tadahik",
+          "authorAssociation": "COLLABORATOR",
+          "body": "We explained difference on profile(RFC5019) and protocol(6960), and we are just changing profile.\r\nhttps://datatracker.ietf.org/doc/draft-bonnell-rfc5019bis/\r\nIt seems we had support for that idea.\r\nclosed issue",
+          "createdAt": "2023-11-06T00:51:07Z",
+          "updatedAt": "2023-11-06T00:51:07Z"
+        }
+      ]
+    },
+    {
+      "number": 39,
+      "id": "I_kwDOHwB1bc515eZ2",
+      "title": "Transfer Repo too LAMPS WG",
+      "url": "https://github.com/lamps-wg/RFC5019bis/issues/39",
+      "state": "CLOSED",
+      "author": "seanturner",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "I thought I could do it, but I think @tadahik you will need to initiate the transfer. Instruction can be found here:\r\nhttps://docs.github.com/en/repositories/creating-and-managing-repositories/transferring-a-repository#transferring-a-repository-owned-by-your-personal-account\r\nWhen picking the organization pick \"lamps-wg\". I'll be on the lookout for the request to accept it.",
+      "createdAt": "2023-11-05T22:23:40Z",
+      "updatedAt": "2023-11-06T08:45:58Z",
+      "closedAt": "2023-11-06T08:45:58Z",
+      "comments": [
+        {
+          "author": "tadahik",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Finished.",
+          "createdAt": "2023-11-06T08:45:58Z",
+          "updatedAt": "2023-11-06T08:45:58Z"
+        }
+      ]
+    },
+    {
+      "number": 40,
+      "id": "I_kwDOHwB1bc515fom",
+      "title": "Use Kanji",
+      "url": "https://github.com/lamps-wg/RFC5019bis/issues/40",
+      "state": "CLOSED",
+      "author": "seanturner",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "I saw this used for Kazuho in a QUIC I-D. We should do the same for @tadahik.\r\n\r\n    -\r\n      fullname:\r\n        :: \u5965\u4e00\u7a42\r\n        ascii: Kazuho Oku\r\n      org: Fastly\r\n      email: kazuhooku@gmail.com",
+      "createdAt": "2023-11-05T22:35:20Z",
+      "updatedAt": "2023-11-06T08:58:03Z",
+      "closedAt": "2023-11-06T08:58:03Z",
+      "comments": [
+        {
+          "author": "tadahik",
+          "authorAssociation": "COLLABORATOR",
+          "body": "addressed with https://github.com/tadahik/RFC5019bis/pull/43",
+          "createdAt": "2023-11-06T02:05:41Z",
+          "updatedAt": "2023-11-06T02:05:41Z"
+        }
+      ]
+    }
+  ],
+  "pulls": [
+    {
+      "number": 1,
+      "id": "PR_kwDOHwB1bc4_hiHn",
+      "title": "Import content from RFC 5019",
+      "url": "https://github.com/lamps-wg/RFC5019bis/pull/1",
+      "state": "MERGED",
+      "author": "CBonnell",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2022-09-23T21:14:29Z",
+      "updatedAt": "2022-09-23T21:14:41Z",
+      "baseRepository": "lamps-wg/RFC5019bis",
+      "baseRefName": "main",
+      "baseRefOid": "dce8dc854ad957a087a5cd3c0f6fba7b7df30e05",
+      "headRepository": null,
+      "headRefName": "rfc5019-text-import",
+      "headRefOid": "350607c9b5c24eb693125cee4108a143118ee786",
+      "closedAt": "2022-09-23T21:14:41Z",
+      "mergedAt": "2022-09-23T21:14:41Z",
+      "mergedBy": "CBonnell",
+      "mergeCommit": {
+        "oid": "55848197fd2a60f6b7be5bac401bf30a78b5979d"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 4,
+      "id": "PR_kwDOHwB1bc5Ci3vO",
+      "title": "Update references",
+      "url": "https://github.com/lamps-wg/RFC5019bis/pull/4",
+      "state": "MERGED",
+      "author": "seanturner",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Closes #2.",
+      "createdAt": "2022-11-09T17:28:52Z",
+      "updatedAt": "2023-03-28T14:13:19Z",
+      "baseRepository": "lamps-wg/RFC5019bis",
+      "baseRefName": "main",
+      "baseRefOid": "f4a1e16f52a555a3ad9ea9415bad10238ca6a14e",
+      "headRepository": "lamps-wg/RFC5019bis",
+      "headRefName": "spt-references",
+      "headRefOid": "2f32d852f09572fcf0ea06562e456f0187288222",
+      "closedAt": "2022-11-13T11:47:07Z",
+      "mergedAt": "2022-11-13T11:47:07Z",
+      "mergedBy": "tadahik",
+      "mergeCommit": {
+        "oid": "a51db307483d5b28d7865419c60f1e45dde0cdbb"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOHwB1bc5GOlUZ",
+          "commit": {
+            "abbreviatedOid": "2f32d85"
+          },
+          "author": "tadahik",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2022-11-13T11:46:36Z",
+          "updatedAt": "2022-11-13T11:46:36Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "id": "PR_kwDOHwB1bc5Ci4oG",
+      "title": "Add missing para",
+      "url": "https://github.com/lamps-wg/RFC5019bis/pull/5",
+      "state": "MERGED",
+      "author": "seanturner",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "I think this paragraph was missing.",
+      "createdAt": "2022-11-09T17:32:01Z",
+      "updatedAt": "2023-03-28T14:13:18Z",
+      "baseRepository": "lamps-wg/RFC5019bis",
+      "baseRefName": "main",
+      "baseRefOid": "f4a1e16f52a555a3ad9ea9415bad10238ca6a14e",
+      "headRepository": "lamps-wg/RFC5019bis",
+      "headRefName": "spt-http-proxies",
+      "headRefOid": "323b8a7b7e1efe1353545364f99e950d45f6e4dc",
+      "closedAt": "2022-11-11T10:48:38Z",
+      "mergedAt": "2022-11-11T10:48:37Z",
+      "mergedBy": "tadahik",
+      "mergeCommit": {
+        "oid": "5c991b0cda2c2f00c5d7707a2a822d0a3218c939"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOHwB1bc5GDfnk",
+          "commit": {
+            "abbreviatedOid": "323b8a7"
+          },
+          "author": "seanturner",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-11-10T09:07:24Z",
+          "updatedAt": "2022-11-10T09:07:24Z",
+          "comments": [
+            {
+              "originalPosition": 6,
+              "body": "I think this should work:\r\n```suggestion\r\nproxy servers.  See {{RFC7230}} for the full definition of these headers\r\n```",
+              "createdAt": "2022-11-10T09:07:24Z",
+              "updatedAt": "2022-11-10T09:07:24Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "id": "PR_kwDOHwB1bc5Ci6FE",
+      "title": "Obsoletes",
+      "url": "https://github.com/lamps-wg/RFC5019bis/pull/7",
+      "state": "MERGED",
+      "author": "seanturner",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Closes #6.",
+      "createdAt": "2022-11-09T17:37:27Z",
+      "updatedAt": "2023-03-28T14:13:17Z",
+      "baseRepository": "lamps-wg/RFC5019bis",
+      "baseRefName": "main",
+      "baseRefOid": "f4a1e16f52a555a3ad9ea9415bad10238ca6a14e",
+      "headRepository": "lamps-wg/RFC5019bis",
+      "headRefName": "spt-obsoletes",
+      "headRefOid": "de79ab82b958551d9a997982f4ad0cf21ee6d940",
+      "closedAt": "2022-11-11T10:44:04Z",
+      "mergedAt": "2022-11-11T10:44:04Z",
+      "mergedBy": "tadahik",
+      "mergeCommit": {
+        "oid": "61ed76c1be166a9f8ab775da4ebd885727b24ee1"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOHwB1bc5GApV6",
+          "commit": {
+            "abbreviatedOid": "de79ab8"
+          },
+          "author": "tadahik",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2022-11-09T18:42:59Z",
+          "updatedAt": "2022-11-09T18:42:59Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "id": "PR_kwDOHwB1bc5CjDyL",
+      "title": "Update acks",
+      "url": "https://github.com/lamps-wg/RFC5019bis/pull/9",
+      "state": "MERGED",
+      "author": "seanturner",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Closes #8.",
+      "createdAt": "2022-11-09T18:10:44Z",
+      "updatedAt": "2023-03-28T14:13:15Z",
+      "baseRepository": "lamps-wg/RFC5019bis",
+      "baseRefName": "main",
+      "baseRefOid": "f4a1e16f52a555a3ad9ea9415bad10238ca6a14e",
+      "headRepository": "lamps-wg/RFC5019bis",
+      "headRefName": "spt-acks-1",
+      "headRefOid": "46a4ebd69628c518f147f19850701a8eda152c60",
+      "closedAt": "2022-11-11T10:43:16Z",
+      "mergedAt": "2022-11-11T10:43:16Z",
+      "mergedBy": "tadahik",
+      "mergeCommit": {
+        "oid": "4f09d55b154a3c8643c54f50dd84321aab083018"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOHwB1bc5GApBI",
+          "commit": {
+            "abbreviatedOid": "46a4ebd"
+          },
+          "author": "tadahik",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2022-11-09T18:41:56Z",
+          "updatedAt": "2022-11-09T18:41:56Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "id": "PR_kwDOHwB1bc5CjEt5",
+      "title": "Address errata",
+      "url": "https://github.com/lamps-wg/RFC5019bis/pull/10",
+      "state": "MERGED",
+      "author": "seanturner",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Closes #3.",
+      "createdAt": "2022-11-09T18:13:36Z",
+      "updatedAt": "2023-03-28T14:13:14Z",
+      "baseRepository": "lamps-wg/RFC5019bis",
+      "baseRefName": "main",
+      "baseRefOid": "f4a1e16f52a555a3ad9ea9415bad10238ca6a14e",
+      "headRepository": "lamps-wg/RFC5019bis",
+      "headRefName": "spt-errata",
+      "headRefOid": "67e341fb4324d5f1cde556962c8c944ed105bb93",
+      "closedAt": "2022-11-11T10:41:44Z",
+      "mergedAt": "2022-11-11T10:41:44Z",
+      "mergedBy": "tadahik",
+      "mergeCommit": {
+        "oid": "e5d020227779a2f9bad25931593a1307c5bec723"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOHwB1bc5GAoiM",
+          "commit": {
+            "abbreviatedOid": "67e341f"
+          },
+          "author": "tadahik",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2022-11-09T18:40:22Z",
+          "updatedAt": "2022-11-09T18:40:22Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 14,
+      "id": "PR_kwDOHwB1bc5KIOfB",
+      "title": "s/2560 client/6960 client",
+      "url": "https://github.com/lamps-wg/RFC5019bis/pull/14",
+      "state": "MERGED",
+      "author": "seanturner",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Resolves #13.",
+      "createdAt": "2023-02-16T13:09:02Z",
+      "updatedAt": "2023-03-28T14:14:44Z",
+      "baseRepository": "lamps-wg/RFC5019bis",
+      "baseRefName": "main",
+      "baseRefOid": "a51db307483d5b28d7865419c60f1e45dde0cdbb",
+      "headRepository": "lamps-wg/RFC5019bis",
+      "headRefName": "seanturner-6960-client",
+      "headRefOid": "c73c03fcf97ef61f368c083bdd2cc9adab4de4d5",
+      "closedAt": "2023-02-23T04:09:25Z",
+      "mergedAt": "2023-02-23T04:09:25Z",
+      "mergedBy": "tadahik",
+      "mergeCommit": {
+        "oid": "d6bc88e980060281f4ce18f312af547ff0edb26c"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOHwB1bc5OHequ",
+          "commit": {
+            "abbreviatedOid": "c73c03f"
+          },
+          "author": "tadahik",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-02-23T04:07:50Z",
+          "updatedAt": "2023-02-23T04:07:50Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 15,
+      "id": "PR_kwDOHwB1bc5Kkh9H",
+      "title": "Treat sha1with8954approach",
+      "url": "https://github.com/lamps-wg/RFC5019bis/pull/15",
+      "state": "MERGED",
+      "author": "tadahik",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "I forgot to  make pull requests",
+      "createdAt": "2023-02-23T04:17:33Z",
+      "updatedAt": "2023-03-28T14:14:39Z",
+      "baseRepository": "lamps-wg/RFC5019bis",
+      "baseRefName": "main",
+      "baseRefOid": "d6bc88e980060281f4ce18f312af547ff0edb26c",
+      "headRepository": "lamps-wg/RFC5019bis",
+      "headRefName": "treatSHA1with8954approach",
+      "headRefOid": "2476e4a6e3b75b8c5f423512d6e35770a2dd7d1d",
+      "closedAt": "2023-02-28T18:54:29Z",
+      "mergedAt": "2023-02-28T18:54:29Z",
+      "mergedBy": "tadahik",
+      "mergeCommit": {
+        "oid": "451b844025cd77d64c66da5edac3783d18636669"
+      },
+      "comments": [
+        {
+          "author": "CBonnell",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Thanks @tadahik, LGTM.",
+          "createdAt": "2023-02-23T13:06:31Z",
+          "updatedAt": "2023-02-23T13:06:31Z"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "number": 16,
+      "id": "PR_kwDOHwB1bc5K-Auz",
+      "title": "Nitfixing202302",
+      "url": "https://github.com/lamps-wg/RFC5019bis/pull/16",
+      "state": "MERGED",
+      "author": "tadahik",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-02-28T20:44:24Z",
+      "updatedAt": "2023-03-02T16:11:22Z",
+      "baseRepository": "lamps-wg/RFC5019bis",
+      "baseRefName": "main",
+      "baseRefOid": "451b844025cd77d64c66da5edac3783d18636669",
+      "headRepository": "lamps-wg/RFC5019bis",
+      "headRefName": "nitfixing202302",
+      "headRefOid": "07bcc593bbacc0a108f27d143d810a4122a12508",
+      "closedAt": "2023-03-02T16:11:22Z",
+      "mergedAt": "2023-03-02T16:11:22Z",
+      "mergedBy": "tadahik",
+      "mergeCommit": {
+        "oid": "350465b41986923d052fa1fbcd713ca65672f205"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOHwB1bc5OzkRv",
+          "commit": {
+            "abbreviatedOid": "07bcc59"
+          },
+          "author": "seanturner",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-03-02T16:08:41Z",
+          "updatedAt": "2023-03-02T16:08:41Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 17,
+      "id": "PR_kwDOHwB1bc5LQR9Z",
+      "title": "Nitfixing00",
+      "url": "https://github.com/lamps-wg/RFC5019bis/pull/17",
+      "state": "CLOSED",
+      "author": "tadahik",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Add \"to\" on the title.\r\nConfirmed referenced documents, and fix reference number or referring text.\r\nFixed indents ",
+      "createdAt": "2023-03-03T20:01:49Z",
+      "updatedAt": "2023-03-03T20:20:12Z",
+      "baseRepository": "lamps-wg/RFC5019bis",
+      "baseRefName": "main",
+      "baseRefOid": "5e33fa234b72db8193c5e292f1bb55038a66baff",
+      "headRepository": "lamps-wg/RFC5019bis",
+      "headRefName": "nitfixing00",
+      "headRefOid": "7af044af01aecdb52f1c1582b0f01ed9d902f86b",
+      "closedAt": "2023-03-03T20:20:12Z",
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 18,
+      "id": "PR_kwDOHwB1bc5LQUHN",
+      "title": "fix",
+      "url": "https://github.com/lamps-wg/RFC5019bis/pull/18",
+      "state": "CLOSED",
+      "author": "tadahik",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-03-03T20:10:17Z",
+      "updatedAt": "2023-03-28T14:14:41Z",
+      "baseRepository": "lamps-wg/RFC5019bis",
+      "baseRefName": "main",
+      "baseRefOid": "5e33fa234b72db8193c5e292f1bb55038a66baff",
+      "headRepository": "lamps-wg/RFC5019bis",
+      "headRefName": "nitfixing202302",
+      "headRefOid": "3ab6dfc336fb437d91e0e86b166c5ed1b3dab96b",
+      "closedAt": "2023-03-03T20:20:29Z",
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 19,
+      "id": "PR_kwDOHwB1bc5LRXIe",
+      "title": "Nitfixing202303",
+      "url": "https://github.com/lamps-wg/RFC5019bis/pull/19",
+      "state": "MERGED",
+      "author": "tadahik",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "change \"[HTTP] date\" to \"HTTP-date\" to refer RFC 9110\r\nadd \"to\" to the title\r\nfixed section numbers and references.\r\ndelete whitespaces ",
+      "createdAt": "2023-03-04T00:43:11Z",
+      "updatedAt": "2023-03-28T14:14:23Z",
+      "baseRepository": "lamps-wg/RFC5019bis",
+      "baseRefName": "main",
+      "baseRefOid": "5e33fa234b72db8193c5e292f1bb55038a66baff",
+      "headRepository": "lamps-wg/RFC5019bis",
+      "headRefName": "nitfixing202303",
+      "headRefOid": "f992d4523f23b10ac8fb43b5f44792324ebd4113",
+      "closedAt": "2023-03-04T08:10:56Z",
+      "mergedAt": "2023-03-04T08:10:56Z",
+      "mergedBy": "tadahik",
+      "mergeCommit": {
+        "oid": "c95163dadb5993d2eaf0a438496174d2e0f0621f"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 20,
+      "id": "PR_kwDOHwB1bc5LYgli",
+      "title": "Update draft-bonnell-rfc5019bis.md",
+      "url": "https://github.com/lamps-wg/RFC5019bis/pull/20",
+      "state": "MERGED",
+      "author": "CBonnell",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-03-06T15:41:03Z",
+      "updatedAt": "2024-05-15T19:29:57Z",
+      "baseRepository": "lamps-wg/RFC5019bis",
+      "baseRefName": "main",
+      "baseRefOid": "c95163dadb5993d2eaf0a438496174d2e0f0621f",
+      "headRepository": "lamps-wg/RFC5019bis",
+      "headRefName": "CBonnell-patch-1",
+      "headRefOid": "8993b63664d2517d9b7bb121fa80a5d9289d0b4b",
+      "closedAt": "2023-03-06T16:29:50Z",
+      "mergedAt": "2023-03-06T16:29:50Z",
+      "mergedBy": "CBonnell",
+      "mergeCommit": {
+        "oid": "f1b415c11222ec30667a1f2b6091a06194f419c3"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOHwB1bc5PEqPI",
+          "commit": {
+            "abbreviatedOid": "8993b63"
+          },
+          "author": "clintwilson",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-03-06T15:57:46Z",
+          "updatedAt": "2023-03-06T15:57:46Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 21,
+      "id": "PR_kwDOHwB1bc5LZTcQ",
+      "title": "Update table .md formatting",
+      "url": "https://github.com/lamps-wg/RFC5019bis/pull/21",
+      "state": "MERGED",
+      "author": "seanturner",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "I think this fixes it when rendered. It's just hard to read in raw format.",
+      "createdAt": "2023-03-06T17:44:58Z",
+      "updatedAt": "2024-05-15T19:30:35Z",
+      "baseRepository": "lamps-wg/RFC5019bis",
+      "baseRefName": "main",
+      "baseRefOid": "f1b415c11222ec30667a1f2b6091a06194f419c3",
+      "headRepository": "lamps-wg/RFC5019bis",
+      "headRefName": "seanturner-md-table-formatting",
+      "headRefOid": "b708f8967aa5c40c5c5f38449297d2650bc0d44c",
+      "closedAt": "2023-03-06T19:51:32Z",
+      "mergedAt": "2023-03-06T19:51:32Z",
+      "mergedBy": "tadahik",
+      "mergeCommit": {
+        "oid": "435d66de1963993e8c42ca2fee6874ba6be50fbf"
+      },
+      "comments": [
+        {
+          "author": "tadahik",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Thanks Sean, It seems much better.",
+          "createdAt": "2023-03-06T19:51:08Z",
+          "updatedAt": "2023-03-06T19:51:08Z"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "number": 25,
+      "id": "PR_kwDOHwB1bc5LsccK",
+      "title": "md tweaks",
+      "url": "https://github.com/lamps-wg/RFC5019bis/pull/25",
+      "state": "MERGED",
+      "author": "seanturner",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Just some more md tweaks for linking sections, notes, etc.",
+      "createdAt": "2023-03-09T16:33:49Z",
+      "updatedAt": "2023-03-28T14:14:30Z",
+      "baseRepository": "lamps-wg/RFC5019bis",
+      "baseRefName": "main",
+      "baseRefOid": "435d66de1963993e8c42ca2fee6874ba6be50fbf",
+      "headRepository": "lamps-wg/RFC5019bis",
+      "headRefName": "seanturner-more-md-tweaks",
+      "headRefOid": "7c31f4bfefcccbd428be8d4af7b706e7c05b16db",
+      "closedAt": "2023-03-11T01:08:45Z",
+      "mergedAt": "2023-03-11T01:08:45Z",
+      "mergedBy": "tadahik",
+      "mergeCommit": {
+        "oid": "3fab85a418aba2b9552275e50fc12599bc2773ff"
+      },
+      "comments": [
+        {
+          "author": "CBonnell",
+          "authorAssociation": "COLLABORATOR",
+          "body": "LGTM",
+          "createdAt": "2023-03-10T17:49:17Z",
+          "updatedAt": "2023-03-10T17:49:17Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOHwB1bc5Pd8n1",
+          "commit": {
+            "abbreviatedOid": "5bc284c"
+          },
+          "author": "seanturner",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-03-09T16:34:52Z",
+          "updatedAt": "2023-03-09T16:34:52Z",
+          "comments": [
+            {
+              "originalPosition": 79,
+              "body": "```suggestion\r\nrequestExtensions structure in OCSPRequests (see {{req-profile}}),\r\n```",
+              "createdAt": "2023-03-09T16:34:52Z",
+              "updatedAt": "2023-03-09T16:34:53Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 27,
+      "id": "PR_kwDOHwB1bc5Lsn5v",
+      "title": "HTTP Header References",
+      "url": "https://github.com/lamps-wg/RFC5019bis/pull/27",
+      "state": "MERGED",
+      "author": "seanturner",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Fixes #26.",
+      "createdAt": "2023-03-09T17:01:50Z",
+      "updatedAt": "2023-03-28T14:14:22Z",
+      "baseRepository": "lamps-wg/RFC5019bis",
+      "baseRefName": "main",
+      "baseRefOid": "3fab85a418aba2b9552275e50fc12599bc2773ff",
+      "headRepository": "lamps-wg/RFC5019bis",
+      "headRefName": "seanturner-http-refs",
+      "headRefOid": "b55290f99fa5fc1e5dcdac70f9276800e3b6bf1e",
+      "closedAt": "2023-03-11T01:36:40Z",
+      "mergedAt": "2023-03-11T01:36:40Z",
+      "mergedBy": "tadahik",
+      "mergeCommit": {
+        "oid": "f75d2ba399bd80aadac8bdfd4dc3d5ee9d4f692a"
+      },
+      "comments": [
+        {
+          "author": "CBonnell",
+          "authorAssociation": "COLLABORATOR",
+          "body": "LGTM",
+          "createdAt": "2023-03-10T17:48:58Z",
+          "updatedAt": "2023-03-10T17:48:58Z"
+        },
+        {
+          "author": "tadahik",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I confirmed that Date format is written in \r\nhttps://www.rfc-editor.org/rfc/rfc9110#name-date",
+          "createdAt": "2023-03-11T01:30:04Z",
+          "updatedAt": "2023-03-11T01:30:04Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOHwB1bc5PeOcU",
+          "commit": {
+            "abbreviatedOid": "4fde07f"
+          },
+          "author": "seanturner",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-03-09T17:05:07Z",
+          "updatedAt": "2023-03-09T17:05:08Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "```suggestion\r\npreceded by the following HTTP {{!RFC9110}} and {{!RFC9111}} headers.\r\n```",
+              "createdAt": "2023-03-09T17:05:07Z",
+              "updatedAt": "2023-03-09T17:05:08Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOHwB1bc5PeO_Y",
+          "commit": {
+            "abbreviatedOid": "614165c"
+          },
+          "author": "seanturner",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-03-09T17:05:38Z",
+          "updatedAt": "2023-03-09T17:05:38Z",
+          "comments": [
+            {
+              "originalPosition": 14,
+              "body": "```suggestion\r\nproxy servers. See {{RFC9110}} and {{RFC9111}} for the full definition of these headers\r\n```",
+              "createdAt": "2023-03-09T17:05:38Z",
+              "updatedAt": "2023-03-09T17:05:38Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOHwB1bc5Pnm9W",
+          "commit": {
+            "abbreviatedOid": "8cbcb2b"
+          },
+          "author": "tadahik",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "I might be misunderstanding but HTTP a header defined on RFC9111 seems \"Age\" instead of \"Data\"\r\nhttps://datatracker.ietf.org/doc/rfc9111/\r\n\r\nApart from that, LGTM.",
+          "createdAt": "2023-03-11T01:00:52Z",
+          "updatedAt": "2023-03-11T01:04:32Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 29,
+      "id": "PR_kwDOHwB1bc5L5C-S",
+      "title": "Modernize example dates (#28), switch ETag to SHA256 (#24)",
+      "url": "https://github.com/lamps-wg/RFC5019bis/pull/29",
+      "state": "MERGED",
+      "author": "CBonnell",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-03-13T12:57:29Z",
+      "updatedAt": "2023-03-13T13:38:06Z",
+      "baseRepository": "lamps-wg/RFC5019bis",
+      "baseRefName": "main",
+      "baseRefOid": "f75d2ba399bd80aadac8bdfd4dc3d5ee9d4f692a",
+      "headRepository": null,
+      "headRefName": "main",
+      "headRefOid": "91040e886f52864ec06373f3abd17156cd85be84",
+      "closedAt": "2023-03-13T13:38:06Z",
+      "mergedAt": "2023-03-13T13:38:06Z",
+      "mergedBy": "CBonnell",
+      "mergeCommit": {
+        "oid": "f7b6b87f916db6efa840297508d8de441e0d8a8d"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOHwB1bc5PsRYO",
+          "commit": {
+            "abbreviatedOid": "91040e8"
+          },
+          "author": "seanturner",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "@CBonnell this is like instant gratification - setting the bar very high :)",
+          "createdAt": "2023-03-13T13:03:06Z",
+          "updatedAt": "2023-03-13T13:03:06Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 30,
+      "id": "PR_kwDOHwB1bc5L66lN",
+      "title": "First stab at addressing Russ's suggestions (#23)",
+      "url": "https://github.com/lamps-wg/RFC5019bis/pull/30",
+      "state": "MERGED",
+      "author": "CBonnell",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-03-13T18:02:57Z",
+      "updatedAt": "2023-03-23T06:39:53Z",
+      "baseRepository": "lamps-wg/RFC5019bis",
+      "baseRefName": "main",
+      "baseRefOid": "f7b6b87f916db6efa840297508d8de441e0d8a8d",
+      "headRepository": null,
+      "headRefName": "main",
+      "headRefOid": "54f010e8c7e9177c7aeb5c14301d94414037d1cd",
+      "closedAt": "2023-03-23T06:39:52Z",
+      "mergedAt": "2023-03-23T06:39:52Z",
+      "mergedBy": "tadahik",
+      "mergeCommit": {
+        "oid": "084ae7c6470d10cd771b5ea20b9cecee73f55cd9"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOHwB1bc5Puy2A",
+          "commit": {
+            "abbreviatedOid": "529a598"
+          },
+          "author": "CBonnell",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-03-13T18:04:17Z",
+          "updatedAt": "2023-03-13T18:04:18Z",
+          "comments": [
+            {
+              "originalPosition": 65,
+              "body": "If we're making \"byKey\" support MTI, then we also have to make responders use byKey, otherwise there may be interoperability issues.",
+              "createdAt": "2023-03-13T18:04:17Z",
+              "updatedAt": "2023-03-13T18:04:18Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOHwB1bc5QDVwP",
+          "commit": {
+            "abbreviatedOid": "529a598"
+          },
+          "author": "tadahik",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-03-16T07:26:22Z",
+          "updatedAt": "2023-03-16T07:26:22Z",
+          "comments": [
+            {
+              "originalPosition": 65,
+              "body": "This description seem fine for me.\r\n\r\nI just noticed below difference.\r\n> OCSPResponses that conform to this profile SHOULD include only one SingleResponse\r\n\r\n> Newer responders that conform to this document\r\n\r\nI am not sure but I think we do not distinguish \u201cthis profile\u201d and \u201cthis document\u201d,\r\nso we may use profile instead of document.\r\n",
+              "createdAt": "2023-03-16T07:26:22Z",
+              "updatedAt": "2023-03-16T07:26:22Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOHwB1bc5QFdJP",
+          "commit": {
+            "abbreviatedOid": "529a598"
+          },
+          "author": "CBonnell",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-03-16T12:02:12Z",
+          "updatedAt": "2023-03-16T12:02:13Z",
+          "comments": [
+            {
+              "originalPosition": 65,
+              "body": "Thanks @tadahik. I just pushed a commit that changes all usages of \"document\" to \"profile\".",
+              "createdAt": "2023-03-16T12:02:13Z",
+              "updatedAt": "2023-03-16T12:02:13Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOHwB1bc5QNm0q",
+          "commit": {
+            "abbreviatedOid": "54f010e"
+          },
+          "author": "tadahik",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-03-17T11:15:38Z",
+          "updatedAt": "2023-03-17T11:15:38Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOHwB1bc5QRXER",
+          "commit": {
+            "abbreviatedOid": "54f010e"
+          },
+          "author": "clintwilson",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "Just one question, otherwise LGTM.",
+          "createdAt": "2023-03-17T20:54:06Z",
+          "updatedAt": "2023-03-17T20:55:28Z",
+          "comments": [
+            {
+              "originalPosition": 74,
+              "body": "Does this need to be a 2119 SHOULD?",
+              "createdAt": "2023-03-17T20:54:07Z",
+              "updatedAt": "2023-03-17T20:55:28Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOHwB1bc5QRiDi",
+          "commit": {
+            "abbreviatedOid": "54f010e"
+          },
+          "author": "CBonnell",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-03-17T21:53:30Z",
+          "updatedAt": "2023-03-17T21:53:30Z",
+          "comments": [
+            {
+              "originalPosition": 74,
+              "body": "I used the lowercase form of \"should\", since that's what we do for the CertID language: https://github.com/tadahik/RFC5019bis/pull/30/files#diff-7dea5da080403877cd9d2f68885a566da401b61d9b19bacfce6afc3e1188f1f5R140.\r\n\r\nI suppose I'm conflicted whether to use uppercase or lowercase here, since migrations are not really part of the protocol being defined by the document. That being said, it would be useful to provide guidance that we recommend such a migration.\r\n\r\nThoughts on which way to go?",
+              "createdAt": "2023-03-17T21:53:30Z",
+              "updatedAt": "2023-03-17T21:53:30Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOHwB1bc5QRkac",
+          "commit": {
+            "abbreviatedOid": "54f010e"
+          },
+          "author": "clintwilson",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-03-17T22:08:57Z",
+          "updatedAt": "2023-03-17T22:08:57Z",
+          "comments": [
+            {
+              "originalPosition": 74,
+              "body": "That rationale makes sense to me, so keeping it as lowercase seems right.",
+              "createdAt": "2023-03-17T22:08:57Z",
+              "updatedAt": "2023-03-17T22:08:57Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 31,
+      "id": "PR_kwDOHwB1bc5MtH6_",
+      "title": "Revert \"First stab at addressing Russ's suggestions (#23)\"",
+      "url": "https://github.com/lamps-wg/RFC5019bis/pull/31",
+      "state": "CLOSED",
+      "author": "tadahik",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Reverts tadahik/RFC5019bis#30",
+      "createdAt": "2023-03-23T06:53:00Z",
+      "updatedAt": "2023-03-28T13:56:51Z",
+      "baseRepository": "lamps-wg/RFC5019bis",
+      "baseRefName": "main",
+      "baseRefOid": "084ae7c6470d10cd771b5ea20b9cecee73f55cd9",
+      "headRepository": "lamps-wg/RFC5019bis",
+      "headRefName": "revert-30-main",
+      "headRefOid": "fe1e18ad4b2af44e7ef804a5547f31f89ff6e45b",
+      "closedAt": "2023-03-23T06:58:09Z",
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 32,
+      "id": "PR_kwDOHwB1bc5MtOVQ",
+      "title": "minor fixes",
+      "url": "https://github.com/lamps-wg/RFC5019bis/pull/32",
+      "state": "MERGED",
+      "author": "tadahik",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-03-23T07:19:48Z",
+      "updatedAt": "2023-03-28T14:13:35Z",
+      "baseRepository": "lamps-wg/RFC5019bis",
+      "baseRefName": "main",
+      "baseRefOid": "084ae7c6470d10cd771b5ea20b9cecee73f55cd9",
+      "headRepository": "lamps-wg/RFC5019bis",
+      "headRefName": "preIETF116minorfixes",
+      "headRefOid": "e91eea4ae6e0309f659db3866cdfd02201247b45",
+      "closedAt": "2023-03-23T10:11:09Z",
+      "mergedAt": "2023-03-23T10:11:09Z",
+      "mergedBy": "tadahik",
+      "mergeCommit": {
+        "oid": "90182ac646f39a19e9a6c803af21eb6e9548d48d"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOHwB1bc5QtYZ0",
+          "commit": {
+            "abbreviatedOid": "a2f2334"
+          },
+          "author": "seanturner",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-03-23T08:31:21Z",
+          "updatedAt": "2023-03-23T08:31:21Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOHwB1bc5QtgYb",
+          "commit": {
+            "abbreviatedOid": "a2f2334"
+          },
+          "author": "CBonnell",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-03-23T08:48:18Z",
+          "updatedAt": "2023-03-23T08:48:19Z",
+          "comments": [
+            {
+              "originalPosition": 44,
+              "body": "```suggestion\r\nThe authors of this version of the document wish to thank Russ Housley for the feedback and suggestions.\r\n```",
+              "createdAt": "2023-03-23T08:48:18Z",
+              "updatedAt": "2023-03-23T08:48:19Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 33,
+      "id": "PR_kwDOHwB1bc5M69Ug",
+      "title": "Brief desctiption of changes",
+      "url": "https://github.com/lamps-wg/RFC5019bis/pull/33",
+      "state": "MERGED",
+      "author": "CBonnell",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-03-26T23:00:08Z",
+      "updatedAt": "2023-03-28T14:13:27Z",
+      "baseRepository": "lamps-wg/RFC5019bis",
+      "baseRefName": "main",
+      "baseRefOid": "90182ac646f39a19e9a6c803af21eb6e9548d48d",
+      "headRepository": "lamps-wg/RFC5019bis",
+      "headRefName": "briefDesctiptionOfChanges",
+      "headRefOid": "92c83db5ad3a518686bf936b0b886b1d032e02ed",
+      "closedAt": "2023-03-28T12:52:43Z",
+      "mergedAt": "2023-03-28T12:52:43Z",
+      "mergedBy": "tadahik",
+      "mergeCommit": {
+        "oid": "c84b29b7f3db0517d9a95ed5577660a8756f2d6c"
+      },
+      "comments": [
+        {
+          "author": "tadahik",
+          "authorAssociation": "COLLABORATOR",
+          "body": "If there is not any further opinion, I would marge and post as new I-D, before tomorrow's meeting.\r\n\r\nI believe we do not have time to present at meeting, but we might ask WG adaption call after meeting.\r\n(Then we might move this repo to lamps one, and hopefully WG last call on next meeting) \r\n",
+          "createdAt": "2023-03-28T01:21:31Z",
+          "updatedAt": "2023-03-28T01:21:31Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOHwB1bc5Q86ic",
+          "commit": {
+            "abbreviatedOid": "d455450"
+          },
+          "author": "CBonnell",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-03-26T23:00:50Z",
+          "updatedAt": "2023-03-26T23:00:51Z",
+          "comments": [
+            {
+              "originalPosition": 12,
+              "body": "I don't think this is a normative change, but rather a clarification of the existing URL encoding requirements. So we can probably drop this.\r\n\r\nThoughts?",
+              "createdAt": "2023-03-26T23:00:50Z",
+              "updatedAt": "2023-03-26T23:00:51Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOHwB1bc5Q86rk",
+          "commit": {
+            "abbreviatedOid": "d455450"
+          },
+          "author": "seanturner",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-03-26T23:03:28Z",
+          "updatedAt": "2023-03-26T23:03:29Z",
+          "comments": [
+            {
+              "originalPosition": 12,
+              "body": "I would probably leave it, but if we changed Normative to Substantive in the intro it might soften it?",
+              "createdAt": "2023-03-26T23:03:28Z",
+              "updatedAt": "2023-03-26T23:03:29Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOHwB1bc5Q9X1Z",
+          "commit": {
+            "abbreviatedOid": "d455450"
+          },
+          "author": "tadahik",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-03-27T03:14:23Z",
+          "updatedAt": "2023-03-27T03:14:23Z",
+          "comments": [
+            {
+              "originalPosition": 12,
+              "body": "how about (in addition to make it substantive), change to  \"{{transport}} clarifies OCSP clients not to include\r\n whitespace or ...\" as following commit.",
+              "createdAt": "2023-03-27T03:14:23Z",
+              "updatedAt": "2023-03-27T03:14:23Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOHwB1bc5Q9YQW",
+          "commit": {
+            "abbreviatedOid": "d455450"
+          },
+          "author": "tadahik",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-03-27T03:17:20Z",
+          "updatedAt": "2023-03-27T03:17:20Z",
+          "comments": [
+            {
+              "originalPosition": 12,
+              "body": "I agree that URL encoding requirement do not change, but some (crappy) implementation might influence, and it might be helpful to note that.",
+              "createdAt": "2023-03-27T03:17:20Z",
+              "updatedAt": "2023-03-27T03:17:20Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOHwB1bc5REVpc",
+          "commit": {
+            "abbreviatedOid": "1fd7b9f"
+          },
+          "author": "clintwilson",
+          "authorAssociation": "COLLABORATOR",
+          "state": "CHANGES_REQUESTED",
+          "body": "",
+          "createdAt": "2023-03-28T01:58:13Z",
+          "updatedAt": "2023-03-28T01:58:33Z",
+          "comments": [
+            {
+              "originalPosition": 9,
+              "body": "requires*",
+              "createdAt": "2023-03-28T01:58:13Z",
+              "updatedAt": "2023-03-28T01:58:33Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOHwB1bc5REpQL",
+          "commit": {
+            "abbreviatedOid": "1fd7b9f"
+          },
+          "author": "tadahik",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-03-28T04:06:57Z",
+          "updatedAt": "2023-03-28T04:06:57Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOHwB1bc5RF3CM",
+          "commit": {
+            "abbreviatedOid": "a29c461"
+          },
+          "author": "seanturner",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-03-28T08:26:38Z",
+          "updatedAt": "2023-03-28T08:26:39Z",
+          "comments": [
+            {
+              "originalPosition": 12,
+              "body": "```suggestion\r\n- {{transport}} clarifies OCSP clients not include\r\n```",
+              "createdAt": "2023-03-28T08:26:38Z",
+              "updatedAt": "2023-03-28T08:26:39Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOHwB1bc5RF6Vo",
+          "commit": {
+            "abbreviatedOid": "92c83db"
+          },
+          "author": "tadahik",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-03-28T08:33:18Z",
+          "updatedAt": "2023-03-28T08:33:18Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 35,
+      "id": "PR_kwDOHwB1bc5NEax-",
+      "title": "Ietf116idnit",
+      "url": "https://github.com/lamps-wg/RFC5019bis/pull/35",
+      "state": "CLOSED",
+      "author": "tadahik",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "update 3548 to 4648, Adjust line break position",
+      "createdAt": "2023-03-28T13:26:26Z",
+      "updatedAt": "2023-03-28T13:56:41Z",
+      "baseRepository": "lamps-wg/RFC5019bis",
+      "baseRefName": "main",
+      "baseRefOid": "c84b29b7f3db0517d9a95ed5577660a8756f2d6c",
+      "headRepository": "lamps-wg/RFC5019bis",
+      "headRefName": "IETF116idnit",
+      "headRefOid": "adf8d08f33a406ca77e82456ec09727e32f71450",
+      "closedAt": "2023-03-28T13:28:48Z",
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 36,
+      "id": "PR_kwDOHwB1bc5NEukU",
+      "title": "address idnit for -02 draft",
+      "url": "https://github.com/lamps-wg/RFC5019bis/pull/36",
+      "state": "MERGED",
+      "author": "tadahik",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "address idnit for 02 draft\r\n- update reference of 3548 to 4648\r\n- change line brake position\r\n\r\nthe (256bit) ETag line and the table are longer than 72 character, but I just ignore warning.",
+      "createdAt": "2023-03-28T14:05:52Z",
+      "updatedAt": "2024-02-05T06:14:09Z",
+      "baseRepository": "lamps-wg/RFC5019bis",
+      "baseRefName": "main",
+      "baseRefOid": "c84b29b7f3db0517d9a95ed5577660a8756f2d6c",
+      "headRepository": "lamps-wg/RFC5019bis",
+      "headRefName": "idnit02ID",
+      "headRefOid": "4865a670ce4aeb2dcbb6a9f227019e3286d87855",
+      "closedAt": "2023-03-29T04:48:08Z",
+      "mergedAt": "2023-03-29T04:48:08Z",
+      "mergedBy": "tadahik",
+      "mergeCommit": {
+        "oid": "3ba915e089a69938abb4734e76015e3f42fccd08"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOHwB1bc5RMh4l",
+          "commit": {
+            "abbreviatedOid": "4865a67"
+          },
+          "author": "CBonnell",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "LGTM. Ship it",
+          "createdAt": "2023-03-29T04:36:22Z",
+          "updatedAt": "2023-03-29T04:36:22Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 38,
+      "id": "PR_kwDOHwB1bc5end9X",
+      "title": "for WG document",
+      "url": "https://github.com/lamps-wg/RFC5019bis/pull/38",
+      "state": "CLOSED",
+      "author": "tadahik",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "address Rob's comment \r\n<https://mailarchive.ietf.org/arch/msg/spasm/OWDDnWVnSrCq27n5qSQk9nBiS9c/> ,\r\nRuss's comment\r\n<https://mailarchive.ietf.org/arch/msg/spasm/qtTbW5DPDMbYqDJ5h8CGMxn1QMM/>\r\n\r\nand \r\n\r\nrename",
+      "createdAt": "2023-11-05T12:26:43Z",
+      "updatedAt": "2023-11-06T01:26:21Z",
+      "baseRepository": "lamps-wg/RFC5019bis",
+      "baseRefName": "main",
+      "baseRefOid": "3ba915e089a69938abb4734e76015e3f42fccd08",
+      "headRepository": "lamps-wg/RFC5019bis",
+      "headRefName": "WGDraft",
+      "headRefOid": "480e30053649352cea7baa655ce77b02f169b475",
+      "closedAt": "2023-11-05T12:30:47Z",
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "tadahik",
+          "authorAssociation": "COLLABORATOR",
+          "body": "It seems error occur according to inconsistency between filename of the text, and filename written in the text",
+          "createdAt": "2023-11-05T12:30:47Z",
+          "updatedAt": "2023-11-05T12:30:47Z"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "number": 41,
+      "id": "PR_kwDOHwB1bc5eoNGQ",
+      "title": "Use Kanji",
+      "url": "https://github.com/lamps-wg/RFC5019bis/pull/41",
+      "state": "MERGED",
+      "author": "seanturner",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Obviously this needs the corrected Kanji ;)",
+      "createdAt": "2023-11-05T22:37:16Z",
+      "updatedAt": "2024-05-15T19:30:34Z",
+      "baseRepository": "lamps-wg/RFC5019bis",
+      "baseRefName": "main",
+      "baseRefOid": "3ba915e089a69938abb4734e76015e3f42fccd08",
+      "headRepository": "lamps-wg/RFC5019bis",
+      "headRefName": "seanturner-kanji",
+      "headRefOid": "f20e2084d173dc8d0c82fb58f4ec2009643f2107",
+      "closedAt": "2023-11-06T01:08:29Z",
+      "mergedAt": "2023-11-06T01:08:29Z",
+      "mergedBy": "tadahik",
+      "mergeCommit": {
+        "oid": "394e37ef8068b9b25b1ee34c0466ae1306033a7d"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOHwB1bc5mKvJy",
+          "commit": {
+            "abbreviatedOid": "745f9f1"
+          },
+          "author": "seanturner",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-11-05T23:28:39Z",
+          "updatedAt": "2023-11-05T23:28:39Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "```suggestion\r\n      ascii: Tadahiko Ito\r\n```",
+              "createdAt": "2023-11-05T23:28:39Z",
+              "updatedAt": "2023-11-05T23:28:40Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 42,
+      "id": "PR_kwDOHwB1bc5eogF2",
+      "title": "Wg draft00v2",
+      "url": "https://github.com/lamps-wg/RFC5019bis/pull/42",
+      "state": "CLOSED",
+      "author": "tadahik",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Addressed Rob's comment.\r\n<https://mailarchive.ietf.org/arch/msg/spasm/OWDDnWVnSrCq27n5qSQk9nBiS9c/>\r\n> I favour option #2, if it's found to be widely compatible with existing clients.\r\nTo address that point, and add \"For instance...\"\r\n\r\n>> We may mention this use of User-Agent sniffing to determine client capabilities in passing in the draft.\r\n> Good idea.\r\nIt seems not profile matter, but protocol matter, so I did not made change.\r\n\r\n\r\nAddressed Russ's comment\r\n<https://mailarchive.ietf.org/arch/msg/spasm/qtTbW5DPDMbYqDJ5h8CGMxn1QMM/>",
+      "createdAt": "2023-11-06T01:24:37Z",
+      "updatedAt": "2023-11-06T02:09:59Z",
+      "baseRepository": "lamps-wg/RFC5019bis",
+      "baseRefName": "main",
+      "baseRefOid": "394e37ef8068b9b25b1ee34c0466ae1306033a7d",
+      "headRepository": "lamps-wg/RFC5019bis",
+      "headRefName": "WGDraft00v2",
+      "headRefOid": "3ef3073a4f25f8a13dd5fcf3ac492bc34efa24d3",
+      "closedAt": "2023-11-06T01:25:17Z",
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 43,
+      "id": "PR_kwDOHwB1bc5eoml1",
+      "title": "Update and rename draft-bonnell-rfc5019bis.md to draft-ietf-lamps-rfc\u2026",
+      "url": "https://github.com/lamps-wg/RFC5019bis/pull/43",
+      "state": "MERGED",
+      "author": "tadahik",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "1) rename draft-bonnell... to draft-ietf-lamps-rfc...\r\n\r\n2) Addressed Rob's comment.\r\n<https://mailarchive.ietf.org/arch/msg/spasm/OWDDnWVnSrCq27n5qSQk9nBiS9c/>\r\n\r\n> I favour option #2, if it's found to be widely compatible with existing clients.\r\nTo address that point, and add \"For instance...\"\r\n\r\n>> We may mention this use of User-Agent sniffing to determine client capabilities in passing in the draft.\r\n> Good idea.\r\nIt seems not profile matter, but protocol matter, so I did not made change.\r\n\r\n\r\n3) Addressed Russ's comment\r\n<https://mailarchive.ietf.org/arch/msg/spasm/qtTbW5DPDMbYqDJ5h8CGMxn1QMM/>",
+      "createdAt": "2023-11-06T01:57:21Z",
+      "updatedAt": "2024-02-05T06:14:14Z",
+      "baseRepository": "lamps-wg/RFC5019bis",
+      "baseRefName": "main",
+      "baseRefOid": "394e37ef8068b9b25b1ee34c0466ae1306033a7d",
+      "headRepository": "lamps-wg/RFC5019bis",
+      "headRefName": "ChangesTodraft-ietf-lamps",
+      "headRefOid": "9b100dc377d230905f2c47dcceabfd61f6464680",
+      "closedAt": "2023-11-06T08:57:36Z",
+      "mergedAt": "2023-11-06T08:57:36Z",
+      "mergedBy": "tadahik",
+      "mergeCommit": {
+        "oid": "d904050cb0b7aa99e0bc3ecc261a9a1db45da6d3"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOHwB1bc5mMCQ8",
+          "commit": {
+            "abbreviatedOid": "9b100dc"
+          },
+          "author": "seanturner",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-11-06T07:41:25Z",
+          "updatedAt": "2023-11-06T07:41:25Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 44,
+      "id": "PR_kwDOHwB1bc5eqdD-",
+      "title": "Update draft-ietf-lamps-rfc5019bis.md",
+      "url": "https://github.com/lamps-wg/RFC5019bis/pull/44",
+      "state": "MERGED",
+      "author": "tadahik",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "add Rob in acknowledgment",
+      "createdAt": "2023-11-06T09:27:59Z",
+      "updatedAt": "2024-02-05T06:13:28Z",
+      "baseRepository": "lamps-wg/RFC5019bis",
+      "baseRefName": "main",
+      "baseRefOid": "d904050cb0b7aa99e0bc3ecc261a9a1db45da6d3",
+      "headRepository": "lamps-wg/RFC5019bis",
+      "headRefName": "nitfixPre118",
+      "headRefOid": "a368d68de26a484d489bc7696aa4389fecb21272",
+      "closedAt": "2023-11-06T09:38:13Z",
+      "mergedAt": "2023-11-06T09:38:13Z",
+      "mergedBy": "tadahik",
+      "mergeCommit": {
+        "oid": "e64286c4e3b8dedbdc647d640d9ec34605cf8b96"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 45,
+      "id": "PR_kwDOHwB1bc5e80FZ",
+      "title": "Kanji Fix",
+      "url": "https://github.com/lamps-wg/RFC5019bis/pull/45",
+      "state": "MERGED",
+      "author": "seanturner",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Kanji fix.",
+      "createdAt": "2023-11-08T16:58:31Z",
+      "updatedAt": "2024-02-05T06:13:27Z",
+      "baseRepository": "lamps-wg/RFC5019bis",
+      "baseRefName": "main",
+      "baseRefOid": "e64286c4e3b8dedbdc647d640d9ec34605cf8b96",
+      "headRepository": "lamps-wg/RFC5019bis",
+      "headRefName": "seanturner-kanji-fix",
+      "headRefOid": "e566689543b19ee1bf39d2dfddbeb9fa8f833f79",
+      "closedAt": "2023-11-09T16:35:32Z",
+      "mergedAt": "2023-11-09T16:35:32Z",
+      "mergedBy": "tadahik",
+      "mergeCommit": {
+        "oid": "181122a2970017cd584622c5dd23ecea7eb045ba"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 46,
+      "id": "PR_kwDOHwB1bc5iEB7a",
+      "title": "Update draft-ietf-lamps-rfc5019bis.md",
+      "url": "https://github.com/lamps-wg/RFC5019bis/pull/46",
+      "state": "MERGED",
+      "author": "tadahik",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "obsolete => obsoletes",
+      "createdAt": "2023-12-15T03:39:47Z",
+      "updatedAt": "2024-02-05T06:13:26Z",
+      "baseRepository": "lamps-wg/RFC5019bis",
+      "baseRefName": "main",
+      "baseRefOid": "181122a2970017cd584622c5dd23ecea7eb045ba",
+      "headRepository": "lamps-wg/RFC5019bis",
+      "headRefName": "nitfix-WGLC202312",
+      "headRefOid": "f880167f8a6adb1cd1811059664a938154969090",
+      "closedAt": "2023-12-15T13:10:07Z",
+      "mergedAt": "2023-12-15T13:10:07Z",
+      "mergedBy": "CBonnell",
+      "mergeCommit": {
+        "oid": "bb18dd21149d5c00b111ca6fe13fad2466c7342c"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOHwB1bc5qVRmV",
+          "commit": {
+            "abbreviatedOid": "f880167"
+          },
+          "author": "CBonnell",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-12-15T13:10:00Z",
+          "updatedAt": "2023-12-15T13:10:00Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 47,
+      "id": "PR_kwDOHwB1bc5iHAw2",
+      "title": "Update abbreviated title",
+      "url": "https://github.com/lamps-wg/RFC5019bis/pull/47",
+      "state": "MERGED",
+      "author": "CBonnell",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-12-15T13:09:29Z",
+      "updatedAt": "2024-05-15T19:29:55Z",
+      "baseRepository": "lamps-wg/RFC5019bis",
+      "baseRefName": "main",
+      "baseRefOid": "181122a2970017cd584622c5dd23ecea7eb045ba",
+      "headRepository": "lamps-wg/RFC5019bis",
+      "headRefName": "Update-abbreviated-title",
+      "headRefOid": "305be0206018c30444d1f15f4a9e2ab3ea87bf43",
+      "closedAt": "2023-12-16T05:29:40Z",
+      "mergedAt": "2023-12-16T05:29:40Z",
+      "mergedBy": "tadahik",
+      "mergeCommit": {
+        "oid": "0bbc3451088817599af18a01eedb5ad19f5aa900"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 48,
+      "id": "PR_kwDOHwB1bc5jQkpJ",
+      "title": "Fixes suggested by Rob",
+      "url": "https://github.com/lamps-wg/RFC5019bis/pull/48",
+      "state": "MERGED",
+      "author": "CBonnell",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Also fixes section reference to RFC 4648.",
+      "createdAt": "2024-01-04T20:57:20Z",
+      "updatedAt": "2024-01-05T14:29:49Z",
+      "baseRepository": "lamps-wg/RFC5019bis",
+      "baseRefName": "main",
+      "baseRefOid": "0bbc3451088817599af18a01eedb5ad19f5aa900",
+      "headRepository": "lamps-wg/RFC5019bis",
+      "headRefName": "rob-fixes",
+      "headRefOid": "b46f2a519cdbaa524c14e4a8233f2cd625585916",
+      "closedAt": "2024-01-05T14:29:45Z",
+      "mergedAt": "2024-01-05T14:29:45Z",
+      "mergedBy": "CBonnell",
+      "mergeCommit": {
+        "oid": "63ad7ab5f48841dbed49fc33297363691644ad95"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOHwB1bc5rnjbU",
+          "commit": {
+            "abbreviatedOid": "b46f2a5"
+          },
+          "author": "tadahik",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "looks good to me\r\n\r\nI also confirmed every section number in this document, including section 4 of RFC4648\r\nhttps://datatracker.ietf.org/doc/html/rfc4648#section-4",
+          "createdAt": "2024-01-05T08:29:55Z",
+          "updatedAt": "2024-01-05T08:29:55Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOHwB1bc5rnjuF",
+          "commit": {
+            "abbreviatedOid": "b46f2a5"
+          },
+          "author": "robstradling",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "Thanks @CBonnell.  LGTM.",
+          "createdAt": "2024-01-05T08:30:50Z",
+          "updatedAt": "2024-01-05T08:30:50Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 49,
+      "id": "PR_kwDOHwB1bc5j9Bhw",
+      "title": "OCSP staping legacy support",
+      "url": "https://github.com/lamps-wg/RFC5019bis/pull/49",
+      "state": "MERGED",
+      "author": "CBonnell",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-01-12T17:42:13Z",
+      "updatedAt": "2024-05-15T19:29:54Z",
+      "baseRepository": "lamps-wg/RFC5019bis",
+      "baseRefName": "main",
+      "baseRefOid": "63ad7ab5f48841dbed49fc33297363691644ad95",
+      "headRepository": "lamps-wg/RFC5019bis",
+      "headRefName": "stapling",
+      "headRefOid": "cf55084bfcee58126e28ef84ab651cda1e453c3b",
+      "closedAt": "2024-01-16T17:24:13Z",
+      "mergedAt": "2024-01-16T17:24:13Z",
+      "mergedBy": "tadahik",
+      "mergeCommit": {
+        "oid": "5d7c36475b7e6272b18d0b8fdbc5dec3c0996c59"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOHwB1bc5ssS65",
+          "commit": {
+            "abbreviatedOid": "cf55084"
+          },
+          "author": "seanturner",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-01-16T14:22:14Z",
+          "updatedAt": "2024-01-16T14:22:14Z",
+          "comments": [
+            {
+              "originalPosition": 6,
+              "body": "```suggestion\r\nresponder MAY include two SingleResponses in a BasicOCSPResponse.\r\n```",
+              "createdAt": "2024-01-16T14:22:14Z",
+              "updatedAt": "2024-01-16T14:22:15Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOHwB1bc5ssVYv",
+          "commit": {
+            "abbreviatedOid": "cf55084"
+          },
+          "author": "seanturner",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-01-16T14:24:40Z",
+          "updatedAt": "2024-01-16T14:24:40Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "```suggestion\r\nIn that BasicOCSPResponse, the CertID of one of the SingleResponses uses SHA-1 for the hash\r\n```",
+              "createdAt": "2024-01-16T14:24:40Z",
+              "updatedAt": "2024-01-16T14:24:40Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOHwB1bc5svIo7",
+          "commit": {
+            "abbreviatedOid": "cf55084"
+          },
+          "author": "tadahik",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "It look good to me",
+          "createdAt": "2024-01-16T17:20:05Z",
+          "updatedAt": "2024-01-16T17:20:05Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 50,
+      "id": "PR_kwDOHwB1bc5kOiqo",
+      "title": "Update draft-ietf-lamps-rfc5019bis.md",
+      "url": "https://github.com/lamps-wg/RFC5019bis/pull/50",
+      "state": "MERGED",
+      "author": "tadahik",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "fix a nit for BasicOCSPResponse",
+      "createdAt": "2024-01-16T18:29:04Z",
+      "updatedAt": "2024-02-05T06:13:18Z",
+      "baseRepository": "lamps-wg/RFC5019bis",
+      "baseRefName": "main",
+      "baseRefOid": "5d7c36475b7e6272b18d0b8fdbc5dec3c0996c59",
+      "headRepository": "lamps-wg/RFC5019bis",
+      "headRefName": "BasicOCSPResponse",
+      "headRefOid": "9d0aac41ecae1d07b41f67754520d1ff7a94c535",
+      "closedAt": "2024-01-26T23:29:24Z",
+      "mergedAt": "2024-01-26T23:29:24Z",
+      "mergedBy": "tadahik",
+      "mergeCommit": {
+        "oid": "d22b6eb15aa5d3dad2985e40efe1fb2f68e514f4"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOHwB1bc5t9SGo",
+          "commit": {
+            "abbreviatedOid": "9d0aac4"
+          },
+          "author": "CBonnell",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-01-25T22:22:05Z",
+          "updatedAt": "2024-01-25T22:22:05Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 51,
+      "id": "PR_kwDOHwB1bc5m7KQ3",
+      "title": "address comments on WGLC(02Draft)",
+      "url": "https://github.com/lamps-wg/RFC5019bis/pull/51",
+      "state": "MERGED",
+      "author": "tadahik",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Addressed Rob\u2019s comment with Tim, Russ comment\r\nhttps://mailarchive.ietf.org/arch/msg/spasm/Bk-0_zas5PTqL-us0JDv8fyQQWQ/\r\n- remove SHALL NOT\r\n- move two SingleResponse sentence to profile section with explicitly mention about backward compatibility\r\n\r\nAddressed Rich\u2019s comment\r\nhttps://mailarchive.ietf.org/arch/msg/spasm/cu1gJwy2kxHqxrjGwarA5kPs3lo/\r\n- List the terms that come from ASN.1 of 5019/6960 \r\n- with the fact of some environment allow a day of leeway, so add \u201c(e.g. allow one day difference)\u201d\r\n- add \"HTTP-based OCSP requests can use either the GET or the POST method to submit their requests.\"\r\n\r\nAdd possibility of logging requests to check how much SHA-1 is used for Client\u2019s CertID, and use that information to determine when to stop SHA-1 support. ",
+      "createdAt": "2024-02-15T03:11:04Z",
+      "updatedAt": "2024-05-15T19:30:33Z",
+      "baseRepository": "lamps-wg/RFC5019bis",
+      "baseRefName": "main",
+      "baseRefOid": "d22b6eb15aa5d3dad2985e40efe1fb2f68e514f4",
+      "headRepository": "lamps-wg/RFC5019bis",
+      "headRefName": "02DraftWGLC",
+      "headRefOid": "f41a7d61e171af32c7816acf54161229cf5385fb",
+      "closedAt": "2024-02-15T16:06:28Z",
+      "mergedAt": "2024-02-15T16:06:28Z",
+      "mergedBy": "tadahik",
+      "mergeCommit": {
+        "oid": "b8e768c8e23186b4357a2004d9bfefc56890769f"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOHwB1bc5wOHN5",
+          "commit": {
+            "abbreviatedOid": "f41a7d6"
+          },
+          "author": "CBonnell",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-02-15T13:20:13Z",
+          "updatedAt": "2024-02-15T13:20:13Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 52,
+      "id": "PR_kwDOHwB1bc5n3kE1",
+      "title": "adjust whitespace",
+      "url": "https://github.com/lamps-wg/RFC5019bis/pull/52",
+      "state": "MERGED",
+      "author": "tadahik",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "change number of whitespaces for indents",
+      "createdAt": "2024-02-26T05:35:00Z",
+      "updatedAt": "2024-02-26T05:55:06Z",
+      "baseRepository": "lamps-wg/RFC5019bis",
+      "baseRefName": "main",
+      "baseRefOid": "b8e768c8e23186b4357a2004d9bfefc56890769f",
+      "headRepository": "lamps-wg/RFC5019bis",
+      "headRefName": "adjustWhitespace",
+      "headRefOid": "c14563aa9fbf9a628a1348cdfaa2f1a66acf7fa6",
+      "closedAt": "2024-02-26T05:55:02Z",
+      "mergedAt": "2024-02-26T05:55:02Z",
+      "mergedBy": "CBonnell",
+      "mergeCommit": {
+        "oid": "5b00b7ad8b22037be91e5b77f6f046e55bd980bd"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOHwB1bc5xP738",
+          "commit": {
+            "abbreviatedOid": "c14563a"
+          },
+          "author": "CBonnell",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-02-26T05:54:52Z",
+          "updatedAt": "2024-02-26T05:54:52Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 53,
+      "id": "PR_kwDOHwB1bc5n3qFZ",
+      "title": "Fix transport profile intro",
+      "url": "https://github.com/lamps-wg/RFC5019bis/pull/53",
+      "state": "MERGED",
+      "author": "CBonnell",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-02-26T06:00:16Z",
+      "updatedAt": "2024-02-26T06:46:53Z",
+      "baseRepository": "lamps-wg/RFC5019bis",
+      "baseRefName": "main",
+      "baseRefOid": "5b00b7ad8b22037be91e5b77f6f046e55bd980bd",
+      "headRepository": "lamps-wg/RFC5019bis",
+      "headRefName": "transport-profile-fix",
+      "headRefOid": "9acd8d39c11dd0f184f4028ca4b183558f4a3b25",
+      "closedAt": "2024-02-26T06:46:49Z",
+      "mergedAt": "2024-02-26T06:46:49Z",
+      "mergedBy": "CBonnell",
+      "mergeCommit": {
+        "oid": "3552694cc25bb541bf3d85a355e885923b7dd811"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOHwB1bc5xQES1",
+          "commit": {
+            "abbreviatedOid": "9acd8d3"
+          },
+          "author": "tadahik",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "It looks good to me",
+          "createdAt": "2024-02-26T06:28:57Z",
+          "updatedAt": "2024-02-26T06:28:57Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 54,
+      "id": "PR_kwDOHwB1bc5o5fJf",
+      "title": "Address Roman's feedback",
+      "url": "https://github.com/lamps-wg/RFC5019bis/pull/54",
+      "state": "MERGED",
+      "author": "CBonnell",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-03-06T23:05:15Z",
+      "updatedAt": "2024-03-08T13:09:03Z",
+      "baseRepository": "lamps-wg/RFC5019bis",
+      "baseRefName": "main",
+      "baseRefOid": "3552694cc25bb541bf3d85a355e885923b7dd811",
+      "headRepository": "lamps-wg/RFC5019bis",
+      "headRefName": "roman-feedback",
+      "headRefOid": "e65f7934c8155ebc09e928f2cc86b959dfbac614",
+      "closedAt": "2024-03-08T13:09:00Z",
+      "mergedAt": "2024-03-08T13:09:00Z",
+      "mergedBy": "CBonnell",
+      "mergeCommit": {
+        "oid": "768c28e320ecb58a6826128fa76e21afb8f5073f"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOHwB1bc5ygFsi",
+          "commit": {
+            "abbreviatedOid": "8a608bd"
+          },
+          "author": "clintwilson",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-03-06T23:13:45Z",
+          "updatedAt": "2024-03-06T23:13:45Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOHwB1bc5yl48z",
+          "commit": {
+            "abbreviatedOid": "8a608bd"
+          },
+          "author": "seanturner",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-03-07T14:07:52Z",
+          "updatedAt": "2024-03-07T14:07:52Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 55,
+      "id": "PR_kwDOHwB1bc5rBSq7",
+      "title": "Address GENART feedback",
+      "url": "https://github.com/lamps-wg/RFC5019bis/pull/55",
+      "state": "MERGED",
+      "author": "CBonnell",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-03-28T08:00:14Z",
+      "updatedAt": "2024-04-03T11:44:14Z",
+      "baseRepository": "lamps-wg/RFC5019bis",
+      "baseRefName": "main",
+      "baseRefOid": "41b81b2e9656d8ba47bc1f580df72a641be12b9d",
+      "headRepository": "lamps-wg/RFC5019bis",
+      "headRefName": "gen-art-review",
+      "headRefOid": "5d40959776258bab7bcc3426e6444c032872cf8d",
+      "closedAt": "2024-04-03T11:44:11Z",
+      "mergedAt": "2024-04-03T11:44:11Z",
+      "mergedBy": "CBonnell",
+      "mergeCommit": {
+        "oid": "d1b490f1c812423c680405a2bfff53a4999c95fe"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOHwB1bc51UVEM",
+          "commit": {
+            "abbreviatedOid": "7c3bede"
+          },
+          "author": "seanturner",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "lgtm!",
+          "createdAt": "2024-03-29T10:24:18Z",
+          "updatedAt": "2024-03-29T10:24:18Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOHwB1bc51xpvJ",
+          "commit": {
+            "abbreviatedOid": "5d40959"
+          },
+          "author": "tadahik",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "It looks good to me",
+          "createdAt": "2024-04-03T08:12:39Z",
+          "updatedAt": "2024-04-03T08:12:39Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 56,
+      "id": "PR_kwDOHwB1bc5rlLad",
+      "title": "Fix reference to SHA-1 sec con",
+      "url": "https://github.com/lamps-wg/RFC5019bis/pull/56",
+      "state": "MERGED",
+      "author": "CBonnell",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-04-03T15:01:12Z",
+      "updatedAt": "2024-04-03T15:01:23Z",
+      "baseRepository": "lamps-wg/RFC5019bis",
+      "baseRefName": "main",
+      "baseRefOid": "d1b490f1c812423c680405a2bfff53a4999c95fe",
+      "headRepository": "lamps-wg/RFC5019bis",
+      "headRefName": "fix-sha1-reference",
+      "headRefOid": "81f0dbe1bdffa1d9ff436f02573beeeccca06b5b",
+      "closedAt": "2024-04-03T15:01:20Z",
+      "mergedAt": "2024-04-03T15:01:20Z",
+      "mergedBy": "CBonnell",
+      "mergeCommit": {
+        "oid": "9e86b18f3f3b4084d1e43af978a33e86e1f2ac2a"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 57,
+      "id": "PR_kwDOHwB1bc5rwP7y",
+      "title": "Restore obsoleted blurb in abstract",
+      "url": "https://github.com/lamps-wg/RFC5019bis/pull/57",
+      "state": "MERGED",
+      "author": "CBonnell",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-04-04T19:29:34Z",
+      "updatedAt": "2024-04-10T19:36:20Z",
+      "baseRepository": "lamps-wg/RFC5019bis",
+      "baseRefName": "main",
+      "baseRefOid": "9e86b18f3f3b4084d1e43af978a33e86e1f2ac2a",
+      "headRepository": "lamps-wg/RFC5019bis",
+      "headRefName": "restore-blurb",
+      "headRefOid": "71e2b140cb31ac1a041b998c9358b4fe778dd96e",
+      "closedAt": "2024-04-10T19:36:17Z",
+      "mergedAt": "2024-04-10T19:36:17Z",
+      "mergedBy": "CBonnell",
+      "mergeCommit": {
+        "oid": "789154197f48319f5ebbb6710831724271d8701c"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 58,
+      "id": "PR_kwDOHwB1bc5syScp",
+      "title": "the the -> the",
+      "url": "https://github.com/lamps-wg/RFC5019bis/pull/58",
+      "state": "MERGED",
+      "author": "robstradling",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-04-16T10:39:59Z",
+      "updatedAt": "2024-04-16T11:00:54Z",
+      "baseRepository": "lamps-wg/RFC5019bis",
+      "baseRefName": "main",
+      "baseRefOid": "789154197f48319f5ebbb6710831724271d8701c",
+      "headRepository": "robstradling/RFC5019bis",
+      "headRefName": "the_the",
+      "headRefOid": "065a09ffa722f1f57fd08ca8b6410a4eccb4ef02",
+      "closedAt": "2024-04-16T11:00:54Z",
+      "mergedAt": "2024-04-16T11:00:54Z",
+      "mergedBy": "tadahik",
+      "mergeCommit": {
+        "oid": "7b144131390eca171ff7a5b6b8c0bbbaa739324a"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOHwB1bc53Z_5q",
+          "commit": {
+            "abbreviatedOid": "065a09f"
+          },
+          "author": "tadahik",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-04-16T10:58:55Z",
+          "updatedAt": "2024-04-16T10:58:55Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 59,
+      "id": "PR_kwDOHwB1bc5vnSUa",
+      "title": "Addressed IESG evaluation",
+      "url": "https://github.com/lamps-wg/RFC5019bis/pull/59",
+      "state": "OPEN",
+      "author": "tadahik",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "addressed comments in\r\nhttps://datatracker.ietf.org/doc/draft-ietf-lamps-rfc5019bis/ballot/\r\n\r\n\r\n# Deb\r\n> Section 3.2.2, Appendix A:  The two terms 'byName' and 'byKey' are used without being defined \r\n\r\n- Line 310, regarding with Russ's comments\r\n\r\n# Gunter\r\n\r\n> unclear what the 'but only' refers towards...\r\n\r\n- addressed in Line 71\r\n- addressed in Line 76\r\n\r\n> simpler to say 'in highly scaled PKI environments'\r\n\r\n- addressed in Line 108\r\n\r\n# Orie\r\n\r\n> Section 1 profile discovery\r\n\r\n- Change \"will\" to \"may\" in Line 124\r\n- will add example of shared policies\r\n\r\n> sha-1 still ok?\r\n\r\n- change to MUST on Line 183\r\n\r\n> Section 3.1.1 missing Signature\r\n\r\n- addressed Line 144, Line 208 with slight difference (withdraw one \"relevant\")\r\n\r\n> Section 3.1.1 which AlgorithmIdentifier is used for SHA-256? \r\n\r\n- change ref to RFC5754, line 176\r\n\r\n> Section 3.1.2 ignore requestorName?\r\n\r\n- addressed in Line 201\r\n\r\n> Section 3.2.4 redundant MUST?\r\n\r\n- clarify with change from Line 356\r\n\r\n> 8.5.  Modification of HTTP Headers is ok?\r\n\r\n- call out 6960 section 4.2.2.1 in Line 680\r\n\r\n> Section 8.3 capitalize must\r\n\r\n- addressed in Line 644\r\n\r\n> 8.4.  Denial-of-Service Attacks\r\n\r\n- addressed in line 664\r\n\r\n> Section 3.1.1 DN expand on first use\r\n\r\n- addressed in line 174\r\n\r\n# Eric Vyncke\r\n\r\n> Section 3.1.1\r\n\r\n- addresssed Line 170, 183\r\n\r\n> Section 3.1.2\r\n\r\n- Line 201\r\n\r\n> Section 3.2.2\r\n\r\n- addressed in Line 289\r\n\r\n> Section 7.3\r\n\r\n- addressed. also changed server to responder in several place\r\n\r\n# other changes\r\n\r\n- fix references (change normative to informative, add section numbers for some of them)\r\n\r\n- Line 366, refer RFC6960 section 2.5, clarify thisUpdate and producedAt are not always same, regarding with private comment.",
+      "createdAt": "2024-05-16T05:56:58Z",
+      "updatedAt": "2024-05-16T05:57:03Z",
+      "baseRepository": "lamps-wg/RFC5019bis",
+      "baseRefName": "main",
+      "baseRefOid": "7b144131390eca171ff7a5b6b8c0bbbaa739324a",
+      "headRepository": "lamps-wg/RFC5019bis",
+      "headRefName": "IESG-evaluation",
+      "headRefOid": "4bf3bd595a32badac9516229d55e320aebcd2e31",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 60,
+      "id": "PR_kwDOHwB1bc5vsgV2",
+      "title": "Add illustrative out-of-band protocol indicator example",
+      "url": "https://github.com/lamps-wg/RFC5019bis/pull/60",
+      "state": "OPEN",
+      "author": "CBonnell",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-05-16T17:15:11Z",
+      "updatedAt": "2024-05-20T11:44:28Z",
+      "baseRepository": "lamps-wg/RFC5019bis",
+      "baseRefName": "IESG-evaluation",
+      "baseRefOid": "4bf3bd595a32badac9516229d55e320aebcd2e31",
+      "headRepository": "lamps-wg/RFC5019bis",
+      "headRefName": "out-of-band-example",
+      "headRefOid": "b7c7e77699446513cf0bdc4c8bdbf7ed633e0414",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    }
+  ]
+}
