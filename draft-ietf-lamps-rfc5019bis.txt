@@ -6,11 +6,11 @@ Network Working Group                                 伊藤 忠彦 (T. Ito)
 Internet-Draft                                           SECOM CO., LTD.
 Obsoletes: 5019 (if approved)                                  C. Wilson
 Intended status: Standards Track                             Apple, Inc.
-Expires: 18 October 2024                                      C. Bonnell
+Expires: 11 January 2025                                      C. Bonnell
                                                           DigiCert, Inc.
                                                                S. Turner
                                                                    sn3rd
-                                                           16 April 2024
+                                                            10 July 2024
 
 
     Updates to Lightweight OCSP Profile for High Volume Environments
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 18 October 2024.
+   This Internet-Draft will expire on 11 January 2025.
 
 Copyright Notice
 
@@ -118,19 +118,20 @@ Table of Contents
    lieu of using Certificate Revocation Lists (CRLs).  Since its
    definition in 1999, it has been deployed in a variety of environments
    and has proven to be a useful certificate status checking mechanism.
-   (For brevity we refer to OCSP as being used to verify certificate
-   status, but only the revocation status of a certificate is checked
-   via this protocol.)
+   (For brevity, the term "OCSP" is used herein to denote the
+   verification of certificate status; however, it should be noted that
+   this protocol is employed solely to ascertain the revocation status
+   of a certificate.)
 
-   To date, many OCSP deployments have been used to ensure timely and
-   secure certificate status information for high-value electronic
-   transactions or highly sensitive information, such as in the banking
-   and financial environments.  As such, the requirement for an OCSP
-   responder to respond in "real time" (i.e., generating a new OCSP
-   response for each OCSP request) has been important.  In addition,
-   these deployments have operated in environments where bandwidth usage
-   is not an issue, and have run on client and server systems where
-   processing power is not constrained.
+   To date, numerous OCSP deployments have been implemented to provide
+   timely and secure certificate status information, crucial for high-
+   value electronic transactions and the handling of highly sensitive
+   information, such as within the banking and financial sectors.
+   Therefore, the requirement for an OCSP responder to respond in "real
+   time" (i.e., generating a new OCSP response for each OCSP request)
+   has been important.  In addition, these deployments have operated in
+   environments where bandwidth usage is not an issue, and have run on
+   client and server systems where processing power is not constrained.
 
    As the use of PKI continues to grow and move into diverse
    environments, so does the need for a scalable and cost-effective
@@ -153,9 +154,8 @@ Table of Contents
    kept to a minimum.
 
    This document addresses the scalability issues inherent when using
-   OCSP in PKI environments described above by defining a message
-   profile and clarifying OCSP client and responder behavior that will
-   permit:
+   OCSP in highly scaled PKI environments by defining a message profile
+   and clarifying OCSP client and responder behavior that will permit:
 
    1.  OCSP response pre-production and distribution.
 
@@ -171,7 +171,7 @@ Table of Contents
    above.
 
    OCSP does not have the means to signal responder capabilities within
-   the protocol.  Thus, clients will need to use out-of-band mechanisms
+   the protocol.  Thus, clients may need to use out-of-band mechanisms
    to determine whether a responder conforms to the profile defined in
    this document.  Regardless of the availability of such out-of-band
    mechanisms, this profile ensures that interoperability will still
@@ -196,9 +196,9 @@ Table of Contents
 
 3.1.1.  OCSPRequest Structure
 
-   Provided for convenience here, but unchanged from [RFC6960], the
-   ASN.1 structure corresponding to the OCSPRequest with the relevant
-   CertID is:
+   Provided for convenience here, a partial extract of the ASN.1
+   structure corresponding to the OCSPRequest with the relevant CertID
+   as defined in [RFC6960]:
 
    OCSPRequest     ::=     SEQUENCE {
       tbsRequest                  TBSRequest,
@@ -220,20 +220,21 @@ Table of Contents
       issuerKeyHash       OCTET STRING, -- Hash of issuer's public key
       serialNumber        CertificateSerialNumber }
 
-   OCSPRequests that conform to this profile MUST include only one
-   Request in the OCSPRequest.RequestList structure.
+   OCSPRequests that conform to the profile in this document MUST
+   include only one Request in the OCSPRequest.RequestList structure.
 
    The CertID.issuerNameHash and CertID.issuerKeyHash fields contain
-   hashes of the issuer's DN and public key, respectively.  OCSP clients
-   that conform with this profile MUST use SHA-256 as defined in
-   [RFC6234] as the hashing algorithm for the CertID.issuerNameHash and
-   the CertID.issuerKeyHash values.
+   hashes of the issuer's distinguished name (DN) and public key,
+   respectively.  OCSP clients that conform with this profile MUST use
+   SHA-256 as defined in Section 2.2 of [RFC5754] as the hashing
+   algorithm for the CertID.issuerNameHash and the CertID.issuerKeyHash
+   values.
 
    Older OCSP clients which provide backward compatibility with
    [RFC5019] use SHA-1 as defined in [RFC3174] as the hashing algorithm
    for the CertID.issuerNameHash and the CertID.issuerKeyHash values.
-   However, these OCSP clients should transition from SHA-1 to SHA-256
-   as soon as practical.
+   However, these OCSP clients MUST transition from SHA-1 to SHA-256 as
+   soon as practical.
 
    Clients MUST NOT include the singleRequestExtensions structure.
 
@@ -250,17 +251,17 @@ Table of Contents
 
    If the OCSPRequest is signed, the client SHALL specify its name in
    the OCSPRequest.requestorName field; otherwise, clients SHOULD NOT
-   include the requestorName field in the OCSPRequest.  OCSP servers
-   MUST be prepared to receive unsigned OCSP requests that contain the
-   requestorName field, but MUST handle such requests as if the
-   requestorName field were absent.
+   include the requestorName field in the OCSPRequest.  OCSP responders
+   MUST handle unsigned OCSP requests that contain the requestorName
+   field, as if the requestorName field were absent.
 
 3.2.  OCSP Response Profile
 
 3.2.1.  OCSPResponse Structure
 
-   The ASN.1 structure corresponding to the OCSPResponse with the
-   relevant CertID is:
+   Provided for convenience here, a partial extract of the ASN.1
+   structure corresponding to the OCSPResponse with the relevant CertID
+   as defined in [RFC6960]:
 
   OCSPResponse ::= SEQUENCE {
      responseStatus         OCSPResponseStatus,
@@ -318,10 +319,10 @@ Table of Contents
    responseExtensions in the response.
 
    In the case where a responder does not have the ability to respond to
-   an OCSP request containing an option not supported by the server, it
-   SHOULD return the most complete response it can.  For example, in the
-   case where a responder only supports pre-produced responses and does
-   not have the ability to respond to an OCSP request containing a
+   an OCSP request containing an option not supported by the responder,
+   it SHOULD return the most complete response it can.  For example, in
+   the case where a responder only supports pre-produced responses and
+   does not have the ability to respond to an OCSP request containing a
    nonce, it SHOULD return a response that does not include a nonce.
 
    Clients SHOULD attempt to process a response even if the response
@@ -338,7 +339,7 @@ Table of Contents
 
 3.2.2.  Signed OCSPResponses
 
-   Clients MUST validate the signature on the returned OCSPResponse.
+   Clients MUST validate the signature on the OCSPResponse.
 
    If the response is signed by a delegate of the issuing certification
    authority (CA), a valid responder certificate MUST be referenced in
@@ -356,7 +357,7 @@ Table of Contents
    Clients MUST be able to identify OCSP responder certificates using
    the byKey field and SHOULD be able to identify OCSP responder
    certificates using the byName field of the ResponseData.ResponderID
-   choices.
+   [RFC6960] choices.
 
    Older responders which provide backward compatibility with [RFC5019]
    MAY use the byName field to represent the ResponderID, but should
@@ -376,8 +377,8 @@ Table of Contents
    the [RFC6960] definition of "unauthorized" as follows:
 
    The response "unauthorized" is returned in cases where the client is
-   not authorized to make this query to this server or the server is not
-   capable of responding authoritatively.
+   not authorized to make this query to this responder or the responder
+   is not capable of responding authoritatively.
 
    For example, OCSP responders that do not have access to authoritative
    records for a requested certificate, such as those that generate and
@@ -402,14 +403,17 @@ Table of Contents
       be correct.
 
    nextUpdate:  The time at or before which newer information will be
-      available about the status of the certificate.  Responders MUST
-      always include this value to aid in response caching.  See
-      Section 7 for additional information on caching.
+      available about the status of the certificate.  As described in
+      Section 2.4 of [RFC6960], this field is optional.  However, this
+      field MUST be included in the profile specified in this document
+      to help clients cache responses.  See Section 7 for additional
+      information on caching.
 
    producedAt:  The time at which the OCSP response was signed.
 
-      |  Note: In many cases the value of thisUpdate and producedAt will
-      |  be the same.
+      |  Note: The values of thisUpdate, nextUpdate, and producedAt are
+      |  set as described in Section 2.5 of [RFC6960], and in many cases
+      |  the value of thisUpdate and producedAt are the same.
 
    For the purposes of this profile, ASN.1-encoded GeneralizedTime
    values such as thisUpdate, nextUpdate, and producedAt MUST be
@@ -507,7 +511,7 @@ Table of Contents
    descriptions in A.1 of [RFC6960] when constructing these messages.
 
    When constructing a GET message, OCSP clients MUST base64-encode the
-   OCSPRequest structure according to [RFC4648], section 4.  Clients
+   OCSPRequest structure according to Section 4 of [RFC4648].  Clients
    MUST NOT include whitespace or any other characters that are not part
    of the base64 character repertoire in the base64-encoded string.
    Clients MUST properly URL-encode the base64-encoded OCSPRequest
@@ -570,7 +574,7 @@ Table of Contents
    +===============+==================================================+
    | HTTP Header   | Description                                      |
    +===============+==================================================+
-   | Date          | The date and time at which the OCSP server       |
+   | Date          | The date and time at which the OCSP responder    |
    |               | generated the HTTP response.                     |
    +---------------+--------------------------------------------------+
    | Last-Modified | This value specifies the date and time at which  |
@@ -642,15 +646,15 @@ Table of Contents
 
    In some scenarios, it is advantageous to include OCSP response
    information within the protocol being utilized between the client and
-   server.  Including OCSP responses in this manner has a few attractive
-   effects.
+   OCSP responder.  Including OCSP responses in this manner has a few
+   attractive effects.
 
-   First, it allows for the caching of OCSP responses on the server,
-   thus lowering the number of hits to the OCSP responder.
+   First, it allows for the caching of OCSP responses on the OCSP
+   responder, thus lowering the number of hits.
 
    Second, it enables certificate validation in the event the client is
    not connected to a network and thus eliminates the need for clients
-   to establish a new HTTP session with the responder.
+   to establish a new HTTP session with the OCSP responder.
 
    Third, it reduces the number of round trips the client needs to make
    in order to complete a handshake.
@@ -692,18 +696,18 @@ Table of Contents
    expired valid responses for certificates that may in fact be revoked.
 
    Future versions of the OCSP protocol may provide a way for the client
-   to know whether the server supports nonces or does not support
-   nonces.  If a client can determine that the server supports nonces,
-   it MUST reject a reply that does not contain an expected nonce.
-   Otherwise, clients that opt to include a nonce in the request SHOULD
-   NOT reject a corresponding OCSPResponse solely on the basis of the
-   nonexistent expected nonce, but MUST fall back to validating the
+   to know whether the responder supports nonces or does not support
+   nonces.  If a client can determine that the responder supports
+   nonces, it MUST reject a reply that does not contain an expected
+   nonce.  Otherwise, clients that opt to include a nonce in the request
+   SHOULD NOT reject a corresponding OCSPResponse solely on the basis of
+   the nonexistent expected nonce, but MUST fall back to validating the
    OCSPResponse based on time.
 
 8.2.  Man-in-the-Middle Attacks
 
    To mitigate risk associated with this class of attack, the client
-   must properly validate the signature on the response.
+   MUST properly validate the signature on the response.
 
    The use of signed responses in OCSP serves to authenticate the
    identity of the OCSP responder and to verify that it is authorized to
@@ -723,7 +727,7 @@ Table of Contents
 
 8.4.  Denial-of-Service Attacks
 
-   OCSP responders should take measures to prevent or mitigate denial-
+   OCSP responders SHOULD take measures to prevent or mitigate denial-
    of-service attacks.  As this profile specifies the use of unsigned
    OCSPRequests, access to the responder may be implicitly given to
    everyone who can send a request to a responder, and thus the ability
@@ -738,8 +742,9 @@ Table of Contents
    Section 7, are not cryptographically protected; they may be
    manipulated by an attacker.  Clients SHOULD use these values for
    caching guidance only and ultimately SHOULD rely only on the values
-   present in the signed OCSPResponse.  Clients SHOULD NOT rely on
-   cached responses beyond the nextUpdate time.
+   present in the signed OCSPResponse Section 4.2.2.1 of [RFC6960].
+   Clients SHOULD NOT rely on cached responses beyond the nextUpdate
+   time.
 
 8.6.  Request Authentication and Authorization
 
@@ -783,10 +788,6 @@ Table of Contents
               DOI 10.17487/RFC2119, March 1997,
               <https://www.rfc-editor.org/rfc/rfc2119>.
 
-   [RFC3174]  Eastlake 3rd, D. and P. Jones, "US Secure Hash Algorithm 1
-              (SHA1)", RFC 3174, DOI 10.17487/RFC3174, September 2001,
-              <https://www.rfc-editor.org/rfc/rfc3174>.
-
    [RFC3986]  Berners-Lee, T., Fielding, R., and L. Masinter, "Uniform
               Resource Identifier (URI): Generic Syntax", STD 66,
               RFC 3986, DOI 10.17487/RFC3986, January 2005,
@@ -807,10 +808,9 @@ Table of Contents
               (CRL) Profile", RFC 5280, DOI 10.17487/RFC5280, May 2008,
               <https://www.rfc-editor.org/rfc/rfc5280>.
 
-   [RFC6234]  Eastlake 3rd, D. and T. Hansen, "US Secure Hash Algorithms
-              (SHA and SHA-based HMAC and HKDF)", RFC 6234,
-              DOI 10.17487/RFC6234, May 2011,
-              <https://www.rfc-editor.org/rfc/rfc6234>.
+   [RFC5754]  Turner, S., "Using SHA2 Algorithms with Cryptographic
+              Message Syntax", RFC 5754, DOI 10.17487/RFC5754, January
+              2010, <https://www.rfc-editor.org/rfc/rfc5754>.
 
    [RFC6960]  Santesson, S., Myers, M., Ankney, R., Malpani, A.,
               Galperin, S., and C. Adams, "X.509 Internet Public Key
@@ -832,11 +832,6 @@ Table of Contents
               DOI 10.17487/RFC9111, June 2022,
               <https://www.rfc-editor.org/rfc/rfc9111>.
 
-   [RFC9500]  Gutmann, P. and C. Bonnell, "Standard Public Key
-              Cryptography (PKC) Test Keys", RFC 9500,
-              DOI 10.17487/RFC9500, December 2023,
-              <https://www.rfc-editor.org/rfc/rfc9500>.
-
 10.2.  Informative References
 
    [OCSPMP]   Open Mobile Alliance, "OCSP Mobile Profile V1.0",
@@ -845,6 +840,15 @@ Table of Contents
    [RFC3143]  Cooper, I. and J. Dilley, "Known HTTP Proxy/Caching
               Problems", RFC 3143, DOI 10.17487/RFC3143, June 2001,
               <https://www.rfc-editor.org/rfc/rfc3143>.
+
+   [RFC3174]  Eastlake 3rd, D. and P. Jones, "US Secure Hash Algorithm 1
+              (SHA1)", RFC 3174, DOI 10.17487/RFC3174, September 2001,
+              <https://www.rfc-editor.org/rfc/rfc3174>.
+
+   [RFC9500]  Gutmann, P. and C. Bonnell, "Standard Public Key
+              Cryptography (PKC) Test Keys", RFC 9500,
+              DOI 10.17487/RFC9500, December 2023,
+              <https://www.rfc-editor.org/rfc/rfc9500>.
 
 Appendix A.  Differences from RFC 5019
 
@@ -882,7 +886,7 @@ B.1.  Root Certification Authority Certificate
    example certificates below.
 
    The key pair for the certification authority is the "testECCP521" key
-   from [RFC9500], section 2.3.
+   from Section 2.3 of [RFC9500].
 
    -----BEGIN CERTIFICATE-----
    MIICKDCCAYqgAwIBAgIBATAKBggqhkjOPQQDBDA4MQswCQYDVQQGEwJYWDEUMBIG
@@ -1025,7 +1029,7 @@ B.2.  End-entity Certificate
    returned in the OCSP request and response examples below.
 
    The key pair for the end-entity certificate is the "testECCP256" key
-   from [RFC9500], section 2.3.
+   from Section 2.3 of [RFC9500].
 
    -----BEGIN CERTIFICATE-----
    MIIB2zCCATygAwIBAgIEAarwDTAKBggqhkjOPQQDBDA4MQswCQYDVQQGEwJYWDEU
@@ -1150,7 +1154,7 @@ B.3.  OCSP Responder Certificate
    OCSP response example below.
 
    The key pair for the OCSP Responder certificate is the "testECCP384"
-   key from [RFC9500], section 2.3.
+   key from Section 2.3 of [RFC9500].
 
    -----BEGIN CERTIFICATE-----
    MIICSzCCAa6gAwIBAgIBATAKBggqhkjOPQQDBDA4MQswCQYDVQQGEwJYWDEUMBIG
