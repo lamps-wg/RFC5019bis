@@ -67,15 +67,17 @@ The Online Certificate Status Protocol {{!RFC6960}} specifies a mechanism
 used to determine the status of digital certificates, in lieu of
 using Certificate Revocation Lists (CRLs). Since its definition in
 1999, it has been deployed in a variety of environments and has
-proven to be a useful certificate status checking mechanism. (For
-brevity we refer to OCSP as being used to verify certificate status,
-but only the revocation status of a certificate is checked via this
-protocol.)
+proven to be a useful certificate status checking mechanism.
+(For brevity, the term "OCSP" is used herein to denote the
+verification of certificate status; however, it should be noted
+that this protocol is employed solely to ascertain the
+revocation status of a certificate.)
 
-To date, many OCSP deployments have been used to ensure timely and
-secure certificate status information for high-value electronic
-transactions or highly sensitive information, such as in the banking
-and financial environments. As such, the requirement for an OCSP
+To date, numerous OCSP deployments have been implemented to provide timely
+and secure certificate status information, crucial for high-value
+electronic transactions and the handling of highly sensitive information,
+such as within the banking and financial sectors.
+Therefore, the requirement for an OCSP
 responder to respond in "real time" (i.e., generating a new OCSP
 response for each OCSP request) has been important. In addition,
 these deployments have operated in environments where bandwidth usage
@@ -103,7 +105,7 @@ and the network infrastructure required to host those responders are
 kept to a minimum.
 
 This document addresses the scalability issues inherent when using
-OCSP in PKI environments described above by defining a message
+OCSP in highly scaled PKI environments by defining a message
 profile and clarifying OCSP client and responder behavior that will
 permit:
 
@@ -119,7 +121,7 @@ bandwidth and client-side processing power (or both), as described
 above.
 
 OCSP does not have the means to signal responder capabilities within the
-protocol. Thus, clients will need to use out-of-band mechanisms to
+protocol. Thus, clients may need to use out-of-band mechanisms to
 determine whether a responder conforms to the profile defined in this
 document. Regardless of the availability of such out-of-band mechanisms,
 this profile ensures that interoperability will still occur between an
@@ -139,9 +141,9 @@ functionality as defined in {{RFC6960}}.
 
 ### OCSPRequest Structure {#certid}
 
-Provided for convenience here, but unchanged from {{!RFC6960}},
-the ASN.1 structure corresponding to the OCSPRequest with the relevant
-CertID is:
+Provided for convenience here, a partial extract of the
+ASN.1 structure corresponding to the OCSPRequest with the relevant
+CertID as defined in {{RFC6960}}:
 
 ~~~~~~
 OCSPRequest     ::=     SEQUENCE {
@@ -165,19 +167,20 @@ CertID          ::=     SEQUENCE {
    serialNumber        CertificateSerialNumber }
 ~~~~~~
 
-OCSPRequests that conform to this profile MUST include only one Request
-in the OCSPRequest.RequestList structure.
+OCSPRequests that conform to the profile in this document MUST
+include only one Request in the OCSPRequest.RequestList structure.
 
 The CertID.issuerNameHash and CertID.issuerKeyHash fields contain hashes
-of the issuer's DN and public key, respectively. OCSP clients that
-conform with this profile MUST use SHA-256 as defined in {{!RFC6234}} as
+of the issuer's distinguished name (DN) and public key, respectively.
+OCSP clients that conform with this profile MUST use SHA-256 as defined
+in {{Section 2.2 of !RFC5754}} as
 the hashing algorithm for the CertID.issuerNameHash and the
 CertID.issuerKeyHash values.
 
 Older OCSP clients which provide backward compatibility with
-{{!RFC5019}} use SHA-1 as defined in {{!RFC3174}} as the hashing
+{{!RFC5019}} use SHA-1 as defined in {{?RFC3174}} as the hashing
 algorithm for the CertID.issuerNameHash and the
-CertID.issuerKeyHash values. However, these OCSP clients should
+CertID.issuerKeyHash values. However, these OCSP clients MUST
 transition from SHA-1 to SHA-256 as soon as practical.
 
 Clients MUST NOT include the singleRequestExtensions structure.
@@ -195,16 +198,16 @@ the signature on OCSPRequests.
 
 If the OCSPRequest is signed, the client SHALL specify its name in
 the OCSPRequest.requestorName field; otherwise, clients SHOULD NOT
-include the requestorName field in the OCSPRequest. OCSP servers
-MUST be prepared to receive unsigned OCSP requests that contain the
-requestorName field, but MUST handle such requests as if the
-requestorName field were absent.
+include the requestorName field in the OCSPRequest. OCSP responders
+MUST handle unsigned OCSP requests that contain the
+requestorName field, as if the requestorName field were absent.
 
 ## OCSP Response Profile
 
 ### OCSPResponse Structure
-The ASN.1 structure corresponding to the OCSPResponse
-with the relevant CertID is:
+Provided for convenience here, a partial extract of the
+ASN.1 structure corresponding to the OCSPResponse with the relevant
+CertID as defined in {{RFC6960}}:
 
 ~~~~~~
 OCSPResponse ::= SEQUENCE {
@@ -266,7 +269,7 @@ The responder SHOULD NOT include responseExtensions. As specified in
 responseExtensions in the response.
 
 In the case where a responder does not have the ability to respond to
-an OCSP request containing an option not supported by the server, it
+an OCSP request containing an option not supported by the responder, it
 SHOULD return the most complete response it can. For example, in the
 case where a responder only supports pre-produced responses and does
 not have the ability to respond to an OCSP request containing a
@@ -286,7 +289,7 @@ extensions structure.
 
 ### Signed OCSPResponses {#byKey}
 
-Clients MUST validate the signature on the returned OCSPResponse.
+Clients MUST validate the signature on the OCSPResponse.
 
 If the response is signed by a delegate of the issuing certification
 authority (CA), a valid responder certificate MUST be referenced in
@@ -303,8 +306,8 @@ renewed regularly.
 
 Clients MUST be able to identify OCSP responder certificates using
 the byKey field and SHOULD be able to identify OCSP responder
-certificates using the byName field of the ResponseData.ResponderID
-choices.
+certificates using the byName field of the
+ResponseData.ResponderID {{RFC6960}} choices.
 
 Older responders which provide backward compatibility with {{RFC5019}}
 MAY use the byName field to represent the ResponderID, but should
@@ -323,7 +326,7 @@ OCSPResponseStatus of "unauthorized". As such, this profile extends
 the {{RFC6960}} definition of "unauthorized" as follows:
 
 The response "unauthorized" is returned in cases where the client
-is not authorized to make this query to this server or the server
+is not authorized to make this query to this responder or the responder
 is not capable of responding authoritatively.
 
 For example, OCSP responders that do not have access to authoritative
@@ -350,16 +353,20 @@ thisUpdate:
 
 nextUpdate:
 : The time at or before which newer information will be available
-about the status of the certificate. Responders MUST always include
-this value to aid in response caching. See {{cache-recs}} for additional
-information on caching.
+about the status of the certificate.
+As described in {{Section 2.4 of RFC6960}}, this field is optional.
+However, this field MUST be included in the profile specified
+in this document to help clients cache responses.
+See {{cache-recs}} for additional information on caching.
 
 producedAt:
 : The time at which the OCSP response was signed.
 
 <aside markdown="block">
-Note: In many cases the value of thisUpdate and producedAt will be
-  the same.
+Note: The values of thisUpdate, nextUpdate, and producedAt are
+ set as described in {{Section 2.5 of RFC6960}},
+ and in many cases the value of thisUpdate and producedAt are
+ the same.
 </aside>
 
 For the purposes of this profile, ASN.1-encoded GeneralizedTime
@@ -459,7 +466,7 @@ all cases, clients MUST follow the descriptions in A.1 of {{RFC6960}}
 when constructing these messages.
 
 When constructing a GET message, OCSP clients MUST base64-encode the
-OCSPRequest structure according to {{!RFC4648}}, section 4. Clients
+OCSPRequest structure according to {{Section 4 of !RFC4648}}. Clients
 MUST NOT include whitespace or any other characters that are not part of
 the base64 character repertoire in the base64-encoded string. Clients
 MUST properly URL-encode the base64-encoded OCSPRequest according to
@@ -524,7 +531,7 @@ of these headers and the proper format of any date and time values.
 
 | HTTP Header | Description |
 |:---|:---|
-| Date | The date and time at which the OCSP server generated the HTTP response. |
+| Date | The date and time at which the OCSP responder generated the HTTP response. |
 | Last-Modified | This value specifies the date and time at which the OCSP responder last modified the response. This date and time will be the same as the thisUpdate timestamp in the request itself. |
 | Expires | Specifies how long the response is considered fresh. This date and time will be the same as the nextUpdate timestamp in the OCSP response itself. |
 | ETag | A string that identifies a particular version of the associated data. This profile RECOMMENDS that the ETag value be the ASCII HEX representation of the SHA-256 hash of the OCSPResponse structure. |
@@ -573,15 +580,15 @@ request (i.e., Pragma: no-cache or Cache-Control: no-cache).
 
 In some scenarios, it is advantageous to include OCSP response
 information within the protocol being utilized between the client and
-server. Including OCSP responses in this manner has a few attractive
-effects.
+OCSP responder.
+Including OCSP responses in this manner has a few attractive effects.
 
-First, it allows for the caching of OCSP responses on the server,
-thus lowering the number of hits to the OCSP responder.
+First, it allows for the caching of OCSP responses on the
+OCSP responder, thus lowering the number of hits.
 
 Second, it enables certificate validation in the event the client is
 not connected to a network and thus eliminates the need for clients
-to establish a new HTTP session with the responder.
+to establish a new HTTP session with the OCSP responder.
 
 Third, it reduces the number of round trips the client needs to make
 in order to complete a handshake.
@@ -623,8 +630,8 @@ a client with a sufficiently slow clock may incorrectly accept
 expired valid responses for certificates that may in fact be revoked.
 
 Future versions of the OCSP protocol may provide a way for the client
-to know whether the server supports nonces or does not support
-nonces. If a client can determine that the server supports nonces,
+to know whether the responder supports nonces or does not support
+nonces. If a client can determine that the responder supports nonces,
 it MUST reject a reply that does not contain an expected nonce.
 Otherwise, clients that opt to include a nonce in the request SHOULD
 NOT reject a corresponding OCSPResponse solely on the basis of the
@@ -634,7 +641,7 @@ OCSPResponse based on time.
 ## Man-in-the-Middle Attacks
 
 To mitigate risk associated with this class of attack, the client
-must properly validate the signature on the response.
+MUST properly validate the signature on the response.
 
 The use of signed responses in OCSP serves to authenticate the
 identity of the OCSP responder and to verify that it is authorized to
@@ -654,7 +661,7 @@ certificate to ensure an authorized responder created it.
 
 ## Denial-of-Service Attacks
 
-OCSP responders should take measures to prevent or mitigate denial-
+OCSP responders SHOULD take measures to prevent or mitigate denial-
 of-service attacks. As this profile specifies the use of unsigned
 OCSPRequests, access to the responder may be implicitly given to
 everyone who can send a request to a responder, and thus the ability
@@ -670,7 +677,8 @@ and {{cache-recs}},
 are not cryptographically protected; they may be manipulated by an
 attacker. Clients SHOULD use these values for caching guidance only
 and ultimately SHOULD rely only on the values present in the signed
-OCSPResponse. Clients SHOULD NOT rely on cached responses beyond the
+OCSPResponse {{Section 4.2.2.1 of RFC6960}}.
+Clients SHOULD NOT rely on cached responses beyond the
 nextUpdate time.
 
 ## Request Authentication and Authorization
@@ -735,7 +743,7 @@ issued the end-entity certificate and OCSP delegated responder
 example certificates below.
 
 The key pair for the certification authority is the "testECCP521"
-key from {{!RFC9500}}, section 2.3.
+key from {{Section 2.3 of ?RFC9500}}.
 
 ~~~
 -----BEGIN CERTIFICATE-----
@@ -882,7 +890,7 @@ This is an end-entity certificate whose status is requested and
 returned in the OCSP request and response examples below.
 
 The key pair for the end-entity certificate is the "testECCP256"
-key from {{!RFC9500}}, section 2.3.
+key from {{Section 2.3 of RFC9500}}.
 
 ~~~
 -----BEGIN CERTIFICATE-----
@@ -1011,7 +1019,7 @@ This is a certificate for the OCSP delegated response that signed the
 OCSP response example below.
 
 The key pair for the OCSP Responder certificate is the "testECCP384"
-key from {{!RFC9500}}, section 2.3.
+key from {{Section 2.3 of RFC9500}}.
 
 ~~~
 -----BEGIN CERTIFICATE-----
