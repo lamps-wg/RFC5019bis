@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-07-09T00:30:50.339049+00:00",
+  "timestamp": "2024-07-11T00:31:34.223050+00:00",
   "repo": "lamps-wg/RFC5019bis",
   "labels": [
     {
@@ -2658,24 +2658,26 @@
       "id": "PR_kwDOHwB1bc5vnSUa",
       "title": "Addressed IESG evaluation",
       "url": "https://github.com/lamps-wg/RFC5019bis/pull/59",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "tadahik",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "addressed comments in\r\nhttps://datatracker.ietf.org/doc/draft-ietf-lamps-rfc5019bis/ballot/\r\n\r\n\r\n# Deb\r\n> Section 3.2.2, Appendix A:  The two terms 'byName' and 'byKey' are used without being defined \r\n\r\n- Line 310, regarding with Russ's comments\r\n\r\n# Gunter\r\n\r\n> unclear what the 'but only' refers towards...\r\n\r\n- addressed in Line 71\r\n- addressed in Line 76\r\n\r\n> simpler to say 'in highly scaled PKI environments'\r\n\r\n- addressed in Line 108\r\n\r\n# Orie\r\n\r\n> Section 1 profile discovery\r\n\r\n- Change \"will\" to \"may\" in Line 124\r\n- will add example of shared policies\r\n\r\n> sha-1 still ok?\r\n\r\n- change to MUST on Line 183\r\n\r\n> Section 3.1.1 missing Signature\r\n\r\n- addressed Line 144, Line 208 with slight difference (withdraw one \"relevant\")\r\n\r\n> Section 3.1.1 which AlgorithmIdentifier is used for SHA-256? \r\n\r\n- change ref to RFC5754, line 176\r\n\r\n> Section 3.1.2 ignore requestorName?\r\n\r\n- addressed in Line 201\r\n\r\n> Section 3.2.4 redundant MUST?\r\n\r\n- clarify with change from Line 356\r\n\r\n> 8.5.  Modification of HTTP Headers is ok?\r\n\r\n- call out 6960 section 4.2.2.1 in Line 680\r\n\r\n> Section 8.3 capitalize must\r\n\r\n- addressed in Line 644\r\n\r\n> 8.4.  Denial-of-Service Attacks\r\n\r\n- addressed in line 664\r\n\r\n> Section 3.1.1 DN expand on first use\r\n\r\n- addressed in line 174\r\n\r\n# Eric Vyncke\r\n\r\n> Section 3.1.1\r\n\r\n- addresssed Line 170, 183\r\n\r\n> Section 3.1.2\r\n\r\n- Line 201\r\n\r\n> Section 3.2.2\r\n\r\n- addressed in Line 289\r\n\r\n> Section 7.3\r\n\r\n- addressed. also changed server to responder in several place\r\n\r\n# other changes\r\n\r\n- fix references (change normative to informative, add section numbers for some of them)\r\n\r\n- Line 366, refer RFC6960 section 2.5, clarify thisUpdate and producedAt are not always same, regarding with private comment.",
       "createdAt": "2024-05-16T05:56:58Z",
-      "updatedAt": "2024-05-16T05:57:03Z",
+      "updatedAt": "2024-07-10T02:01:27Z",
       "baseRepository": "lamps-wg/RFC5019bis",
       "baseRefName": "main",
       "baseRefOid": "7b144131390eca171ff7a5b6b8c0bbbaa739324a",
       "headRepository": "lamps-wg/RFC5019bis",
       "headRefName": "IESG-evaluation",
       "headRefOid": "4bf3bd595a32badac9516229d55e320aebcd2e31",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2024-07-10T02:01:27Z",
+      "mergedAt": "2024-07-10T02:01:27Z",
+      "mergedBy": "tadahik",
+      "mergeCommit": {
+        "oid": "774d16d37aa7339b498c8b5c46f2b720ae0dac46"
+      },
       "comments": [],
       "reviews": []
     },
@@ -2684,26 +2686,42 @@
       "id": "PR_kwDOHwB1bc5vsgV2",
       "title": "Add illustrative out-of-band protocol indicator example",
       "url": "https://github.com/lamps-wg/RFC5019bis/pull/60",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "CBonnell",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2024-05-16T17:15:11Z",
-      "updatedAt": "2024-05-20T11:44:28Z",
+      "updatedAt": "2024-07-10T02:03:07Z",
       "baseRepository": "lamps-wg/RFC5019bis",
       "baseRefName": "IESG-evaluation",
       "baseRefOid": "4bf3bd595a32badac9516229d55e320aebcd2e31",
       "headRepository": "lamps-wg/RFC5019bis",
       "headRefName": "out-of-band-example",
       "headRefOid": "b7c7e77699446513cf0bdc4c8bdbf7ed633e0414",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2024-07-10T02:03:07Z",
+      "mergedAt": "2024-07-10T02:03:07Z",
+      "mergedBy": "tadahik",
+      "mergeCommit": {
+        "oid": "06575ccdbb71fca72ca7fec19653212d0ea2dad5"
+      },
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOHwB1bc6BNlmE",
+          "commit": {
+            "abbreviatedOid": "b7c7e77"
+          },
+          "author": "tadahik",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-07-10T02:02:48Z",
+          "updatedAt": "2024-07-10T02:02:48Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
