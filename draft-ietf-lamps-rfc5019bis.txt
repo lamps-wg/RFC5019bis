@@ -6,11 +6,11 @@ Network Working Group                                 伊藤 忠彦 (T. Ito)
 Internet-Draft                                           SECOM CO., LTD.
 Obsoletes: 5019 (if approved)                                  C. Wilson
 Intended status: Standards Track                             Apple, Inc.
-Expires: 11 January 2025                                      C. Bonnell
+Expires: 12 February 2025                                     C. Bonnell
                                                           DigiCert, Inc.
                                                                S. Turner
                                                                    sn3rd
-                                                            10 July 2024
+                                                          11 August 2024
 
 
     Updates to Lightweight OCSP Profile for High Volume Environments
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 11 January 2025.
+   This Internet-Draft will expire on 12 February 2025.
 
 Copyright Notice
 
@@ -172,12 +172,13 @@ Table of Contents
 
    OCSP does not have the means to signal responder capabilities within
    the protocol.  Thus, clients may need to use out-of-band mechanisms
-   to determine whether a responder conforms to the profile defined in
-   this document.  Regardless of the availability of such out-of-band
-   mechanisms, this profile ensures that interoperability will still
-   occur between an OCSP client that fully conforms with [RFC6960] and a
-   responder that is operating in a mode as described in this
-   specification.
+   (e.g., agreed upon arrangements between operators of OCSP responders
+   and OCSP clients) to determine whether a responder conforms to the
+   profile defined in this document.  Regardless of the availability of
+   such out-of-band mechanisms, this profile ensures that
+   interoperability will still occur between an OCSP client that fully
+   conforms with [RFC6960] and a responder that is operating in a mode
+   as described in this specification.
 
 2.  Conventions and Definitions
 

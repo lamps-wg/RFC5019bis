@@ -1034,11 +1034,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">Lightweight OCSP Profile Update</td>
-<td class="right">July 2024</td>
+<td class="right">August 2024</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Ito, et al.</td>
-<td class="center">Expires 11 January 2025</td>
+<td class="center">Expires 12 February 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1054,12 +1054,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <a href="https://www.rfc-editor.org/rfc/rfc5019" class="eref">5019</a> (if approved)</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-07-10" class="published">10 July 2024</time>
+<time datetime="2024-08-11" class="published">11 August 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-01-11">11 January 2025</time></dd>
+<dd class="expires"><time datetime="2025-02-12">12 February 2025</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1121,7 +1121,7 @@ has been updated to allow and recommend the use of SHA-256 over SHA-1.<a href="#
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 11 January 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 12 February 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1357,12 +1357,14 @@ environments that require a lightweight solution to minimize
 bandwidth and client-side processing power (or both), as described
 above.<a href="#section-1-7" class="pilcrow">¶</a></p>
 <p id="section-1-8">OCSP does not have the means to signal responder capabilities within the
-protocol. Thus, clients may need to use out-of-band mechanisms to
-determine whether a responder conforms to the profile defined in this
-document. Regardless of the availability of such out-of-band mechanisms,
-this profile ensures that interoperability will still occur between an
-OCSP client that fully conforms with <span>[<a href="#RFC6960" class="cite xref">RFC6960</a>]</span> and a responder that is
-operating in a mode as described in this specification.<a href="#section-1-8" class="pilcrow">¶</a></p>
+protocol. Thus, clients may need to use out-of-band mechanisms (e.g.,
+agreed upon arrangements between operators of OCSP responders and OCSP
+clients) to determine whether a responder conforms to the profile
+defined in this document. Regardless of the availability of such
+out-of-band mechanisms, this profile ensures that interoperability will
+still occur between an OCSP client that fully conforms with <span>[<a href="#RFC6960" class="cite xref">RFC6960</a>]</span>
+and a responder that is operating in a mode as described in this
+specification.<a href="#section-1-8" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="conventions-and-definitions">
@@ -2051,6 +2053,7 @@ the increased implementation complexity and potential attack surface.<a href="#s
 <p id="section-9-1">This document has no IANA actions.<a href="#section-9-1" class="pilcrow">¶</a></p>
 </section>
 </div>
+<div id="sec-combined-references">
 <section id="section-10">
       <h2 id="name-references">
 <a href="#section-10" class="section-number selfRef">10. </a><a href="#name-references" class="section-name selfRef">References</a>
@@ -2134,6 +2137,7 @@ the increased implementation complexity and potential attack surface.<a href="#s
 </section>
 </div>
 </section>
+</div>
 <div id="differences-from-rfc-5019">
 <section id="appendix-A">
       <h2 id="name-differences-from-rfc-5019">
