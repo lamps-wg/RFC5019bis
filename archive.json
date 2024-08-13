@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-08-11T00:35:39.221723+00:00",
+  "timestamp": "2024-08-13T00:32:59.414834+00:00",
   "repo": "lamps-wg/RFC5019bis",
   "labels": [
     {
@@ -2722,6 +2722,42 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 61,
+      "id": "PR_kwDOHwB1bc54CV7-",
+      "title": "address another IESG evaluation",
+      "url": "https://github.com/lamps-wg/RFC5019bis/pull/61",
+      "state": "MERGED",
+      "author": "tadahik",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-08-11T16:27:38Z",
+      "updatedAt": "2024-08-11T16:48:42Z",
+      "baseRepository": "lamps-wg/RFC5019bis",
+      "baseRefName": "main",
+      "baseRefOid": "774d16d37aa7339b498c8b5c46f2b720ae0dac46",
+      "headRepository": "lamps-wg/RFC5019bis",
+      "headRefName": "IESG-evaluation",
+      "headRefOid": "06575ccdbb71fca72ca7fec19653212d0ea2dad5",
+      "closedAt": "2024-08-11T16:48:42Z",
+      "mergedAt": "2024-08-11T16:48:42Z",
+      "mergedBy": "tadahik",
+      "mergeCommit": {
+        "oid": "54b77b09c0c1c14173540d87e59f9bf15864a7f1"
+      },
+      "comments": [
+        {
+          "author": "tadahik",
+          "authorAssociation": "COLLABORATOR",
+          "body": "address another IESG evaluation comment\r\nIt was PR60.",
+          "createdAt": "2024-08-11T16:48:08Z",
+          "updatedAt": "2024-08-11T16:48:08Z"
+        }
+      ],
+      "reviews": []
     }
   ]
 }
