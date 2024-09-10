@@ -483,7 +483,7 @@ to the URI specified in the AIA extension {{RFC5280}}. For example:
 In response to properly formatted OCSPRequests that are cachable
 (i.e., responses that contain a nextUpdate value), the responder will
 include the binary value of the DER encoding of the OCSPResponse
-preceded by the following HTTP {{!RFC9110}} and {{!RFC9111}} headers.
+preceded by the following HTTP {{!RFC9110}} and {{!RFC9111}} header fields.
 
 ~~~~~~
    Content-type: application/ocsp-response
@@ -495,7 +495,7 @@ preceded by the following HTTP {{!RFC9110}} and {{!RFC9111}} headers.
    Date: < current HTTP-date >
 ~~~~~~
 
-See {{http-proxies}} for details on the use of these headers.
+See {{http-proxies}} for details on the use of these HTTP header fields.
 
 # Caching Recommendations {#cache-recs}
 
@@ -526,12 +526,12 @@ OCSP response before the max-age time.
 
 ## HTTP Proxies {#http-proxies}
 
-The responder SHOULD set the HTTP headers of the OCSP response in
+The responder SHOULD set the HTTP header fields of the OCSP response in
 such a way as to allow for the intelligent use of intermediate HTTP
 proxy servers. See {{RFC9110}} and {{RFC9111}} for the full definition
-of these headers and the proper format of any date and time values.
+of these HTTP header fields and the proper format of any date and time values.
 
-| HTTP Header | Description |
+| HTTP Header Field | Description |
 |:---|:---|
 | Date | The date and time at which the OCSP responder generated the HTTP response. |
 | Last-Modified | This value specifies the date and time at which the OCSP responder last modified the response. This date and time will be the same as the thisUpdate timestamp in the request itself. |
@@ -541,10 +541,10 @@ of these headers and the proper format of any date and time values.
 {: #http-headers title="HTTP Headers"}
 
 OCSP responders MUST NOT include a "Pragma: no-cache", "Cache-
-Control: no-cache", or "Cache-Control: no-store" header in
+Control: no-cache", or "Cache-Control: no-store" HTTP header fields in
 authoritative OCSP responses.
 
-OCSP responders SHOULD include one or more of these headers in non-
+OCSP responders SHOULD include one or more of these HTTP header fields in non-
 authoritative OCSP responses.
 
 For example, assume that an OCSP response has the following timestamp
@@ -571,11 +571,11 @@ GMT. In this scenario, the HTTP response may look like this:
    <...>
 ~~~~~~
 
-OCSP clients MUST NOT include a no-cache header in OCSP request
+OCSP clients MUST NOT include a no-cache HTTP header field in OCSP request
 messages, unless the client encounters an expired response which may
 be a result of an intermediate proxy caching stale data. In this
 situation, clients SHOULD resend the request specifying that proxies
-should be bypassed by including an appropriate HTTP header in the
+should be bypassed by including an appropriate HTTP header field in the
 request (i.e., Pragma: no-cache or Cache-Control: no-cache).
 
 ## Caching at Servers
@@ -672,9 +672,9 @@ greater. For example, a responder could limit the rate of incoming
 requests from a particular IP address if questionable behavior is
 detected.
 
-## Modification of HTTP Headers
+## Modification of HTTP Header Fields
 
-Values included in HTTP headers, as described in {{transport}}
+Values included in HTTP header fields, as described in {{transport}}
 and {{cache-recs}},
 are not cryptographically protected; they may be manipulated by an
 attacker. Clients SHOULD use these values for caching guidance only
