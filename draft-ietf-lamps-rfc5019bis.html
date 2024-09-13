@@ -1038,7 +1038,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Ito, et al.</td>
-<td class="center">Expires 14 March 2025</td>
+<td class="center">Expires 17 March 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1054,12 +1054,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <a href="https://www.rfc-editor.org/rfc/rfc5019" class="eref">5019</a> (if approved)</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-09-10" class="published">10 September 2024</time>
+<time datetime="2024-09-13" class="published">13 September 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-03-14">14 March 2025</time></dd>
+<dd class="expires"><time datetime="2025-03-17">17 March 2025</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1121,7 +1121,7 @@ has been updated to allow and recommend the use of SHA-256 over SHA-1.<a href="#
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 14 March 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 17 March 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1236,7 +1236,7 @@ has been updated to allow and recommend the use of SHA-256 over SHA-1.<a href="#
                 <p id="section-toc.1-1.8.2.4.1"><a href="#section-8.4" class="auto internal xref">8.4</a>.  <a href="#name-denial-of-service-attacks" class="internal xref">Denial-of-Service Attacks</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.5">
-                <p id="section-toc.1-1.8.2.5.1"><a href="#section-8.5" class="auto internal xref">8.5</a>.  <a href="#name-modification-of-http-header" class="internal xref">Modification of HTTP Headers</a></p>
+                <p id="section-toc.1-1.8.2.5.1"><a href="#section-8.5" class="auto internal xref">8.5</a>.  <a href="#name-modification-of-http-header" class="internal xref">Modification of HTTP Header Fields</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.6">
                 <p id="section-toc.1-1.8.2.6.1"><a href="#section-8.6" class="auto internal xref">8.6</a>.  <a href="#name-request-authentication-and-" class="internal xref">Request Authentication and Authorization</a></p>
@@ -1765,7 +1765,7 @@ to the URI specified in the AIA extension <span>[<a href="#RFC5280" class="cite 
 <p id="section-6-4">In response to properly formatted OCSPRequests that are cachable
 (i.e., responses that contain a nextUpdate value), the responder will
 include the binary value of the DER encoding of the OCSPResponse
-preceded by the following HTTP <span>[<a href="#RFC9110" class="cite xref">RFC9110</a>]</span> and <span>[<a href="#RFC9111" class="cite xref">RFC9111</a>]</span> headers.<a href="#section-6-4" class="pilcrow">¶</a></p>
+preceded by the following HTTP <span>[<a href="#RFC9110" class="cite xref">RFC9110</a>]</span> and <span>[<a href="#RFC9111" class="cite xref">RFC9111</a>]</span> header fields.<a href="#section-6-4" class="pilcrow">¶</a></p>
 <div class="alignLeft art-text artwork" id="section-6-5">
 <pre>
    Content-type: application/ocsp-response
@@ -1777,7 +1777,7 @@ preceded by the following HTTP <span>[<a href="#RFC9110" class="cite xref">RFC91
    Date: &lt; current HTTP-date &gt;
 </pre><a href="#section-6-5" class="pilcrow">¶</a>
 </div>
-<p id="section-6-6">See <a href="#http-proxies" class="auto internal xref">Section 7.2</a> for details on the use of these headers.<a href="#section-6-6" class="pilcrow">¶</a></p>
+<p id="section-6-6">See <a href="#http-proxies" class="auto internal xref">Section 7.2</a> for details on the use of these HTTP header fields.<a href="#section-6-6" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="cache-recs">
@@ -1817,10 +1817,10 @@ OCSP response before the max-age time.<a href="#section-7.1-2" class="pilcrow">�
         <h3 id="name-http-proxies">
 <a href="#section-7.2" class="section-number selfRef">7.2. </a><a href="#name-http-proxies" class="section-name selfRef">HTTP Proxies</a>
         </h3>
-<p id="section-7.2-1">The responder <span class="bcp14">SHOULD</span> set the HTTP headers of the OCSP response in
+<p id="section-7.2-1">The responder <span class="bcp14">SHOULD</span> set the HTTP header fields of the OCSP response in
 such a way as to allow for the intelligent use of intermediate HTTP
 proxy servers. See <span>[<a href="#RFC9110" class="cite xref">RFC9110</a>]</span> and <span>[<a href="#RFC9111" class="cite xref">RFC9111</a>]</span> for the full definition
-of these headers and the proper format of any date and time values.<a href="#section-7.2-1" class="pilcrow">¶</a></p>
+of these HTTP header fields and the proper format of any date and time values.<a href="#section-7.2-1" class="pilcrow">¶</a></p>
 <span id="name-http-headers"></span><div id="http-headers">
 <table class="center" id="table-1">
           <caption>
@@ -1829,7 +1829,7 @@ of these headers and the proper format of any date and time values.<a href="#sec
           </caption>
 <thead>
             <tr>
-              <th class="text-left" rowspan="1" colspan="1">HTTP Header</th>
+              <th class="text-left" rowspan="1" colspan="1">HTTP Header Field</th>
               <th class="text-left" rowspan="1" colspan="1">Description</th>
             </tr>
           </thead>
@@ -1858,9 +1858,9 @@ of these headers and the proper format of any date and time values.<a href="#sec
         </table>
 </div>
 <p id="section-7.2-3">OCSP responders <span class="bcp14">MUST NOT</span> include a "Pragma: no-cache", "Cache-
-Control: no-cache", or "Cache-Control: no-store" header in
+Control: no-cache", or "Cache-Control: no-store" HTTP header fields in
 authoritative OCSP responses.<a href="#section-7.2-3" class="pilcrow">¶</a></p>
-<p id="section-7.2-4">OCSP responders <span class="bcp14">SHOULD</span> include one or more of these headers in non-
+<p id="section-7.2-4">OCSP responders <span class="bcp14">SHOULD</span> include one or more of these HTTP header fields in non-
 authoritative OCSP responses.<a href="#section-7.2-4" class="pilcrow">¶</a></p>
 <p id="section-7.2-5">For example, assume that an OCSP response has the following timestamp
 values:<a href="#section-7.2-5" class="pilcrow">¶</a></p>
@@ -1886,11 +1886,11 @@ GMT. In this scenario, the HTTP response may look like this:<a href="#section-7.
    &lt;...&gt;
 </pre><a href="#section-7.2-8" class="pilcrow">¶</a>
 </div>
-<p id="section-7.2-9">OCSP clients <span class="bcp14">MUST NOT</span> include a no-cache header in OCSP request
+<p id="section-7.2-9">OCSP clients <span class="bcp14">MUST NOT</span> include a no-cache HTTP header field in OCSP request
 messages, unless the client encounters an expired response which may
 be a result of an intermediate proxy caching stale data. In this
 situation, clients <span class="bcp14">SHOULD</span> resend the request specifying that proxies
-should be bypassed by including an appropriate HTTP header in the
+should be bypassed by including an appropriate HTTP header field in the
 request (i.e., Pragma: no-cache or Cache-Control: no-cache).<a href="#section-7.2-9" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -1999,12 +1999,12 @@ requests from a particular IP address if questionable behavior is
 detected.<a href="#section-8.4-1" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="modification-of-http-headers">
+<div id="modification-of-http-header-fields">
 <section id="section-8.5">
         <h3 id="name-modification-of-http-header">
-<a href="#section-8.5" class="section-number selfRef">8.5. </a><a href="#name-modification-of-http-header" class="section-name selfRef">Modification of HTTP Headers</a>
+<a href="#section-8.5" class="section-number selfRef">8.5. </a><a href="#name-modification-of-http-header" class="section-name selfRef">Modification of HTTP Header Fields</a>
         </h3>
-<p id="section-8.5-1">Values included in HTTP headers, as described in <a href="#transport" class="auto internal xref">Section 6</a>
+<p id="section-8.5-1">Values included in HTTP header fields, as described in <a href="#transport" class="auto internal xref">Section 6</a>
 and <a href="#cache-recs" class="auto internal xref">Section 7</a>,
 are not cryptographically protected; they may be manipulated by an
 attacker. Clients <span class="bcp14">SHOULD</span> use these values for caching guidance only

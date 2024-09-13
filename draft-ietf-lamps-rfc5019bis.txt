@@ -6,11 +6,11 @@ Network Working Group                                 伊藤 忠彦 (T. Ito)
 Internet-Draft                                           SECOM CO., LTD.
 Obsoletes: 5019 (if approved)                                  C. Wilson
 Intended status: Standards Track                             Apple, Inc.
-Expires: 14 March 2025                                        C. Bonnell
+Expires: 17 March 2025                                        C. Bonnell
                                                           DigiCert, Inc.
                                                                S. Turner
                                                                    sn3rd
-                                                       10 September 2024
+                                                       13 September 2024
 
 
     Updates to Lightweight OCSP Profile for High Volume Environments
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 14 March 2025.
+   This Internet-Draft will expire on 17 March 2025.
 
 Copyright Notice
 
@@ -94,7 +94,7 @@ Table of Contents
      8.2.  Man-in-the-Middle Attacks
      8.3.  Impersonation Attacks
      8.4.  Denial-of-Service Attacks
-     8.5.  Modification of HTTP Headers
+     8.5.  Modification of HTTP Header Fields
      8.6.  Request Authentication and Authorization
      8.7.  Use of SHA-1 for the calculation of CertID field values
    9.  IANA Considerations
@@ -526,7 +526,7 @@ Table of Contents
    In response to properly formatted OCSPRequests that are cachable
    (i.e., responses that contain a nextUpdate value), the responder will
    include the binary value of the DER encoding of the OCSPResponse
-   preceded by the following HTTP [RFC9110] and [RFC9111] headers.
+   preceded by the following HTTP [RFC9110] and [RFC9111] header fields.
 
      Content-type: application/ocsp-response
      Content-length: < OCSP response length >
@@ -536,7 +536,7 @@ Table of Contents
      Cache-control: max-age=< n >, public, no-transform, must-revalidate
      Date: < current HTTP-date >
 
-   See Section 7.2 for details on the use of these headers.
+   See Section 7.2 for details on the use of these HTTP header fields.
 
 7.  Caching Recommendations
 
@@ -567,13 +567,15 @@ Table of Contents
 
 7.2.  HTTP Proxies
 
-   The responder SHOULD set the HTTP headers of the OCSP response in
-   such a way as to allow for the intelligent use of intermediate HTTP
-   proxy servers.  See [RFC9110] and [RFC9111] for the full definition
-   of these headers and the proper format of any date and time values.
+   The responder SHOULD set the HTTP header fields of the OCSP response
+   in such a way as to allow for the intelligent use of intermediate
+   HTTP proxy servers.  See [RFC9110] and [RFC9111] for the full
+   definition of these HTTP header fields and the proper format of any
+   date and time values.
 
    +===============+==================================================+
    | HTTP Header   | Description                                      |
+   | Field         |                                                  |
    +===============+==================================================+
    | Date          | The date and time at which the OCSP responder    |
    |               | generated the HTTP response.                     |
@@ -609,11 +611,11 @@ Table of Contents
                           Table 1: HTTP Headers
 
    OCSP responders MUST NOT include a "Pragma: no-cache", "Cache-
-   Control: no-cache", or "Cache-Control: no-store" header in
-   authoritative OCSP responses.
+   Control: no-cache", or "Cache-Control: no-store" HTTP header fields
+   in authoritative OCSP responses.
 
-   OCSP responders SHOULD include one or more of these headers in non-
-   authoritative OCSP responses.
+   OCSP responders SHOULD include one or more of these HTTP header
+   fields in non- authoritative OCSP responses.
 
    For example, assume that an OCSP response has the following timestamp
    values:
@@ -636,12 +638,13 @@ Table of Contents
       Cache-Control: max-age=86000,public,no-transform,must-revalidate
       <...>
 
-   OCSP clients MUST NOT include a no-cache header in OCSP request
-   messages, unless the client encounters an expired response which may
-   be a result of an intermediate proxy caching stale data.  In this
-   situation, clients SHOULD resend the request specifying that proxies
-   should be bypassed by including an appropriate HTTP header in the
-   request (i.e., Pragma: no-cache or Cache-Control: no-cache).
+   OCSP clients MUST NOT include a no-cache HTTP header field in OCSP
+   request messages, unless the client encounters an expired response
+   which may be a result of an intermediate proxy caching stale data.
+   In this situation, clients SHOULD resend the request specifying that
+   proxies should be bypassed by including an appropriate HTTP header
+   field in the request (i.e., Pragma: no-cache or Cache-Control: no-
+   cache).
 
 7.3.  Caching at Servers
 
@@ -737,9 +740,9 @@ Table of Contents
    requests from a particular IP address if questionable behavior is
    detected.
 
-8.5.  Modification of HTTP Headers
+8.5.  Modification of HTTP Header Fields
 
-   Values included in HTTP headers, as described in Section 6 and
+   Values included in HTTP header fields, as described in Section 6 and
    Section 7, are not cryptographically protected; they may be
    manipulated by an attacker.  Clients SHOULD use these values for
    caching guidance only and ultimately SHOULD rely only on the values
