@@ -608,7 +608,7 @@ Table of Contents
    |               | intentionally returning stale responses.         |
    +---------------+--------------------------------------------------+
 
-                          Table 1: HTTP Headers
+                       Table 1: HTTP Header Fields
 
    OCSP responders MUST NOT include a "Pragma: no-cache", "Cache-
    Control: no-cache", or "Cache-Control: no-store" HTTP header fields
