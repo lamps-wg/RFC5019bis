@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-09-12T00:34:22.686449+00:00",
+  "timestamp": "2024-09-15T00:38:58.496005+00:00",
   "repo": "lamps-wg/RFC5019bis",
   "labels": [
     {
@@ -2764,24 +2764,26 @@
       "id": "PR_kwDOHwB1bc56_41z",
       "title": "s/headers/heard fields",
       "url": "https://github.com/lamps-wg/RFC5019bis/pull/62",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "seanturner",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Address Murray's [comment](https://datatracker.ietf.org/doc/draft-ietf-lamps-rfc5019bis/ballot/#draft-ietf-lamps-rfc5019bis_murray-kucherawy).",
       "createdAt": "2024-09-10T15:05:50Z",
-      "updatedAt": "2024-09-10T20:28:36Z",
+      "updatedAt": "2024-09-13T12:45:59Z",
       "baseRepository": "lamps-wg/RFC5019bis",
       "baseRefName": "main",
       "baseRefOid": "c335a93ee4501953832c8f977dfb935bf6b24651",
       "headRepository": "lamps-wg/RFC5019bis",
       "headRefName": "seanturner-header-field",
       "headRefOid": "e3d3d2e018261b598e308fd0589ab7b1eb17f52b",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2024-09-13T08:54:13Z",
+      "mergedAt": "2024-09-13T08:54:13Z",
+      "mergedBy": "tadahik",
+      "mergeCommit": {
+        "oid": "1fea43dece455ad3d7c47a86ab729a9c8ba1871e"
+      },
       "comments": [],
       "reviews": [
         {
@@ -2795,6 +2797,19 @@
           "body": "LGTM, ship it!",
           "createdAt": "2024-09-10T20:28:36Z",
           "updatedAt": "2024-09-10T20:28:36Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOHwB1bc6JPdgH",
+          "commit": {
+            "abbreviatedOid": "e3d3d2e"
+          },
+          "author": "tadahik",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-09-13T08:53:41Z",
+          "updatedAt": "2024-09-13T08:53:41Z",
           "comments": []
         }
       ]
@@ -2826,6 +2841,48 @@
       },
       "comments": [],
       "reviews": []
+    },
+    {
+      "number": 64,
+      "id": "PR_kwDOHwB1bc57aLqP",
+      "title": "Update draft-ietf-lamps-rfc5019bis.md",
+      "url": "https://github.com/lamps-wg/RFC5019bis/pull/64",
+      "state": "MERGED",
+      "author": "tadahik",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "I missed title of the Table.",
+      "createdAt": "2024-09-13T09:29:01Z",
+      "updatedAt": "2024-09-13T13:59:38Z",
+      "baseRepository": "lamps-wg/RFC5019bis",
+      "baseRefName": "main",
+      "baseRefOid": "1fea43dece455ad3d7c47a86ab729a9c8ba1871e",
+      "headRepository": "lamps-wg/RFC5019bis",
+      "headRefName": "nit-fix-header-fields",
+      "headRefOid": "d284737b08b61d13d333d15e7857db760382b708",
+      "closedAt": "2024-09-13T13:59:38Z",
+      "mergedAt": "2024-09-13T13:59:38Z",
+      "mergedBy": "tadahik",
+      "mergeCommit": {
+        "oid": "781d16ba31da7ab11c38892acb2b75d6b1954d7e"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOHwB1bc6JRYbl",
+          "commit": {
+            "abbreviatedOid": "d284737"
+          },
+          "author": "CBonnell",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-09-13T12:46:25Z",
+          "updatedAt": "2024-09-13T12:46:25Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
