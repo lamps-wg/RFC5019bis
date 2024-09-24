@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-09-22T00:39:05.741576+00:00",
+  "timestamp": "2024-09-24T00:36:04.234283+00:00",
   "repo": "lamps-wg/RFC5019bis",
   "labels": [
     {
@@ -2883,6 +2883,32 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 65,
+      "id": "PR_kwDOHwB1bc58Qsf1",
+      "title": "Update workflows",
+      "url": "https://github.com/lamps-wg/RFC5019bis/pull/65",
+      "state": "OPEN",
+      "author": "seanturner",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Update archive.yml.",
+      "createdAt": "2024-09-22T01:48:35Z",
+      "updatedAt": "2024-09-22T01:52:02Z",
+      "baseRepository": "lamps-wg/RFC5019bis",
+      "baseRefName": "main",
+      "baseRefOid": "781d16ba31da7ab11c38892acb2b75d6b1954d7e",
+      "headRepository": "lamps-wg/RFC5019bis",
+      "headRefName": "seanturner-update-workflows",
+      "headRefOid": "b9bc5a31d43165af0f809e880f043bd724108ba0",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
